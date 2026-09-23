@@ -232,6 +232,8 @@ def _resolve_build(content_id: str):
     store/<full-id>, but builds live in short-named dirs).
     Returns (out_dir, plan, manifest) or raises ValueError.
     """
+    if not content_id:
+        raise ValueError("content_id required")
     sys.path.insert(0, str(ROOT))
     import json as _json
     # 1. short dir directly (AOC-XXXXXXXX or legacy aoc_<12hex>)

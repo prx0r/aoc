@@ -43,6 +43,14 @@ Blocked on product photography + Etsy shop creation (human steps).
 **Status:** deferred (see `docs/PEER_REVIEW_RESPONSE.md`). Needs per-source
 max-age config in claims registry.
 
+## Open — identity hardening (from 2026-09-23 e2e run)
+
+- T-prefix: tooling must never match builds by hook prefix (caused a
+  mis-signed approval; caught by hash check). Grep for `startswith` on
+  hooks in any new tooling. Status: fixed in `mcp_server` paths used.
+- T-fictional: demo posts flip real `content_state`; revert to `in_review`
+  after. Consider a `--demo` flag that redirects receipts+DB to tmp.
+
 ## Closed log
 
 - 2026-09-23: Bank hygiene crisis (49 failing hooks) → recalibrated gates,

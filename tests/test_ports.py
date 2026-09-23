@@ -282,3 +282,33 @@ class TestChannels:
                          receipts_path=tmp_path / "r.jsonl",
                          segment="nails", channel="facebook")
         assert r["plan"]["channel"] == "facebook"
+
+
+class TestIdentityChain:
+    def test_resolver_rejects_empty_id(self):
+        import sys as _sys
+        _sys.path.insert(0, str(Path(__file__).parent.parent))
+        from mcp_server import _resolve_build
+        try:
+            _resolve_build("")
+        except ValueError as e:
+            assert "required" in str(e)
+        else:
+            raise AssertionError("empty content_id resolved")
+        try:
+            _resolve_build(None)
+        except (ValueError, TypeError):
+            pass
+        else:
+            raise AssertionError("None content_id resolved")
+
+    def test_same_hook_prefix_builds_stay_distinct(self, tmp_path):
+        from core.carousel import run_carousel
+        a = run_carousel("Cleaners test hook alpha?", "opportunity",
+                         base_dir=tmp_path / "store",
+                         receipts_path=tmp_path / "r.jsonl", segment="cleaners")
+        b = run_carousel("Cleaners test hook beta?", "opportunity",
+                         base_dir=tmp_path / "store",
+                         receipts_path=tmp_path / "r.jsonl", segment="cleaners")
+        assert a["plan"]["content_id"] != b["plan"]["content_id"]
+        assert a["out_dir"] != b["out_dir"]
