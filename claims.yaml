@@ -1157,6 +1157,67 @@ claims:
     - garden_familiars
     conditions: []
     caveat: Proposed architecture, untested.
+  glimlings.named_family:
+    claim_id: glimlings.named_family
+    type: hypothetical
+    text: Every Glimling has a name, personality and digital identity
+    source: powrobots/docs/brand-identity.md (Mosswick, Mab, Puck, Boomoo)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - glimlings
+    conditions: []
+    caveat: Brand canon.
+  glimlings.lines_prices:
+    claim_id: glimlings.lines_prices
+    type: hypothetical
+    text: Garden £39–79, Sleep £49–119, Desk £35–79, Gift £15–35
+    source: powrobots/docs/brand-identity.md (line ranges, NOT validated offers)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - glimlings
+    conditions: []
+    caveat: HYPOTHETICAL — never present as validated pricing.
+  glimlings.woodland_not_plastic:
+    claim_id: glimlings.woodland_not_plastic
+    type: hypothetical
+    text: Tiny enchanted woodland — not plastic robot toys
+    source: powrobots/docs/brand-identity.md (acorn hats, glowing bellies, crooked
+      smiles)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - glimlings
+    conditions: []
+    caveat: Design language.
+  glimlings.one_controller:
+    claim_id: glimlings.one_controller
+    type: hypothetical
+    text: One controller platform, many creatures and enclosures
+    source: powrobots AGENTS.md (5 engines) + docs/etsybots.md (shared capsule rule)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - glimlings
+    conditions: []
+    caveat: Architecture intent.
+  glimlings.voice_names:
+    claim_id: glimlings.voice_names
+    type: hypothetical
+    text: '''Check on my Glimlings'' — ask by name, each answers for its object'
+    source: powrobots/docs/brand-identity.md (voice rules + per-object memory)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - glimlings
+    conditions: []
+    caveat: Requires approved connector; not a shipped integration claim.
 types:
 - first_party_offer
 - verified_stat

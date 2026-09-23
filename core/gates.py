@@ -32,6 +32,10 @@ BUYER_TERMS = {
     "garden_familiars": {"garden", "frog", "mushroom", "ghost", "dragon", "plant",
                          "soil", "gift", "tomatoes", "herbs", "etsy",
                          "birthday", "worms", "ecowitt"},
+    "glimlings": {"glimling", "glimlings", "mosswick", "mab", "puck", "boomoo",
+                  "peaseblossom", "cobweb", "moth", "mustardseed", "frog",
+                  "mushroom", "ghost", "dragon", "plant", "desk", "garden",
+                  "gift", "bedroom"},
 }
 
 

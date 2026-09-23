@@ -1,0 +1,27 @@
+# glimlings hooks — buyer-named, question/number/comparison gated.
+
+hooks:
+  - text: "Plant parents: meet Mosswick, guardian of tomatoes?"
+    angle: character
+    audience: plant_lover
+  - text: "Mab manages alarms. Who manages yours?"
+    angle: scenario
+    audience: sleep_buyer
+  - text: "Puck does AI workflows. What would yours do first?"
+    angle: question_choice
+    audience: desk_buyer
+  - text: "Boomoo is silly and fond of flowerpots. Agree?"
+    angle: character
+    audience: gift_buyer
+  - text: "One Glimling or a whole family — which windowsill?"
+    angle: collection
+    audience: collector
+  - text: "Plastic robots beep. Glimlings glow — which bedroom?"
+    angle: comparison
+    audience: family_buyer
+  - text: "Check on my Glimlings — try saying it out loud?"
+    angle: voice
+    audience: smart_home
+  - text: "A gift with a name beats a gadget with a manual?"
+    angle: gift
+    audience: gift_buyer

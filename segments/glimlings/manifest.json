@@ -1,0 +1,25 @@
+{
+  "segment": "glimlings",
+  "display_name": "Glimlings",
+  "status": "skin-ready",
+  "pilot_package": "not-defined (no offer fixed; line prices hypothetical)",
+  "public_offer": null,
+  "prospect_sources": "Etsy, planttok/cottagecore, gift buyers (to be validated)",
+  "workflows": [
+    "name-choose-connect",
+    "qr-permission-setup"
+  ],
+  "required_evidence": [
+    "prototype tests",
+    "customer_permission_for_case_study"
+  ],
+  "excluded_from_standard_pilot": [
+    "validated pricing",
+    "waterproof ratings",
+    "muse-microphone-streaming"
+  ],
+  "contact_rules": [
+    "no auto-marketing to research records"
+  ],
+  "trust_model": null
+}

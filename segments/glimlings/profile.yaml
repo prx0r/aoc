@@ -1,0 +1,24 @@
+# Segment skin: glimlings (POW Glimlings — collectible creature companions)
+# Source: powrobots/docs/brand-identity.md. Prices are line ranges from the
+# brand doc, NOT validated offers. No fixed offer: launch-list close only.
+
+id: glimlings
+label: "Glimlings buyers — plant lovers, gift buyers, desk/toy collectors, families"
+pains:
+  - "Beautiful objects with no digital life — plants, desks, bedside tables"
+  - "Generic smart-home gadgets instead of personal creatures"
+  - "Gifts that feel mass-produced instead of named and personal"
+  - "Kids' wonder with nothing to care for that answers back"
+offer:
+  price: "Line ranges £15–£119 by line (brand doc, NOT validated offers)"
+  founding: "TBD — no offer fixed yet"
+  setup_time: "TBD"
+  includes: "Named creature, chosen colours, QR connect, agent permission setup"
+  excluded: "Validated pricing, waterproof ratings, Muse microphone streaming"
+close: "DM GLIMLING for launch updates."
+dm_keyword: GLIMLING
+workflow: "Name it, choose its colours, put it where it lives, scan to connect"
+comparator: "plastic robot toys"
+tone: "warm, storybook, woodland; name creatures (Mosswick, Mab, Puck, Boomoo)"
+competitor_note: "Not robots — spirits for things you love. Character + agent-compat, never spec-sheet selling."
+hashtags: ["#glimlings", "#planttok", "#cottagecore", "#etsyfinds", "#giftideas", "#smarthome"]

@@ -1,0 +1,28 @@
+# glimlings proofs — brand-doc facts + concept claims, all labeled.
+
+proofs:
+  - id: named_family
+    claim: "Every Glimling has a name, personality and digital identity"
+    source: "powrobots/docs/brand-identity.md (Mosswick, Mab, Puck, Boomoo)"
+    use: "Character angle"
+    caveat: "Brand canon."
+  - id: lines_prices
+    claim: "Garden £39–79, Sleep £49–119, Desk £35–79, Gift £15–35"
+    source: "powrobots/docs/brand-identity.md (line ranges, NOT validated offers)"
+    use: "Price anchor only"
+    caveat: "HYPOTHETICAL — never present as validated pricing."
+  - id: woodland_not_plastic
+    claim: "Tiny enchanted woodland — not plastic robot toys"
+    source: "powrobots/docs/brand-identity.md (acorn hats, glowing bellies, crooked smiles)"
+    use: "Aesthetic angle"
+    caveat: "Design language."
+  - id: one_controller
+    claim: "One controller platform, many creatures and enclosures"
+    source: "powrobots AGENTS.md (5 engines) + docs/etsybots.md (shared capsule rule)"
+    use: "Platform angle"
+    caveat: "Architecture intent."
+  - id: voice_names
+    claim: "'Check on my Glimlings' — ask by name, each answers for its object"
+    source: "powrobots/docs/brand-identity.md (voice rules + per-object memory)"
+    use: "Voice angle"
+    caveat: "Requires approved connector; not a shipped integration claim."
