@@ -38,3 +38,12 @@ hooks:
 - text: 'Cleaners: your accounts stay yours. Always.'
   angle: trust
   audience: cleaners
+- text: Cleaning doesn't burn you out. Chasing does — agree?
+  angle: contrarian
+  audience: cleaners
+- text: Paused plans coming back — without a single phone call?
+  angle: outcome_question
+  audience: cleaners
+- text: You can stop doing quotes at 9pm. Seriously.
+  angle: permission
+  audience: cleaners

@@ -1,7 +1,7 @@
 id: cleaners
 label: UK domestic cleaners — recurring plans, unbilled extras, chasing payments
 pains:
-- Paused or cancelled plans are never won back — recoverable revenue leaks
+- Paused plans don't restart themselves — that revenue leaks every month
 - Travel, materials and deep-clean extras go unbilled on fixed prices
 - Payment reminders, plan changes and rebooking eat owner time
 - Quote follow-ups never happen

@@ -68,3 +68,9 @@ hooks:
 - text: 'Electricians: every quote needs your approval — fair?'
   angle: trust
   audience: electrician
+- text: Stop answering every call yourself. It's costing you jobs.
+  angle: negative_command
+  audience: electrician
+- text: Your quotes aren't slow. Your follow-up is. Which do you fix first?
+  angle: diagnosis
+  audience: electrician

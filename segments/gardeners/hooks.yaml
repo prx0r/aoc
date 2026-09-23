@@ -26,3 +26,12 @@ hooks:
 - text: 'Round workers: nothing sends without your approval — agreed?'
   angle: trust
   audience: gardeners
+- text: More customers or fewer skips — which grows your round?
+  angle: question_choice
+  audience: gardeners
+- text: 'Round workers: how many free cleans did unlogged skips give away?'
+  angle: direct_callout
+  audience: gardeners
+- text: Still logging rounds on paper? One lost book = the whole round.
+  angle: mistake_warning
+  audience: gardeners

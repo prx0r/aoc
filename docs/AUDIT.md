@@ -5,6 +5,40 @@
 
 ---
 
+## 2026-09-23 — Copy shootout: 10 hooks, 3 segments (94 tests green)
+
+Rubric (desk, no post data exists): self-ID / specificity / open loop /
+payoff honesty / formula freshness, 25 max. Research grounding: negative
+framings 1.3-1.8x positive; hook = interrupt + pre-qualify + loop;
+dead patterns (founder intro, generic curiosity, aggressive urgency) avoided.
+
+Scoreboard:
+- 24 — gardeners "Round workers: how many free cleans did unlogged skips
+  give away?" (callout + stakes, body pays off exactly) BANKED
+- 21 — gardeners "More customers or fewer skips — which grows your round?" BANKED
+- 20 — electrician "Your quotes aren't slow. Your follow-up is. Which do
+  you fix first?" (needed a question added; gate rightly rejected v1) BANKED
+- 19 — cleaners "Paused plans coming back — without a single phone call?" BANKED
+- 19 — gardeners "Still logging rounds on paper?..." (paper pain
+  segment-grounded) BANKED
+- 18 — cleaners "Cleaning doesn't burn you out. Chasing does — agree?" BANKED
+- 17 — electrician "Stop answering every call yourself..." BANKED
+- 17 — cleaners "You can stop doing quotes at 9pm. Seriously." BANKED
+- 16 — electrician "Quote sent at 2pm, job booked by 4..." REJECTED
+  (outcome the body doesn't substantiate — illustrative numbers can't be claims)
+- 19raw — electrician "£2,000 CRM vs £20 setup..." REJECTED (£2,000
+  unsubstantiated category claim; punch noted, honesty first)
+
+Killed: cleaners pain "never won back — recoverable revenue leaks"
+(self-contradicting; rewritten to "Paused plans don't restart themselves —
+that revenue leaks every month", verified propagating into new builds).
+
+Lesson: the hook-quality gate's loop requirement (question/number/contrast)
+rejected 5/10 first drafts — all bare statements. The gate matches external
+research; the drafter (this session) was the weak link, not the gate.
+
+---
+
 ## 2026-09-23 — Premium renderer pass (16 segments, 20 tools, 94 tests green)
 
 Scope: `render/slide.py` rewritten from flat-colors to a design system;
