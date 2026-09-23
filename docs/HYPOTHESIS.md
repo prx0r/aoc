@@ -40,7 +40,7 @@ Organic still works but check audience geography in analytics before promoting.
 - DOES: track `audience × hook × angle × slides × CTA × style → views/swipes/profile/clicks/leads/sales`,
   mutate winners by **leads**, not views.
 - DOES NOT: auto-post, pick trending audio (human does in-app), run paid campaigns.
-- DOES NOT: invent stats. Every claim traces to `assets/electrician/proofs.yaml`.
+- DOES NOT: invent stats. Every claim traces to `segments/electrician/proofs.yaml`.
 
 ## First batch (10–15)
 - 4× opportunity ("still doing quotes at 9pm?" variants)

@@ -10,7 +10,7 @@ easy to create must also be easy to reject.
 |---|---|---|
 | 1 | Hook names viewer | gate hook-quality-v1 |
 | 2 | Every slide adds info | gate render-legible-v1 (no dup text) |
-| 3 | Contrast | pixel band luminance < 150 |
+| 3 | Contrast | legibility = contrast: dark band + light text, or bright CTA band + dark text |
 | 4 | Safe zones | edges calmer than band |
 | 5 | Claims sourced | gate evidence-fresh-v1 |
 | 6 | No invented numbers | gate claim-resolved-v1 |
