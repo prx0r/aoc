@@ -1,9 +1,10 @@
 # aoc — AI Onboard Content
 
-TikTok slideshow factory for AI Onboard. Generates 9:16 image carousels
-for 13 UK trade segments plus POW Things companions (electrician, beauty, nails, lashes, hair,
-cleaners, dog_groomers, gardeners, car_detailers, driving_instructors,
-weddings, plumber, sole_trader).
+TikTok slideshow factory for AI Onboard (+ POW Things companions).
+Generates 9:16 image carousels for 16 segments: electrician, beauty, nails,
+lashes, hair, cleaners, dog_groomers, gardeners, car_detailers,
+driving_instructors, weddings, plumber, sole_trader, powthings,
+garden_familiars, glimlings.
 
 **Path:** £0 organic TikTok → £70 Facebook test → £30 reserve
 
@@ -63,15 +64,15 @@ Tracks performance: `audience × hook × angle × slide_count × CTA × visual_s
 
 Prefers mutations of patterns that produced qualified leads, not just views.
 
-## Docs
+## Docs (24 files)
 
-- `docs/HYPOTHESIS.md` — the bet, the £100 split, what counts as winning
-- `docs/MINING.md` — what we stole from each reference repo
-- `docs/PIPELINE.md` — how to run the experiment end-to-end
-- `docs/VALIDATION.md` — gates, pixel checks, contact sheets, what humans still do
-- `reference/README.md` — where the clones live (not vendored)
+Start: `docs/HOW_IT_WORKS.md` → `docs/AUDIT.md` (latest state) → `THREADS.md`
+(open work). Then by need: `PIPELINE` (run it), `VALIDATION` + `QUALITY`
+(review it), `TEMPLATES` + `SEGMENTS` + `VERTICALS` (extend it),
+`LEARNING_LOOP` (measure it), `ETSY` + `MONETIZATION` (sell it),
+`PLATFORM` (federate it), `PEER_REVIEW_RESPONSE.md` (why it's shaped so).
 
-18 MCP tools (`aoc_status/hooks/build/validate/inspect/lineage/measure/publish(_confirm)/rank/receipts/backup/review/signoff/metrics/learn/score/personalize`).
+19 MCP tools (`aoc_status/hooks/build/validate/inspect/lineage/measure/publish(_confirm)/rank/receipts/backup/review/signoff/metrics/learn/score/personalize/funnel`).
 See `docs/VIEWING.md` for the local gallery + pi extension.
 
 ## Directory Structure
@@ -84,18 +85,20 @@ aoc/
 ├── channels/          # TikTok, Instagram, Facebook profiles
 ├── receipts/          # Hash-chained content log
 ├── store/             # Rendered slides, scripts, ZIPs
-├── segments/          # 13 skins (engine never names a trade)
+├── segments/          # 16 skins (engine never names a trade)
 │   ├── electrician/   # ↔ aionboard electrician (10k prospects)
 │   ├── beautician/    # ↔ beauty (+nails/lashes/hair)
 │   ├── nails/ lashes/ hair/          # beauty sub-niches, own prices
 │   ├── cleaners/ dog_groomers/ gardeners/
 │   ├── car_detailers/ driving_instructors/ weddings/
 │   ├── plumber/       # aoc-original (no aionboard pack yet)
-│   └── sole_trader/   # aoc-original (general gap)
+│   ├── sole_trader/   # aoc-original (general gap)
+│   ├── powthings/ garden_familiars/ glimlings/  # POW companion lines
 │   └── each: profile,hooks,proofs,templates,manifest.yaml + PAINS/CAMPAIGN.md
-├── reference/         # Cloned reference repos
-├── docs/              # Architecture, protocols
-└── tests/             # Pipeline tests
+├── reference/         # Manifest of external clones (see reference/README.md)
+├── docs/              # 24 docs — start with HOW_IT_WORKS.md, then AUDIT.md
+├── THREADS.md         # Open work
+└── tests/             # Pipeline tests (79 green)
 ```
 
 ## What We Stole
