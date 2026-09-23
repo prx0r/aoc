@@ -63,7 +63,8 @@ HOOK_BANK = {
 
 SEGMENT_IDS = ["electrician", "beautician", "plumber", "sole_trader",
                  "nails", "lashes", "hair", "cleaners", "dog_groomers",
-                 "gardeners", "car_detailers", "driving_instructors", "weddings"]
+                 "gardeners", "car_detailers", "driving_instructors", "weddings",
+                 "powthings"]
 _SEG_CACHE: dict = {}
 
 

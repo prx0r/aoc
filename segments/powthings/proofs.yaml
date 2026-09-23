@@ -1,0 +1,43 @@
+# powthings proofs — hypothetical prices LABELED as such. Never present as validated.
+
+proofs:
+  - id: shared_platform
+    claim: "One controller platform, hundreds of enclosure designs"
+    source: "docs/etsybots.md (commercial design: common controller + modules)"
+    use: "Platform angle"
+    caveat: "Design intent, not shipped hardware."
+  - id: clock_offline
+    claim: "Alarms ring without network — the AI sets them, it doesn't keep them"
+    source: "docs/etsybots.md (local alarms, RTC + backup, offline tests)"
+    use: "Trust angle"
+    caveat: "Design requirement for prototypes, not a tested result."
+  - id: push_to_talk_first
+    claim: "Push-to-talk first, mic-off switch built in"
+    source: "docs/etsybots.md (voice interface plan)"
+    use: "Trust angle"
+    caveat: "Plan, not shipped."
+  - id: sensing_not_novel
+    claim: "Sensing isn't novel — character plus agent-compatibility is"
+    source: "docs/etsybots.md (Lumie/Hatch, D'Addario, BUBBLY/Crustello, Etsy NFC all cited)"
+    use: "Differentiation angle"
+    caveat: "Positioning claim, not a measured advantage."
+  - id: price_clock
+    claim: "Clock Goblin test price £79–£119"
+    source: "docs/etsybots.md (hypothetical UK retail, NOT validated cost or forecast)"
+    use: "Price anchor only"
+    caveat: "HYPOTHETICAL — never present as validated pricing."
+  - id: price_plant
+    claim: "Plant Familiar test price £59–£89"
+    source: "docs/etsybots.md (hypothetical UK retail, NOT validated cost or forecast)"
+    use: "Price anchor only"
+    caveat: "HYPOTHETICAL — never present as validated pricing."
+  - id: price_familiar
+    claim: "Familiar test price £49–£79"
+    source: "docs/etsybots.md (hypothetical UK retail, NOT validated cost or forecast)"
+    use: "Price anchor only"
+    caveat: "HYPOTHETICAL — never present as validated pricing."
+  - id: collection_record
+    claim: "Each object gets its own permission-controlled agent record"
+    source: "docs/etsybots.md (Basil/Bernard/Beansworth collection)"
+    use: "Collection angle"
+    caveat: "Architecture intent."

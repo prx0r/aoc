@@ -1,0 +1,27 @@
+# powthings hooks — buyer-named, question/number/comparison gated.
+
+hooks:
+  - text: "Plant parents: which seedling needs attention?"
+    angle: question_choice
+    audience: plant_owner
+  - text: "What if your coffee jar reminded you to buy beans?"
+    angle: scenario
+    audience: coffee_lover
+  - text: "Your guitar sits in a humid room. Who tells you?"
+    angle: pain_callout
+    audience: musician
+  - text: "Design a sleepy frog for your desk. Which creature is yours?"
+    angle: customisation
+    audience: maker
+  - text: "Has Pickles eaten today? Ask instead of guessing."
+    angle: scenario
+    audience: dog_owner
+  - text: "One controller. Hundreds of frogs, clocks and jars — pick yours?"
+    angle: platform
+    audience: maker
+  - text: "Sourdough starters already have names. Give his a memory."
+    angle: recognition
+    audience: baker
+  - text: "Batteries die, but alarms must not — agree?"
+    angle: trust
+    audience: clock_buyer

@@ -95,11 +95,13 @@ def import_studio_csv(csv_path: Path | str, snapshots_path: Path | str,
     return n
 
 
-def compile_learnings(snapshots_path: Path | str, memory_path: Path | str) -> dict:
+def compile_learnings(snapshots_path: Path | str, memory_path: Path | str,
+                      namespace: str = "aionboard") -> dict:
     """Snapshots → memory.json ranking inputs. Best hooks by leads, then saves.
 
     Joins each snapshot to its content spec (hook/angle/template via receipts)
     where content_id matches; unattributed snapshots still count toward totals.
+    Namespaced per business line so audiences never cross-train.
     """
     snaps = []
     p = Path(snapshots_path)
@@ -115,8 +117,9 @@ def compile_learnings(snapshots_path: Path | str, memory_path: Path | str) -> di
                 "angle": "posted", "slide_count": 0, "cta": "", "visual_style": ""}
         mem_record(memory_path, spec, {**m,
                                        "engagement_rate": d["engagement_rate"],
-                                       "save_rate": d["save_rate"]})
+                                       "save_rate": d["save_rate"]},
+                   namespace=namespace)
         ranked.append({"url": s.get("post_url"), "derived": d})
     ranked.sort(key=lambda r: (r["derived"]["cpqc"] is None,
                                r["derived"]["cpqc"] if r["derived"]["cpqc"] is not None else 0))
-    return {"snapshots": len(snaps), "ranked": ranked}
+    return {"snapshots": len(snaps), "ranked": ranked, "namespace": namespace}

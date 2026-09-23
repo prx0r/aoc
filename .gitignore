@@ -4,6 +4,10 @@ __pycache__/
 .pytest_cache
 store/*/
 !store/.gitkeep
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
 receipts/*.jsonl
 *.zip
 *.jpg

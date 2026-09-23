@@ -3,6 +3,10 @@
 Key: audience x hook x angle x slide_count x CTA x visual_style
 Value: views, swipes, profile_visits, clicks, leads, sales
 
+Namespaced per business line (aionboard vs powthings): plant-lover
+learnings must never train trades content. Default namespace keeps
+single-business callers working unchanged.
+
 Prefer mutations of patterns that produced qualified leads.
 """
 
@@ -24,14 +28,20 @@ def _key(spec: dict) -> str:
     return " | ".join(parts)
 
 
-def record(memory_path: Path | str, spec: dict, metrics: dict) -> dict:
+def _namespaces(mem: dict) -> dict:
+    return mem.setdefault("namespaces", {})
+
+
+def record(memory_path: Path | str, spec: dict, metrics: dict,
+           namespace: str = "aionboard") -> dict:
     p = Path(memory_path)
     p.parent.mkdir(parents=True, exist_ok=True)
     mem = {}
     if p.exists():
         mem = json.loads(p.read_text() or "{}")
+    ns = _namespaces(mem).setdefault(namespace, {})
     k = _key(spec)
-    entry = mem.get(k, {"runs": 0, "totals": {}})
+    entry = ns.get(k, {"runs": 0, "totals": {}})
     entry["runs"] += 1
     entry["spec"] = spec
     totals = entry.setdefault("totals", {})
@@ -43,19 +53,30 @@ def record(memory_path: Path | str, spec: dict, metrics: dict) -> dict:
     spend = totals.get("spend_gbp", 0)
     entry["cpqc"] = (spend / leads) if leads else None
     entry["cpsc"] = (spend / sales) if sales else None
-    mem[k] = entry
+    ns[k] = entry
     p.write_text(json.dumps(mem, indent=2))
     return entry
 
 
-def rank(memory_path: Path | str, metric: str = "leads") -> list[tuple[str, dict]]:
+def rank(memory_path: Path | str, metric: str = "leads",
+         namespace: str = "aionboard") -> list[tuple[str, dict]]:
     p = Path(memory_path)
     if not p.exists():
         return []
     mem = json.loads(p.read_text() or "{}")
+    ns = mem.get("namespaces", {}).get(namespace, {})
     # rank by chosen metric, then by runs (prefer proven)
     return sorted(
-        mem.items(),
+        ns.items(),
         key=lambda kv: (kv[1].get("totals", {}).get(metric, 0), kv[1].get("runs", 0)),
         reverse=True,
     )
+
+
+def namespaces(memory_path: Path | str) -> list[str]:
+    """Which business lines have learnings recorded."""
+    p = Path(memory_path)
+    if not p.exists():
+        return []
+    mem = json.loads(p.read_text() or "{}")
+    return sorted(mem.get("namespaces", {}).keys())

@@ -93,15 +93,29 @@ def aoc_lineage(limit: int = 10):
     return out
 
 
-def aoc_measure(content_id: str = "", metrics: dict | None = None):
-    """Performance observation back into the receipt chain (mirrors content measure)."""
+def aoc_measure(content_id: str = "", metrics: dict | None = None,
+                namespace: str = "aionboard"):
+    """Performance observation into receipt chain AND namespaced memory.
+
+    Closes the old measure/memory split: one call records both.
+    """
     sys.path.insert(0, str(ROOT))
+    from core.analytics import derive
     from core.memory import record
     from core.receipt import append_receipt
     metrics = metrics or {}
     append_receipt(ROOT / "receipts/content.jsonl", "measured",
-                   {"content_id": content_id, "metrics": metrics})
-    return {"content_id": content_id, "recorded": metrics}
+                   {"content_id": content_id, "metrics": metrics,
+                    "namespace": namespace})
+    d = derive(metrics)
+    record(ROOT / "receipts/memory.json",
+           {"audience": "tiktok", "hook": content_id[:40], "angle": "posted",
+            "slide_count": 0, "cta": "", "visual_style": ""},
+           {**metrics, "engagement_rate": d["engagement_rate"],
+            "save_rate": d["save_rate"]},
+           namespace=namespace)
+    return {"content_id": content_id, "recorded": metrics,
+            "derived": d, "namespace": namespace}
 
 
 def aoc_publish(content_id: str = "", platform: str = "tiktok"):
@@ -175,11 +189,11 @@ def aoc_publish_confirm(content_id: str = "", platform: str = "tiktok",
             "platform": platform, "post_url": post_url}
 
 
-def aoc_rank(metric: str = "leads"):
-    """Rank creatives by leads/sales from memory."""
+def aoc_rank(metric: str = "leads", namespace: str = "aionboard"):
+    """Rank creatives by leads/sales from namespaced memory."""
     sys.path.insert(0, str(ROOT))
     from core.memory import rank
-    return [{"key": k, "runs": v.get("runs"), "totals": v.get("totals"), "cpqc": v.get("cpqc"), "cpsc": v.get("cpsc")} for k, v in rank(ROOT / "receipts/memory.json", metric)]
+    return [{"key": k, "runs": v.get("runs"), "totals": v.get("totals"), "cpqc": v.get("cpqc"), "cpsc": v.get("cpsc")} for k, v in rank(ROOT / "receipts/memory.json", metric, namespace=namespace)]
 
 
 def aoc_receipts():
@@ -285,11 +299,11 @@ def aoc_metrics(post_url: str, content_id: str = "", metrics: dict | None = None
     return record_snapshot(ROOT / "receipts/metrics.jsonl", post_url, content_id, metrics)
 
 
-def aoc_learn():
-    """Compile snapshots into creative learnings."""
+def aoc_learn(namespace: str = "aionboard"):
+    """Compile snapshots into namespaced creative learnings."""
     sys.path.insert(0, str(ROOT))
     from core.analytics import compile_learnings
-    return compile_learnings(ROOT / "receipts/metrics.jsonl", ROOT / "receipts/memory.json")
+    return compile_learnings(ROOT / "receipts/metrics.jsonl", ROOT / "receipts/memory.json", namespace=namespace)
 
 
 def aoc_funnel(campaign_id: str = ""):
@@ -332,16 +346,16 @@ TOOLS = [
     {"name": "aoc_validate", "description": "Run proof+gates on a plan WITHOUT rendering. Cheap quality check.", "inputSchema": {"type": "object", "properties": {"hook": {"type": "string"}, "template": {"type": "string", "default": "opportunity"}, "segment": {"type": "string", "default": "electrician"}}, "required": ["hook"]}},
     {"name": "aoc_inspect", "description": "Show pipeline graph, receipts chain, or proofs", "inputSchema": {"type": "object", "properties": {"target": {"type": "string", "default": "receipts"}}}},
     {"name": "aoc_lineage", "description": "content_id -> zip attachment log", "inputSchema": {"type": "object", "properties": {"limit": {"type": "integer", "default": 10}}}},
-    {"name": "aoc_measure", "description": "Record performance metrics into receipt chain + memory", "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}, "metrics": {"type": "object"}}, "required": ["content_id"]}},
+    {"name": "aoc_measure", "description": "Record performance into receipt chain + namespaced memory", "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}, "metrics": {"type": "object"}, "namespace": {"type": "string", "default": "aionboard"}}, "required": ["content_id"]}},
     {"name": "aoc_publish", "description": "Publication packet (asset + checklist). Marks nothing published.", "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}, "platform": {"type": "string", "default": "tiktok"}}, "required": ["content_id"]}},
     {"name": "aoc_publish_confirm", "description": "Confirm manual post with real post URL. Requires prior approval of the exact revision.", "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}, "platform": {"type": "string", "default": "tiktok"}, "post_url": {"type": "string"}, "account": {"type": "string", "default": ""}}, "required": ["content_id", "post_url"]}},
-    {"name": "aoc_rank", "description": "Rank creatives by leads/sales from memory", "inputSchema": {"type": "object", "properties": {"metric": {"type": "string", "default": "leads"}}}},
+    {"name": "aoc_rank", "description": "Rank creatives by leads/sales from namespaced memory", "inputSchema": {"type": "object", "properties": {"metric": {"type": "string", "default": "leads"}, "namespace": {"type": "string", "default": "aionboard"}}}},
     {"name": "aoc_receipts", "description": "Verify receipt chain integrity", "inputSchema": {"type": "object", "properties": {}}},
     {"name": "aoc_backup", "description": "Back up a built carousel to R2 (needs R2_* env). Writes backed_up receipt.", "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}}, "required": ["content_id"]}},
     {"name": "aoc_review", "description": "Run the 15-point review: automated checks now, human items queued", "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}}, "required": ["content_id"]}},
     {"name": "aoc_signoff", "description": "Record human verdict: approved|revise|rejected with reason", "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}, "decision": {"type": "string"}, "reason": {"type": "string"}}, "required": ["content_id", "decision", "reason"]}},
     {"name": "aoc_metrics", "description": "Append a raw metrics snapshot (manual/Studio CSV/API). Never overwrites.", "inputSchema": {"type": "object", "properties": {"post_url": {"type": "string"}, "content_id": {"type": "string"}, "metrics": {"type": "object"}}, "required": ["post_url"]}},
-    {"name": "aoc_learn", "description": "Compile snapshots into creative learnings (best hooks by leads)", "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "aoc_learn", "description": "Compile snapshots into namespaced creative learnings", "inputSchema": {"type": "object", "properties": {"namespace": {"type": "string", "default": "aionboard"}}}},
     {"name": "aoc_score", "description": "Score prospects from CSV (density+diversity, age unknown without CH API)", "inputSchema": {"type": "object", "properties": {"limit": {"type": "integer", "default": 20}, "min_score": {"type": "integer", "default": 25}}}},
     {"name": "aoc_funnel", "description": "Acquisition funnel counts (leads, qualified, paid, revenue, unattributed). Read-only.", "inputSchema": {"type": "object", "properties": {"campaign_id": {"type": "string", "default": ""}}}},
     {"name": "aoc_personalize", "description": "Build one per-business variant (identity tokens only, research-only unless consented)", "inputSchema": {"type": "object", "properties": {"hook": {"type": "string"}, "template": {"type": "string", "default": "opportunity"}, "segment": {"type": "string", "default": "electrician"}, "business": {"type": "string"}, "company_number": {"type": "string"}, "area": {"type": "string"}, "status": {"type": "string", "default": "research-only"}}, "required": ["hook", "business"]}},

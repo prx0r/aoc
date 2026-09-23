@@ -1,0 +1,23 @@
+# Segment skin: powthings (POW physical AI companions)
+# Source: docs/etsybots.md. ALL prices hypothetical — not validated costs or forecasts.
+
+id: powthings
+label: "POW Things buyers — plant people, coffee people, musicians, makers, gift buyers"
+pains:
+  - "Beautiful objects with no digital life — plants, jars, instruments, books"
+  - "Generic smart-home gadgets, nothing personal"
+  - "Want AI to know about real things, not another app to learn"
+  - "Gifts that feel mass-produced instead of designed"
+offer:
+  price: "£15–£119 by product, all hypothetical (not validated)"
+  founding: "TBD — no offer fixed yet"
+  setup_time: "TBD"
+  includes: "Customisable enclosure, tested modules, QR connect, agent permission setup"
+  excluded: "Anything promising Muse microphone streaming (two separate integration problems)"
+close: "DM GOBLIN for launch updates."
+dm_keyword: GOBLIN
+workflow: "Describe it, choose its look, approve the design, scan to connect"
+comparator: "generic smart-home gadgets"
+tone: "warm, playful, maker-spirit; name things (Beansworth, Bernard, Doughbert)"
+competitor_note: "Sensing isn't novel (Lumie, D'Addario, BUBBLY all exist). Difference: character + agent-compat + modular price."
+hashtags: ["#planttok", "#coffeetok", "#sourdough", "#etsyfinds", "#smarthome", "#guitar"]

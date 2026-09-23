@@ -103,3 +103,20 @@ offers:
       - "WhatsApp production integration included"
       - "website included"
       - "guaranteed leads, rankings, or AI placements"
+
+  powthings-preview:
+    version: 1
+    price_gbp: null
+    availability: unavailable
+    availability_reason: "No offer fixed yet; prices hypothetical. Launch list only."
+    eligible_segments:
+      - powthings
+    included_capabilities: []
+    excluded_capabilities: []
+    support_terms: "None yet."
+    required_customer_access: []
+    permitted_ctas:
+      - waitlist
+    forbidden_claims:
+      - "validated pricing"
+      - "available to buy"

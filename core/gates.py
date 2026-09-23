@@ -26,6 +26,9 @@ BUYER_TERMS = {
     "car_detailers": {"detail", "detailer", "car", "cars", "paint", "quote"},
     "driving_instructors": {"instructor", "lesson", "lessons", "diary", "pupil", "test"},
     "weddings": {"wedding", "weddings", "bride", "venue", "photographer", "mua"},
+    "powthings": {"plant", "plants", "clock", "coffee", "beans", "guitar",
+                  "book", "dog", "sourdough", "frog", "dragon", "alarm",
+                  "seedling", "mushroom"},
 }
 
 
@@ -168,11 +171,14 @@ def gate_offer_cta(plan: dict, segment: str) -> tuple[bool, str]:
         _, offer = offer_for_segment(segment)
     except ValueError as e:
         return False, str(e)
-    price = str(offer.get("price_gbp", ""))
+    price = offer.get("price_gbp")
+    if price is None:
+        return True, "no fixed price (launch list, nothing to validate)"
+    price = str(price)
     slides = plan.get("slides", []) or []
     closes = [s.get("text", "") for s in slides if s.get("kind") == "close"]
     texts = closes + [plan.get("cta", "")]
-    if price and not any(price in t for t in texts):
+    if not any(price in t for t in texts):
         return False, f"close lacks current offer price £{price}"
     return True, f"close carries £{price}"
 

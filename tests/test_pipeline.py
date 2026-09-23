@@ -55,12 +55,13 @@ def test_receipt_chain(tmp_path):
 
 def test_segments_are_skins():
     from slides.generate import SEGMENT_IDS, get_hooks, generate_slides_deterministic, load_segment
-    assert len(SEGMENT_IDS) == 13
+    assert len(SEGMENT_IDS) == 14
     closes = {"electrician": "QUOTE", "beautician": "BOOKING", "plumber": "JOBS",
               "sole_trader": "SETUP", "nails": "NAILS", "lashes": "LASHES",
               "hair": "HAIR", "cleaners": "CLEAN", "dog_groomers": "GROOM",
               "gardeners": "ROUND", "car_detailers": "DETAIL",
-              "driving_instructors": "LESSONS", "weddings": "WEDDING"}
+              "driving_instructors": "LESSONS", "weddings": "WEDDING",
+              "powthings": "GOBLIN"}
     for seg in SEGMENT_IDS:
         skin = load_segment(seg)
         assert skin["profile"]["id"] == seg

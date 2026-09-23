@@ -1,0 +1,23 @@
+{
+  "segment": "powthings",
+  "display_name": "POW Things",
+  "status": "skin-ready",
+  "pilot_package": "not-defined (no offer fixed; prices hypothetical)",
+  "public_offer": null,
+  "prospect_sources": "Etsy/plant/coffee/music communities (to be validated)",
+  "workflows": [
+    "describe-choose-approve-connect",
+    "qr-permission-setup"
+  ],
+  "required_evidence": [
+    "prototype tests (alarm offline, sensor calibration)",
+    "customer_permission_for_case_study"
+  ],
+  "excluded_from_standard_pilot": [
+    "muse-microphone-streaming (separate integration problem)"
+  ],
+  "contact_rules": [
+    "no auto-marketing to research records"
+  ],
+  "trust_model": null
+}

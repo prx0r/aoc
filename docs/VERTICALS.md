@@ -26,6 +26,12 @@ changes, skins change — automation never outruns the offer.
 `PAINS.md` + `CAMPAIGN.md`. Engine falls back: explicit hand-tuned decks →
 generic skin-driven decks → refuse (never another trade's copy).
 
+## Plus: powthings (separate business line)
+
+POW physical AI companions — plant/clock/coffee/guitar owners, gift buyers.
+Own skin, own `powthings-preview` offer (unavailable, launch list only),
+own memory namespace. Audiences must never cross-train learnings.
+
 ## Prices (two-tier since Sep 2026)
 
 - Five wedges (nails, lashes, hair, cleaners, car_detailers, gardeners):
