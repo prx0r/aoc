@@ -129,6 +129,44 @@ def aoc_receipts():
     return {"ok": ok, "message": msg}
 
 
+def aoc_review(content_id: str):
+    """Run the automated half of the 15-point review on a built carousel."""
+    sys.path.insert(0, str(ROOT))
+    import json as _json
+    from core.review import run_review
+    out = ROOT / "store" / content_id
+    plan = _json.loads((out / "script.json").read_text())
+    manifest = _json.loads((out / "manifest.json").read_text())
+    from core.gates import run_gates
+    from core.proof import proof_from_plan
+    from slides.generate import load_segment
+    skin = load_segment(plan.get("segment", "electrician"))
+    proof = proof_from_plan(plan, skin)
+    gates = run_gates(plan, proof, plan.get("segment", "electrician"))
+    return run_review(out, plan, gates, manifest.get("validation", {}))
+
+
+def aoc_signoff(content_id: str, decision: str, reason: str):
+    """Record the human verdict."""
+    sys.path.insert(0, str(ROOT))
+    from core.review import sign_off
+    return sign_off(ROOT / "receipts/content.jsonl", content_id, decision, reason)
+
+
+def aoc_metrics(post_url: str, content_id: str = "", metrics: dict | None = None):
+    """Append a raw metrics snapshot."""
+    sys.path.insert(0, str(ROOT))
+    from core.analytics import record_snapshot
+    return record_snapshot(ROOT / "receipts/metrics.jsonl", post_url, content_id, metrics)
+
+
+def aoc_learn():
+    """Compile snapshots into creative learnings."""
+    sys.path.insert(0, str(ROOT))
+    from core.analytics import compile_learnings
+    return compile_learnings(ROOT / "receipts/metrics.jsonl", ROOT / "receipts/memory.json")
+
+
 def aoc_score(limit: int = 20, min_score: int = 25):
     """Score prospects from the CSV. Research ranking only, not permission."""
     sys.path.insert(0, str(ROOT))
@@ -166,6 +204,10 @@ TOOLS = [
     {"name": "aoc_publish", "description": "Manual-pending publish adapter (no auto-post by design)", "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}, "platform": {"type": "string", "default": "tiktok"}}, "required": ["content_id"]}},
     {"name": "aoc_rank", "description": "Rank creatives by leads/sales from memory", "inputSchema": {"type": "object", "properties": {"metric": {"type": "string", "default": "leads"}}}},
     {"name": "aoc_receipts", "description": "Verify receipt chain integrity", "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "aoc_review", "description": "Run the 15-point review: automated checks now, human items queued", "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}}, "required": ["content_id"]}},
+    {"name": "aoc_signoff", "description": "Record human verdict: approved|revise|rejected with reason", "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}, "decision": {"type": "string"}, "reason": {"type": "string"}}, "required": ["content_id", "decision", "reason"]}},
+    {"name": "aoc_metrics", "description": "Append a raw metrics snapshot (manual/Studio CSV/API). Never overwrites.", "inputSchema": {"type": "object", "properties": {"post_url": {"type": "string"}, "content_id": {"type": "string"}, "metrics": {"type": "object"}}, "required": ["post_url"]}},
+    {"name": "aoc_learn", "description": "Compile snapshots into creative learnings (best hooks by leads)", "inputSchema": {"type": "object", "properties": {}}},
     {"name": "aoc_score", "description": "Score prospects from CSV (density+diversity, age unknown without CH API)", "inputSchema": {"type": "object", "properties": {"limit": {"type": "integer", "default": 20}, "min_score": {"type": "integer", "default": 25}}}},
     {"name": "aoc_personalize", "description": "Build one per-business variant (identity tokens only, research-only unless consented)", "inputSchema": {"type": "object", "properties": {"hook": {"type": "string"}, "template": {"type": "string", "default": "opportunity"}, "segment": {"type": "string", "default": "electrician"}, "business": {"type": "string"}, "company_number": {"type": "string"}, "area": {"type": "string"}, "status": {"type": "string", "default": "research-only"}}, "required": ["hook", "business"]}},
 ]

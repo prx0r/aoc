@@ -116,8 +116,12 @@ def run_carousel(hook: str, template: str = "opportunity", base_dir: Path | str 
     # pixel validation AFTER render, before export
     validation = validate_carousel(out_dir, manifest)
     sheet = contact_sheet(out_dir)
+    from core.review import run_review
+    review = run_review(out_dir, plan_dict, gates, validation)
     manifest["validation"] = validation
     manifest["contact_sheet"] = sheet.name
+    manifest["review"] = {"auto_passed": review["auto_passed"],
+                          "pending_human": review["pending_human"]}
     (out_dir / "manifest.json").write_text(json.dumps(manifest, indent=2))
     if enforce_gates and not validation["passed"]:
         bad = {k: v for k, v in validation["slides"].items() if not v["ok"]}
