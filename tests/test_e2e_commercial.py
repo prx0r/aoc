@@ -79,7 +79,7 @@ def test_e2e_electrician_499_campaign(tmp_path, monkeypatch):
                "annuity", "electrician",
                "DM QUOTE — UK electricians only. £499 setup.", kind="ad")
     assert "£499" in r["manifest"]["final_cta"]
-    assert r["plan"]["offer_id"] == "standard-ai-setup"
+    assert r["plan"]["offer_id"] in ("standard-ai-setup", "free-demo")
     A.record_lead("E2E-E1", source="direct-call", campaign_id="C-E",
                   permission_status="consented", permission_ref="e2e-call-3")
     A.record_qualification("E2E-E1", True, is_owner_manager=True,

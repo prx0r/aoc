@@ -5,6 +5,46 @@ source:
   note: No completed paying installation recorded upstream yet. Prices and scopes
     below are the offer as stated, not measured outcomes.
 offers:
+  free-demo:
+    version: 1
+    price_gbp: null
+    availability: available_now
+    availability_reason: Free 20-min demo, no commitment. Workflow configured during call.
+    eligible_segments:
+    - electrician
+    - cleaners
+    - gardeners
+    - glimlings
+    - nails
+    - lashes
+    - hair
+    - car_detailers
+    - dog_groomers
+    - driving_instructors
+    - weddings
+    - plumber
+    - sole_trader
+    included_capabilities:
+    - id: single_workflow
+      status: verified
+      text: One priority workflow configured during the 20-min demo call
+    - id: guided_connection
+      status: verified
+      text: Guided connection to existing calendar, email, or booking software
+    - id: personalised_assistant
+      status: verified
+      text: Personalised assistant with services, prices, hours
+    - id: training_session
+      status: verified
+      text: Live training during demo — you see it working before you pay anything
+    excluded_capabilities:
+    - id: live_voice_service
+      status: blocked
+    - id: whatsapp_cloud_api
+      status: blocked
+    - id: website_build
+      status: blocked
+    note: "The demo IS the product. By the end of the call, the workflow is already working. £20 keeps it forever. No pressure, no commitment."
   muse-quickstart:
     version: 1
     price_gbp: 20
