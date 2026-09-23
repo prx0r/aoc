@@ -312,3 +312,14 @@ class TestIdentityChain:
                          receipts_path=tmp_path / "r.jsonl", segment="cleaners")
         assert a["plan"]["content_id"] != b["plan"]["content_id"]
         assert a["out_dir"] != b["out_dir"]
+
+
+class TestChannelHashtags:
+    def test_segment_tags_lead(self):
+        import sys as _sys
+        _sys.path.insert(0, str(Path(__file__).parent.parent))
+        from core.channels import channel_hashtags
+        tags = channel_hashtags("tiktok", ["#nailtech", "#smallbusiness"])
+        assert tags[0] == "#nailtech"
+        assert "#electrician" in tags  # channel suggestions still present
+        assert len(tags) == len(set(tags))

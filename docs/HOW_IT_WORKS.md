@@ -97,9 +97,9 @@ conversions reported apart, never guessed. Contact details never leave the DB.
 
 ## Interfaces
 
-- **MCP (19 tools)**: status/hooks/build/validate/inspect/lineage/measure/
+- **MCP (20 tools)**: status/hooks/build/validate/inspect/lineage/measure/
   publish(+confirm)/rank/receipts/backup/review/signoff/metrics/learn/
-  score/personalize/funnel. stdio + `mcp_server.py <tool> '<json>'` CLI.
+  score/personalize/funnel/campaign. stdio + `mcp_server.py <tool> '<json>'` CLI.
 - **Viewer** (`python3 -m web.viewer`, :8798, localhost): gallery, queue,
   per-creative view, sign-off forms, ZIP downloads, `/api/status`.
 - **Pi extension** (`pi-extension/aoc-sensor.ts`): 6 verbs over MCP stdio.
@@ -120,9 +120,9 @@ conversions reported apart, never guessed. Contact details never leave the DB.
 | `core/backup.py` | R2 uploads |
 | `slides/generate.py` | skins loader, generic decks, hook bank |
 | `render/slide.py` | PIL 1080×1920 compositor |
-| `mcp_server.py` | 19 tools, stdio + CLI |
+| `mcp_server.py` | 20 tools, stdio + CLI |
 | `web/viewer.py` | local gallery + queue |
-| `segments/*/` | 13 skins + strategies |
+| `segments/*/` | 16 skins + strategies |
 | `claims.yaml` / `offers.yaml` | registries |
 | `store/` | builds (gitignored) + `campaigns.json` index + `aoc.db` |
 | `receipts/` | hash-chained logs (gitignored) |

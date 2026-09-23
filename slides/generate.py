@@ -254,7 +254,7 @@ def load_segment(segment: str) -> dict:
     if segment in _SEG_CACHE:
         return _SEG_CACHE[segment]
     root = _segments_root()
-    if not (root / segment).exists():
+    if not segment or not (root / segment).is_dir():
         known = sorted(p.name for p in root.iterdir() if p.is_dir())
         raise ValueError(f"unknown segment: {segment!r} (known: {known})")
     import yaml

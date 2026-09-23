@@ -1,7 +1,7 @@
 # aoc — AI Onboard Content
 
 TikTok slideshow factory for AI Onboard (+ POW Things companions).
-Generates 9:16 image carousels for 16 segments: electrician, beauty, nails,
+Generates 9:16 image carousels for 16 segments: electrician, beautician, nails,
 lashes, hair, cleaners, dog_groomers, gardeners, car_detailers,
 driving_instructors, weddings, plumber, sole_trader, powthings,
 garden_familiars, glimlings.
@@ -64,15 +64,17 @@ Tracks performance: `audience × hook × angle × slide_count × CTA × visual_s
 
 Prefers mutations of patterns that produced qualified leads, not just views.
 
-## Docs (24 files)
+## Docs (26 files)
 
 Start: `docs/HOW_IT_WORKS.md` → `docs/AUDIT.md` (latest state) → `THREADS.md`
-(open work). Then by need: `PIPELINE` (run it), `VALIDATION` + `QUALITY`
+(open work). Then by need: `FLOW` (full campaign flow, every command
+executable), `PIPELINE` (the £100 experiment plan), `IDENTITY` (how one
+creative stays itself), `VALIDATION` + `QUALITY`
 (review it), `TEMPLATES` + `SEGMENTS` + `VERTICALS` (extend it),
 `LEARNING_LOOP` (measure it), `ETSY` + `MONETIZATION` (sell it),
 `PLATFORM` (federate it), `PEER_REVIEW_RESPONSE.md` (why it's shaped so).
 
-19 MCP tools (`aoc_status/hooks/build/validate/inspect/lineage/measure/publish(_confirm)/rank/receipts/backup/review/signoff/metrics/learn/score/personalize/funnel`).
+20 MCP tools (`aoc_status/hooks/build/validate/inspect/lineage/measure/publish(_confirm)/rank/receipts/backup/review/signoff/metrics/learn/score/personalize/funnel/campaign`).
 See `docs/VIEWING.md` for the local gallery + pi extension.
 
 ## Directory Structure
@@ -96,9 +98,9 @@ aoc/
 │   ├── powthings/ garden_familiars/ glimlings/  # POW companion lines
 │   └── each: profile,hooks,proofs,templates,manifest.yaml + PAINS/CAMPAIGN.md
 ├── reference/         # Manifest of external clones (see reference/README.md)
-├── docs/              # 24 docs — start with HOW_IT_WORKS.md, then AUDIT.md
+├── docs/              # 26 docs — start with HOW_IT_WORKS.md, then AUDIT.md
 ├── THREADS.md         # Open work
-└── tests/             # Pipeline tests (79 green)
+└── tests/             # Pipeline tests (90 green)
 ```
 
 ## What We Stole

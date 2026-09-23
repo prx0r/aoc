@@ -1,5 +1,8 @@
 # PIPELINE — how to run the £100 experiment with AOC
 
+> Mechanics live in `docs/FLOW.md` (every command executable). This doc is
+> the experiment plan: what to build, what to spend, what to kill.
+
 ## 0. Prereqs
 - Website + booking link working (do not spend before this).
 - Direct calls running as £0 control; log objections.
@@ -10,14 +13,14 @@ cd /root/aoc
 python3 -c "
 from core.carousel import run_carousel
 r = run_carousel('UK electricians — still doing quotes at 9pm?', 'opportunity')
-print(r['zip'])"                    # store/aoc_<hash>/tiktok_carousel.zip
-python3 -m pytest tests/ -q         # 4 passed
+print(r['zip'])"                    # store/AOC-XXXXXXXX/tiktok_carousel.zip
+python3 -m pytest tests/ -q         # 90 passed
 ```
 Make 10–15 across templates: opportunity ×4, before_after ×3, faq ×2, demo ×2, social_proof ×2.
-Each with 2 hook variants (see assets/electrician/hooks.yaml).
+Each with 2 hook variants (see segments/electrician/hooks.yaml).
 
 ## 2. Review (human gate)
-- Open PNGs in `store/aoc_<hash>/`. Check: buyer identified slide 1? One idea per slide?
+- Open JPEGs in `store/AOC-XXXXXXXX/` (or the gallery: `python3 -m web.viewer`). Check: buyer identified slide 1? One idea per slide?
   Claim in proofs.yaml? CTA present?
 - Move `draft → in_review → approved|rejected` in `core/state.py` terms. Rejected → back to draft with reason.
 
@@ -50,4 +53,4 @@ record("receipts/memory.json",
 echo '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}' | python3 mcp_server.py
 echo '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"aoc_status","arguments":{}}}' | python3 mcp_server.py
 ```
-Tools: aoc_status, aoc_hooks, aoc_build, aoc_rank, aoc_receipts.
+Tools: full 20 (see README + `docs/FLOW.md` for the campaign→funnel flow).

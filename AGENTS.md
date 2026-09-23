@@ -4,7 +4,7 @@
 TikTok slideshow factory for AI Onboard. Deterministic pipeline with
 fail-closed gates, human review, and a measured learning loop. Read
 `docs/HOW_IT_WORKS.md` before touching anything. Current state:
-16 segments · 19 MCP tools · 79 tests green · docs/AUDIT.md (latest audit) ·
+16 segments · 20 MCP tools · 90 tests green · docs/AUDIT.md (latest audit) ·
 THREADS.md (open work).
 
 ## How to work here
@@ -24,7 +24,7 @@ THREADS.md (open work).
 8. Manual posting only. There is no auto-post tool and there must never be one.
 
 ## Commands
-- `python3 -m pytest tests/ -q` — full suite (79 tests, no network)
+- `python3 -m pytest tests/ -q` — full suite (90 tests, no network)
 - `python3 mcp_server.py aoc_validate '{"hook":"...","segment":"nails"}'` — cheap check
 - `python3 -m web.viewer` — gallery at :8798
 - `AOC_DB=/tmp/x.db python3 -m pytest tests/ -q` — isolated store (conftest does this per-test anyway)

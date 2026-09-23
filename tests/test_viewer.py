@@ -41,12 +41,22 @@ def test_viewer_endpoints():
         queue = urllib.request.urlopen(BASE + "/queue", timeout=5).read()
         assert b"Review queue" in queue
 
-        # sheet for latest build
+        # sheet for latest build still on disk (store/ is prunable
+        # build output; receipts outlive it — skip pruned builds)
         receipts = [json.loads(ln) for ln in
                     open(Path(__file__).parent.parent / "receipts/content.jsonl")
                     if ln.strip()]
         built = [r for r in receipts if r.get("event") == "carousel_built"]
-        cid = built[-1]["data"]["content_id"]
+        from mcp_server import _resolve_build as _rb
+        cid = None
+        for r in reversed(built):
+            try:
+                _rb(r["data"]["content_id"])
+                cid = r["data"]["content_id"]
+                break
+            except ValueError:
+                continue
+        assert cid, "no resolvable build for sheet test"
         with urllib.request.urlopen(BASE + f"/sheet?cid={cid}", timeout=5) as r:
             assert r.status == 200
             assert r.read(2) == b"\xff\xd8"  # JPEG

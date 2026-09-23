@@ -26,10 +26,16 @@ def load_channel(channel: str) -> dict:
 
 
 def channel_hashtags(channel: str, segment_tags: list[str] | None = None) -> list[str]:
-    """Channel suggestions + segment tags, deduped, order kept."""
+    """Segment tags first, channel suggestions after, deduped, order kept.
+
+    Segment data wins on conflict (channel is the medium, segment is the
+    audience): a nails creative must lead with #nailtech, not #electrician.
+    Found 2026-09-23 — publish packets buried segment tags under 8
+    electrician channel tags."""
+
     prof = load_channel(channel)
     out, seen = [], set()
-    for t in list(prof.get("suggested_hashtags", []) or []) + list(segment_tags or []):
+    for t in list(segment_tags or []) + list(prof.get("suggested_hashtags", []) or []):
         if t not in seen:
             seen.add(t)
             out.append(t)

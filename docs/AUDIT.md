@@ -5,6 +5,25 @@
 
 ---
 
+## 2026-09-23 — Flow verification + hashtag fix (16 segments, 20 tools, 91 tests green)
+
+Scope: wrote `docs/FLOW.md` (every command executed during writing);
+fixed all stale counts (19→20 tools, 79→90 tests, 24→26 docs, 13→16 skins,
+beautician name); fixed PIPELINE.md legacy refs.
+
+Findings while verifying (both fixed + tested):
+- `channel_hashtags` buried segment tags under 8 electrician channel tags
+  (`core/channels.py` — segment tags now lead, honoring the module's own
+  "segment wins" rule). No silent mis-posting occurred (packets are
+  human-read before posting), but a copy-paste poster would have used
+  #electrician on nails.
+- `load_segment('')` returned an empty skin instead of raising (segments
+  root exists, so `.exists()` passed). Now requires a real directory;
+  `aoc_publish`'s `except ValueError` guard actually fires.
+
+Tmp verification campaign + build removed from DB/store. Receipts
+(gitignored, append-only) retain the trail.
+
 ## 2026-09-23 — Full audit (16 segments, 19 tools, 79 tests green)
 
 Scope: every directory, every core module, docs-vs-reality check, upstream
