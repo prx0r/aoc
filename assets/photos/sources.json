@@ -58,5 +58,25 @@
   "file": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Young_woman_takes_selfie_at_home_workspace_with_breakfast_and_laptop_in_the_morning.jpg/1280px-Young_woman_takes_selfie_at_home_workspace_with_breakfast_and_laptop_in_the_morning.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   "cached": "assets/photos/desk-workspace.jpg",
   "bytes": 328124
+ },
+ {
+  "title": "Generated: puck-gen.jpg",
+  "user": "Cloudflare Workers AI",
+  "license": "AI-generated",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "prompt": "Tiny magical desk creature called Puck with acorn cap hat, oversized ears, translucent wings, glowing warm belly, sitting on a wooden desk beside a small laptop, storybook woodland style, soft warm light, cozy",
+  "cached": "assets/photos/puck-gen.jpg",
+  "bytes": 533055,
+  "timestamp": 1790182904
+ },
+ {
+  "title": "Generated: mosswick-gen.jpg",
+  "user": "Cloudflare Workers AI",
+  "license": "AI-generated",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "prompt": "Tiny magical garden creature called Mosswick with acorn cap hat, oversized ears, translucent wings, glowing warm belly, nestled among tomato plants in a sunlit garden, storybook woodland style, soft warm light, cozy",
+  "cached": "assets/photos/mosswick-gen.jpg",
+  "bytes": 615928,
+  "timestamp": 1790182961
  }
 ]

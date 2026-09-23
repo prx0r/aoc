@@ -20,7 +20,7 @@ hook + template + segment
   → plan()            slides from skin (segments/*/hooks,proofs,templates)
   → proof_from_plan() claims resolve against claims.yaml + segment proofs
   → run_gates()       9 gates, fail-closed (fix the DATA, never the gate)
-  → render()          Montserrat system, per-segment accent (render/slide.py)
+  → render()          Montserrat system, per-segment accent, photos=True (render/slide.py + core/images.py)
   → validate_carousel() pixels: dims, contrast, text-present, safe margins
   → export()          tiktok_carousel.zip + contact_sheet.jpg + receipt
 ```
@@ -30,12 +30,12 @@ Fails anywhere → `carousel_rejected` receipt, nothing rendered. Same hook
 rebuilt → no-duplicate gate refuses with the existing receipt id (reuse it).
 
 Photo backgrounds: `run_carousel(..., photos=True)` pulls pinned CC photos
-(`core/images.py`, `assets/photos/` + `sources.json` attribution, local
-files only — never network). Hook/body slides get photos with defocus +
-edge scrim; CTA stays accent-gradient for pop. CC BY credit flows into
-`manifest.photo_credit` → publish packet caption. AI generation seam
-(`images.generate`, Cloudflare Workers AI flux) is stubbed: needs a live
-token with Workers AI permission (current one 401s).
+or CF-generated art (`core/images.py`, `assets/photos/` + `sources.json`
+attribution, local files only — never network). Hook/body slides get photos
+with defocus + edge scrim; CTA stays accent-gradient for pop. CC BY credit
+flows into `manifest.photo_credit` → publish packet caption. AI generation
+via flux-1-schnell: needs live CLOUDFLARE_API_TOKEN + R2_ACCOUNT_ID from
+.env (R2 account, not storage keys).
 
 ## 2. PERSONALIZE — per-business variant
 

@@ -43,6 +43,13 @@ Blocked on product photography + Etsy shop creation (human steps).
 **Status:** deferred (see `docs/PEER_REVIEW_RESPONSE.md`). Needs per-source
 max-age config in claims registry.
 
+## Open — LIVE: puck-launch-01 hero upgraded to AI-generated Mosswick (2026-09-23)
+
+Hero switched to AOC-3556B152 (generated Mosswick art, `photos=True`).
+Remaining creatives: AOC-2662E252 (Puck-gen, photos=True) +
+AOC-A4BC201B (legacy gradient). Confirmed: token needs CLOUDFLARE_API_TOKEN
+Workers AI + R2_ACCOUNT_ID (not R2 storage creds); stored in .env.
+
 ## Open — LIVE: puck-launch-01 awaits manual post (2026-09-23)
 
 Campaign `puck-launch-01` (glimlings / muse-quickstart waitlist / £0):

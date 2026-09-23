@@ -376,13 +376,15 @@ class TestPhotoBackgrounds:
         assert r["manifest"]["validation"]["passed"]
         assert "photo_credit" in r["manifest"]
 
-    def test_generate_seam_blocked(self):
+    def test_generate_seam_blocked_without_env(self, monkeypatch):
         import sys as _sys
         _sys.path.insert(0, str(Path(__file__).parent.parent))
+        monkeypatch.delenv("CLOUDFLARE_API_TOKEN", raising=False)
+        monkeypatch.delenv("R2_ACCOUNT_ID", raising=False)
         from core.images import generate
         try:
-            generate("a glimling", "x.jpg")
-        except NotImplementedError as e:
-            assert "CLOUDFLARE_API_TOKEN" in str(e)
+            generate("a glimling", "should-not-exist.jpg")
+        except RuntimeError as e:
+            assert "CLOUDFLARE_API_TOKEN" in str(e) or "R2_ACCOUNT_ID" in str(e)
         else:
-            raise AssertionError("generate() should be blocked without a live token")
+            raise AssertionError("generate() should be blocked without env")
