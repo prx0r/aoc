@@ -1,0 +1,16 @@
+[project]
+name = "aoc"
+version = "0.1.0"
+description = "AI Onboard Content — TikTok slideshow factory for UK electricians"
+requires-python = ">=3.11"
+dependencies = ["pillow", "pyyaml", "httpx"]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,23 @@
+# AI Onboard Facebook channel profile — paid test channel, not organic-first.
+
+channel: facebook
+audience: electrician_owner
+platform: facebook
+
+# Why Facebook for paid: reaches existing trades-business owners incl. older
+# proprietors (Markel: 73% on Facebook for business). TikTok skews young.
+format: lead_ad
+budget_test_gbp: 70
+creatives: 2
+targeting: "UK trades business owners/managers, Greater Manchester first"
+qualification_question: "Do you own or manage a UK trades business?"
+
+track:
+  - impressions
+  - clicks
+  - leads
+  - qualified_conversations
+  - sales
+
+# First meaningful metric: cost per qualified conversation, then cost per customer.
+# A £10 lead who never buys is more expensive than a £50 lead who buys £499.

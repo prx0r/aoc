@@ -1,0 +1,15 @@
+# AI Onboard Instagram channel profile — organic cross-post + credibility.
+
+channel: instagram
+audience: electrician
+platform: instagram
+
+format: carousel_crosspost  # reuse TikTok PNGs, no re-render
+source: tiktok_export_zip
+purpose: reuse_content + credibility_with_owners
+
+track:
+  - views
+  - profile_visits
+  - clicks
+  - leads

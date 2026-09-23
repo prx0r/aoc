@@ -1,0 +1,35 @@
+# AOC slide templates — 5-8 slides, hook first, proof middle, workflow demo, close.
+# All render through render/slide.py to 1080x1920.
+
+templates:
+  opportunity:
+    scenes: [hook, proof, pain, workflow, close]
+    min_slides: 5
+    max_slides: 7
+    example:
+      - "UK electricians — still doing quotes at 9pm?"
+      - "40% use AI. Only 18% connected it to the business."
+      - "Missed calls. Late quotes. Sundays doing admin."
+      - "AI answers, drafts quote, you approve between jobs."
+      - "One setup. £499. No subscription."
+
+  before_after:
+    scenes: [hook, before, after, before, after, close]
+    min_slides: 6
+    max_slides: 7
+
+  faq:
+    scenes: [hook, q, a, q, a, close]
+    min_slides: 6
+    max_slides: 8
+
+  social_proof:
+    scenes: [hook, stat, stat, claim, close]
+    min_slides: 5
+    max_slides: 6
+
+  demo:
+    scenes: [hook, trigger, ai_action, human_approve, result, close]
+    min_slides: 6
+    max_slides: 7
+    note: "Show fictional customer data. Mark where human approves."

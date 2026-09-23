@@ -1,0 +1,52 @@
+# Electrician hook bank — question/indecision beats declarative product hooks.
+# Source patterns: Reddit carousel threads Aug-Sep 2026, aionboard SALES_PLAYBOOK opening.
+# Rule: slide 1 must identify buyer immediately. Under 10 words.
+
+hooks:
+  - text: "UK electricians — still doing quotes at 9pm?"
+    angle: pain_callout
+    audience: owner_2_10_staff
+
+  - text: "Which of these would you automate first?"
+    angle: question_choice
+    audience: owner_2_10_staff
+
+  - text: "Am I doing this wrong?"
+    angle: indecision
+    audience: sole_trader
+
+  - text: "What would you automate first?"
+    angle: question_open
+    audience: owner_2_10_staff
+
+  - text: "The quote you sent at 11pm — AI could've sent it at 2pm"
+    angle: before_after
+    audience: owner_2_10_staff
+
+  - text: "Your phone rang at 3pm. You were on a job. AI answered."
+    angle: scenario
+    audience: owner_2_10_staff
+
+  - text: "62% of calls missed while on tools. Here's the fix."
+    angle: stat_pain
+    audience: owner_2_10_staff
+
+  - text: "£499 to never miss another enquiry. Worth it?"
+    angle: price_question
+    audience: owner_2_10_staff
+
+  - text: "The electrician who answers first — wins the job."
+    angle: competition
+    audience: owner_2_10_staff
+
+  - text: "Tradify already does that. So why are you still doing admin at night?"
+    angle: objection_flip
+    audience: tradify_user
+
+  - text: "EV + solar quotes take 2 hours. What if they took 20 minutes?"
+    angle: niche_ev_solar
+    audience: ev_solar_installer
+
+  - text: "New firm, no customers, no systems. Where would you start?"
+    angle: new_firm
+    audience: newly_established

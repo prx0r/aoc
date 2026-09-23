@@ -1,0 +1,46 @@
+# AI Onboard TikTok channel profile
+
+channel: tiktok
+audience: electrician
+platform: tiktok
+
+# Content rules
+max_hook_words: 10
+max_body_words: 15
+min_slides: 5
+max_slides: 8
+format: photo_carousel
+resolution: 1080x1920
+
+# Audience targeting
+geo: UK
+business_type: electrical_contractor
+decision_maker: owner
+
+# Brand
+tone: direct, slightly provocative, no corporate speak
+avoid: jargon, complex tech terms, corporate buzzwords
+emphasize: time_saved, money_saved, ease_of_use, no_subscription
+
+# Hashtags (add manually per post, not auto-generated)
+suggested_hashtags:
+  - "#electrician"
+  - "#electricianlife"
+  - "#tradesman"
+  - "#smallbusiness"
+  - "#ai"
+  - "#automation"
+  - "#ukbusiness"
+  - "#electricianuk"
+
+# Performance tracking
+track:
+  - views
+  - swipes
+  - profile_visits
+  - clicks
+  - leads
+  - sales
+
+# Creative memory: audience x hook x angle x slide_count x CTA x visual_style -> metrics
+# Prefer mutations of patterns that produced qualified leads, not just views
