@@ -250,3 +250,35 @@ class TestBankHygiene:
             except Exception as e:
                 bad.append((str(fp), str(e)[:60]))
         assert not bad, bad
+
+
+class TestChannels:
+    def test_unknown_channel_raises_at_plan(self):
+        from core.carousel import plan
+        try:
+            plan("hook", "opportunity", segment="nails", channel="myspace")
+        except ValueError as e:
+            assert "unknown channel" in str(e)
+        else:
+            raise AssertionError("unknown channel accepted")
+
+    def test_channel_profiles_load(self):
+        from core.channels import CHANNELS, load_channel
+        for c in CHANNELS:
+            assert load_channel(c)["channel"] == c
+
+    def test_hashtags_merge_segment_first(self):
+        from core.channels import channel_hashtags
+        tags = channel_hashtags("tiktok", ["#nailtech", "#smallbusiness"])
+        assert tags.count("#smallbusiness") == 1
+        assert "#nailtech" in tags
+
+    def test_publish_packet_carries_channel(self, tmp_path):
+        import sys as _sys
+        _sys.path.insert(0, str(Path(__file__).parent.parent))
+        from core.carousel import run_carousel
+        r = run_carousel("Nail techs — DMs at midnight, booking at 9am?",
+                         "opportunity", base_dir=tmp_path / "store",
+                         receipts_path=tmp_path / "r.jsonl",
+                         segment="nails", channel="facebook")
+        assert r["plan"]["channel"] == "facebook"

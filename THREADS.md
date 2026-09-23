@@ -22,10 +22,10 @@ stand in. Etsy slot 1 must become real photography when it exists.
 **Effort:** 2–3 days after OAuth.
 
 ### T4 — Channels wiring decision
-**Status:** open question. `channels/*.yaml` exist but no code reads them.
-Either wire channel profiles into `plan()` (format/cadence/hashtags per channel)
-or mark them advisory-only and delete the implication of function.
-**Effort:** 0.5 day.
+**Status:** CLOSED. Wired: `plan()`/`run_carousel()` refuse unknown channels,
+`aoc_publish` packet carries channel hashtags (merged with segment tags) +
+channel checklist. Segment wins on conflict.
+(`core/channels.py`, `TestChannels`.)
 
 ### T5 — Video beyond Etsy MP4s
 **Status:** `render/etsy.py:render_video` covers silent slideshows. TikTok-native

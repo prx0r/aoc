@@ -123,7 +123,14 @@ def aoc_publish(content_id: str = "", platform: str = "tiktok"):
     a posting checklist. Marks nothing published — only a separate
     confirmation with the real platform post URL/ID does that."""
     sys.path.insert(0, str(ROOT))
+    from core.channels import channel_checklist, channel_hashtags
+    from slides.generate import load_segment
     out, plan, manifest = _resolve_build(content_id)
+    try:
+        seg_tags = (load_segment(plan.get("segment", "")).get("profile", {})
+                    .get("hashtags", []))
+    except ValueError:
+        seg_tags = []
     return {
         "status": "manual-pending",
         "content_id": content_id,
@@ -132,9 +139,8 @@ def aoc_publish(content_id: str = "", platform: str = "tiktok"):
         "contact_sheet": str(out / "contact_sheet.jpg"),
         "caption": plan.get("caption", ""),
         "cta": manifest.get("final_cta", ""),
-        "checklist": [
-            "post via Photo Mode (swipeable), not Template auto-play",
-            "pick trending sound in-app; never post silent",
+        "hashtags": channel_hashtags(platform, seg_tags),
+        "checklist": channel_checklist(platform) + [
             "caption visible ≤150 chars + 3–5 hashtags with buyer terms",
             "confirm with aoc_publish_confirm + real post URL afterwards",
         ],
@@ -313,6 +319,39 @@ def aoc_funnel(campaign_id: str = ""):
     return funnel(campaign_id)
 
 
+def aoc_campaign(campaign_id: str, segment: str, offer_id: str,
+                   hypothesis: str = "", budget_gbp: float | None = None,
+                   channel: str = "tiktok", content_id: str = ""):
+    """Create a campaign and optionally link one approved creative.
+
+    Campaigns track start-to-finish: creatives → posts → observations →
+    leads → qualifications → conversions. Refuses unknown segments,
+    unapproved creatives, and duplicate campaign ids.
+    """
+    sys.path.insert(0, str(ROOT))
+    from core.acquisition import create_campaign, link_creative
+    from slides.generate import SEGMENT_IDS
+    if segment not in SEGMENT_IDS:
+        return {"error": f"unknown segment: {segment}"}
+    try:
+        from core.offers import get_offer
+        offer = get_offer(offer_id)
+    except ValueError as e:
+        return {"error": str(e)}
+    try:
+        camp = create_campaign(campaign_id, segment, offer_id,
+                               offer["version"], hypothesis, budget_gbp, channel)
+    except ValueError as e:
+        return {"error": str(e)}
+    out = {"campaign": camp, "linked": None}
+    if content_id:
+        try:
+            out["linked"] = link_creative(campaign_id, content_id)
+        except ValueError as e:
+            out["linked"] = {"error": str(e)}
+    return out
+
+
 def aoc_score(limit: int = 20, min_score: int = 25):
     """Score prospects from the CSV. Research ranking only, not permission."""
     sys.path.insert(0, str(ROOT))
@@ -358,6 +397,7 @@ TOOLS = [
     {"name": "aoc_learn", "description": "Compile snapshots into namespaced creative learnings", "inputSchema": {"type": "object", "properties": {"namespace": {"type": "string", "default": "aionboard"}}}},
     {"name": "aoc_score", "description": "Score prospects from CSV (density+diversity, age unknown without CH API)", "inputSchema": {"type": "object", "properties": {"limit": {"type": "integer", "default": 20}, "min_score": {"type": "integer", "default": 25}}}},
     {"name": "aoc_funnel", "description": "Acquisition funnel counts (leads, qualified, paid, revenue, unattributed). Read-only.", "inputSchema": {"type": "object", "properties": {"campaign_id": {"type": "string", "default": ""}}}},
+    {"name": "aoc_campaign", "description": "Create a campaign and link one approved creative. Refuses duplicates, unknown segments/offers, unapproved creatives.", "inputSchema": {"type": "object", "properties": {"campaign_id": {"type": "string"}, "segment": {"type": "string"}, "offer_id": {"type": "string"}, "hypothesis": {"type": "string", "default": ""}, "budget_gbp": {"type": ["number", "null"], "default": None}, "channel": {"type": "string", "default": "tiktok"}, "content_id": {"type": "string", "default": ""}}, "required": ["campaign_id", "segment", "offer_id"]}},
     {"name": "aoc_personalize", "description": "Build one per-business variant (identity tokens only, research-only unless consented)", "inputSchema": {"type": "object", "properties": {"hook": {"type": "string"}, "template": {"type": "string", "default": "opportunity"}, "segment": {"type": "string", "default": "electrician"}, "business": {"type": "string"}, "company_number": {"type": "string"}, "area": {"type": "string"}, "status": {"type": "string", "default": "research-only"}}, "required": ["hook", "business"]}},
 ]
 

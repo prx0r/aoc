@@ -17,6 +17,75 @@ from __future__ import annotations
 from core.store import log_event, session
 
 
+def create_campaign(campaign_id: str, segment: str, offer_id: str,
+                    offer_version: int, hypothesis: str = "",
+                    budget_gbp: float | None = None,
+                    channel: str = "tiktok") -> dict:
+    """Create a campaign. Raises if the id already exists (no silent reuse)."""
+    with session() as db:
+        cur = db.execute("SELECT campaign_id FROM campaigns WHERE campaign_id = ?",
+                         (campaign_id,)).fetchone()
+        if cur:
+            raise ValueError(f"campaign exists: {campaign_id}")
+        db.execute(
+            """INSERT INTO campaigns
+               (campaign_id, segment, offer_id, offer_version, hypothesis,
+                budget_gbp, channel, created_at)
+               VALUES (?, ?, ?, ?, ?, ?, ?, datetime('now'))""",
+            (campaign_id, segment, offer_id, offer_version, hypothesis,
+             budget_gbp, channel))
+        log_event(db, "campaign_created", "", "human",
+                  {"campaign_id": campaign_id, "segment": segment})
+    return {"campaign_id": campaign_id, "segment": segment,
+            "offer_id": offer_id, "channel": channel}
+
+
+def link_creative(campaign_id: str, content_id: str, cta: str = "",
+                  caption: str = "", renderer: str = "render.slide") -> dict:
+    """Attach a built, approved creative to a campaign.
+
+    Refuses unknown campaigns and unapproved creatives — a campaign may
+    only contain revisions a human signed off (checked against receipts).
+    """
+    import hashlib as _hl
+    import json as _json
+    import os as _os
+    from pathlib import Path as _P
+    with session() as _db:
+        _camp = _db.execute("SELECT campaign_id FROM campaigns WHERE campaign_id = ?",
+                            (campaign_id,)).fetchone()
+    if not _camp:
+        raise ValueError(f"unknown campaign: {campaign_id}")
+    approved = False
+    rp = _P(_os.environ.get("AOC_RECEIPTS",
+                            str(_P(__file__).parent.parent / "receipts/content.jsonl")))
+    if rp.exists():
+        for line in rp.read_text().splitlines():
+            if not line.strip():
+                continue
+            r = _json.loads(line)
+            d = r.get("data", {})
+            if (r.get("event") == "reviewed" and d.get("content_id") == content_id
+                    and d.get("decision") == "approved"):
+                approved = True
+                break
+    if not approved:
+        raise ValueError(f"content {content_id[:24]} has no approval receipt — sign off first")
+    with session() as db:
+        creative_id = "CRT:" + _hl.sha256(
+            f"{campaign_id}|{content_id}".encode()).hexdigest()[:16]
+        db.execute(
+            """INSERT OR IGNORE INTO creatives
+               (creative_id, campaign_id, content_id, script_hash, cta,
+                caption, renderer, approval_status)
+               VALUES (?, ?, ?, ?, ?, ?, ?, 'approved')""",
+            (creative_id, campaign_id, content_id, "", cta, caption, renderer))
+        log_event(db, "creative_linked", content_id, "human",
+                  {"campaign_id": campaign_id, "creative_id": creative_id})
+    return {"creative_id": creative_id, "campaign_id": campaign_id,
+            "content_id": content_id}
+
+
 def ingest_observation(post_id: str, observed_at: str, metric: str,
                        value: float | None, source: str, import_id: str) -> bool:
     """Idempotent ingest. Returns True if new, False if duplicate."""

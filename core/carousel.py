@@ -64,6 +64,8 @@ def plan(hook: str, template: str = "opportunity", audience: str = "electrician"
       skin + renderer + offer version). Two CTAs = two IDs, always.
     """
     seg = segment or audience
+    from core.channels import load_channel as _load_channel
+    _load_channel(channel)  # unknown channels raise here, not at publish
     from slides.generate import segment_close
     cta = cta or segment_close(seg)
     offer_id, offer = offer_for_segment(seg)
@@ -179,7 +181,8 @@ def run_carousel(hook: str, template: str = "opportunity", base_dir: Path | str 
                  receipts_path: Path | str = "receipts/content.jsonl",
                  segment: str = "electrician", audience: str | None = None,
                  enforce_gates: bool = True, variant: dict | None = None,
-                 cta: str | None = None, kind: str = "organic") -> dict:
+                 cta: str | None = None, kind: str = "organic",
+                 channel: str = "tiktok") -> dict:
     """Full local run: plan → proof → gates → render → validate → export → receipt.
 
     Fail-closed like /content: gate failures write a FAIL receipt and raise;
@@ -195,9 +198,11 @@ def run_carousel(hook: str, template: str = "opportunity", base_dir: Path | str 
     if kind == "ad":
         if not cta:
             raise ValueError("ads require an explicit CTA with qualification")
-        plan_dict = plan(hook, template, audience=seg, segment=seg, cta=cta, kind=kind)
+        plan_dict = plan(hook, template, audience=seg, segment=seg, cta=cta,
+                         kind=kind, channel=channel)
     else:
-        plan_dict = plan(hook, template, audience=seg, segment=seg)
+        plan_dict = plan(hook, template, audience=seg, segment=seg,
+                         channel=channel)
     skin = load_segment(seg)
     # NOTE: plan_dict["content_id"] is the full AOC:<64hex> identity.
     # Filesystem dirs use the short display form (colons break Win/Mac/URLs).
