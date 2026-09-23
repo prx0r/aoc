@@ -101,4 +101,6 @@ def channel_caption(channel: str, hook: str, segment: str, close: str) -> str:
     ])
     # Build caption: hook + value + comment prompt + close + hashtags
     caption = f"{hook} {val} {cp} {close} {hashtags}"
+    # Add dual-path note (DM is frictionless, website for researchers)
+    caption += " DM DEMO or link in bio — free 20-min setup, no commitment."
     return caption

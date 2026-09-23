@@ -152,6 +152,8 @@ def aoc_publish(content_id: str = "", platform: str = "tiktok"):
             "3-5 hashtags with buyer terms (segment leads, channel follows)",
             "select trending audio matching the sound recommendation above",
             "paste photo_credit into the caption when non-empty (CC BY requirement)",
+            "DM path: reply to DMs with booking link (fastest conversion)",
+            "website path: link in bio goes to free demo landing page",
             "confirm with aoc_publish_confirm + real post URL afterwards",
         ],
         "note": "post the ZIP manually as Photo Mode (swipeable), pick trending audio in-app",

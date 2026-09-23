@@ -6,17 +6,77 @@ The demo IS the product. By the end of the 20-minute call, the workflow is
 already working. The £20 is to keep it forever — not to start. This removes
 the price objection from slide 1 entirely.
 
-## The funnel
+## Two paths, one funnel
 
+### Path 1: DM DEMO (frictionless — stays in TikTok)
 ```
-TikTok carousel (DM DEMO keyword)
-  → DM arrives (manual or future automation)
-  → Booking link sent (Calendly or similar)
-  → 20-min demo call (we configure live, they watch)
-  → Workflow working before call ends
-  → "That's £20 to keep it forever. Want to add more?"
-  → £20 payment → 7 days support → add-ons if they want them
+TikTok carousel → DM "DEMO" → booking link → 20-min call → setup → £20
 ```
+- No leaving the app
+- No typing a URL
+- No finding link-in-bio
+- Just type "DEMO" and you're in
+- **Conversion path: 3 taps**
+
+### Path 2: Link in bio (for researchers)
+```
+TikTok carousel → profile → link in bio → landing page → book demo → call → £20
+```
+- For people who want to read before they commit
+- Landing page has: what it is, how it works, trust model, testimonials
+- Same booking link as DM path
+- **Conversion path: 5 taps**
+
+### Which converts better?
+
+DM wins on speed (3 taps vs 5). Website wins on trust (they can research).
+**Run both.** The caption says "DM DEMO or link in bio — free 20-min setup."
+People who DM are warmer (impulse). People who visit the site are more
+informed (lower churn). Both are good leads.
+
+## The funnel (detailed)
+
+### DM path
+1. Customer sees carousel, types "DEMO"
+2. We reply within 5 minutes: "Hey! What's your business? I'll send you a booking link."
+3. They reply: "Electrician, Manchester"
+4. We send booking link (Calendly or similar)
+5. They book a 20-min slot
+6. We configure one workflow live on their device during the call
+7. Call ends: workflow is working, they've seen it handle a real case
+8. We send summary email: what we set up, how to use it, what's next
+9. "That's £20 to keep it forever. Want to add quotes/reminders/reviews?"
+10. Payment → 7 days support → add-ons if they want them
+
+### Website path
+1. Customer sees carousel, taps profile, taps link in bio
+2. Landing page: headline ("Free 20-min AI setup for your trade"), 3 bullet points
+   (what it is, what they get, what it costs after), booking widget
+3. They book directly (no DM needed)
+4. Same call flow as DM path (steps 6-10 above)
+
+## Why DM is the primary path
+
+TikTok doesn't allow clickable links in posts. The only link is in bio.
+DM is the only in-app conversion path. It's also the fastest:
+- **3 taps**: see carousel → type "DEMO" → get booking link
+- **5 taps**: see carousel → profile → link in bio → landing page → book
+
+For a £20 product, speed matters more than research. The DM path captures
+impulse intent before it fades. The website path catches the researchers
+who need to read first. Both lead to the same call.
+
+## Caption structure (dual-path)
+
+Every caption ends with: "DM DEMO or link in bio — free 20-min setup, no commitment."
+
+Full example (electrician):
+> Free demo: quotes at 2pm, not 9pm — interested? AI triages your enquiries,
+> drafts quotes while you're on the tools, and follows up automatically. You
+> approve every send. No subscription, no lock-in. Which would you automate
+> first — quotes or follow-ups? DM DEMO for a free 20-min setup. #electrician
+> #smallbusiness #ukbusiness #ai #automation #aiagent #workflow #timemanagement
+> DM DEMO or link in bio — free 20-min setup, no commitment.
 
 ## Why this works
 
