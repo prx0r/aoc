@@ -24,11 +24,11 @@ TOOLS = [
 def _handle(name: str, args: dict):
     sys.path.insert(0, str(ROOT))
     if name == "aoc_status":
-        import yaml
-        hooks = yaml.safe_load((ROOT / "assets/electrician/hooks.yaml").read_text())["hooks"]
+        from slides.generate import SEGMENT_IDS, get_hooks
+        total = sum(len(get_hooks(s)) for s in SEGMENT_IDS)
         receipts = ROOT / "receipts/content.jsonl"
         n = sum(1 for _ in open(receipts)) if receipts.exists() else 0
-        return {"templates": ["opportunity", "before_after", "faq", "social_proof", "demo"], "hooks": len(hooks), "receipts": n, "publish": "manual-only"}
+        return {"templates": ["opportunity", "before_after", "faq", "social_proof", "demo", "diagnostic", "teardown", "comparison"], "segments": SEGMENT_IDS, "hooks": total, "receipts": n, "publish": "manual-only"}
     if name == "aoc_hooks":
         from slides.generate import get_hooks
         seg = args.get("segment") or args.get("audience", "electrician")
