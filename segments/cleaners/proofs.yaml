@@ -37,3 +37,13 @@ proofs:
   source: cgraphuk BLUEPRINT kill-rule pattern (answer-rate floor)
   use: Credibility slide
   caveat: Process promise; reposition means change of angle, not refund.
+- id: trust_no_passwords
+  claim: We never ask for passwords — you log in, you grant, you revoke
+  source: aionboard/TRUST_MODEL.md guarantee 1
+  use: Trust angle
+  caveat: null
+- id: trust_approval
+  claim: Every outbound message needs your explicit approval first
+  source: aionboard/TRUST_MODEL.md guarantee 3 (approval bound to exact content)
+  use: Trust angle
+  caveat: null

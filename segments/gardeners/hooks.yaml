@@ -20,3 +20,9 @@ hooks:
 - text: Just downloaded Muse? We'll set it up for your business for £20.
   angle: muse_setup
   audience: gardeners
+- text: 'Round workers: your logins stay yours. Always.'
+  angle: trust
+  audience: gardeners
+- text: 'Round workers: nothing sends without your approval — agreed?'
+  angle: trust
+  audience: gardeners

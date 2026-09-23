@@ -26,3 +26,9 @@ hooks:
 - text: Just downloaded Muse? We'll set it up for your business for £20.
   angle: muse_setup
   audience: lashes
+- text: 'Lash techs: we never ask for your password. Ever.'
+  angle: trust
+  audience: lashes
+- text: 'Lash techs: every send needs your approval — fair?'
+  angle: trust
+  audience: lashes

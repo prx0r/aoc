@@ -62,3 +62,9 @@ hooks:
 - text: If this fails in 30 days, we change the plan. In writing.
   angle: kill_rule
   audience: electrician
+- text: 'Electricians: we never ask for passwords. Ever.'
+  angle: trust
+  audience: electrician
+- text: 'Electricians: every quote needs your approval — fair?'
+  angle: trust
+  audience: electrician

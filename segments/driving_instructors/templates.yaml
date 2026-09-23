@@ -64,3 +64,7 @@ templates:
     scenes: [hook, timing, list, workflow, close]
     min_slides: 5
     max_slides: 6
+  trust:
+    scenes: [hook, guarantee, guarantee, see_never, close]
+    min_slides: 5
+    max_slides: 6

@@ -186,6 +186,14 @@ def _generic_deck(skin: dict, hook: str, template: str) -> list[SlideSpec] | Non
             ("body", "One assisted setup. 7 days support. Personal manual.", 0.5),
             ("close", f"DM {dm_keyword} to join the UK list.", 0.5),
         ],
+        "trust": [
+            ("hook", hook, 0.35),
+            ("body", "We never ask for passwords — you log in, you grant, you revoke.", 0.5),
+            ("body", "Every outbound message needs your explicit approval first.", 0.5),
+            ("body", "You keep your accounts, your passwords, your money.", 0.5),
+            ("body", "Revocation takes effect immediately. No call needed.", 0.5),
+            ("close", close, 0.5),
+        ],
     }
     def _overlap(a: str, b: str) -> float:
         import re

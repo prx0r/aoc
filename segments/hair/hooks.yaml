@@ -23,3 +23,9 @@ hooks:
 - text: Just downloaded Muse? We'll set it up for your business for £20.
   angle: muse_setup
   audience: hair
+- text: 'Hair pros: we never touch your logins. Ever.'
+  angle: trust
+  audience: hair
+- text: 'Hair pros: nothing sends without your approval — deal?'
+  angle: trust
+  audience: hair

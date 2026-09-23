@@ -32,3 +32,9 @@ hooks:
 - text: Just downloaded Muse? We'll set it up for your business for £20.
   angle: muse_setup
   audience: cleaners
+- text: 'Cleaners: we never ask for passwords. Ever.'
+  angle: trust
+  audience: cleaners
+- text: 'Cleaners: your accounts stay yours. Always.'
+  angle: trust
+  audience: cleaners

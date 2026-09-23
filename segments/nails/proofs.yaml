@@ -21,3 +21,13 @@ proofs:
   source: cgraphuk MT-05
   use: Direct-booking angle
   caveat: Verify current terms before publishing.
+- id: trust_no_passwords
+  claim: We never ask for passwords — you log in, you grant, you revoke
+  source: aionboard/TRUST_MODEL.md guarantee 1
+  use: Trust angle
+  caveat: null
+- id: trust_approval
+  claim: Every outbound message needs your explicit approval first
+  source: aionboard/TRUST_MODEL.md guarantee 3 (approval bound to exact content)
+  use: Trust angle
+  caveat: null

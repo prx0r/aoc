@@ -28,5 +28,6 @@
     "screen live calls against TPS, CTPS, suppression list",
     "no auto-marketing to research records"
   ],
-  "prospect_sources": "Local Facebook groups, Google Maps"
+  "prospect_sources": "Local Facebook groups, Google Maps",
+  "trust_model": "/root/aionboard/TRUST_MODEL.md"
 }

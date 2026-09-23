@@ -1,6 +1,6 @@
 proofs:
 - id: thin_quotes
-  claim: "4 missing fields kill most quotes: vehicle, location, condition, timing"
+  claim: '4 missing fields kill most quotes: vehicle, location, condition, timing'
   source: verticals/car-detailers/PAINS.md (stub)
   use: Quote-triage angle
 - id: approval_bounds
@@ -15,3 +15,13 @@ proofs:
   claim: £349–£599 pilot test price (hypothesis until validated)
   source: targets.md mobile-detailer row
   use: Close slide
+- id: trust_no_passwords
+  claim: We never ask for passwords — you log in, you grant, you revoke
+  source: aionboard/TRUST_MODEL.md guarantee 1
+  use: Trust angle
+  caveat: null
+- id: trust_approval
+  claim: Every outbound message needs your explicit approval first
+  source: aionboard/TRUST_MODEL.md guarantee 3 (approval bound to exact content)
+  use: Trust angle
+  caveat: null
