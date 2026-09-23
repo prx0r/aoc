@@ -5,6 +5,27 @@
 
 ---
 
+## 2026-09-23 — Beauty shootout: 10 hooks, nails/lashes/hair (94 tests green)
+
+Same rubric. All 10 passed gates first try (loops built in from the
+trades lesson). All 10 banked (scores 19-23, all payoff-honest):
+- 23 — hair "Out-of-area enquiries waste your week — where's your line?"
+  (body: travel-zone economics — exact cash)
+- 22 — nails "Stop taking bookings in DMs. It's losing you deposits."
+  (body: "DMs don't take deposits. Booking links do." — exact cash)
+- 21s — nails deposit trio + hair "Price it once"
+- 20s — lashes trio (posting/contrarian, fills/diagnosis, patch/permission)
+- 20 — hair "Boosts vs rebooks..." (boost pain already in-bank; template
+  didn't surface it this build — segment-grounded, banked with note)
+
+Killed: nails "Your sets deserve better than a messy inbox." (vague
+flattery, 11/25). Beauty banks were stronger than remembered (11/11/10
+with real specificity) — the gap was formula range (no negatives,
+diagnoses, permissions), now filled. Cross-segment pattern emerging:
+the best hooks make a check the body cashes on the next swipe.
+
+---
+
 ## 2026-09-23 — Copy shootout: 10 hooks, 3 segments (94 tests green)
 
 Rubric (desk, no post data exists): self-ID / specificity / open loop /

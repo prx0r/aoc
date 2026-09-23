@@ -29,3 +29,12 @@ hooks:
 - text: 'Hair pros: nothing sends without your approval — deal?'
   angle: trust
   audience: hair
+- text: Stop negotiating every colour in the DMs. Price it once.
+  angle: negative_command
+  audience: hair
+- text: Out-of-area enquiries waste your week — where's your line?
+  angle: stakes_question
+  audience: hair
+- text: Boosts vs rebooks — which filled your chair this month?
+  angle: comparison
+  audience: hair

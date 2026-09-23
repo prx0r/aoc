@@ -32,3 +32,12 @@ hooks:
 - text: 'Lash techs: every send needs your approval — fair?'
   angle: trust
   audience: lashes
+- text: Posting more won't fill your book. Reminders will — agree?
+  angle: contrarian
+  audience: lashes
+- text: Your fills aren't the problem. Your follow-up is. Which breaks first?
+  angle: diagnosis
+  audience: lashes
+- text: You can stop chasing patch tests by text. Seriously.
+  angle: permission
+  audience: lashes

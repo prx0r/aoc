@@ -14,12 +14,11 @@ hooks:
 - text: 'Nail techs: lapsed regulars don''t rebook themselves. Who reminds them?'
   angle: winback
   audience: nails
-- text: Your sets deserve better than a messy inbox.
-  angle: recognition
-  audience: nails
 - text: Patch tests, deposits, reminders — handled where?
   angle: mechanism
   audience: nails
+# KILLED 2026-09-23 (beauty shootout): "Your sets deserve better than a messy
+# inbox." — vague flattery, zero specificity, no stakes. Score 11/25.
 - text: 20% of new clients go to the marketplace.
   angle: marketplace_tax
   audience: nails
@@ -31,4 +30,16 @@ hooks:
   audience: nails
 - text: 'Nail techs: your accounts, passwords and money stay yours — agreed?'
   angle: trust
+  audience: nails
+- text: Stop taking bookings in DMs. It's losing you deposits.
+  angle: negative_command
+  audience: nails
+- text: The sets are perfect. The rebooking isn't — fix what first?
+  angle: diagnosis
+  audience: nails
+- text: What if every appointment came with its deposit already taken?
+  angle: outcome_question
+  audience: nails
+- text: No deposit, no booking — sound harsh or sound business?
+  angle: contrarian
   audience: nails
