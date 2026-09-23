@@ -5,6 +5,31 @@
 
 ---
 
+## 2026-09-23 — Premium renderer pass (16 segments, 20 tools, 94 tests green)
+
+Scope: `render/slide.py` rewritten from flat-colors to a design system;
+patterns sourced from tiktok-carousel-generator, instagram-carousel-mcp,
+carousel-english, easy-pil, postcanvas (see commit).
+
+System: Montserrat ExtraBold (vendored `render/fonts/Montserrat-VF.ttf`,
+OFL) with shrink-to-fit; accent-anchored gradients + glow + seeded grain;
+per-segment deck accents (stable hash); ghost numerals; accent rule;
+progress dots; brand wordmark; inverted CTA payoff slides; safe-zone
+composition (top 8% / bottom 12% calm).
+
+Rules changed deliberately (not weakened):
+- `core/validate.py` backdrop check now accepts bright CTA bands with dark
+  text (legibility = contrast, not darkness). CTA wordmark removed instead
+  (keeps margins check meaningful on bright slides).
+- Old builds keep old bytes (receipts bind asset hashes); new builds get
+  the system. content_id has no renderer input, so IDs stay stable.
+
+Verified: 4 fresh decks (electrician/lashes/groomers/plumbers) inspected
+at full size + contact sheets; all pixel validation green; renderer
+byte-deterministic test added.
+
+---
+
 ## 2026-09-23 — Flow verification + hashtag fix (16 segments, 20 tools, 91 tests green)
 
 Scope: wrote `docs/FLOW.md` (every command executed during writing);

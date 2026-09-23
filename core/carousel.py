@@ -117,7 +117,8 @@ def render(plan_dict: dict, out_dir: Path | str, font_path: str | None = None) -
     """Stage 2: script → 1080x1920 PNGs."""
     out_dir = Path(out_dir)
     slides = _final_slides(plan_dict)
-    paths = render_slideshow(slides, out_dir, font_path=font_path)
+    paths = render_slideshow(slides, out_dir, font_path=font_path,
+                             segment=plan_dict.get("segment", "electrician"))
     manifest = {
         "content_id": plan_dict["content_id"],
         "experiment_id": plan_dict.get("experiment_id", ""),

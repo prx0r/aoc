@@ -29,7 +29,14 @@ def validate_slide(path: Path | str) -> dict:
         # text band lives in the middle 60% vertically; sample it
         band = g.crop((40, int(h * 0.2), w - 40, int(h * 0.85)))
         mean = ImageStat.Stat(band).mean[0]
-        checks["backdrop"] = {"ok": mean < 150, "detail": f"band luminance {mean:.0f}"}
+        extrema = band.getextrema()
+        spread = extrema[1] - extrema[0]
+        # Legibility = contrast, not darkness: dark band + light text (classic)
+        # or bright CTA band + dark text (inverted payoff slide) both pass.
+        dark_ok = mean < 150
+        light_ok = mean > 110 and extrema[0] < 100
+        checks["backdrop"] = {"ok": bool(dark_ok or light_ok),
+                              "detail": f"band luminance {mean:.0f}"}
         # text present: band must not be flat
         extrema = band.getextrema()
         spread = extrema[1] - extrema[0]

@@ -323,3 +323,32 @@ class TestChannelHashtags:
         assert tags[0] == "#nailtech"
         assert "#electrician" in tags  # channel suggestions still present
         assert len(tags) == len(set(tags))
+
+
+class TestPremiumRenderer:
+    def test_cta_slide_validates_bright_band(self, tmp_path):
+        import sys as _sys
+        _sys.path.insert(0, str(Path(__file__).parent.parent))
+        from render.slide import render_slide, _accent_for
+        from core.validate import validate_slide
+        p = render_slide("DM TEST for £20 setup.", None, tmp_path / "cta.jpg",
+                         kind="close", accent=_accent_for("nails"),
+                         slide_index=5, slide_total=6)
+        v = validate_slide(p)
+        assert v["ok"], v
+        assert v["checks"]["backdrop"]["ok"]
+
+    def test_renderer_deterministic(self, tmp_path):
+        import sys as _sys, hashlib as _hl
+        _sys.path.insert(0, str(Path(__file__).parent.parent))
+        from render.slide import render_slide, _accent_for
+        kw = dict(kind="body", accent=_accent_for("nails"), slide_index=1, slide_total=6)
+        a = render_slide("Determinism check one two three.", None, tmp_path / "a.jpg", **kw)
+        b = render_slide("Determinism check one two three.", None, tmp_path / "b.jpg", **kw)
+        assert _hl.sha256(a.read_bytes()).hexdigest() == _hl.sha256(b.read_bytes()).hexdigest()
+
+    def test_accents_stable_per_segment(self):
+        import sys as _sys
+        _sys.path.insert(0, str(Path(__file__).parent.parent))
+        from render.slide import _accent_for
+        assert _accent_for("nails") == _accent_for("nails")
