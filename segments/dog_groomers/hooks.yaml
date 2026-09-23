@@ -20,3 +20,12 @@ hooks:
 - text: Wag takes 40% of the walk. The dog still needs walking.
   angle: marketplace_tax
   audience: dog_groomers
+- text: 'Groomers: medical flags live in memory. What happens on a busy day?'
+  angle: safety
+  audience: groomer
+- text: Six-week grooming intervals. Who reminds the owner?
+  angle: intervals
+  audience: groomer
+- text: 'Groomers: bookings in DMs or one working diary?'
+  angle: booking_system
+  audience: groomer

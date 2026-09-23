@@ -25,3 +25,9 @@ hooks:
   - text: "Batteries die, but alarms must not — agree?"
     angle: trust
     audience: clock_buyer
+  - text: "Your sourdough starter needs feeding. Who remembers?"
+    angle: routine
+    audience: baker
+  - text: "Coffee, plants or frogs — which thing gets a memory?"
+    angle: question_choice
+    audience: maker

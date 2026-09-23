@@ -26,3 +26,6 @@ hooks:
 - text: Marketplace takes 20% of your new clients. Whose business is it?
   angle: marketplace_tax
   audience: beautician
+- text: 'Salon no-shows: empty chair today or a message tonight?'
+  angle: no_shows
+  audience: salon_owner

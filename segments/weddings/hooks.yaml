@@ -17,3 +17,18 @@ hooks:
 - text: Reviews decide bookings. Who asks for them?
   angle: mechanism
   audience: weddings
+- text: 'Couples ask for dates, venues, packages — which enquiry gets a reply?'
+  angle: qualification
+  audience: wedding_supplier
+- text: Your availability changes. Do your profiles change too?
+  angle: availability
+  audience: wedding_supplier
+- text: Deposit agreed. Contract unsigned. Who follows up?
+  angle: follow_up
+  audience: wedding_supplier
+- text: One wedding, 40 enquiries. Which ones deserve a reply?
+  angle: qualification
+  audience: wedding_supplier
+- text: Wedding reviews decide bookings. Who asks after the big day?
+  angle: reviews
+  audience: wedding_supplier
