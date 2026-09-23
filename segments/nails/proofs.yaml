@@ -1,6 +1,6 @@
 proofs:
 - id: dm_burden
-  claim: Enquiries scattered across Instagram/TikTok/WhatsApp, booked manually
+  claim: DMs don't take deposits. Booking links do.
   source: verticals/nails/PAINS.md §1
   use: DM-chaos angle
 - id: noshow_risk

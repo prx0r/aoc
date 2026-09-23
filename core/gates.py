@@ -18,7 +18,7 @@ BUYER_TERMS = {
     "plumber": {"plumber", "boiler", "triage", "callout", "job"},
     "sole_trader": {"sole trader", "google", "whatsapp", "invoice", "customer"},
     "nails": {"nail", "nails", "tech", "sets", "infill", "booking"},
-    "lashes": {"lash", "lashes", "brow", "brows", "fill", "fills", "patch"},
+    "lashes": {"lash", "lashes", "brow", "brows", "fill", "fills", "patch", "booking", "deposit", "deposits"},
     "hair": {"hair", "braids", "travel", "zone", "colour", "color", "client"},
     "cleaners": {"cleaner", "cleaners", "clean", "plans", "payments"},
     "dog_groomers": {"groom", "groomer", "dog", "dogs", "booking"},
@@ -75,21 +75,26 @@ def gate_claim_resolved(plan: dict, proof) -> tuple[bool, str]:
 
 
 def gate_hook_quality(hook: str, segment: str) -> tuple[bool, str]:
-    words = hook.split()
+    import re
+    # standalone punctuation (em-dashes etc.) is not a word
+    words = [w for w in hook.split() if re.search(r"[A-Za-z0-9£$%]", w)]
     if len(words) > 12:
         return False, f"hook too long ({len(words)} words, max 12)"
     terms = BUYER_TERMS.get(segment, set())
     hl = hook.lower()
     names_buyer = any(t in hl for t in terms)
     has_number = any(ch.isdigit() for ch in hook)
-    asks = hook.rstrip().endswith("?")
-    if not (names_buyer or has_number):
-        return False, "hook names neither buyer nor number"
+    # A question mark anywhere forces the viewer to check "is this me?" —
+    # self-qualifying, even mid-hook or inside quotes.
+    asks = "?" in hook
+    if not (names_buyer or has_number or asks):
+        return False, "hook names neither buyer nor number, nor asks"
     # Open loops: question, number, comparison — plus conditionals ("if…")
     # and explicit contrasts, both proven swipe-earners.
     contrast = ("vs" in hl or " if " in f" {hl} "
                 or any(w in hl for w in ("worse", "better", "different", "before",
-                                         "after", "instead", "mistake", "wrong")))
+                                         "after", "instead", "mistake", "wrong",
+                                         "stop", "start", "never", "always")))
     if not (asks or has_number or contrast):
         return False, "hook has no question, number, comparison, or conditional"
     return True, "hook earns swipe 1"

@@ -11,7 +11,7 @@ hooks:
 - text: 'Before: DMs. After: structured quotes + repeats.'
   angle: before_after
   audience: car_detailers
-- text: One-time details should become repeat details.
+- text: One-time details should become repeats. Agree?
   angle: winback
   audience: car_detailers
 - text: 'Reviews: every car, or only the good days?'

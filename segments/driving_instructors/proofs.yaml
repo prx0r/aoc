@@ -1,6 +1,6 @@
 proofs:
 - id: scattered_enquiries
-  claim: Enquiries across phone, SMS, social, directories, referrals
+  claim: Five inboxes, one diary. Something gives.
   source: verticals/driving-instructors/PAINS.md (stub)
   use: Triage angle
 - id: gap_waste

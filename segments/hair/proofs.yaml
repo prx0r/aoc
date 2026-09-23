@@ -1,6 +1,6 @@
 proofs:
 - id: zone_waste
-  claim: Service, location, travel, timing and price negotiated manually per DM
+  claim: Every 'where do you travel to?' costs a booking.
   source: verticals/hair/PAINS.md §1
   use: Zone angle
 - id: area_ambiguity

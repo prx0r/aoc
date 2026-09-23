@@ -1,0 +1,601 @@
+{
+  "generated_at": "2026-09-23T10:56:04.381573+00:00",
+  "segments": {
+    "?": [
+      {
+        "content_id": "aoc_66b19fb4c46b",
+        "hook": "UK electricians \u2014 still doing quotes at 9pm?",
+        "template": "opportunity",
+        "slides": 7,
+        "zip": "store/aoc_66b19fb4c46b/tiktok_carousel.zip",
+        "at": "2026-09-23T09:19:31.633779+00:00"
+      },
+      {
+        "content_id": "aoc_788fca432507",
+        "hook": "If your inbox looks like this, you are losing jobs.",
+        "template": "diagnostic",
+        "slides": 7,
+        "zip": "store/aoc_788fca432507/tiktok_carousel.zip",
+        "at": "2026-09-23T09:25:32.140473+00:00"
+      },
+      {
+        "content_id": "aoc_fb4bd38aabc7",
+        "hook": "If your inbox looks like this, you are losing jobs.",
+        "template": "teardown",
+        "slides": 7,
+        "zip": "store/aoc_fb4bd38aabc7/tiktok_carousel.zip",
+        "at": "2026-09-23T09:25:32.489024+00:00"
+      },
+      {
+        "content_id": "aoc_d9f0c6b37f77",
+        "hook": "If your inbox looks like this, you are losing jobs.",
+        "template": "comparison",
+        "slides": 7,
+        "zip": "store/aoc_d9f0c6b37f77/tiktok_carousel.zip",
+        "at": "2026-09-23T09:25:32.846587+00:00"
+      }
+    ],
+    "beautician": [
+      {
+        "content_id": "aoc_869434db161d",
+        "hook": "Salon owners \u2014 how much did no-shows cost you last month?",
+        "template": "opportunity",
+        "slides": 6,
+        "zip": "store/aoc_869434db161d/tiktok_carousel.zip",
+        "at": "2026-09-23T09:30:11.991116+00:00"
+      },
+      {
+        "content_id": "aoc_bf30f196e25e",
+        "hook": "Salon owners: which gap would fill first \u2014 Tue or Saturday?",
+        "template": "opportunity",
+        "slides": 6,
+        "zip": "store/aoc_bf30f196e25e/tiktok_carousel.zip",
+        "at": "2026-09-23T09:52:54.573081+00:00"
+      },
+      {
+        "content_id": "aoc_3d4727121464",
+        "hook": "Deposits feel awkward. Empty chairs feel worse.",
+        "template": "before_after",
+        "slides": 6,
+        "zip": "store/aoc_3d4727121464/tiktok_carousel.zip",
+        "at": "2026-09-23T09:52:55.295945+00:00"
+      },
+      {
+        "content_id": "AOC:003547c3228c553ad12b44f495993113cf074adf0fe5153344d3b9e540c23aea",
+        "hook": "Marketplace takes 20% of your new clients. Whose business is it?",
+        "template": "opportunity",
+        "slides": 6,
+        "zip": "store/AOC:003547c3228c553ad12b44f495993113cf074adf0fe5153344d3b9e540c23aea/tiktok_carousel.zip",
+        "at": "2026-09-23T10:34:07.559076+00:00"
+      }
+    ],
+    "car_detailers": [
+      {
+        "content_id": "AOC:3c721d3a6aa3cde892941684ba45e1e5d9758f98c70f24a4078a2da4a2d73beb",
+        "hook": "Detailers: rain Friday, three bookings. Who reshuffles?",
+        "template": "diagnostic",
+        "slides": 6,
+        "zip": "store/AOC:3c721d3a6aa3cde892941684ba45e1e5d9758f98c70f24a4078a2da4a2d73beb/tiktok_carousel.zip",
+        "at": "2026-09-23T10:35:18.332079+00:00"
+      },
+      {
+        "content_id": "AOC:3d09259c05334bc3f54ae47d91a3889807dcd239ea399eeefad102190534f497",
+        "hook": "Detailers: rain Friday, three bookings. Who reshuffles?",
+        "template": "opportunity",
+        "slides": 6,
+        "zip": "store/AOC-3D09259C/tiktok_carousel.zip",
+        "at": "2026-09-23T10:37:05.818871+00:00"
+      },
+      {
+        "content_id": "AOC:f76f56ac24b00e23ea597a57caaf3895ebf79e141a8a14b1aff366af8d295782",
+        "hook": "Just downloaded Muse? We'll set it up for your business for \u00a320.",
+        "template": "waitlist",
+        "slides": 7,
+        "zip": "store/AOC-F76F56AC/tiktok_carousel.zip",
+        "at": "2026-09-23T10:42:58.145553+00:00"
+      },
+      {
+        "content_id": "AOC:a52e810d5ee4438a92ae59278ba20858f4b0a098439d7ee7d06a01c69298c9c2",
+        "hook": "Detailers \u2014 quote without year, location or photos?",
+        "template": "opportunity",
+        "slides": 6,
+        "zip": "store/AOC-A52E810D/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:49.070729+00:00"
+      },
+      {
+        "content_id": "AOC:46ef4ff7f2de3b4c8eef4818e93a71a220e8cf712ee81cef6b22b529c80a8b7e",
+        "hook": "Just downloaded Muse? We'll set it up for your business for \u00a320.",
+        "template": "waitlist",
+        "slides": 6,
+        "zip": "store/AOC-46EF4FF7/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:49.796132+00:00"
+      },
+      {
+        "content_id": "AOC:e9ba27d93fbc55732a20eac2e72ccd885226c0716fffb3c67068511ae0572b16",
+        "hook": "Detailers: rain Friday, three bookings. Who reshuffles?",
+        "template": "diagnostic",
+        "slides": 6,
+        "zip": "store/AOC-E9BA27D9/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:50.497151+00:00"
+      },
+      {
+        "content_id": "AOC:e2904d8db80489fa2abf7f3cf63ee60c6eb21dcddc7108f16c5871b7de32a8c1",
+        "hook": "One-time details should become repeats. Agree?",
+        "template": "retention",
+        "slides": 6,
+        "zip": "store/AOC-E2904D8D/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:51.237009+00:00"
+      },
+      {
+        "content_id": "AOC:1276f348ec1f4dc08f5021e61ca52f7f2f6a36739b82bfd0999a2c6518365ba0",
+        "hook": "Reviews: every car, or only the good days?",
+        "template": "social_proof",
+        "slides": 5,
+        "zip": "store/AOC-1276F348/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:51.898473+00:00"
+      }
+    ],
+    "cleaners": [
+      {
+        "content_id": "AOC:cb87a708b90142897ed94075219df80afc3c1c921c96674928ba729ece7c7e31",
+        "hook": "Paused, not cancelled. That's \u00a3500\u20132,000 a month walking back in.",
+        "template": "retention",
+        "slides": 6,
+        "zip": "store/AOC:cb87a708b90142897ed94075219df80afc3c1c921c96674928ba729ece7c7e31/tiktok_carousel.zip",
+        "at": "2026-09-23T10:34:09.630930+00:00"
+      },
+      {
+        "content_id": "AOC:1b16d764febbde8f9ea7b78e0b3f88b9f36edf107683ade04a7388ae16c75c7d",
+        "hook": "Just downloaded Muse? We'll set it up for your business for \u00a320.",
+        "template": "waitlist",
+        "slides": 7,
+        "zip": "store/AOC-1B16D764/tiktok_carousel.zip",
+        "at": "2026-09-23T10:42:57.340638+00:00"
+      },
+      {
+        "content_id": "AOC:2d9e9188db72adbc78ce13c4237c404242bb2f77b3ea35a4e9d571b4f9c22541",
+        "hook": "Cleaners \u2014 which paused plan would you win back first?",
+        "template": "opportunity",
+        "slides": 5,
+        "zip": "store/AOC-2D9E9188/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:45.333187+00:00"
+      },
+      {
+        "content_id": "AOC:feb36553a2db0cb2ad09f05b7d0a4391234b8c883df5103b8709079ffa331de3",
+        "hook": "Just downloaded Muse? We'll set it up for your business for \u00a320.",
+        "template": "waitlist",
+        "slides": 6,
+        "zip": "store/AOC-FEB36553/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:46.115299+00:00"
+      },
+      {
+        "content_id": "AOC:9595997b06b4bbf1e277cf5505675acf2fef3a57e1b84960d5a1172b04e96a20",
+        "hook": "Cleaners: before \u2014 chasing. After \u2014 reminders drafted.",
+        "template": "before_after",
+        "slides": 6,
+        "zip": "store/AOC-9595997B/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:46.917594+00:00"
+      },
+      {
+        "content_id": "AOC:bb3ce0b5a31e4d71efb31869eafcd08360cbc683c3444fec3848de95ae1856b2",
+        "hook": "\u00a3310 a month for scheduling. Or \u00a360. Same diary.",
+        "template": "comparison",
+        "slides": 6,
+        "zip": "store/AOC-BB3CE0B5/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:47.624057+00:00"
+      },
+      {
+        "content_id": "AOC:6703be43beda179a81a41aa435f8b1e540ff2cc7a544284bd99c5e4fd676841e",
+        "hook": "Paused, not cancelled. That's \u00a3500\u20132,000 a month walking back in.",
+        "template": "retention",
+        "slides": 6,
+        "zip": "store/AOC-6703BE43/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:48.326773+00:00"
+      }
+    ],
+    "dog_groomers": [
+      {
+        "content_id": "AOC:df5d4b2110801074e0d73ab03e7fc3ef449daea05225c8829c8cf5c522dda641",
+        "hook": "Wag takes 40% of the walk. The dog still needs walking.",
+        "template": "opportunity",
+        "slides": 6,
+        "zip": "store/AOC:df5d4b2110801074e0d73ab03e7fc3ef449daea05225c8829c8cf5c522dda641/tiktok_carousel.zip",
+        "at": "2026-09-23T10:34:10.351166+00:00"
+      }
+    ],
+    "driving_instructors": [
+      {
+        "content_id": "AOC:2226cec56f72f1955c3f65f6749f468f5bb08879ca329ee30547354f9fdb0ff6",
+        "hook": "Cancellation at 8am. Who fills 10am?",
+        "template": "opportunity",
+        "slides": 6,
+        "zip": "store/AOC:2226cec56f72f1955c3f65f6749f468f5bb08879ca329ee30547354f9fdb0ff6/tiktok_carousel.zip",
+        "at": "2026-09-23T10:34:11.653914+00:00"
+      }
+    ],
+    "electrician": [
+      {
+        "content_id": "aoc_482f1e50afbd",
+        "hook": "Tradify vs AI Onboard \u2014 what actually changes?",
+        "template": "comparison",
+        "slides": 6,
+        "zip": "store/aoc_482f1e50afbd/tiktok_carousel.zip",
+        "at": "2026-09-23T09:51:46.404258+00:00"
+      },
+      {
+        "content_id": "aoc_d8c702285da3",
+        "hook": "Electricians: which of these would you automate first?",
+        "template": "opportunity",
+        "slides": 6,
+        "zip": "store/aoc_d8c702285da3/tiktok_carousel.zip",
+        "at": "2026-09-23T09:52:52.527723+00:00"
+      },
+      {
+        "content_id": "aoc_625f0fca468d",
+        "hook": "Same electrician. Same business. Different tools.",
+        "template": "before_after",
+        "slides": 6,
+        "zip": "store/aoc_625f0fca468d/tiktok_carousel.zip",
+        "at": "2026-09-23T09:52:53.172140+00:00"
+      },
+      {
+        "content_id": "aoc_f25cec00801b",
+        "hook": "Tradify already does that \u2014 so why admin at night?",
+        "template": "faq",
+        "slides": 7,
+        "zip": "store/aoc_f25cec00801b/tiktok_carousel.zip",
+        "at": "2026-09-23T09:52:53.874963+00:00"
+      },
+      {
+        "content_id": "aoc_c42d7b558391",
+        "hook": "Electricians: if your inbox looks like this, you are losing jobs.",
+        "template": "diagnostic",
+        "slides": 6,
+        "zip": "store/aoc_c42d7b558391/tiktok_carousel.zip",
+        "at": "2026-09-23T09:53:27.781318+00:00"
+      },
+      {
+        "content_id": "AOC:9192e5c8d51dfbdb2fa318b2d6be279205902ecf4e6de2f9bb5a1c1db8e28d23",
+        "hook": "Landlords need EICRs every 5 years. Who owns that cycle?",
+        "template": "annuity",
+        "slides": 6,
+        "zip": "store/AOC:9192e5c8d51dfbdb2fa318b2d6be279205902ecf4e6de2f9bb5a1c1db8e28d23/tiktok_carousel.zip",
+        "at": "2026-09-23T10:34:06.781964+00:00"
+      }
+    ],
+    "gardeners": [
+      {
+        "content_id": "AOC:e517ffe55145774a946109a4e45e5c0cf9ab65c3918f3fe805ef3cb0a7c37d74",
+        "hook": "Paper round book: what happens if you lose it?",
+        "template": "opportunity",
+        "slides": 5,
+        "zip": "store/AOC:e517ffe55145774a946109a4e45e5c0cf9ab65c3918f3fe805ef3cb0a7c37d74/tiktok_carousel.zip",
+        "at": "2026-09-23T10:34:10.934731+00:00"
+      },
+      {
+        "content_id": "AOC:a436a09f398dfe44957758b1914221ea81a9ec19ba16a9e651a16d55745a58dd",
+        "hook": "Just downloaded Muse? We'll set it up for your business for \u00a320.",
+        "template": "waitlist",
+        "slides": 7,
+        "zip": "store/AOC-A436A09F/tiktok_carousel.zip",
+        "at": "2026-09-23T10:42:58.939487+00:00"
+      },
+      {
+        "content_id": "AOC:19d51cb6e9438ae2d121e5aec770b50fae9687698ec10195bf18536309755bca",
+        "hook": "Round workers \u2014 who chases the skips and the debt?",
+        "template": "opportunity",
+        "slides": 5,
+        "zip": "store/AOC-19D51CB6/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:52.599327+00:00"
+      },
+      {
+        "content_id": "AOC:509758c31880f0e2e0f5db4075d1b1d8d6a41d572a6bd46d8253430fe2c56af2",
+        "hook": "Just downloaded Muse? We'll set it up for your business for \u00a320.",
+        "template": "waitlist",
+        "slides": 6,
+        "zip": "store/AOC-509758C3/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:53.366873+00:00"
+      },
+      {
+        "content_id": "AOC:7211a65812db36b5dce3ad90714a3e67177d2c399918d492fb9bf68c317bd12b",
+        "hook": "Paper round book: what happens if you lose it?",
+        "template": "diagnostic",
+        "slides": 6,
+        "zip": "store/AOC-7211A658/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:54.095098+00:00"
+      },
+      {
+        "content_id": "AOC:fef7b6e8d62faf774bb8e2ea6e3e0df1fd875f5d60badf9363dc201dd1f9059f",
+        "hook": "Streets know your van. Do lapsed streets hear from you?",
+        "template": "retention",
+        "slides": 6,
+        "zip": "store/AOC-FEF7B6E8/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:54.836199+00:00"
+      },
+      {
+        "content_id": "AOC:cc9a26b83142f52a7b2902cbe4aebd014d2576fd8529669fe8d6a1b78432f96e",
+        "hook": "How many skips went unlogged this month?",
+        "template": "social_proof",
+        "slides": 5,
+        "zip": "store/AOC-CC9A26B8/tiktok_carousel.zip",
+        "at": "2026-09-23T10:55:52.288722+00:00"
+      }
+    ],
+    "hair": [
+      {
+        "content_id": "AOC:baae1a7782494158019179b85ffc7171a6133b8f9d1db39c76a646f3fffa4c3c",
+        "hook": "Mobile hairdressers \u2014 where does your travel zone end?",
+        "template": "opportunity",
+        "slides": 5,
+        "zip": "store/AOC:baae1a7782494158019179b85ffc7171a6133b8f9d1db39c76a646f3fffa4c3c/tiktok_carousel.zip",
+        "at": "2026-09-23T10:34:08.962498+00:00"
+      },
+      {
+        "content_id": "AOC:c5ead37c8fd1ed487f218e325e309f0388986fcad396bb799bdc58ec25df7d30",
+        "hook": "Just downloaded Muse? We'll set it up for your business for \u00a320.",
+        "template": "waitlist",
+        "slides": 7,
+        "zip": "store/AOC-C5EAD37C/tiktok_carousel.zip",
+        "at": "2026-09-23T10:42:56.538555+00:00"
+      },
+      {
+        "content_id": "AOC:8fcd4a657bb4ee46a7b816df658a8bec6b556c9eb637b810055a4870817b95ac",
+        "hook": "Mobile hairdressers \u2014 where does your travel zone end?",
+        "template": "opportunity",
+        "slides": 5,
+        "zip": "store/AOC-8FCD4A65/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:42.402667+00:00"
+      },
+      {
+        "content_id": "AOC:eb85c3b06cb1ff9f6a7bf94537ed8d6d3e7a23575513ab99ac897de317637c45",
+        "hook": "Boosted booking, 30% gone. What did the boost buy?",
+        "template": "opportunity",
+        "slides": 5,
+        "zip": "store/AOC-EB85C3B0/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:43.085686+00:00"
+      },
+      {
+        "content_id": "AOC:6326266316a44c27b3d164b6d6f3b7521a1a7fad35be3d517ead36e762c733a4",
+        "hook": "Portfolio everywhere, bookings nowhere?",
+        "template": "diagnostic",
+        "slides": 6,
+        "zip": "store/AOC-63262663/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:43.935793+00:00"
+      },
+      {
+        "content_id": "AOC:8361cf3075216ebd19ff0d30051100f8014530365c8c0cf5910be601343775b2",
+        "hook": "Colour refresh due. Who tells her?",
+        "template": "retention",
+        "slides": 6,
+        "zip": "store/AOC-8361CF30/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:44.624486+00:00"
+      },
+      {
+        "content_id": "AOC:896d7a98532c22d52128f8192d6af18630e8d158e90ad804d1a394aa7accc36f",
+        "hook": "Before: DMs. After: zones + booking + rebooking.",
+        "template": "before_after",
+        "slides": 6,
+        "zip": "store/AOC-896D7A98/tiktok_carousel.zip",
+        "at": "2026-09-23T10:55:53.066852+00:00"
+      }
+    ],
+    "lashes": [
+      {
+        "content_id": "AOC:eed25dc6f4cc0eb932c88ddbbcc813fd3e12b36b2fb53863711940c43baae113",
+        "hook": "Fills every 3 weeks, rebooking never. Sound familiar?",
+        "template": "opportunity",
+        "slides": 6,
+        "zip": "store/AOC:eed25dc6f4cc0eb932c88ddbbcc813fd3e12b36b2fb53863711940c43baae113/tiktok_carousel.zip",
+        "at": "2026-09-23T10:34:08.372125+00:00"
+      },
+      {
+        "content_id": "AOC:935bc869a3f952d48df650bcd7fc50fdb9924a63c0a7b1a0795301d50ef72f98",
+        "hook": "Just downloaded Muse? We'll set it up for your business for \u00a320.",
+        "template": "waitlist",
+        "slides": 7,
+        "zip": "store/AOC-935BC869/tiktok_carousel.zip",
+        "at": "2026-09-23T10:42:55.809947+00:00"
+      },
+      {
+        "content_id": "AOC:ae5545ae0e685679303c60fe1786109311f17e2e536737c88bf7ea45c2c4db27",
+        "hook": "Lash techs \u2014 who tracks fill intervals?",
+        "template": "opportunity",
+        "slides": 6,
+        "zip": "store/AOC-AE5545AE/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:38.682399+00:00"
+      },
+      {
+        "content_id": "AOC:80e363937f6edb974a6656579c3c381bd6fc8d89ca9907ffe08357280e0836db",
+        "hook": "Just downloaded Muse? We'll set it up for your business for \u00a320.",
+        "template": "waitlist",
+        "slides": 6,
+        "zip": "store/AOC-80E36393/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:39.379605+00:00"
+      },
+      {
+        "content_id": "AOC:0eb6c1177c219ecdf026b1146f80bdf22d59c5a558dd735d84726e9f8ad08604",
+        "hook": "Lash techs: consent reminders \u2014 awkward to send, risky to skip?",
+        "template": "before_after",
+        "slides": 6,
+        "zip": "store/AOC-0EB6C117/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:40.127818+00:00"
+      },
+      {
+        "content_id": "AOC:29348c6f9d47ff1bdcce4ac690351266ec12c06200c69dacaa897fad425525e5",
+        "hook": "Your best client found you on Fresha. Who gets 20%?",
+        "template": "opportunity",
+        "slides": 6,
+        "zip": "store/AOC-29348C6F/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:40.927888+00:00"
+      },
+      {
+        "content_id": "AOC:a5599ac1f2d0aa05a61649b408208e1631f64bc9c090f49b57705259bca03529",
+        "hook": "How many fills slipped this month?",
+        "template": "diagnostic",
+        "slides": 6,
+        "zip": "store/AOC-A5599AC1/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:41.698789+00:00"
+      }
+    ],
+    "nails": [
+      {
+        "content_id": "AOC:62e5550e511c411788e8435b9e8f9f5d91132327d4aa6d633010110fede2e90b",
+        "hook": "20% of new clients go to the marketplace.",
+        "template": "retention",
+        "slides": 6,
+        "zip": "store/AOC:62e5550e511c411788e8435b9e8f9f5d91132327d4aa6d633010110fede2e90b/tiktok_carousel.zip",
+        "at": "2026-09-23T10:34:28.167079+00:00"
+      },
+      {
+        "content_id": "AOC:603a4eb51b2efeb9dc5bb7be0c6ceea4b73963e867001887781807266d951097",
+        "hook": "20% of new clients go to the marketplace.",
+        "template": "retention",
+        "slides": 6,
+        "zip": "store/AOC:603a4eb51b2efeb9dc5bb7be0c6ceea4b73963e867001887781807266d951097/tiktok_carousel.zip",
+        "at": "2026-09-23T10:36:30.679761+00:00"
+      },
+      {
+        "content_id": "AOC:ecf25366fc6bc658bb73fdad8875a921b0ba8379cd0402a3c83b5b818412a3ac",
+        "hook": "Just downloaded Muse? We'll set it up for your business for \u00a320.",
+        "template": "waitlist",
+        "slides": 7,
+        "zip": "store/AOC-ECF25366/tiktok_carousel.zip",
+        "at": "2026-09-23T10:42:55.009784+00:00"
+      },
+      {
+        "content_id": "AOC:ab66d7f450f0ca5a21876a137d1493341b45751fca338bfda39fc25595dd0ff9",
+        "hook": "Just downloaded Muse? We will set it up for nails for \u00a320.",
+        "template": "waitlist",
+        "slides": 6,
+        "zip": "store/AOC-AB66D7F4/tiktok_carousel.zip",
+        "at": "2026-09-23T10:43:47.480726+00:00"
+      },
+      {
+        "content_id": "AOC:7f360def760f9369422235569012f00adbc7bb3af21b70d54b815e3afa89053c",
+        "hook": "Nail techs \u2014 DMs at midnight, booking at 9am?",
+        "template": "opportunity",
+        "slides": 5,
+        "zip": "store/AOC-7F360DEF/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:35.275992+00:00"
+      },
+      {
+        "content_id": "AOC:6485248b42ffdba11006468a25ec98ed3a2b73832907063d9f503e853f1fc2ad",
+        "hook": "Just downloaded Muse? We'll set it up for your business for \u00a320.",
+        "template": "waitlist",
+        "slides": 6,
+        "zip": "store/AOC-6485248B/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:35.978621+00:00"
+      },
+      {
+        "content_id": "AOC:554aee6bb7d69a04390b25eb3c66cbf0f38d0fe67a829c7b09a476139f954e11",
+        "hook": "Nail techs: lapsed regulars don't rebook themselves. Who reminds them?",
+        "template": "retention",
+        "slides": 6,
+        "zip": "store/AOC-554AEE6B/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:36.626860+00:00"
+      },
+      {
+        "content_id": "AOC:f06cc6e88c1ca2372fbb4841d7f08861fe0f94e24910597476db2dd534a9de09",
+        "hook": "20% of new clients go to the marketplace.",
+        "template": "opportunity",
+        "slides": 5,
+        "zip": "store/AOC-F06CC6E8/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:37.242015+00:00"
+      },
+      {
+        "content_id": "AOC:b2add99453f8e9f2ebed4e67617ebc7de0d85651fbfc531d953e597c4d2b63e9",
+        "hook": "How many sets walked away with no deposit?",
+        "template": "diagnostic",
+        "slides": 6,
+        "zip": "store/AOC-B2ADD994/tiktok_carousel.zip",
+        "at": "2026-09-23T10:51:37.941282+00:00"
+      }
+    ],
+    "plumber": [
+      {
+        "content_id": "aoc_8f8fba59f80e",
+        "hook": "Plumbers \u2014 who triages while you are under a boiler?",
+        "template": "opportunity",
+        "slides": 6,
+        "zip": "store/aoc_8f8fba59f80e/tiktok_carousel.zip",
+        "at": "2026-09-23T09:51:47.028781+00:00"
+      },
+      {
+        "content_id": "aoc_de76fa788649",
+        "hook": "Plumbers: quotes at 10pm, or drafts at 3pm?",
+        "template": "before_after",
+        "slides": 6,
+        "zip": "store/aoc_de76fa788649/tiktok_carousel.zip",
+        "at": "2026-09-23T09:52:55.974234+00:00"
+      },
+      {
+        "content_id": "aoc_ce5ae2f80827",
+        "hook": "Plumbers: how many services are overdue right now?",
+        "template": "diagnostic",
+        "slides": 6,
+        "zip": "store/aoc_ce5ae2f80827/tiktok_carousel.zip",
+        "at": "2026-09-23T09:52:56.589316+00:00"
+      },
+      {
+        "content_id": "AOC:3b9d5e0122f4759b87af0844d9b157e26101d0216e90710b64142eacf509177f",
+        "hook": "EICR, Gas Safe, Part P \u2014 matched and quoted in 60 seconds?",
+        "template": "annuity",
+        "slides": 6,
+        "zip": "store/AOC:3b9d5e0122f4759b87af0844d9b157e26101d0216e90710b64142eacf509177f/tiktok_carousel.zip",
+        "at": "2026-09-23T10:34:28.850185+00:00"
+      }
+    ],
+    "sole_trader": [
+      {
+        "content_id": "aoc_6a42e4ce69ca",
+        "hook": "Sole trader \u2014 can customers find you on Google?",
+        "template": "opportunity",
+        "slides": 6,
+        "zip": "store/aoc_6a42e4ce69ca/tiktok_carousel.zip",
+        "at": "2026-09-23T09:51:47.659524+00:00"
+      },
+      {
+        "content_id": "aoc_9c03cd3d446e",
+        "hook": "WhatsApp + notebook + Gmail. Sound familiar?",
+        "template": "before_after",
+        "slides": 6,
+        "zip": "store/aoc_9c03cd3d446e/tiktok_carousel.zip",
+        "at": "2026-09-23T09:51:48.252763+00:00"
+      },
+      {
+        "content_id": "aoc_5cc475817de5",
+        "hook": "Sole trader: quotes at midnight, or paid on time?",
+        "template": "before_after",
+        "slides": 6,
+        "zip": "store/aoc_5cc475817de5/tiktok_carousel.zip",
+        "at": "2026-09-23T09:52:57.221844+00:00"
+      },
+      {
+        "content_id": "aoc_4cb81ae5bff6",
+        "hook": "Sole trader: no website? Invisible to customers too?",
+        "template": "opportunity",
+        "slides": 6,
+        "zip": "store/aoc_4cb81ae5bff6/tiktok_carousel.zip",
+        "at": "2026-09-23T09:53:07.571900+00:00"
+      },
+      {
+        "content_id": "AOC:5e021759e3f6714e5e24010a8439447b2c14de431defa3741bbc388492c3ac5a",
+        "hook": "WhatsApp + notebook + Gmail. Sound familiar?",
+        "template": "opportunity",
+        "slides": 6,
+        "zip": "store/AOC:5e021759e3f6714e5e24010a8439447b2c14de431defa3741bbc388492c3ac5a/tiktok_carousel.zip",
+        "at": "2026-09-23T10:34:13.100362+00:00"
+      }
+    ],
+    "weddings": [
+      {
+        "content_id": "AOC:2fb170943c8a15a76da25f482a67b8ec1b0187cc83700fb5130f81ca85dea129",
+        "hook": "wedding pros \u2014 enquiry with no date, venue or budget?",
+        "template": "opportunity",
+        "slides": 6,
+        "zip": "store/AOC:2fb170943c8a15a76da25f482a67b8ec1b0187cc83700fb5130f81ca85dea129/tiktok_carousel.zip",
+        "at": "2026-09-23T10:34:12.388124+00:00"
+      }
+    ]
+  }
+}

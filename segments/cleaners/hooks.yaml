@@ -11,7 +11,7 @@ hooks:
 - text: Paused plans don't restart themselves.
   angle: winback
   audience: cleaners
-- text: 'Before: chasing. After: reminders + win-backs drafted.'
+- text: 'Cleaners: before — chasing. After — reminders drafted.'
   angle: before_after
   audience: cleaners
 - text: How much unbilled extras this month?
@@ -26,7 +26,7 @@ hooks:
 - text: Reviews decide the Maps pack. Who asks for them?
   angle: review_engine
   audience: cleaners
-- text: If this doesn't work in 30 days, we change the plan. In writing.
+- text: If this fails in 30 days, we change the plan. In writing.
   angle: kill_rule
   audience: cleaners
 - text: Just downloaded Muse? We'll set it up for your business for £20.

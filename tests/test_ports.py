@@ -178,7 +178,7 @@ class TestSkinHygiene:
         from slides.generate import SEGMENT_IDS, generate_slides_deterministic
         templates = ["opportunity", "before_after", "faq", "social_proof",
                      "demo", "diagnostic", "teardown", "comparison",
-                     "annuity", "retention"]
+                     "annuity", "retention", "waitlist"]
 
         def overlap(a, b):
             stop = {"the", "a", "an", "to", "of", "and", "or"}
@@ -187,17 +187,22 @@ class TestSkinHygiene:
             return len(wa & wb) / len(wa | wb) if wa and wb else 0.0
 
         bad = []
+        unbuildable = []
         for seg in SEGMENT_IDS:
             for t in templates:
                 try:
                     s = generate_slides_deterministic("test hook", seg, t)
-                except ValueError:
+                except ValueError as e:
+                    # every segment × template must build — a collapse means
+                    # skin proofs restate pains (fix the skin, not the test)
+                    unbuildable.append((seg, t, str(e)[:60]))
                     continue
                 texts = [x.text for x in s.slides]
                 for i in range(len(texts)):
                     for j in range(i + 1, len(texts)):
                         if overlap(texts[i], texts[j]) > 0.6:
                             bad.append((seg, t, texts[i][:40], texts[j][:40]))
+        assert not unbuildable, unbuildable
         assert not bad, bad
 
 
@@ -224,3 +229,24 @@ class TestWedgePricing:
         assert len(s.slides) == 6
         assert "UK list" in s.slides[-1].text
         assert "Sep 8" in s.slides[1].text
+
+
+class TestBankHygiene:
+    def test_all_bank_hooks_pass_gates(self):
+        from core.gates import gate_hook_quality
+        from slides.generate import SEGMENT_IDS, get_hooks
+        bad = [(seg, h["text"][:60])
+               for seg in SEGMENT_IDS for h in get_hooks(seg)
+               if not gate_hook_quality(h["text"], seg)[0]]
+        assert not bad, bad
+
+    def test_all_skin_yaml_parses(self):
+        import yaml
+        from pathlib import Path as _P
+        bad = []
+        for fp in sorted(_P("segments").rglob("*.yaml")):
+            try:
+                yaml.safe_load(fp.read_text())
+            except Exception as e:
+                bad.append((str(fp), str(e)[:60]))
+        assert not bad, bad

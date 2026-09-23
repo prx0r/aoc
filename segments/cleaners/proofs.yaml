@@ -1,10 +1,10 @@
 proofs:
 - id: winback_leak
-  claim: Paused or cancelled plans never won back — recoverable revenue leaks
+  claim: A paused plan still knows your address. A lost one doesn't.
   source: verticals/cleaners/PAINS.md §1
   use: Win-back angle
 - id: unbilled_extras
-  claim: Travel, materials and deep-clean extras go unbilled on fixed prices
+  claim: Fixed price, variable job. The gap is your margin.
   source: verticals/cleaners/PAINS.md §2
   use: Margin angle
 - id: chasing_time

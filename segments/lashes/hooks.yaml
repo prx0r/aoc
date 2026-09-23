@@ -8,7 +8,7 @@ hooks:
 - text: Fills every 3 weeks, rebooking never. Sound familiar?
   angle: mechanism
   audience: lashes
-- text: 'Consent reminders: awkward to send, risky to skip.'
+- text: 'Lash techs: consent reminders — awkward to send, risky to skip?'
   angle: objection_flip
   audience: lashes
 - text: 'Before: DMs. After: intervals + consent + deposits.'
@@ -17,7 +17,7 @@ hooks:
 - text: How many fills slipped this month?
   angle: diagnostic
   audience: lashes
-- text: Your retention lives in your head. Move it to a list.
+- text: 'Lash techs: where does your retention live? In your head?'
   angle: mechanism
   audience: lashes
 - text: Your best client found you on Fresha. Who gets 20%?

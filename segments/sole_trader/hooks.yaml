@@ -11,7 +11,7 @@ hooks:
 - text: No website? You're invisible to AI assistants too.
   angle: discovery
   audience: sole_trader
-- text: One hour. Findable, bookable, paid. Done.
+- text: 'Sole trader: findable, bookable, paid — in one hour?'
   angle: ease
   audience: sole_trader
 - text: What would you do with your Sundays back?

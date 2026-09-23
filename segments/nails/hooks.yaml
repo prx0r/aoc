@@ -11,7 +11,7 @@ hooks:
 - text: 'Before: DM chaos. After: booking link + deposits.'
   angle: before_after
   audience: nails
-- text: Lapsed regulars don't rebook themselves.
+- text: 'Nail techs: lapsed regulars don''t rebook themselves. Who reminds them?'
   angle: winback
   audience: nails
 - text: Your sets deserve better than a messy inbox.

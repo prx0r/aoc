@@ -14,7 +14,7 @@ hooks:
 - text: How many skips went unlogged this month?
   angle: diagnostic
   audience: gardeners
-- text: Missed enquiry while on the round = lost round.
+- text: Missed enquiry while on the round = lost round?
   angle: scenario
   audience: gardeners
 - text: Just downloaded Muse? We'll set it up for your business for £20.

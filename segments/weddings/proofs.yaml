@@ -1,6 +1,6 @@
 proofs:
 - id: thin_briefs
-  claim: Enquiries miss dates, venues, party sizes, packages, budgets
+  claim: No date, no venue, no budget — no quote possible.
   source: verticals/weddings/PAINS.md (stub)
   use: Qualification angle
 - id: stale_availability
