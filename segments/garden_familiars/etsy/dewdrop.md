@@ -1,7 +1,7 @@
 # Etsy listing: Dewdrop — tiny dragon, custom name
 # Status: DRAFT copy. Same honesty rules.
 
-title: "Personalised Dragon Plant Companion | Custom Name Garden Gift | Dewdrop"
+title: "Personalised Dragon Plant Companion with Custom Name | Tiny Dragon Garden Gift with Detachable Wings & Moisture Alerts | Free Gift Wrap"
 
 description: |
   Dewdrop is a tiny dragon with detachable decorative wings and a custom name,
@@ -23,7 +23,7 @@ description: |
 tags:
   - dragon plant pot
   - dragon garden decor
-  - personalised dragon gift
+  - dragon gift custom
   - plant lover gift
   - fantasy garden decor
   - moisture meter plant

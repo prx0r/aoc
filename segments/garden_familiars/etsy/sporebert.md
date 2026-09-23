@@ -1,7 +1,7 @@
 # Etsy listing: Sporebert — mushroom among herbs
 # Status: DRAFT copy. Same honesty rules as sir-hopsalot.md.
 
-title: "Personalised Mushroom Plant Sensor | Herb Garden Moisture Companion Gift | Sporebert"
+title: "Personalised Mushroom Plant Sensor | Herb Garden Moisture Companion Gift with Custom Colours, Nameplate & Watering Reminders | Gift Wrap"
 
 description: |
   Sporebert lives among your herbs and changes his light when a plant needs
@@ -23,18 +23,18 @@ description: |
   - No waterproof rating advertised until the finished design passes testing.
 
 tags:
-  - mushroom plant sensor
+  - mushroom plant gift
   - herb garden gift
   - moisture meter plant
-  - personalised garden gift
+  - garden gift custom
   - plant lover gift
   - kitchen herb garden
-  - garden decor mushroom
+  - mushroom decor gift
   - smart plant pot
   - gift for gardeners
   - cottage garden decor
-  - indoor plant accessory
-  - plant moisture monitor
+  - indoor plant gift
+  - plant moisture meter
   - custom plant marker
 
 price_note: "$39 target — HYPOTHETICAL, confirm before publishing"

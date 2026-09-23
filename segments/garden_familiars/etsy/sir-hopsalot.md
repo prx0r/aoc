@@ -2,7 +2,7 @@
 # Status: DRAFT copy. Prices hypothetical. No waterproof claims. No photos of
 # finished products exist yet — do not publish until product photography exists.
 
-title: "Personalised Frog Plant Moisture Sensor | Custom Garden Companion Gift for Tomato Growers | Sir Hopsalot"
+title: "Personalised Frog Plant Moisture Sensor | Custom Tomato Garden Companion Gift with Nameplate, Watering Alerts & Digital Plant Journal"
 
 description: |
   Sir Hopsalot guards your tomatoes — and tells your AI assistant when the
@@ -29,13 +29,13 @@ tags:
   - frog plant sensor
   - tomato garden gift
   - moisture meter plant
-  - personalised garden gift
+  - garden gift custom
   - smart plant pot
-  - gardener gift birthday
+  - gift for gardener
   - plant lover gift
   - garden decor frog
-  - vegetable garden accessory
-  - plant moisture monitor
+  - veg garden accessory
+  - plant moisture meter
   - custom garden marker
   - cottage garden decor
   - gift for gardeners

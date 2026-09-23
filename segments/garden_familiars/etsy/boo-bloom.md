@@ -1,7 +1,7 @@
 # Etsy listing: Boo Bloom — garden ghost, gifting angle
 # Status: DRAFT copy. Cheapest hero; gift-first positioning.
 
-title: "Personalised Garden Ghost Gift | Custom Plant Marker with Dedication | Boo Bloom"
+title: "Personalised Garden Ghost Gift with Dedication | Plant Marker Birthday Present for Gardeners, Plant Lovers | Free Gift Wrap Option"
 
 description: |
   Boo Bloom is a little garden ghost with an optional personal dedication —
@@ -25,18 +25,18 @@ description: |
   - Friend version needs no battery and claims nothing electronic.
 
 tags:
-  - personalised garden gift
+  - garden gift custom
   - ghost plant marker
-  - birthday gift gardener
+  - gift for gardener
   - garden gift for her
   - plant lover gift
   - custom garden decor
   - memorial garden gift
   - cottage garden decor
-  - gardening gift birthday
+  - gardening gift
   - ghost decor garden
   - plant gift for mum
-  - garden ornament personalised
-  - gift for plant lovers
+  - garden ornament gift
+  - plant lover gift
 
 price_note: "$35 target — HYPOTHETICAL, confirm before publishing"
