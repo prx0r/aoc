@@ -199,3 +199,28 @@ class TestSkinHygiene:
                         if overlap(texts[i], texts[j]) > 0.6:
                             bad.append((seg, t, texts[i][:40], texts[j][:40]))
         assert not bad, bad
+
+
+class TestWedgePricing:
+    def test_wedges_close_at_20(self):
+        from slides.generate import generate_slides_deterministic
+        for seg, kw in [("nails", "NAILS"), ("lashes", "LASHES"), ("hair", "HAIR"),
+                        ("cleaners", "CLEAN"), ("car_detailers", "DETAIL"),
+                        ("gardeners", "ROUND")]:
+            s = generate_slides_deterministic("test hook", seg, "opportunity")
+            assert "£20" in s.slides[-1].text, (seg, s.slides[-1].text)
+            assert kw in s.slides[-1].text, seg
+
+    def test_electrician_stays_499_pow_route(self):
+        from slides.generate import generate_slides_deterministic, load_segment
+        s = generate_slides_deterministic("test hook", "electrician", "opportunity")
+        assert "£499" in s.slides[-1].text
+        note = load_segment("electrician").get("profile", {}).get("offer", {}).get("note", "")
+        assert "£20" in note and "POW" in note.upper() or "higher-value" in note
+
+    def test_waitlist_template_builds(self):
+        from slides.generate import generate_slides_deterministic
+        s = generate_slides_deterministic("Just downloaded Muse?", "nails", "waitlist")
+        assert len(s.slides) == 6
+        assert "UK list" in s.slides[-1].text
+        assert "Sep 8" in s.slides[1].text

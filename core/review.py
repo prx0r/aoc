@@ -48,8 +48,10 @@ def run_review(out_dir: Path | str, plan: dict, gates: dict, validation: dict) -
     slides = plan.get("slides", [])
     closes = [s for s in slides if s.get("kind") == "close"]
     cta = plan.get("cta", "")
-    # render() appends the CTA as final slide when absent — mirror that logic
-    final_closes = len(closes) + (0 if any(cta in s.get("text", "") for s in slides[-1:]) or not cta else 1)
+    # mirror render(): CTA appended unless last slide holds it or any DM close
+    last = slides[-1].get("text", "") if slides else ""
+    appended = 0 if (not cta or cta in last or "DM " in last) else 1
+    final_closes = len(closes) + appended
     auto["cta-single"] = _v(final_closes == 1, f"{final_closes} close slide(s) post-render")
     auto["trackable"] = _v(bool(plan.get("content_id")), "content_id assigned")
     manual = [c for c in CHECKLIST if c[2] == "human"]

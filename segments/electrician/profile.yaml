@@ -1,22 +1,33 @@
-# Segment skin: electrician (reference implementation — all other skins copy this shape)
-
 id: electrician
-label: "UK electrical contractors, 2–10 staff, owner still does enquiries/quotes"
+label: UK electrical contractors, 2–10 staff, owner still does enquiries/quotes
 pains:
-  - "62% of calls missed while on tools (playbook-stated pain)"
-  - "Quotes sent late at night, jobs lost to faster responders"
-  - "EICR compliance tracking slips"
-  - "Sundays lost to admin/invoicing"
+- 62% of calls missed while on tools (playbook-stated pain)
+- Quotes sent late at night, jobs lost to faster responders
+- EICR compliance tracking slips
+- Sundays lost to admin/invoicing
 offer:
-  price: "£499 one-off"
-  founding: "£299 for first 3 (feedback + referral + case study)"
-  setup_time: "~1 hour remote, 4–6 hr standard package"
-  includes: "email + calendar setup, enquiry triage, quote drafting from approved price book, owner approval before anything outbound, GBP assistance, training + handover, 14 days fixes"
-  excluded: "website build, live voice service, WhatsApp production integration, Meta admin, custom integrations, lead-gen (separately quoted per OFFER.md)"
-close: "DM QUOTE for £499 setup."
+  price: £499 one-off
+  founding: £299 for first 3 (feedback + referral + case study)
+  setup_time: ~1 hour remote, 4–6 hr standard package
+  includes: email + calendar setup, enquiry triage, quote drafting from approved price
+    book, owner approval before anything outbound, GBP assistance, training + handover,
+    14 days fixes
+  excluded: website build, live voice service, WhatsApp production integration, Meta
+    admin, custom integrations, lead-gen (separately quoted per OFFER.md)
+  note: 'Separate higher-value POW route — do NOT force into the £20 product: complex
+    quoting + compliance needs the £499 standard setup.'
+close: DM QUOTE for £499 setup.
 dm_keyword: QUOTE
-tone: "direct, slightly provocative, no corporate speak; never insult Tradify — connect it"
-workflow: "AI triages enquiries, drafts quotes — you approve everything"
-comparator: "Tradify"
-competitor_note: "Don't replace Tradify/Checkatrade. Connect email+calendar+quotes together."
-hashtags: ["#electrician", "#electricianlife", "#tradesman", "#smallbusiness", "#ukbusiness", "#electricianuk"]
+tone: direct, slightly provocative, no corporate speak; never insult Tradify — connect
+  it
+workflow: AI triages enquiries, drafts quotes — you approve everything
+comparator: Tradify
+competitor_note: Don't replace Tradify/Checkatrade. Connect email+calendar+quotes
+  together.
+hashtags:
+- '#electrician'
+- '#electricianlife'
+- '#tradesman'
+- '#smallbusiness'
+- '#ukbusiness'
+- '#electricianuk'

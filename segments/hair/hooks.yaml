@@ -20,3 +20,6 @@ hooks:
 - text: Boosted booking, 30% gone. What did the boost buy?
   angle: marketplace_tax
   audience: hair
+- text: Just downloaded Muse? We'll set it up for your business for £20.
+  angle: muse_setup
+  audience: hair

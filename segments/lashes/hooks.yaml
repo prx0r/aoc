@@ -23,3 +23,6 @@ hooks:
 - text: Your best client found you on Fresha. Who gets 20%?
   angle: marketplace_tax
   audience: lashes
+- text: Just downloaded Muse? We'll set it up for your business for £20.
+  angle: muse_setup
+  audience: lashes

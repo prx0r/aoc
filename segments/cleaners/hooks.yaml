@@ -29,3 +29,6 @@ hooks:
 - text: If this doesn't work in 30 days, we change the plan. In writing.
   angle: kill_rule
   audience: cleaners
+- text: Just downloaded Muse? We'll set it up for your business for £20.
+  angle: muse_setup
+  audience: cleaners

@@ -1,23 +1,28 @@
-# Segment skin: car_detailers (mobile detailers)
-# Source: aionboard targets.md + verticals/car-detailers (PAINS stub — discovery hypotheses).
-
 id: car_detailers
-label: "UK mobile car detailers — photo quotes, travel + weather, repeats"
+label: UK mobile car detailers — photo quotes, travel + weather, repeats
 pains:
-  - "Quote requests arrive missing vehicle, location, condition, timing"
-  - "Photo-based pricing without clear approval boundaries"
-  - "Scheduling fights travel and weather"
-  - "Repeat details never systematically offered; reviews rarely collected"
+- Quote requests arrive missing vehicle, location, condition, timing
+- Photo-based pricing without clear approval boundaries
+- Scheduling fights travel and weather
+- Repeat details never systematically offered; reviews rarely collected
 offer:
-  price: "£349–£599 pilot test price (hypothesis until validated)"
-  founding: "£299 for first 3 (feedback + referral + case study)"
-  setup_time: "~1 hour remote; quote-triage + booking setup day one"
-  includes: "quote-request triage, photo-quote workflow with approval bounds, booking setup, repeat-offer lists, review workflow, training + handover, 14 days fixes"
-  excluded: "website build, live voice service, Meta production integration (separately quoted per OFFER.md)"
-close: "DM DETAIL for pilot setup."
+  price: £20 assisted setup (pilot)
+  founding: £299 for first 3 (feedback + referral + case study)
+  setup_time: ~1 hour remote; quote-triage + booking setup day one
+  includes: photo-led enquiry form, package pricing, scheduling, 7 days setup support,
+    personalised Muse manual
+  excluded: website build, live voice service, Meta production integration (separately
+    quoted per OFFER.md)
+  note: 'Muse is US-only as of Sep 2026, no confirmed UK date: build the UK waiting
+    list now; take £20 only when the customer can access it.'
+close: DM DETAIL for £20 setup.
 dm_keyword: DETAIL
-workflow: "Quote triage, bookings, repeat offers — you approve everything"
-comparator: "DM chaos"
-tone: "visual, car-first; talk paint, not platforms"
-competitor_note: "Don't replace Instagram. Add quote structure + repeats."
-hashtags: ["#cardetailing", "#detailinguk", "#smallbusiness", "#ukbusiness"]
+workflow: Quote triage, bookings, repeat offers — you approve everything
+comparator: DM chaos
+tone: visual, car-first; talk paint, not platforms
+competitor_note: Don't replace Instagram. Add quote structure + repeats.
+hashtags:
+- '#cardetailing'
+- '#detailinguk'
+- '#smallbusiness'
+- '#ukbusiness'

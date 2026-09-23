@@ -31,7 +31,7 @@ Organic still works but check audience geography in analytics before promoting.
 
 ## What counts as winning
 1. Cost per **qualified conversation** with a trades owner (first metric).
-2. Cost per **paying £499 customer** (second metric).
+2. Cost per **paying customer** — £20 wedge setups, £499 electrician route (second metric).
 3. Log organic enquiries alongside paid. A £10 lead who never buys > £50 lead who buys.
 4. Direct calls stay as the £0 control: objections heard live refine the message before spend.
 

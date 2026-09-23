@@ -26,8 +26,13 @@ changes, skins change — automation never outruns the offer.
 `PAINS.md` + `CAMPAIGN.md`. Engine falls back: explicit hand-tuned decks →
 generic skin-driven decks → refuse (never another trade's copy).
 
-## Prices
+## Prices (two-tier since Sep 2026)
 
-Niche test prices (£249–£699) are hypotheses until validated (targets.md).
-Standard £499 + £299 founding is the fallback close. Closes carry pilot
-wording where the niche price is unvalidated.
+- Five wedges (nails, lashes, hair, cleaners, car_detailers, gardeners):
+  **£20 assisted Muse setup** + 7 days support + personalised manual.
+  Muse is US-only, no confirmed UK date: build the UK waiting list now,
+  take £20 only when the customer can access the features.
+- Electrician: separate higher-value POW route, **£499** standard setup.
+  Never force complex quoting/compliance into the £20 product.
+- Older niche test prices (£249–£699, targets.md) are superseded for wedges;
+  retained in proofs as hypotheses where still referenced.

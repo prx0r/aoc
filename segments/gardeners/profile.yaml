@@ -1,23 +1,28 @@
-# Segment skin: gardeners (gardeners + window cleaners, round-based)
-# Source: aionboard targets.md + verticals/gardeners-window-cleaners (PAINS).
-
 id: gardeners
-label: "UK gardeners + window cleaners — round economics, skips, debt, re-canvass"
+label: UK gardeners + window cleaners — round economics, skips, debt, re-canvass
 pains:
-  - "Unlogged skips and unchased debt — round economics leak"
-  - "Lapsed round customers never re-canvassed (streets know the van)"
-  - "Paper rounds are a single point of failure — visits, skips, payments"
-  - "Missed enquiries while on the round"
+- Unlogged skips and unchased debt — round economics leak
+- Lapsed round customers never re-canvassed (streets know the van)
+- Paper rounds are a single point of failure — visits, skips, payments
+- Missed enquiries while on the round
 offer:
-  price: "£349–£599 pilot test price (hypothesis until validated)"
-  founding: "£299 for first 3 (feedback + referral + case study)"
-  setup_time: "~1 hour remote; enquiry + round-record setup day one"
-  includes: "enquiry triage, round record setup, skip/debt tracking prep, re-canvass lists, review workflow, training + handover, 14 days fixes"
-  excluded: "website build, live voice service, Meta production integration (separately quoted per OFFER.md)"
-close: "DM ROUND for pilot setup."
+  price: £20 assisted setup (pilot)
+  founding: £299 for first 3 (feedback + referral + case study)
+  setup_time: ~1 hour remote; enquiry + round-record setup day one
+  includes: repeat-visit calendar, quote templates, follow-up reminders, 7 days setup
+    support, personalised Muse manual
+  excluded: website build, live voice service, Meta production integration (separately
+    quoted per OFFER.md)
+  note: 'Muse is US-only as of Sep 2026, no confirmed UK date: build the UK waiting
+    list now; take £20 only when the customer can access it.'
+close: DM ROUND for £20 setup.
 dm_keyword: ROUND
-workflow: "Enquiries triaged, rounds recorded, debt chased — you approve everything"
-comparator: "paper round book"
-tone: "plain, round-talk; streets, vans, skips — not software"
-competitor_note: "Don't replace the round. Digitise it without breaking it."
-hashtags: ["#windowcleaner", "#gardeneruk", "#smallbusiness", "#ukbusiness"]
+workflow: Enquiries triaged, rounds recorded, debt chased — you approve everything
+comparator: paper round book
+tone: plain, round-talk; streets, vans, skips — not software
+competitor_note: Don't replace the round. Digitise it without breaking it.
+hashtags:
+- '#windowcleaner'
+- '#gardeneruk'
+- '#smallbusiness'
+- '#ukbusiness'

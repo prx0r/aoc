@@ -5,7 +5,7 @@ hooks:
 - text: Photo quote in, approval out. Who runs it?
   angle: mechanism
   audience: car_detailers
-- text: "Detailers: rain Friday, three bookings. Who reshuffles?"
+- text: 'Detailers: rain Friday, three bookings. Who reshuffles?'
   angle: scenario
   audience: car_detailers
 - text: 'Before: DMs. After: structured quotes + repeats.'
@@ -16,4 +16,7 @@ hooks:
   audience: car_detailers
 - text: 'Reviews: every car, or only the good days?'
   angle: recognition
+  audience: car_detailers
+- text: Just downloaded Muse? We'll set it up for your business for £20.
+  angle: muse_setup
   audience: car_detailers

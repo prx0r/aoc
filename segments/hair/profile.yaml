@@ -1,23 +1,29 @@
-# Segment skin: hair (mobile hairdressers + braiders)
-# Source: aionboard targets.md + verticals/hair (PAINS).
-
 id: hair
-label: "UK mobile hairdressers + braiders — travel zones, portfolio-led bookings"
+label: UK mobile hairdressers + braiders — travel zones, portfolio-led bookings
 pains:
-  - "Service, location, travel, timing and price negotiated manually per DM"
-  - "Customers don't know the travel zone — enquiries waste on out-of-area jobs"
-  - "Colour refreshes and reinstalls have intervals but no systematic rebooking"
-  - "Portfolio proof scattered across social posts"
+- Service, location, travel, timing and price negotiated manually per DM
+- Customers don't know the travel zone — enquiries waste on out-of-area jobs
+- Colour refreshes and reinstalls have intervals but no systematic rebooking
+- Portfolio proof scattered across social posts
 offer:
-  price: "£299–£499 pilot test price (hypothesis until validated)"
-  founding: "£299 for first 3 (feedback + referral + case study)"
-  setup_time: "~1 hour remote; service-area + booking setup day one"
-  includes: "service-area page, portable booking setup, enquiry triage, rebooking lists, review workflow, training + handover, 14 days fixes"
-  excluded: "website build, live voice service, Meta production integration (separately quoted per OFFER.md)"
-close: "DM HAIR for pilot setup."
+  price: £20 assisted setup (pilot)
+  founding: £299 for first 3 (feedback + referral + case study)
+  setup_time: ~1 hour remote; service-area + booking setup day one
+  includes: service area, travel prices, booking link, enquiry templates, 7 days setup
+    support, personalised Muse manual
+  excluded: website build, live voice service, Meta production integration (separately
+    quoted per OFFER.md)
+  note: 'Muse is US-only as of Sep 2026, no confirmed UK date: build the UK waiting
+    list now; take £20 only when the customer can access it.'
+close: DM HAIR for £20 setup.
 dm_keyword: HAIR
-workflow: "Service-area triage, bookings, rebooking — you approve everything"
-comparator: "DM chaos"
-tone: "warm, mobile-first; talk travel zones and full columns"
-competitor_note: "Don't replace Instagram. Add booking structure + zones + rebooking."
-hashtags: ["#mobilehairdresser", "#hairuk", "#braidsuk", "#smallbusiness", "#ukbusiness"]
+workflow: Service-area triage, bookings, rebooking — you approve everything
+comparator: DM chaos
+tone: warm, mobile-first; talk travel zones and full columns
+competitor_note: Don't replace Instagram. Add booking structure + zones + rebooking.
+hashtags:
+- '#mobilehairdresser'
+- '#hairuk'
+- '#braidsuk'
+- '#smallbusiness'
+- '#ukbusiness'

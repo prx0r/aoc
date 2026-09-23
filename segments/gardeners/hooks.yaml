@@ -17,3 +17,6 @@ hooks:
 - text: Missed enquiry while on the round = lost round.
   angle: scenario
   audience: gardeners
+- text: Just downloaded Muse? We'll set it up for your business for £20.
+  angle: muse_setup
+  audience: gardeners

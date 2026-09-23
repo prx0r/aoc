@@ -97,6 +97,7 @@ def _generic_deck(skin: dict, hook: str, template: str) -> list[SlideSpec] | Non
     close = profile.get("close", "")
     workflow = profile.get("workflow", "Triaged, drafted, reminded — you approve everything.")
     comparator = profile.get("comparator", "the old way")
+    dm_keyword = profile.get("dm_keyword", "SETUP")
     c0 = _shorten(claims[0]) if len(claims) > 0 else _shorten(pains[0]) if pains else ""
     c1 = _shorten(claims[1]) if len(claims) > 1 else _shorten(pains[1]) if len(pains) > 1 else ""
     p0 = _shorten(pains[0]) if pains else ""
@@ -163,6 +164,14 @@ def _generic_deck(skin: dict, hook: str, template: str) -> list[SlideSpec] | Non
             ("body", workflow, 0.5),
             ("body", "Win-back lists, ready for your approval.", 0.5),
             ("close", close, 0.5),
+        ],
+        "waitlist": [
+            ("hook", hook, 0.35),
+            ("body", "Muse launched in the US on Sep 8. UK date unconfirmed.", 0.5),
+            ("body", "The UK list gets first installs when it lands.", 0.5),
+            ("body", workflow, 0.5),
+            ("body", "One assisted setup. 7 days support. Personal manual.", 0.5),
+            ("close", f"DM {dm_keyword} to join the UK list.", 0.5),
         ],
     }
     def _overlap(a: str, b: str) -> float:

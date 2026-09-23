@@ -52,9 +52,12 @@ def plan(hook: str, template: str = "opportunity", audience: str = "electrician"
 def render(plan_dict: dict, out_dir: Path | str, font_path: str | None = None) -> dict:
     """Stage 2: script → 1080x1920 PNGs."""
     out_dir = Path(out_dir)
-    # append CTA as final slide if not already the close
+    # append CTA as final slide unless the deck already closes with one:
+    # exact CTA text OR any DM-keyword close (waitlist etc. carry their own)
     slides = list(plan_dict["slides"])
-    if plan_dict.get("cta") and not any(plan_dict["cta"] in s["text"] for s in slides[-1:]):
+    last = slides[-1].get("text", "") if slides else ""
+    has_cta = (plan_dict.get("cta") and plan_dict["cta"] in last) or "DM " in last
+    if plan_dict.get("cta") and not has_cta:
         slides.append({"text": plan_dict["cta"], "position": 0.5, "kind": "close", "tags": []})
     paths = render_slideshow(slides, out_dir, font_path=font_path)
     manifest = {

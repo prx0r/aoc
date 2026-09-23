@@ -23,3 +23,6 @@ hooks:
 - text: 20% of new clients go to the marketplace.
   angle: marketplace_tax
   audience: nails
+- text: Just downloaded Muse? We'll set it up for your business for £20.
+  angle: muse_setup
+  audience: nails
