@@ -108,7 +108,11 @@ def _final_slides(plan_dict: dict) -> list[dict]:
         return slides
     last = slides[-1].get("text", "") if slides else ""
     has_cta = (cta and cta in last) or "DM " in last
-    if cta and not has_cta:
+    # If cta is explicitly different from the close slide, replace it
+    # (handles demo/free overrides without breaking organic defaults)
+    if cta and slides and slides[-1].get("kind") == "close" and cta != last:
+        slides[-1] = {"text": cta, "position": 0.5, "kind": "close", "tags": []}
+    elif cta and not has_cta:
         slides.append({"text": cta, "position": 0.5, "kind": "close", "tags": []})
     # Append save prompt to close slide (TikTok algorithm weights saves heavily)
     if slides and slides[-1].get("kind") == "close":
@@ -213,14 +217,8 @@ def run_carousel(hook: str, template: str = "opportunity", base_dir: Path | str 
     """
     base = Path(base_dir)
     seg = segment or (audience or "electrician")
-    if kind == "ad":
-        if not cta:
-            raise ValueError("ads require an explicit CTA with qualification")
-        plan_dict = plan(hook, template, audience=seg, segment=seg, cta=cta,
-                         kind=kind, channel=channel)
-    else:
-        plan_dict = plan(hook, template, audience=seg, segment=seg,
-                         channel=channel)
+    plan_dict = plan(hook, template, audience=seg, segment=seg, cta=cta,
+                     kind=kind, channel=channel)
     skin = load_segment(seg)
     # NOTE: plan_dict["content_id"] is the full AOC:<64hex> identity.
     # Filesystem dirs use the short display form (colons break Win/Mac/URLs).
