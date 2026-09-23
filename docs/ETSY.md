@@ -34,7 +34,7 @@ No device-specific uploads exist — one square + safe zone covers everything.
 
 | Need | Today | Gap |
 |---|---|---|
-| 1080×1920 TikTok PNGs | ✅ `render/slide.py` | — |
+| 1080×1920 TikTok JPEGs | ✅ `render/slide.py` | — |
 | 2400×2400 Etsy square + safe zone | ❌ | **`render/etsy.py: render_square()` (this spec builds it)** |
 | 5–15s silent MP4 from slides | ❌ | **`render/etsy.py: render_video()` via ffmpeg (this spec builds it)** |
 | Listing copy (title/desc/13 tags) | ✅ `segments/*/etsy/*.md` | validate tag length ≤20 chars |

@@ -25,20 +25,23 @@ def load_channel(channel: str) -> dict:
     return yaml.safe_load(fp.read_text()) if fp.exists() else {"channel": channel}
 
 
-def channel_hashtags(channel: str, segment_tags: list[str] | None = None) -> list[str]:
-    """Segment tags first, channel suggestions after, deduped, order kept.
+def channel_hashtags(channel: str, segment_tags: list[str] | None = None,
+                     segment: str = "") -> list[str]:
+    """Segment tags first, then valid channel suggestions, deduped.
 
-    Segment data wins on conflict (channel is the medium, segment is the
-    audience): a nails creative must lead with #nailtech, not #electrician.
-    Found 2026-09-23 — publish packets buried segment tags under 8
-    electrician channel tags."""
-
+    Trade-specific channel tags are only inherited by their matching trade;
+    Glimlings and other segments must not inherit electrician tags.
+    """
     prof = load_channel(channel)
+    channel_tags = list(prof.get("suggested_hashtags", []) or [])
+    if segment and segment != "electrician":
+        trade_tags = {"#electrician", "#electricianlife", "#tradesman", "#electricianuk"}
+        channel_tags = [tag for tag in channel_tags if tag.lower() not in trade_tags]
     out, seen = [], set()
-    for t in list(segment_tags or []) + list(prof.get("suggested_hashtags", []) or []):
-        if t not in seen:
-            seen.add(t)
-            out.append(t)
+    for tag in list(segment_tags or []) + channel_tags:
+        if tag not in seen:
+            seen.add(tag)
+            out.append(tag)
     return out
 
 
@@ -101,6 +104,6 @@ def channel_caption(channel: str, hook: str, segment: str, close: str) -> str:
     ])
     # Build caption: hook + value + comment prompt + close + hashtags
     caption = f"{hook} {val} {cp} {close} {hashtags}"
-    # Add dual-path note (DM is frictionless, website for researchers)
-    caption += " DM DEMO or link in bio — free 20-min setup, no commitment."
+    if "DEMO" in close.upper():
+        caption += " DM DEMO or link in bio — free 20-min setup, no commitment."
     return caption

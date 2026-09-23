@@ -324,6 +324,24 @@ class TestChannelHashtags:
         assert "#electrician" in tags  # channel suggestions still present
         assert len(tags) == len(set(tags))
 
+    def test_non_electrician_segment_drops_electrician_tags(self):
+        import sys as _sys
+        _sys.path.insert(0, str(Path(__file__).parent.parent))
+        from core.channels import channel_hashtags
+        tags = channel_hashtags("tiktok", ["#glimlings", "#planttok"], segment="glimlings")
+        assert "#glimlings" in tags
+        assert "#electrician" not in tags
+        assert "#tradesman" not in tags
+
+    def test_caption_only_adds_demo_path_for_demo_cta(self):
+        import sys as _sys
+        _sys.path.insert(0, str(Path(__file__).parent.parent))
+        from core.channels import channel_caption
+        demo = channel_caption("tiktok", "Demo hook", "electrician", "DM DEMO for a free setup")
+        glim = channel_caption("tiktok", "Glimling hook", "glimlings", "DM GLIMLING for launch updates")
+        assert "DM DEMO or link in bio" in demo
+        assert "DM DEMO or link in bio" not in glim
+
 
 class TestPremiumRenderer:
     def test_cta_slide_validates_bright_band(self, tmp_path):

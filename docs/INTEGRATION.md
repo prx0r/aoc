@@ -1,4 +1,8 @@
-# INTEGRATION — aionboard × powrobots × aoc × fal.ai × etsy
+# INTEGRATION — strategy map: aionboard × powrobots × aoc × fal.ai × etsy
+
+> This is a strategy document, not proof of runtime integration. The repos are
+> not code-connected. fal.ai, Notch, Tesseract, Etsy automation, and video
+> generation remain planned/researched paths.
 
 ## The two businesses
 

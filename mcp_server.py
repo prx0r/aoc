@@ -135,6 +135,20 @@ def aoc_publish(content_id: str = "", platform: str = "tiktok"):
         seg_tags, seg_close = [], ""
     hook = plan.get("hook", "")
     seo_caption = channel_caption(platform, hook, segment, seg_close)
+    extra_checklist = [
+        "caption is 200+ chars with keywords for TikTok search",
+        "3-5 hashtags with buyer terms (segment leads, channel follows)",
+        "select trending audio matching the sound recommendation above",
+        "paste photo_credit into the caption when non-empty (CC BY requirement)",
+    ]
+    if "DEMO" in seg_close.upper():
+        extra_checklist.extend([
+            "DM path: reply to DEMO with booking link",
+            "website path: link in bio goes to free demo landing page",
+        ])
+    else:
+        extra_checklist.append("reply to DMs using this campaign's CTA keyword")
+    extra_checklist.append("confirm with aoc_publish_confirm + real post URL afterwards")
     return {
         "status": "manual-pending",
         "content_id": content_id,
@@ -143,19 +157,11 @@ def aoc_publish(content_id: str = "", platform: str = "tiktok"):
         "contact_sheet": str(out / "contact_sheet.jpg"),
         "caption": seo_caption,
         "cta": manifest.get("final_cta", ""),
-        "hashtags": channel_hashtags(platform, seg_tags),
+        "hashtags": channel_hashtags(platform, seg_tags, segment=segment),
         "sound": channel_sound(platform, plan.get("template", "opportunity")),
         "photo_credit": manifest.get("photo_credit", ""),
         "save_prompt": "Save this for later — tap the bookmark icon",
-        "checklist": channel_checklist(platform) + [
-            "caption is 200+ chars with keywords for TikTok search",
-            "3-5 hashtags with buyer terms (segment leads, channel follows)",
-            "select trending audio matching the sound recommendation above",
-            "paste photo_credit into the caption when non-empty (CC BY requirement)",
-            "DM path: reply to DMs with booking link (fastest conversion)",
-            "website path: link in bio goes to free demo landing page",
-            "confirm with aoc_publish_confirm + real post URL afterwards",
-        ],
+        "checklist": channel_checklist(platform) + extra_checklist,
         "note": "post the ZIP manually as Photo Mode (swipeable), pick trending audio in-app",
     }
 
