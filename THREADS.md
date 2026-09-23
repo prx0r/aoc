@@ -43,6 +43,20 @@ Blocked on product photography + Etsy shop creation (human steps).
 **Status:** deferred (see `docs/PEER_REVIEW_RESPONSE.md`). Needs per-source
 max-age config in claims registry.
 
+## Open — LIVE: mosswick-launch-01 awaits manual post (2026-09-23)
+
+Campaign `mosswick-launch-01` (glimlings / muse-quickstart waitlist / £0):
+hero AOC-D90A7C47 (Mosswick, legacy render) + variants AOC-A4FF2CAE
+(windowsill, premium) + AOC-A39A8643 (gift, premium). All reviewed +
+signed, all linked (CRT:d54edcd3a5e5b4a5 / CRT:5dbc7b12983b7e55 /
+CRT:53283e20fcc54df5). Publish packet for hero: manual-pending.
+Confirm refused without real URL (correct). Funnel zeros (correct).
+
+NEXT HUMAN STEP: upload `store/AOC-D90A7C47/tiktok_carousel.zip` as TikTok
+Photo Mode carousel + trending sound, then `aoc_publish_confirm` with the
+real URL, then `aoc_metrics`. Price lines are brand-doc ranges (NOT
+validated offers) — launch-list close only, no purchase implied.
+
 ## Open — identity hardening (from 2026-09-23 e2e run)
 
 - T-prefix: tooling must never match builds by hook prefix (caused a
