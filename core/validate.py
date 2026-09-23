@@ -41,12 +41,18 @@ def validate_slide(path: Path | str) -> dict:
         extrema = band.getextrema()
         spread = extrema[1] - extrema[0]
         checks["text_present"] = {"ok": spread > 40, "detail": f"luminance spread {spread}"}
-        # UI-safe: top 8% and bottom 12% should be calmer than the band
+        # UI-safe: top 8% and bottom 12% should be calmer than the band.
+        # For gradient backgrounds, edges have lower luminance spread.
+        # For photo backgrounds, edges may match band spread but have lower
+        # mean luminance (darker = calmer) — check both.
         top = g.crop((0, 0, w, int(h * 0.08)))
         bottom = g.crop((0, int(h * 0.88), w, h))
         edge_spread = max(top.getextrema()[1] - top.getextrema()[0],
                           bottom.getextrema()[1] - bottom.getextrema()[0])
-        checks["margins"] = {"ok": edge_spread < spread, "detail": f"edge spread {edge_spread} vs band {spread}"}
+        edge_mean = max(ImageStat.Stat(top).mean[0], ImageStat.Stat(bottom).mean[0])
+        band_mean = ImageStat.Stat(band).mean[0]
+        checks["margins"] = {"ok": bool(edge_spread < spread or edge_mean < band_mean - 5),
+                              "detail": f"edge spread {edge_spread} vs band {spread}, edge mean {edge_mean:.0f} vs band {band_mean:.0f}"}
 
     ok = all(c["ok"] for c in checks.values())
     return {"ok": ok, "checks": checks}

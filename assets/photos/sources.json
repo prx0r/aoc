@@ -78,5 +78,27 @@
   "cached": "assets/photos/mosswick-gen.jpg",
   "bytes": 615928,
   "timestamp": 1790182961
+ },
+ {
+  "title": "Generated: puck-gen.jpg",
+  "user": "Cloudflare Workers AI",
+  "license": "AI-generated",
+  "model": "@cf/bytedance/stable-diffusion-xl-lightning",
+  "prompt": "Tiny magical desk creature called Puck with acorn cap hat, oversized ears, translucent wings, glowing warm belly, sitting on a wooden desk beside a small laptop, storybook woodland style, soft warm light, cozy",
+  "cached": "assets/photos/puck-gen.jpg",
+  "bytes": 109083,
+  "time_s": 3.8,
+  "timestamp": 1790184813
+ },
+ {
+  "title": "Generated: mosswick-gen.jpg",
+  "user": "Cloudflare Workers AI",
+  "license": "AI-generated",
+  "model": "@cf/bytedance/stable-diffusion-xl-lightning",
+  "prompt": "Tiny magical garden creature called Mosswick with acorn cap hat, oversized ears, translucent wings, glowing warm belly, nestled among tomato plants in a sunlit garden, storybook woodland style, soft warm light, cozy",
+  "cached": "assets/photos/mosswick-gen.jpg",
+  "bytes": 131952,
+  "time_s": 3.7,
+  "timestamp": 1790184817
  }
 ]

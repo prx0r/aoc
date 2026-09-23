@@ -5,11 +5,11 @@ Pinned CC photos live in `assets/photos/` + `sources.json` attribution.
 deterministic and offline when using photos. Missing file → raises
 (no silent look-change between runs).
 
-AI generation: `generate()` calls Cloudflare Workers AI flux-1-schnell
-(CLOUDFLARE_API_TOKEN + account from .env). Output is saved into
-assets/photos + sources.json. Downstream rotation picks it up automatically.
-Generations are deterministic for the same prompt+seed via flux-schnell's
-step parameter; different prompts produce different creature art.
+AI generation: `generate()` calls Cloudflare Workers AI image models.
+Primary: `@cf/bytedance/stable-diffusion-xl-lightning` (cheapest, fast,
+1024×1024 PNG output). Fallback: `@cf/black-forest-labs/flux-1-schnell`
+(faster, JPEG output). Output saved into assets/photos + sources.json.
+Downstream rotation picks it up automatically.
 """
 
 from __future__ import annotations
@@ -22,6 +22,12 @@ from pathlib import Path
 import urllib.request
 
 PHOTOS_DIR = Path(__file__).parent.parent / "assets" / "photos"
+
+# Image gen models in priority order (cheapest first).
+IMAGE_MODELS = [
+    ("@cf/bytedance/stable-diffusion-xl-lightning", "lightning"),
+    ("@cf/black-forest-labs/flux-1-schnell", "schnell"),
+]
 
 # Segment → cached photo rotation (deterministic by slide index).
 SEGMENT_PHOTOS: dict[str, list[str]] = {
@@ -62,17 +68,14 @@ def credit_line(segment: str, count: int) -> str:
     return "Photos: " + ", ".join(names) + " via Wikimedia Commons (CC BY 2.0)."
 
 
-def generate(prompt: str, out_name: str, size: str = "1024x1024") -> Path:
-    """Cloudflare Workers AI flux-1-schnell → assets/photos/<out_name>.
+def generate(prompt: str, out_name: str) -> Path:
+    """Cloudflare Workers AI text-to-image → assets/photos/<out_name>.
 
-    Credentials: CLOUDFLARE_API_TOKEN (Workers AI permission) +
-    R2_ACCOUNT_ID from .env / environment. Saves the output as-is
-    (JPEG bytes from the API) and appends a record to sources.json.
-    Returns the cached Path.
+    Tries IMAGE_MODELS in order (lightning first — cheapest/fastest).
+    Lightning returns raw PNG; schnell returns JSON with base64 image.
+    Saves as-is, appends a record to sources.json. Returns the cached Path.
 
-    Note: flux-1-schnell ignores size/seed/steps — always returns a
-    1024x1024 JPEG. Resize to 1080x1920 happens at render time via
-    the same cover-crop pipeline as pinned photos.
+    Credentials: CLOUDFLARE_API_TOKEN + R2_ACCOUNT_ID from .env / environment.
     """
     token = os.environ.get("CLOUDFLARE_API_TOKEN", "")
     account = os.environ.get("R2_ACCOUNT_ID", "")
@@ -82,33 +85,50 @@ def generate(prompt: str, out_name: str, size: str = "1024x1024") -> Path:
         raise RuntimeError("R2_ACCOUNT_ID missing from environment (see .env.example)")
 
     body = json.dumps({"prompt": prompt}).encode()
-    req = urllib.request.Request(
-        f"https://api.cloudflare.com/client/v4/accounts/{account}/ai/run/@cf/black-forest-labs/flux-1-schnell",
-        data=body,
-        headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"})
-    resp = urllib.request.urlopen(req, timeout=180)
-    data = json.loads(resp.read())
-    if not data.get("success"):
-        raise RuntimeError(f"flux-1-schnell failed: {data.get('errors')}")
-    img = base64.b64decode(data["result"]["image"])
+    headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
+    last_err = None
+
+    for model, label in IMAGE_MODELS:
+        t0 = time.time()
+        try:
+            req = urllib.request.Request(
+                f"https://api.cloudflare.com/client/v4/accounts/{account}/ai/run/{model}",
+                data=body, headers=headers)
+            resp = urllib.request.urlopen(req, timeout=180)
+            ct = resp.headers.get("Content-Type", "")
+            raw = resp.read()
+            if "json" in ct:
+                data = json.loads(raw)
+                if not data.get("success"):
+                    last_err = f"{model}: {data.get('errors')}"
+                    continue
+                img = base64.b64decode(data["result"]["image"])
+            else:
+                img = raw
+            dt = time.time() - t0
+            break
+        except Exception as e:
+            last_err = f"{model}: {e}"
+            continue
+    else:
+        raise RuntimeError(f"all image models failed: {last_err}")
 
     PHOTOS_DIR.mkdir(parents=True, exist_ok=True)
     fp = PHOTOS_DIR / out_name
     fp.write_bytes(img)
 
-    # Append to sources.json
-    src = {
+    sources_path = PHOTOS_DIR / "sources.json"
+    existing = json.loads(sources_path.read_text()) if sources_path.exists() else []
+    existing.append({
         "title": f"Generated: {out_name}",
         "user": "Cloudflare Workers AI",
         "license": "AI-generated",
-        "model": "@cf/black-forest-labs/flux-1-schnell",
+        "model": model,
         "prompt": prompt,
-        "cached": str(fp.relative_to(PHOTOS_DIR.parent.parent)),
+        "cached": f"assets/photos/{out_name}",
         "bytes": len(img),
+        "time_s": round(dt, 1),
         "timestamp": int(time.time()),
-    }
-    sources_path = PHOTOS_DIR / "sources.json"
-    existing = json.loads(sources_path.read_text()) if sources_path.exists() else []
-    existing.append(src)
+    })
     sources_path.write_text(json.dumps(existing, indent=1))
     return fp

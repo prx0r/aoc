@@ -302,19 +302,28 @@ def _background(bg, accent: tuple, slide_index: int, is_cta: bool) -> Image.Imag
         photo = ImageOps.fit(photo, (W, H), method=Image.Resampling.LANCZOS,
                              centering=(0.5, 0.45)).convert("RGB")
         dark = Image.new("RGB", (W, H), (5, 6, 12))
-        photo = Image.blend(photo, dark, 0.62)
+        photo = Image.blend(photo, dark, 0.72)
         # Defocus: kills fine texture (engraving hatch, foliage) so type
         # owns the slide; shapes stay readable. Deterministic.
         photo = photo.filter(ImageFilter.GaussianBlur(4))
-        # Edge scrim: darken top 16% / bottom 16% so photo texture can't
-        # trip the UI-safe margins check (edges must stay calmer than text).
-        mask = Image.new("L", (1, H))
-        mpx = mask.load()
-        for y in range(H):
-            edge = min(y / (0.16 * H), (H - y) / (0.16 * H), 1.0)
-            mpx[0, y] = int(190 * (1.0 - edge))
-        mask = mask.resize((W, H))
-        return Image.composite(Image.new("RGB", (W, H), (4, 5, 10)), photo, mask)
+        # Edge scrim: solid dark at very top/bottom, gradient to transparent.
+        # Top 6% = fully opaque dark (kills any bright glow from photo).
+        # 6%-14% = gradient fade. Bottom mirrors.
+        scrim = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        sdraw = ImageDraw.Draw(scrim)
+        for y in range(int(H * 0.14)):
+            if y < H * 0.06:
+                alpha = 255
+            else:
+                alpha = int(255 * (1.0 - (y - H * 0.06) / (H * 0.08)))
+            sdraw.line([(0, y), (W, y)], fill=(4, 5, 10, alpha))
+        for y in range(H - int(H * 0.14), H):
+            if y > H - H * 0.06:
+                alpha = 255
+            else:
+                alpha = int(255 * (1.0 - (H * 0.06 - (H - y)) / (H * 0.08)))
+            sdraw.line([(0, y), (W, y)], fill=(4, 5, 10, alpha))
+        return Image.alpha_composite(photo.convert("RGBA"), scrim).convert("RGB")
     if is_cta:
         light = tuple(min(255, c + 40) for c in accent)
         deep = tuple(max(0, c - 90) for c in accent)
