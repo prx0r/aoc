@@ -60,6 +60,7 @@ Prefers mutations of patterns that produced qualified leads, not just views.
 - `docs/HYPOTHESIS.md` — the bet, the £100 split, what counts as winning
 - `docs/MINING.md` — what we stole from each reference repo
 - `docs/PIPELINE.md` — how to run the experiment end-to-end
+- `docs/VALIDATION.md` — gates, pixel checks, contact sheets, what humans still do
 - `reference/README.md` — where the clones live (not vendored)
 
 Proven: `store/aoc_66b19fb4c46b/` — 7 slides + ZIP from one command. MCP: 5 tools (`aoc_status/hooks/build/rank/receipts`).

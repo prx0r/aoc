@@ -12,9 +12,12 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
+from core.gates import run_gates
+from core.proof import proof_from_plan
 from core.receipt import append_receipt
+from core.validate import contact_sheet, validate_carousel
 from render.slide import export_zip, render_slideshow
-from slides.generate import generate_slides_deterministic, script_to_json
+from slides.generate import generate_slides_deterministic, load_segment, script_to_json
 
 
 def _content_id(hook: str, template: str) -> str:
@@ -79,13 +82,51 @@ def export(manifest: dict, out_dir: Path | str, zip_name: str = "tiktok_carousel
 
 def run_carousel(hook: str, template: str = "opportunity", base_dir: Path | str = "store",
                  receipts_path: Path | str = "receipts/content.jsonl",
-                 segment: str = "electrician", audience: str | None = None) -> dict:
-    """Full local run: plan → render → export → receipt. No network. No publish."""
+                 segment: str = "electrician", audience: str | None = None,
+                 enforce_gates: bool = True) -> dict:
+    """Full local run: plan → proof → gates → render → validate → export → receipt.
+
+    Fail-closed like /content: gate failures write a FAIL receipt and raise;
+    nothing renders. Pixel validation runs post-render; failures also FAIL.
+    No network. No publish.
+    """
     base = Path(base_dir)
     seg = segment or (audience or "electrician")
     plan_dict = plan(hook, template, audience=seg, segment=seg)
+    skin = load_segment(seg)
+
+    # proof + gates BEFORE render
+    proof = proof_from_plan(plan_dict, skin)
+    gates = run_gates(plan_dict, proof, seg, receipts_path)
+    if enforce_gates and not gates["passed"]:
+        failed = {k: v for k, v in gates["gates"].items() if not v["ok"]}
+        append_receipt(receipts_path, "carousel_rejected", {
+            "content_id": plan_dict["content_id"],
+            "hook": hook,
+            "template": template,
+            "segment": seg,
+            "failed_gates": failed,
+        })
+        raise ValueError(f"gates failed: {failed}")
+
     out_dir = base / plan_dict["content_id"]
     manifest = render(plan_dict, out_dir)
+
+    # pixel validation AFTER render, before export
+    validation = validate_carousel(out_dir, manifest)
+    sheet = contact_sheet(out_dir)
+    manifest["validation"] = validation
+    manifest["contact_sheet"] = sheet.name
+    (out_dir / "manifest.json").write_text(json.dumps(manifest, indent=2))
+    if enforce_gates and not validation["passed"]:
+        bad = {k: v for k, v in validation["slides"].items() if not v["ok"]}
+        append_receipt(receipts_path, "carousel_rejected", {
+            "content_id": plan_dict["content_id"],
+            "reason": "pixel validation",
+            "failed_slides": bad,
+        })
+        raise ValueError(f"pixel validation failed: {list(bad)}")
+
     zip_path = export(manifest, out_dir)
     receipt = append_receipt(receipts_path, "carousel_built", {
         "content_id": plan_dict["content_id"],
@@ -93,6 +134,10 @@ def run_carousel(hook: str, template: str = "opportunity", base_dir: Path | str 
         "template": template,
         "segment": seg,
         "slides": len(manifest["slides"]),
+        "gates": gates["gates"],
+        "proof_id": proof.proof_id,
         "zip": str(zip_path),
     })
-    return {"plan": plan_dict, "manifest": manifest, "zip": str(zip_path), "receipt": receipt}
+    return {"plan": plan_dict, "proof": proof.to_dict(),
+            "gates": gates, "manifest": manifest,
+            "zip": str(zip_path), "receipt": receipt}

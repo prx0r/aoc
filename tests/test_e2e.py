@@ -42,9 +42,9 @@ def test_e2e_all_segments_build_valid_carousels(tmp_path):
 
 
 def test_e2e_run_carousel_writes_receipt(tmp_path):
-    rp = tmp_path / "content.jsonl"
+    rp = tmp_path / "r.jsonl"
     r = run_carousel(
-        "Which of these would you automate first?",
+        "Plumbers — who triages while you're under a boiler?",
         "opportunity",
         base_dir=tmp_path / "store",
         receipts_path=rp,
