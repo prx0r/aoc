@@ -129,6 +129,21 @@ def aoc_receipts():
     return {"ok": ok, "message": msg}
 
 
+def aoc_backup(content_id: str):
+    """Back up a built carousel to R2."""
+    sys.path.insert(0, str(ROOT))
+    import os
+    env_file = ROOT / ".env"
+    if env_file.exists():
+        for line in env_file.read_text().splitlines():
+            if line.strip() and not line.startswith("#") and "=" in line:
+                k, v = line.split("=", 1)
+                os.environ.setdefault(k.strip(), v.strip())
+    from core.backup import backup_store
+    return backup_store(content_id, store_dir=ROOT / "store",
+                        receipts_path=ROOT / "receipts/content.jsonl")
+
+
 def aoc_review(content_id: str):
     """Run the automated half of the 15-point review on a built carousel."""
     sys.path.insert(0, str(ROOT))
@@ -204,6 +219,7 @@ TOOLS = [
     {"name": "aoc_publish", "description": "Manual-pending publish adapter (no auto-post by design)", "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}, "platform": {"type": "string", "default": "tiktok"}}, "required": ["content_id"]}},
     {"name": "aoc_rank", "description": "Rank creatives by leads/sales from memory", "inputSchema": {"type": "object", "properties": {"metric": {"type": "string", "default": "leads"}}}},
     {"name": "aoc_receipts", "description": "Verify receipt chain integrity", "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "aoc_backup", "description": "Back up a built carousel to R2 (needs R2_* env). Writes backed_up receipt.", "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}}, "required": ["content_id"]}},
     {"name": "aoc_review", "description": "Run the 15-point review: automated checks now, human items queued", "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}}, "required": ["content_id"]}},
     {"name": "aoc_signoff", "description": "Record human verdict: approved|revise|rejected with reason", "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}, "decision": {"type": "string"}, "reason": {"type": "string"}}, "required": ["content_id", "decision", "reason"]}},
     {"name": "aoc_metrics", "description": "Append a raw metrics snapshot (manual/Studio CSV/API). Never overwrites.", "inputSchema": {"type": "object", "properties": {"post_url": {"type": "string"}, "content_id": {"type": "string"}, "metrics": {"type": "object"}}, "required": ["post_url"]}},

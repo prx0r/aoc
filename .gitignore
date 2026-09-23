@@ -9,3 +9,5 @@ receipts/*.jsonl
 *.jpg
 *.png
 .venv/
+.env
+.env.*
