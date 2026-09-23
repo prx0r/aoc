@@ -1,0 +1,17 @@
+proofs:
+- id: thin_quotes
+  claim: Quote requests miss vehicle, location, condition, timing
+  source: verticals/car-detailers/PAINS.md (stub)
+  use: Quote-triage angle
+- id: approval_bounds
+  claim: Photo-based pricing needs clear approval boundaries
+  source: verticals/car-detailers/PAINS.md (stub)
+  use: Approval angle
+- id: repeat_gap
+  claim: Repeat services not systematically offered; reviews rarely collected
+  source: verticals/car-detailers/PAINS.md (stub)
+  use: Repeat angle
+- id: offer_pilot
+  claim: £349–£599 pilot test price (hypothesis until validated)
+  source: targets.md mobile-detailer row
+  use: Close slide

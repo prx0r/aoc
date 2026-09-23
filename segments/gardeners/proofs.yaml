@@ -1,0 +1,17 @@
+proofs:
+- id: skip_debt
+  claim: Unlogged skips and unchased debt — round economics leak
+  source: verticals/gardeners-window-cleaners/PAINS.md §1
+  use: Round-discipline angle
+- id: recanvass_gap
+  claim: Lapsed round customers never re-canvassed though streets know the van
+  source: verticals/gardeners-window-cleaners/PAINS.md §2
+  use: Re-canvass angle
+- id: paper_risk
+  claim: Paper rounds are a single point of failure for visits, skips, payments, debt
+  source: verticals/gardeners-window-cleaners/PAINS.md §3
+  use: Risk angle
+- id: offer_pilot
+  claim: £349–£599 pilot test price (hypothesis until validated)
+  source: targets.md gardener/window-cleaner row
+  use: Close slide

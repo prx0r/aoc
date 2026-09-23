@@ -1,0 +1,22 @@
+hooks:
+- text: Lash techs — who tracks fill intervals?
+  angle: pain_callout
+  audience: lashes
+- text: Patch test due. Allergy record where?
+  angle: safety
+  audience: lashes
+- text: Fills every 3 weeks, rebooking never. Sound familiar?
+  angle: mechanism
+  audience: lashes
+- text: 'Consent reminders: awkward to send, risky to skip.'
+  angle: objection_flip
+  audience: lashes
+- text: 'Before: DMs. After: intervals + consent + deposits.'
+  angle: before_after
+  audience: lashes
+- text: How many fills slipped this month?
+  angle: diagnostic
+  audience: lashes
+- text: Your retention lives in your head. Move it to a list.
+  angle: mechanism
+  audience: lashes

@@ -1,0 +1,19 @@
+hooks:
+- text: Groomers — how much commission on YOUR regulars?
+  angle: pain_callout
+  audience: dog_groomers
+- text: Dogs need grooms every 6 weeks. Who reminds owners?
+  angle: mechanism
+  audience: dog_groomers
+- text: Waiting list in your head or on a list?
+  angle: diagnostic
+  audience: dog_groomers
+- text: 'Before: marketplace fees. After: direct repeats.'
+  angle: before_after
+  audience: dog_groomers
+- text: Lapsed owners aren't gone. They're unscheduled.
+  angle: winback
+  audience: dog_groomers
+- text: Behaviour flags live in memory. Risky, no?
+  angle: safety
+  audience: dog_groomers

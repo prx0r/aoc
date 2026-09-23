@@ -1,0 +1,17 @@
+proofs:
+- id: marketplace_fee
+  claim: Rover/Wag commissions on repeat customers; direct repeats worth winning
+  source: verticals/dog-groomers/PAINS.md §1
+  use: Direct-booking angle
+- id: lapse_gap
+  claim: Lapsed owners not re-engaged; recurring grooms lapse on scheduling
+  source: verticals/dog-groomers/PAINS.md §2
+  use: Win-back angle
+- id: flag_risk
+  claim: Medical and behaviour flags live in heads — safety and trust risk
+  source: verticals/dog-groomers/PAINS.md §3
+  use: Safety angle
+- id: offer_pilot
+  claim: £349–£499 pilot test price (hypothesis until validated)
+  source: targets.md dog-groomer row
+  use: Close slide

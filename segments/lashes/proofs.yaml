@@ -1,0 +1,18 @@
+proofs:
+- id: safety_gap
+  claim: Patch tests and allergy records must precede treatments; missing records
+    risk safety + reputation
+  source: verticals/lashes/PAINS.md §1
+  use: Safety angle
+- id: dm_burden
+  claim: Availability, prep, deposits and confirmations handled manually
+  source: verticals/lashes/PAINS.md §2
+  use: DM-chaos angle
+- id: rebook_gap
+  claim: Fills and brow maintenance have intervals; reminders need consent
+  source: verticals/lashes/PAINS.md §3
+  use: Win-back angle
+- id: offer_pilot
+  claim: £249–£349 pilot test price (hypothesis until validated)
+  source: targets.md lash-and-brow row
+  use: Close slide

@@ -1,0 +1,17 @@
+proofs:
+- id: zone_waste
+  claim: Service, location, travel, timing and price negotiated manually per DM
+  source: verticals/hair/PAINS.md §1
+  use: Zone angle
+- id: area_ambiguity
+  claim: Customers don't know the travel zone; travel costs handled inconsistently
+  source: verticals/hair/PAINS.md §2
+  use: Zone angle
+- id: rebook_gap
+  claim: Colour refreshes and reinstalls have intervals; portfolio scattered
+  source: verticals/hair/PAINS.md §3
+  use: Win-back angle
+- id: offer_pilot
+  claim: £299–£499 pilot test price (hypothesis until validated)
+  source: targets.md mobile-hairdresser row
+  use: Close slide

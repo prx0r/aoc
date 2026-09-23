@@ -1,0 +1,19 @@
+hooks:
+- text: Round workers — who chases the skips and the debt?
+  angle: pain_callout
+  audience: gardeners
+- text: 'Paper round book: what happens if you lose it?'
+  angle: risk
+  audience: gardeners
+- text: Streets know your van. Do lapsed streets hear from you?
+  angle: recanvass
+  audience: gardeners
+- text: 'Before: paper. After: rounds recorded, debt chased.'
+  angle: before_after
+  audience: gardeners
+- text: How many skips went unlogged this month?
+  angle: diagnostic
+  audience: gardeners
+- text: Missed enquiry while on the round = lost round.
+  angle: scenario
+  audience: gardeners

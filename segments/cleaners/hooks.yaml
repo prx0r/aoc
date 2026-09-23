@@ -1,0 +1,19 @@
+hooks:
+- text: Cleaners — which paused plan would you win back first?
+  angle: question_choice
+  audience: cleaners
+- text: Fixed prices, variable costs. Who's counting?
+  angle: mechanism
+  audience: cleaners
+- text: Payments chased at 10pm. Again?
+  angle: pain_callout
+  audience: cleaners
+- text: Paused plans don't restart themselves.
+  angle: winback
+  audience: cleaners
+- text: 'Before: chasing. After: reminders + win-backs drafted.'
+  angle: before_after
+  audience: cleaners
+- text: How much unbilled extras this month?
+  angle: diagnostic
+  audience: cleaners

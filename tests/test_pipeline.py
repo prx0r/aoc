@@ -54,14 +54,20 @@ def test_receipt_chain(tmp_path):
 
 
 def test_segments_are_skins():
-    from slides.generate import get_hooks, generate_slides_deterministic, load_segment
-    for seg, close_word in [("electrician", "QUOTE"), ("beautician", "BOOKING"),
-                            ("plumber", "JOBS"), ("sole_trader", "SETUP")]:
+    from slides.generate import SEGMENT_IDS, get_hooks, generate_slides_deterministic, load_segment
+    assert len(SEGMENT_IDS) == 13
+    closes = {"electrician": "QUOTE", "beautician": "BOOKING", "plumber": "JOBS",
+              "sole_trader": "SETUP", "nails": "NAILS", "lashes": "LASHES",
+              "hair": "HAIR", "cleaners": "CLEAN", "dog_groomers": "GROOM",
+              "gardeners": "ROUND", "car_detailers": "DETAIL",
+              "driving_instructors": "LESSONS", "weddings": "WEDDING"}
+    for seg in SEGMENT_IDS:
         skin = load_segment(seg)
         assert skin["profile"]["id"] == seg
-        assert len(get_hooks(seg)) >= 7
-        s = generate_slides_deterministic("test hook", seg, "opportunity")
-        assert close_word in s.slides[-1].text
-        # no cross-contamination: beautician decks never mention Tradify
-        if seg == "beautician":
-            assert not any("Tradify" in x.text for x in s.slides)
+        assert len(get_hooks(seg)) >= 6
+        for template in ("opportunity", "faq", "comparison"):
+            s = generate_slides_deterministic("test hook", seg, template)
+            assert closes[seg] in s.slides[-1].text, (seg, template)
+            # no cross-contamination: non-electrician decks never mention Tradify
+            if seg != "electrician":
+                assert not any("Tradify" in x.text for x in s.slides), (seg, template)

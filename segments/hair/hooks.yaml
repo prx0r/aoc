@@ -1,0 +1,19 @@
+hooks:
+- text: Mobile hairdressers — where does your travel zone end?
+  angle: pain_callout
+  audience: hair
+- text: Service + location + price, negotiated per DM. Again?
+  angle: mechanism
+  audience: hair
+- text: Colour refresh due. Who tells her?
+  angle: winback
+  audience: hair
+- text: Portfolio everywhere, bookings nowhere?
+  angle: recognition
+  audience: hair
+- text: 'Before: DMs. After: zones + booking + rebooking.'
+  angle: before_after
+  audience: hair
+- text: How many out-of-area enquiries this week?
+  angle: diagnostic
+  audience: hair

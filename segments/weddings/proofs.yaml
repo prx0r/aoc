@@ -1,0 +1,17 @@
+proofs:
+- id: thin_briefs
+  claim: Enquiries miss dates, venues, party sizes, packages, budgets
+  source: verticals/weddings/PAINS.md (stub)
+  use: Qualification angle
+- id: stale_availability
+  claim: Availability changes faster than manual calendars and profiles
+  source: verticals/weddings/PAINS.md (stub)
+  use: Availability angle
+- id: paperwork_drag
+  claim: Proposals, deposits, contracts and schedules need careful approval
+  source: verticals/weddings/PAINS.md (stub)
+  use: Approval angle
+- id: offer_pilot
+  claim: £399–£699 pilot test price (hypothesis until validated)
+  source: targets.md wedding-photo/MUA row
+  use: Close slide

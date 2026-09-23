@@ -1,0 +1,24 @@
+# dog_groomers campaign — marketing strategy
+
+## Channels (£0 first)
+Facebook + Maps + grooming directories. Paid only after organic proves saves + DMs. Never split early
+spend across platforms.
+
+## Angles (in order)
+direct-repeat, waiting-list, trust.
+
+## Lead proof
+marketplace fees on regulars.
+
+## Close
+DM GROOM pilot. One CTA per deck. Founding rate for first 3 (feedback + referral +
+case study).
+
+## Measure
+Cost per qualified conversation first, cost per customer second.
+Rank creatives by leads, never views (`aoc_rank`).
+
+## Compliance
+Verify contact source, record basis, TPS/CTPS screen, no auto-marketing to
+research records. Personalized variants are research-only until consented
+1-to-1 follow-up.

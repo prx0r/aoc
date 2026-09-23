@@ -1,0 +1,19 @@
+hooks:
+- text: Instructors — diary full, or diary chaos?
+  angle: pain_callout
+  audience: driving_instructors
+- text: Cancellation at 8am. Who fills 10am?
+  angle: scenario
+  audience: driving_instructors
+- text: 'Waiting list: names in phone, or actual list?'
+  angle: diagnostic
+  audience: driving_instructors
+- text: Progress in notebooks nobody can find?
+  angle: mechanism
+  audience: driving_instructors
+- text: 'Before: chaos. After: triaged diary + backfilled gaps.'
+  angle: before_after
+  audience: driving_instructors
+- text: Reviews after passes — or silence?
+  angle: recognition
+  audience: driving_instructors

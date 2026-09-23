@@ -59,8 +59,111 @@ HOOK_BANK = {
 # Shape stolen from /content gardens: engine is generic, skins supply copy.
 # segments/<id>/{profile,hooks,proofs,templates}.yaml
 
-SEGMENT_IDS = ["electrician", "beautician", "plumber", "sole_trader"]
+SEGMENT_IDS = ["electrician", "beautician", "plumber", "sole_trader",
+                 "nails", "lashes", "hair", "cleaners", "dog_groomers",
+                 "gardeners", "car_detailers", "driving_instructors", "weddings"]
 _SEG_CACHE: dict = {}
+
+
+def _shorten(text: str, n: int = 15) -> str:
+    """Trim to ~n words for body slides. Strips parenthetical caveats first."""
+    import re
+    text = re.sub(r"\s*\([^)]*\)\s*$", "", text).strip()
+    words = text.split()
+    return " ".join(words[:n]) if len(words) > n else text
+
+
+def _skin_claims(skin: dict) -> list[str]:
+    """Non-offer proof claims (offer close lives on the close slide)."""
+    proofs = (skin.get("proofs", {}) or {}).get("proofs", []) or []
+    return [p.get("claim", "") for p in proofs
+            if p.get("id") != "offer_pilot" and p.get("claim")]
+
+
+def _skin_pains(skin: dict) -> list[str]:
+    profile = skin.get("profile", {}) or {}
+    return [str(p) for p in (profile.get("pains") or []) if p]
+
+
+def _generic_deck(skin: dict, hook: str, template: str) -> list[SlideSpec] | None:
+    """Build deck purely from skin data. No hardcoded trade copy.
+
+    Explicit _SEGMENT_DECKS win where hand-tuned; everything else falls
+    here so new skins never leak another trade's words.
+    """
+    profile = skin.get("profile", {}) or {}
+    pains = _skin_pains(skin)
+    claims = _skin_claims(skin)
+    close = profile.get("close", "")
+    workflow = profile.get("workflow", "Triaged, drafted, reminded — you approve everything.")
+    comparator = profile.get("comparator", "the old way")
+    c0 = _shorten(claims[0]) if len(claims) > 0 else _shorten(pains[0]) if pains else ""
+    c1 = _shorten(claims[1]) if len(claims) > 1 else _shorten(pains[1]) if len(pains) > 1 else ""
+    p0 = _shorten(pains[0]) if pains else ""
+    p1 = _shorten(pains[1]) if len(pains) > 1 else p0
+
+    builders = {
+        "opportunity": [
+            ("hook", hook, 0.35), ("proof", c0, 0.5), ("body", c1, 0.5),
+            ("body", p0, 0.5), ("body", workflow, 0.5), ("close", close, 0.5),
+        ],
+        "before_after": [
+            ("hook", hook, 0.35), ("body", f"Before: {p0}", 0.5),
+            ("body", f"After: {workflow}", 0.5), ("body", f"Before: {p1}", 0.5),
+            ("body", f"After: handled systematically, approved by you.", 0.5),
+            ("close", close, 0.5),
+        ],
+        "faq": [
+            ("hook", hook, 0.35), ("body", f"Q: {p0}?", 0.5),
+            ("body", f"A: {workflow}", 0.5), ("body", f"Q: {p1}?", 0.5),
+            ("body", "A: Set up for you. Training included.", 0.5),
+            ("close", close, 0.5),
+        ],
+        "social_proof": [
+            ("hook", hook, 0.35), ("proof", c0, 0.5), ("proof", c1, 0.5),
+            ("body", p0, 0.5), ("close", close, 0.5),
+        ],
+        "demo": [
+            ("hook", hook, 0.35), ("body", "Watch: an enquiry lands (fictional demo)", 0.5),
+            ("body", workflow, 0.5),
+            ("body", "You approve on your phone between jobs", 0.5),
+            ("body", "Customer gets a pro response in minutes", 0.5),
+            ("close", "Nothing sends without your approval.", 0.5),
+        ],
+        "diagnostic": [
+            ("hook", hook, 0.35), ("body", p0 + "?", 0.5), ("body", p1 + "?", 0.5),
+            ("body", "That's not workload. It's triage.", 0.5),
+            ("body", workflow, 0.5), ("close", close, 0.5),
+        ],
+        "teardown": [
+            ("hook", hook, 0.35), ("body", p0 + ".", 0.5), ("body", p1 + ".", 0.5),
+            ("body", "The fix isn't trying harder. It's triage + drafts.", 0.5),
+            ("body", workflow, 0.5), ("close", close, 0.5),
+        ],
+        "comparison": [
+            ("hook", hook, 0.35),
+            ("body", f"{comparator}: you still do the admin.", 0.5),
+            ("body", f"AI Onboard: {workflow[:1].lower() + workflow[1:]}", 0.5),
+            ("body", "Question: who does the work — you, or the system?", 0.5),
+            ("body", "We don't replace tools. We run them.", 0.5),
+            ("close", close, 0.5),
+        ],
+    }
+    spec = builders.get(template)
+    if not spec or not close:
+        return None
+    slides, seen = [], set()
+    for k, t, pos in spec:
+        # dedupe: skins may state a proof that restates a pain — the gate
+        # would (correctly) refuse duplicate slide text, so drop it here
+        if not t or t in seen:
+            continue
+        seen.add(t)
+        slides.append(SlideSpec(text=t, position=pos, kind=k))
+    # keep the close last even if an earlier identical line was dropped
+    if slides and slides[-1].kind != "close" and close not in seen:
+        slides.append(SlideSpec(text=close, position=0.5, kind="close"))
+    return slides if len(slides) >= 5 else None
 
 
 def _segments_root() -> Path:
@@ -223,7 +326,7 @@ def generate_slides_deterministic(
         ],
     }
 
-    # Segment override: explicit deck wins (hook + bodies + segment close).
+    # 1. Explicit hand-tuned deck wins.
     key = (audience, template)
     if key in _SEGMENT_DECKS:
         bodies = _SEGMENT_DECKS[key]
@@ -238,8 +341,23 @@ def generate_slides_deterministic(
             template=template, audience=audience,
         )
 
+    # 2. Generic skin-driven deck (no hardcoded trade copy).
+    try:
+        generic = _generic_deck(load_segment(audience), hook, template)
+    except Exception:
+        generic = None
+    if generic:
+        return SlideshowScript(
+            hook=hook,
+            slides=generic[:slide_count],
+            template=template,
+            audience=audience,
+        )
+
+    # 3. Legacy electrician decks (electrician segment only — never leaks).
+    if audience != "electrician":
+        raise ValueError(f"no deck for segment={audience} template={template}")
     slides = templates.get(template, templates["opportunity"])
-    # Substitute segment close line so generic decks don't leak electrician CTA.
     slides = list(slides)
     close = segment_close(audience)
     if close and slides and slides[-1].kind == "close":

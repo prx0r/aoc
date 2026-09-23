@@ -1,0 +1,18 @@
+proofs:
+- id: dm_burden
+  claim: Enquiries scattered across Instagram/TikTok/WhatsApp, booked manually
+  source: verticals/nails/PAINS.md §1
+  use: DM-chaos angle
+- id: noshow_risk
+  claim: Long appointments carry material + time costs; deposits + reminders are the
+    countermeasure
+  source: verticals/nails/PAINS.md §2
+  use: Deposit angle
+- id: rebook_gap
+  claim: Infills have natural intervals; lapsed clients rarely re-engaged
+  source: verticals/nails/PAINS.md §3
+  use: Win-back angle
+- id: offer_pilot
+  claim: £249–£349 pilot test price (hypothesis until validated)
+  source: targets.md nail-technician row
+  use: Close slide

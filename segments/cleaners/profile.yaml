@@ -1,0 +1,23 @@
+# Segment skin: cleaners (domestic cleaners, recurring rounds)
+# Source: aionboard targets.md + verticals/cleaners (PAINS).
+
+id: cleaners
+label: "UK domestic cleaners — recurring plans, unbilled extras, chasing payments"
+pains:
+  - "Paused or cancelled plans are never won back — recoverable revenue leaks"
+  - "Travel, materials and deep-clean extras go unbilled on fixed prices"
+  - "Payment reminders, plan changes and rebooking eat owner time"
+  - "Quote follow-ups never happen"
+offer:
+  price: "£349–£499 pilot test price (hypothesis until validated)"
+  founding: "£299 for first 3 (feedback + referral + case study)"
+  setup_time: "~1 hour remote; reminders + win-back lists day one"
+  includes: "enquiry triage, quote follow-up workflow, payment-reminder prep, win-back lists, review workflow, training + handover, 14 days fixes"
+  excluded: "website build, live voice service, Meta production integration (separately quoted per OFFER.md)"
+close: "DM CLEAN for pilot setup."
+dm_keyword: CLEAN
+workflow: "Follow-ups, reminders, win-backs drafted — you approve everything"
+comparator: "notebook + memory"
+tone: "plain, respectful; talk recovered revenue, not software"
+competitor_note: "Don't replace anything. Add follow-up + reminders + win-back."
+hashtags: ["#cleaningbusiness", "#domesticcleaner", "#smallbusiness", "#ukbusiness"]

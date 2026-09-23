@@ -1,0 +1,17 @@
+proofs:
+- id: winback_leak
+  claim: Paused or cancelled plans never won back — recoverable revenue leaks
+  source: verticals/cleaners/PAINS.md §1
+  use: Win-back angle
+- id: unbilled_extras
+  claim: Travel, materials and deep-clean extras go unbilled on fixed prices
+  source: verticals/cleaners/PAINS.md §2
+  use: Margin angle
+- id: chasing_time
+  claim: Payment reminders, plan changes and rebooking eat owner time
+  source: verticals/cleaners/PAINS.md §3
+  use: Time angle
+- id: offer_pilot
+  claim: £349–£499 pilot test price (hypothesis until validated)
+  source: targets.md domestic-cleaner row
+  use: Close slide

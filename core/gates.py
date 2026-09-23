@@ -15,8 +15,17 @@ BUYER_TERMS = {
     "electrician": {"electrician", "electricians", "spark", "sparkie", "sparkies",
                     "quotes", "tools", "tradify", "job"},
     "beautician": {"salon", "chair", "booking", "no-show", "no-shows", "client"},
-    "plumber": {"plumber", "plumbers", "boiler", "triage", "callout", "job"},
+    "plumber": {"plumber", "boiler", "triage", "callout", "job"},
     "sole_trader": {"sole trader", "google", "whatsapp", "invoice", "customer"},
+    "nails": {"nail", "nails", "tech", "sets", "infill", "booking"},
+    "lashes": {"lash", "lashes", "brow", "brows", "fill", "fills", "patch"},
+    "hair": {"hair", "braids", "travel", "zone", "colour", "color", "client"},
+    "cleaners": {"cleaner", "cleaners", "clean", "plans", "payments"},
+    "dog_groomers": {"groom", "groomer", "dog", "dogs", "booking"},
+    "gardeners": {"round", "rounds", "van", "garden", "window", "skip", "skips"},
+    "car_detailers": {"detail", "detailer", "car", "cars", "paint", "quote"},
+    "driving_instructors": {"instructor", "lesson", "lessons", "diary", "pupil", "test"},
+    "weddings": {"wedding", "weddings", "bride", "venue", "photographer", "mua"},
 }
 
 

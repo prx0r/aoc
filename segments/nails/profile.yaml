@@ -1,0 +1,23 @@
+# Segment skin: nails (independent / home-based nail technicians)
+# Source: aionboard targets.md + verticals/nails (PAINS, profile.json, CAMPAIGN).
+
+id: nails
+label: "UK nail technicians — independent/home-based, social-led enquiries, repeat infills"
+pains:
+  - "Enquiries scattered across Instagram/TikTok/WhatsApp DMs, booked manually"
+  - "No-shows on long appointments cost materials + hours"
+  - "Infills have natural intervals but lapsed regulars are never rebooked"
+  - "Portfolio scattered across social posts, reviews rarely collected"
+offer:
+  price: "£249–£349 pilot test price (hypothesis until validated)"
+  founding: "£299 for first 3 (feedback + referral + case study)"
+  setup_time: "~1 hour remote; booking-link + deposit prep day one"
+  includes: "booking-link setup, deposit + reminder preparation, social enquiry triage, rebooking lists, review workflow, training + handover, 14 days fixes"
+  excluded: "website build, live voice service, Meta production integration (separately quoted per OFFER.md)"
+close: "DM NAILS for pilot setup."
+dm_keyword: NAILS
+workflow: "Booking-link triage, deposit + reminder prep — you approve every send"
+comparator: "DM chaos"
+tone: "warm, visual, peer-to-peer; talk fully-booked columns, not software"
+competitor_note: "Don't replace Booksy/Fresha. Add triage + deposits + rebooking on top."
+hashtags: ["#nailtech", "#nailtechnician", "#nailsuk", "#smallbusiness", "#ukbusiness"]

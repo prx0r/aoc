@@ -1,0 +1,23 @@
+# Segment skin: lashes (lash + brow artists)
+# Source: aionboard targets.md + verticals/lashes (PAINS).
+
+id: lashes
+label: "UK lash + brow artists — fills on intervals, patch-test critical"
+pains:
+  - "Lash fills and brow maintenance have natural intervals but no systematic rebooking"
+  - "Patch tests and allergy records live nowhere — safety + reputational risk"
+  - "Availability, prep instructions, deposits handled manually in DMs"
+  - "Portfolio scattered; reviews rarely collected"
+offer:
+  price: "£249–£349 pilot test price (hypothesis until validated)"
+  founding: "£299 for first 3 (feedback + referral + case study)"
+  setup_time: "~1 hour remote; rebooking + reminder prep day one"
+  includes: "booking-link setup, fill-interval rebooking lists, consent-based reminders, patch-test workflow, review workflow, training + handover, 14 days fixes"
+  excluded: "website build, live voice service, Meta production integration (separately quoted per OFFER.md)"
+close: "DM LASHES for pilot setup."
+dm_keyword: LASHES
+workflow: "Fill-interval rebooking, consent reminders — you approve every send"
+comparator: "DM chaos"
+tone: "warm, precise; safety-first language (patch tests, consent)"
+competitor_note: "Don't replace booking platforms. Add intervals + consent + rebooking."
+hashtags: ["#lashtech", "#lashartist", "#browartist", "#smallbusiness", "#ukbusiness"]

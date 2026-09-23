@@ -16,5 +16,7 @@ offer:
 close: "DM QUOTE for £499 setup."
 dm_keyword: QUOTE
 tone: "direct, slightly provocative, no corporate speak; never insult Tradify — connect it"
+workflow: "AI triages enquiries, drafts quotes — you approve everything"
+comparator: "Tradify"
 competitor_note: "Don't replace Tradify/Checkatrade. Connect email+calendar+quotes together."
 hashtags: ["#electrician", "#electricianlife", "#tradesman", "#smallbusiness", "#ukbusiness", "#electricianuk"]

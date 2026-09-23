@@ -1,0 +1,19 @@
+hooks:
+- text: Detailers — quote without year, location or photos?
+  angle: pain_callout
+  audience: car_detailers
+- text: Photo quote in, approval out. Who runs it?
+  angle: mechanism
+  audience: car_detailers
+- text: Rain Friday. Three bookings. Who reshuffles?
+  angle: scenario
+  audience: car_detailers
+- text: 'Before: DMs. After: structured quotes + repeats.'
+  angle: before_after
+  audience: car_detailers
+- text: One-time details should become repeat details.
+  angle: winback
+  audience: car_detailers
+- text: 'Reviews: every car, or only the good days?'
+  angle: recognition
+  audience: car_detailers

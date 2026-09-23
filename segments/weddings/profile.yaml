@@ -1,0 +1,23 @@
+# Segment skin: weddings (photographers + MUAs, occasion work)
+# Source: aionboard targets.md + verticals/weddings (PAINS stub).
+
+id: weddings
+label: "UK wedding photographers + MUAs — dates, venues, deposits, portfolios"
+pains:
+  - "Enquiries arrive missing dates, venues, party sizes, packages, budgets"
+  - "Availability changes faster than manual calendars and marketplace profiles"
+  - "Proposals, deposits, contracts and payment schedules need careful approval"
+  - "Portfolio scattered across socials; influential reviews rarely collected"
+offer:
+  price: "£399–£699 pilot test price (hypothesis until validated)"
+  founding: "£299 for first 3 (feedback + referral + case study)"
+  setup_time: "~1 hour remote; enquiry-qualification + availability setup day one"
+  includes: "enquiry qualification workflow, availability management, proposal/deposit prep with approval gates, review workflow, training + handover, 14 days fixes"
+  excluded: "website build, live voice service, Meta production integration (separately quoted per OFFER.md)"
+close: "DM WEDDING for pilot setup."
+dm_keyword: WEDDING
+workflow: "Enquiries qualified, availability kept, proposals drafted — you approve everything"
+comparator: "marketplace inbox"
+tone: "premium but plain; dates, deposits, approval — never pushy"
+competitor_note: "Don't replace marketplaces. Add qualification + availability + approval."
+hashtags: ["#weddingphotographer", "#weddingmua", "#ukwedding", "#smallbusiness"]

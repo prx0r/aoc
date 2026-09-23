@@ -1,0 +1,22 @@
+hooks:
+- text: Nail techs — DMs at midnight, booking at 9am?
+  angle: pain_callout
+  audience: nails
+- text: Infill due in 3 weeks. Who reminds her?
+  angle: mechanism
+  audience: nails
+- text: How many sets walked away with no deposit?
+  angle: diagnostic
+  audience: nails
+- text: 'Before: DM chaos. After: booking link + deposits.'
+  angle: before_after
+  audience: nails
+- text: Lapsed regulars don't rebook themselves.
+  angle: winback
+  audience: nails
+- text: Your sets deserve better than a messy inbox.
+  angle: recognition
+  audience: nails
+- text: Patch tests, deposits, reminders — handled where?
+  angle: mechanism
+  audience: nails

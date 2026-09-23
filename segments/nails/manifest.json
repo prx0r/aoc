@@ -1,0 +1,32 @@
+{
+  "segment": "nails",
+  "display_name": "Nail Technicians",
+  "status": "skin-ready",
+  "pilot_package": "standard-ai-setup",
+  "public_offer": "/root/aionboard/OFFER.md",
+  "workflows": [
+    "booking-triage",
+    "deposit-reminder-prep",
+    "win-back-list"
+  ],
+  "required_evidence": [
+    "baseline_metrics",
+    "installation_checklist",
+    "handover",
+    "customer_permission_for_case_study"
+  ],
+  "excluded_from_standard_pilot": [
+    "website_build",
+    "live_voice_service",
+    "meta_production_integration",
+    "custom_integration",
+    "lead_generation"
+  ],
+  "contact_rules": [
+    "verify contact source before storage",
+    "record permission or lawful basis before marketing contact",
+    "screen live calls against TPS, CTPS, suppression list",
+    "no auto-marketing to research records"
+  ],
+  "prospect_sources": "TikTok, Instagram, local beauty directories"
+}

@@ -75,11 +75,15 @@ aoc/
 ├── channels/          # TikTok, Instagram, Facebook profiles
 ├── receipts/          # Hash-chained content log
 ├── store/             # Rendered slides, scripts, ZIPs
-├── segments/          # Per-trade skins (engine never names a trade)
-│   ├── electrician/   # Reference skin: hooks, proofs, profile, templates
-│   ├── beautician/    # No-shows, deposits, win-back
-│   ├── plumber/       # Triage, servicing, bookings
-│   └── sole_trader/   # Findable + bookable + paid
+├── segments/          # 13 skins (engine never names a trade)
+│   ├── electrician/   # ↔ aionboard electrician (10k prospects)
+│   ├── beautician/    # ↔ beauty (+nails/lashes/hair)
+│   ├── nails/ lashes/ hair/          # beauty sub-niches, own prices
+│   ├── cleaners/ dog_groomers/ gardeners/
+│   ├── car_detailers/ driving_instructors/ weddings/
+│   ├── plumber/       # aoc-original (no aionboard pack yet)
+│   └── sole_trader/   # aoc-original (general gap)
+│   └── each: profile,hooks,proofs,templates,manifest.yaml + PAINS/CAMPAIGN.md
 ├── reference/         # Cloned reference repos
 ├── docs/              # Architecture, protocols
 └── tests/             # Pipeline tests

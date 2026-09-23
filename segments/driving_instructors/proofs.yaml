@@ -1,0 +1,17 @@
+proofs:
+- id: scattered_enquiries
+  claim: Enquiries across phone, SMS, social, directories, referrals
+  source: verticals/driving-instructors/PAINS.md (stub)
+  use: Triage angle
+- id: gap_waste
+  claim: Scheduling fights cancellations; waiting lists unmanaged
+  source: verticals/driving-instructors/PAINS.md (stub)
+  use: Backfill angle
+- id: memory_records
+  claim: Progress records live in notebooks, messages, memory
+  source: verticals/driving-instructors/PAINS.md (stub)
+  use: Records angle
+- id: offer_pilot
+  claim: £299–£499 pilot test price (hypothesis until validated)
+  source: targets.md driving-instructor row
+  use: Close slide
