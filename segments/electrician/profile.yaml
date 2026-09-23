@@ -11,7 +11,8 @@ offer:
   price: "£499 one-off"
   founding: "£299 for first 3 (feedback + referral + case study)"
   setup_time: "~1 hour remote, 4–6 hr standard package"
-  includes: "email + calendar + WhatsApp, voice agent for missed calls, quote builder, GBP optimisation, training + handover, 14 days fixes"
+  includes: "email + calendar setup, enquiry triage, quote drafting from approved price book, owner approval before anything outbound, GBP assistance, training + handover, 14 days fixes"
+  excluded: "website build, live voice service, WhatsApp production integration, Meta admin, custom integrations, lead-gen (separately quoted per OFFER.md)"
 close: "DM QUOTE for £499 setup."
 dm_keyword: QUOTE
 tone: "direct, slightly provocative, no corporate speak; never insult Tradify — connect it"

@@ -129,6 +129,32 @@ def aoc_receipts():
     return {"ok": ok, "message": msg}
 
 
+def aoc_score(limit: int = 20, min_score: int = 25):
+    """Score prospects from the CSV. Research ranking only, not permission."""
+    sys.path.insert(0, str(ROOT))
+    from core.personalize import top_prospects
+    rows = top_prospects("/root/aionboard/prospects_electrical.csv", limit=limit, min_score=min_score)
+    return [{"business": r.get("name"), "company_number": r.get("company_number"),
+             "area": r.get("region"), "score": r.get("score"),
+             "priority": r.get("priority")} for r in rows]
+
+
+def aoc_personalize(hook: str, template: str = "opportunity", segment: str = "electrician",
+                    business: str = "", company_number: str = "", area: str = "",
+                    status: str = "research-only"):
+    """Build one per-business variant. Identity-only tokens, consent-gated."""
+    sys.path.insert(0, str(ROOT))
+    from core.carousel import run_variant
+    from core.personalize import short_name, variant_spec
+    if not business:
+        return {"error": "business name required (never invent identity)"}
+    variant = variant_spec(
+        {"name": business, "company_number": company_number, "region": area,
+         "sic_codes": "", "status": "active"},
+        hook, template, segment, status=status)
+    return run_variant(variant, base_dir=ROOT / "store", receipts_path=ROOT / "receipts/content.jsonl")
+
+
 TOOLS = [
     {"name": "aoc_status", "description": "What the factory can do: templates, segments, hooks, receipts", "inputSchema": {"type": "object", "properties": {}}},
     {"name": "aoc_hooks", "description": "Hook bank for a segment (electrician|beautician|plumber|sole_trader)", "inputSchema": {"type": "object", "properties": {"audience": {"type": "string", "default": "electrician"}, "segment": {"type": "string", "default": ""}}}},
@@ -140,6 +166,8 @@ TOOLS = [
     {"name": "aoc_publish", "description": "Manual-pending publish adapter (no auto-post by design)", "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}, "platform": {"type": "string", "default": "tiktok"}}, "required": ["content_id"]}},
     {"name": "aoc_rank", "description": "Rank creatives by leads/sales from memory", "inputSchema": {"type": "object", "properties": {"metric": {"type": "string", "default": "leads"}}}},
     {"name": "aoc_receipts", "description": "Verify receipt chain integrity", "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "aoc_score", "description": "Score prospects from CSV (density+diversity, age unknown without CH API)", "inputSchema": {"type": "object", "properties": {"limit": {"type": "integer", "default": 20}, "min_score": {"type": "integer", "default": 25}}}},
+    {"name": "aoc_personalize", "description": "Build one per-business variant (identity tokens only, research-only unless consented)", "inputSchema": {"type": "object", "properties": {"hook": {"type": "string"}, "template": {"type": "string", "default": "opportunity"}, "segment": {"type": "string", "default": "electrician"}, "business": {"type": "string"}, "company_number": {"type": "string"}, "area": {"type": "string"}, "status": {"type": "string", "default": "research-only"}}, "required": ["hook", "business"]}},
 ]
 
 DISPATCH = {t["name"]: globals()[t["name"]] for t in TOOLS}

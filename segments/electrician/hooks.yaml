@@ -23,7 +23,7 @@ hooks:
     angle: before_after
     audience: owner_2_10_staff
 
-  - text: "Your phone rang at 3pm. You were on a job. AI answered."
+  - text: "Your phone rang at 3pm. The follow-up was drafted by 3:05."
     angle: scenario
     audience: owner_2_10_staff
 

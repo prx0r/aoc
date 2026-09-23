@@ -106,14 +106,39 @@ def gate_render_legible(plan: dict) -> tuple[bool, str]:
     return True, "legible"
 
 
+def gate_personalization(variant: dict | None) -> tuple[bool, str]:
+    """Per-business variants: identity tokens only, consent-gated delivery.
+
+    - Every {token} in hook/slides must be in ALLOWED_TOKENS.
+    - Business name must come from the CSV row (never invented).
+    - status research-only = do NOT send; consented = 1-to-1 follow-up only.
+    """
+    if variant is None:
+        return True, "segment-generic (no personalization)"
+    from core.personalize import ALLOWED_TOKENS, check_tokens
+    if not variant.get("business"):
+        return False, "no business name (invented identity refused)"
+    for text in [variant.get("hook", "")]:
+        ok, detail = check_tokens(text)
+        if not ok:
+            return False, detail
+    if variant.get("status") not in ("research-only", "consented"):
+        return False, "missing delivery status"
+    if not variant.get("company_number"):
+        return False, "no company_number (untraceable prospect)"
+    return True, f"identity-only, status={variant['status']}"
+
+
 def run_gates(plan: dict, proof, segment: str,
-              receipts_path: Path | str = "receipts/content.jsonl") -> dict:
+              receipts_path: Path | str = "receipts/content.jsonl",
+              variant: dict | None = None) -> dict:
     results = {
         "evidence-fresh-v1": gate_evidence_fresh(proof),
         "no-duplicate-v1": gate_no_duplicate(plan.get("content_id", ""), plan.get("template", ""), receipts_path),
         "claim-resolved-v1": gate_claim_resolved(plan, proof),
         "hook-quality-v1": gate_hook_quality(plan.get("hook", ""), segment),
         "render-legible-v1": gate_render_legible(plan),
+        "personalization-v1": gate_personalization(variant),
     }
     passed = all(ok for ok, _ in results.values())
     return {"passed": passed,

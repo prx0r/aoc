@@ -83,12 +83,13 @@ def export(manifest: dict, out_dir: Path | str, zip_name: str = "tiktok_carousel
 def run_carousel(hook: str, template: str = "opportunity", base_dir: Path | str = "store",
                  receipts_path: Path | str = "receipts/content.jsonl",
                  segment: str = "electrician", audience: str | None = None,
-                 enforce_gates: bool = True) -> dict:
+                 enforce_gates: bool = True, variant: dict | None = None) -> dict:
     """Full local run: plan → proof → gates → render → validate → export → receipt.
 
     Fail-closed like /content: gate failures write a FAIL receipt and raise;
     nothing renders. Pixel validation runs post-render; failures also FAIL.
-    No network. No publish.
+    variant (optional): per-business spec from core.personalize — adds the
+    personalization gate and stamps the receipt. No network. No publish.
     """
     base = Path(base_dir)
     seg = segment or (audience or "electrician")
@@ -97,7 +98,7 @@ def run_carousel(hook: str, template: str = "opportunity", base_dir: Path | str 
 
     # proof + gates BEFORE render
     proof = proof_from_plan(plan_dict, skin)
-    gates = run_gates(plan_dict, proof, seg, receipts_path)
+    gates = run_gates(plan_dict, proof, seg, receipts_path, variant=variant)
     if enforce_gates and not gates["passed"]:
         failed = {k: v for k, v in gates["gates"].items() if not v["ok"]}
         append_receipt(receipts_path, "carousel_rejected", {
@@ -128,7 +129,7 @@ def run_carousel(hook: str, template: str = "opportunity", base_dir: Path | str 
         raise ValueError(f"pixel validation failed: {list(bad)}")
 
     zip_path = export(manifest, out_dir)
-    receipt = append_receipt(receipts_path, "carousel_built", {
+    receipt_data = {
         "content_id": plan_dict["content_id"],
         "hook": hook,
         "template": template,
@@ -137,7 +138,31 @@ def run_carousel(hook: str, template: str = "opportunity", base_dir: Path | str 
         "gates": gates["gates"],
         "proof_id": proof.proof_id,
         "zip": str(zip_path),
-    })
+    }
+    if variant is not None:
+        receipt_data["variant"] = {
+            "business": variant.get("business"),
+            "company_number": variant.get("company_number"),
+            "area": variant.get("area"),
+            "status": variant.get("status"),
+            "score": (variant.get("score") or {}).get("score"),
+        }
+    receipt = append_receipt(receipts_path, "carousel_built", receipt_data)
     return {"plan": plan_dict, "proof": proof.to_dict(),
             "gates": gates, "manifest": manifest,
             "zip": str(zip_path), "receipt": receipt}
+
+
+def run_variant(variant: dict, base_dir: Path | str = "store",
+                receipts_path: Path | str = "receipts/content.jsonl") -> dict:
+    """Build one per-business variant. Identity tokens only; consent-gated.
+
+    variant comes from core.personalize.variant_spec. The personalization
+    gate runs with the other five gates; research-only variants are stamped
+    do-NOT-send on the receipt.
+    """
+    return run_carousel(
+        variant["hook"], variant.get("template", "opportunity"),
+        base_dir=base_dir, receipts_path=receipts_path,
+        segment=variant.get("segment", "electrician"), variant=variant,
+    )

@@ -12,7 +12,8 @@ offer:
   price: "£499 one-off"
   founding: "£299 for first 3 (feedback + referral + case study)"
   setup_time: "~1 hour remote; complete business setup + AI training"
-  includes: "Google Business Profile, simple website with AI chat, enquiry triage, quote/invoice basics, training + handover, 14 days fixes"
+  includes: "Google Business Profile assistance, enquiry triage, quote/invoice basics, training + handover, 14 days fixes"
+  excluded: "website build, live voice service, WhatsApp production integration (separately quoted per OFFER.md)"
 close: "DM SETUP for £499 setup."
 dm_keyword: SETUP
 tone: "plain, encouraging; first setup not optimisation — completeness over cleverness"

@@ -42,7 +42,7 @@ HOOK_BANK = {
         "Am I doing this wrong?",
         "What would you automate first?",
         "62% of calls missed while on tools. Here's the fix.",
-        "Your phone rang at 3pm. You were on a job. AI answered.",
+        "Your phone rang at 3pm. The follow-up was drafted by 3:05.",
         "£499 to never miss another enquiry. Worth it?",
         "The electrician who answers first — wins the job.",
     ],
@@ -106,9 +106,9 @@ def segment_close(segment: str = "electrician") -> str:
 _SEGMENT_DECKS: dict[tuple[str, str], list[str]] = {
     ("beautician", "opportunity"): [
         "No-shows cost ~£10K a year per chair.",
-        "Deposits + SMS at 24h and 2h. No-shows stop.",
-        "Lapsed clients get win-back texts. Chairs fill.",
-        "Booking, deposits, reminders — live day one.",
+        "Deposit + reminder workflows, prepared in your booking platform.",
+        "Lapsed-client win-back lists, ready for your approval.",
+        "Booking triage set up day one. You approve every send.",
     ],
     ("beautician", "before_after"): [
         "Before: gaps Tue afternoons, chasing deposits by text.",
@@ -118,9 +118,9 @@ _SEGMENT_DECKS: dict[tuple[str, str], list[str]] = {
     ],
     ("plumber", "opportunity"): [
         "Emergency or routine — triage decides the day.",
-        "AI triages enquiries, books jobs, sends reminders.",
-        "Service-due engine chases repeat revenue.",
-        "Quotes drafted on jobs, approved on phone.",
+        "AI triages enquiries, prepares bookings and reminders.",
+        "Service-due lists chase repeat revenue.",
+        "Quotes drafted on jobs. You approve everything.",
     ],
     ("plumber", "before_after"): [
         "Before: callouts chaos, quotes at 10pm.",
@@ -162,13 +162,13 @@ def generate_slides_deterministic(
             SlideSpec(text="40% of UK sole traders already use AI", position=0.5, kind="proof"),
             SlideSpec(text="But only 18% have connected it to their business", position=0.5, kind="body"),
             SlideSpec(text="Missed calls. Late quotes. Lost jobs.", position=0.5, kind="body"),
-            SlideSpec(text="AI can answer calls, send quotes, book jobs — while you're on the tools", position=0.5, kind="body"),
+            SlideSpec(text="AI triages enquiries, drafts quotes — you approve everything", position=0.5, kind="body"),
             SlideSpec(text="One setup. No subscription. £499.", position=0.5, kind="close"),
         ],
         "before_after": [
             SlideSpec(text=hook, position=0.35, kind="hook"),
             SlideSpec(text="Before: Missed 3 calls yesterday, sent quotes at 11pm", position=0.5, kind="body"),
-            SlideSpec(text="After: AI answered all 3, sent quotes by 4pm", position=0.5, kind="body"),
+            SlideSpec(text="After: all 3 triaged, quotes drafted by 4pm, you approved", position=0.5, kind="body"),
             SlideSpec(text="Before: Spent Sundays doing admin", position=0.5, kind="body"),
             SlideSpec(text="After: AI handles invoicing, scheduling, follow-ups", position=0.5, kind="body"),
             SlideSpec(text="Same electrician. Same business. Different tools.", position=0.5, kind="close"),
@@ -191,11 +191,11 @@ def generate_slides_deterministic(
         ],
         "demo": [
             SlideSpec(text=hook, position=0.35, kind="hook"),
-            SlideSpec(text="Watch: A customer sends a WhatsApp at 2pm", position=0.5, kind="body"),
-            SlideSpec(text="AI responds with a quote template in 30 seconds", position=0.5, kind="body"),
+            SlideSpec(text="Watch: an enquiry lands at 2pm (fictional demo)", position=0.5, kind="body"),
+            SlideSpec(text="AI drafts a quote from your price book in 30 seconds", position=0.5, kind="body"),
             SlideSpec(text="You approve on your phone between jobs", position=0.5, kind="body"),
             SlideSpec(text="Customer gets a professional quote by 2:15pm", position=0.5, kind="body"),
-            SlideSpec(text="You never touched a keyboard.", position=0.5, kind="close"),
+            SlideSpec(text="Nothing sends without your approval.", position=0.5, kind="close"),
         ],
         "diagnostic": [
             SlideSpec(text=hook, position=0.35, kind="hook"),
