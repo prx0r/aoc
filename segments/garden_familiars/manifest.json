@@ -1,0 +1,27 @@
+{
+  "segment": "garden_familiars",
+  "display_name": "Garden Familiars",
+  "status": "skin-ready",
+  "pilot_package": "not-defined (no offer fixed; concept prices hypothetical)",
+  "public_offer": null,
+  "prospect_sources": "Etsy, planttok/gardentok, garden centres (to be validated)",
+  "workflows": [
+    "describe-choose-approve-connect",
+    "qr-permission-setup"
+  ],
+  "required_evidence": [
+    "offline alarm test",
+    "sensor calibration",
+    "condensation test",
+    "customer_permission_for_case_study"
+  ],
+  "excluded_from_standard_pilot": [
+    "ip-rating claims until tested",
+    "validated pricing",
+    "muse-microphone-streaming"
+  ],
+  "contact_rules": [
+    "no auto-marketing to research records"
+  ],
+  "trust_model": null
+}

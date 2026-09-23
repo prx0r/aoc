@@ -1,7 +1,7 @@
 # aoc — AI Onboard Content
 
 TikTok slideshow factory for AI Onboard. Generates 9:16 image carousels
-for 13 UK trade segments (electrician, beauty, nails, lashes, hair,
+for 13 UK trade segments plus POW Things companions (electrician, beauty, nails, lashes, hair,
 cleaners, dog_groomers, gardeners, car_detailers, driving_instructors,
 weddings, plumber, sole_trader).
 

@@ -2,7 +2,7 @@
 
 Shape stolen from `/content` gardens: the engine is generic, skins supply data.
 
-14 skins: 13 trades + `powthings` (POW physical companions — separate business
+15 skins: 13 trades + `powthings` + `garden_familiars` (POW consumer line) (POW physical companions — separate business
 line, separate memory namespace, launch-list close, hypothetical prices labeled).
 
 ## Rule

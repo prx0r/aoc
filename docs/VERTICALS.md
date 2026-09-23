@@ -20,7 +20,7 @@ changes, skins change — automation never outruns the offer.
 | plumber | — (aoc-original, VISION-sourced) | none | — |
 | sole_trader | — (aoc-original, VISION-sourced) | none | — |
 
-## Skin contract (all 13)
+## Skin contract (13 trade skins + powthings + garden_familiars = 15)
 
 `segments/<id>/{profile,hooks,proofs,templates,manifest}.yaml` +
 `PAINS.md` + `CAMPAIGN.md`. Engine falls back: explicit hand-tuned decks →

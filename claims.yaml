@@ -1084,6 +1084,79 @@ claims:
     conditions:
     - offer_is_current
     caveat: ''
+  garden_familiars.shared_capsule:
+    claim_id: garden_familiars.shared_capsule
+    type: hypothetical
+    text: One sealed capsule, many creatures — frog and mushroom share electronics
+    source: 'docs/garden-familiars.md (manufacturing rule: never two boards)'
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - garden_familiars
+    conditions: []
+    caveat: Design intent, not shipped hardware.
+  garden_familiars.friend_gift:
+    claim_id: garden_familiars.friend_gift
+    type: hypothetical
+    text: Garden Friend gift version needs no battery — NFC identity plus journal
+    source: docs/garden-familiars.md ($15–24 target, hypothetical)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - garden_familiars
+    conditions: []
+    caveat: Target price hypothetical.
+  garden_familiars.competition_honest:
+    claim_id: garden_familiars.competition_honest
+    type: hypothetical
+    text: Decorative worms and $17.99 sensors exist — none combine character, sensing
+      and agent identity
+    source: docs/garden-familiars.md (Etsy + Ecowitt cited with prices)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - garden_familiars
+    conditions: []
+    caveat: Positioning claim, not a measured advantage.
+  garden_familiars.no_ip_claim:
+    claim_id: garden_familiars.no_ip_claim
+    type: hypothetical
+    text: No waterproof rating advertised until the finished design passes its test
+    source: docs/garden-familiars.md (hard constraint)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - garden_familiars
+    conditions: []
+    caveat: Process promise.
+  garden_familiars.tap_hold:
+    claim_id: garden_familiars.tap_hold
+    type: hypothetical
+    text: One button, one LED — tap for status, hold to pair
+    source: docs/garden-familiars.md (connected spec)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - garden_familiars
+    conditions: []
+    caveat: Spec, not shipped.
+  garden_familiars.sleepy_electronics:
+    claim_id: garden_familiars.sleepy_electronics
+    type: hypothetical
+    text: Wakes, measures, transmits, sleeps — replaceable batteries
+    source: docs/garden-familiars.md (power design, 3xAA proposed subject to testing)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - garden_familiars
+    conditions: []
+    caveat: Proposed architecture, untested.
 types:
 - first_party_offer
 - verified_stat

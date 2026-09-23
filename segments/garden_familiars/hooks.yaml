@@ -1,0 +1,27 @@
+# garden_familiars hooks — buyer-named, question/number/comparison gated.
+
+hooks:
+  - text: "Tomato growers: who tells you the soil is dry?"
+    angle: pain_callout
+    audience: grower
+  - text: "Sir Hopsalot guards tomatoes. Who guards yours?"
+    angle: character
+    audience: grower
+  - text: "A mushroom that glows when herbs get thirsty?"
+    angle: curiosity
+    audience: plant_lover
+  - text: "Boo Bloom: the birthday gift that waters back — whose birthday?"
+    angle: gift
+    audience: gift_buyer
+  - text: "One creature, one probe, zero apps to learn?"
+    angle: simplicity
+    audience: plant_lover
+  - text: "Dragon or frog — which guards your garden?"
+    angle: question_choice
+    audience: plant_lover
+  - text: "Decorative worms can't text you. Ecowitt can't smile — agree?"
+    angle: comparison
+    audience: plant_lover
+  - text: "Design it Sunday. Plant it Saturday. Name it always."
+    angle: customisation
+    audience: maker

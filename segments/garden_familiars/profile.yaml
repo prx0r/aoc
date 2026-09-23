@@ -1,0 +1,24 @@
+# Segment skin: garden_familiars (POW Garden Familiars — consumer Etsy product)
+# Source: docs/garden-familiars.md. Prices hypothetical, no photos of finished
+# products, no waterproof tests passed — copy constraints in that file are law.
+
+id: garden_familiars
+label: "Garden lovers + gift buyers — plant people, Etsy shoppers, families"
+pains:
+  - "Tomatoes die quietly while you're busy — soil dries unnoticed"
+  - "Generic smart-home gadgets instead of personal garden characters"
+  - "Gifts that feel mass-produced instead of designed-by-giver"
+  - "Plant care knowledge lives nowhere — watering is guesswork"
+offer:
+  price: "Concept prices $15–$69 by version (HYPOTHETICAL, not validated)"
+  founding: "TBD — no offer fixed yet"
+  setup_time: "TBD"
+  includes: "Personalised creature, named digital plant, QR connect, agent permission setup"
+  excluded: "Any IP-rating claim until tested; any validated-cost claim; Muse microphone streaming"
+close: "DM FROG for launch updates."
+dm_keyword: FROG
+workflow: "Design it, name it, put it by your plant, scan to connect"
+comparator: "decorative worms and bare sensors"
+tone: "warm, storybook, gift-ready; name creatures (Sir Hopsalot, Sporebert, Boo Bloom, Dewdrop)"
+competitor_note: "Etsy worms/markers + Ecowitt $17.99 sensors exist. Difference: character + useful sensing + agent identity in one."
+hashtags: ["#gardentok", "#planttok", "#cottagegarden", "#etsyfinds", "#giftideas", "#tomatoes"]

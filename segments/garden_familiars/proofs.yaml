@@ -1,0 +1,33 @@
+# garden_familiars proofs — concepts and context, never validated outcomes.
+
+proofs:
+  - id: shared_capsule
+    claim: "One sealed capsule, many creatures — frog and mushroom share electronics"
+    source: "docs/garden-familiars.md (manufacturing rule: never two boards)"
+    use: "Platform angle"
+    caveat: "Design intent, not shipped hardware."
+  - id: friend_gift
+    claim: "Garden Friend gift version needs no battery — NFC identity plus journal"
+    source: "docs/garden-familiars.md ($15–24 target, hypothetical)"
+    use: "Gift angle"
+    caveat: "Target price hypothetical."
+  - id: competition_honest
+    claim: "Decorative worms and $17.99 sensors exist — none combine character, sensing and agent identity"
+    source: "docs/garden-familiars.md (Etsy + Ecowitt cited with prices)"
+    use: "Differentiation angle"
+    caveat: "Positioning claim, not a measured advantage."
+  - id: no_ip_claim
+    claim: "No waterproof rating advertised until the finished design passes its test"
+    source: "docs/garden-familiars.md (hard constraint)"
+    use: "Trust angle — honesty as the differentiator"
+    caveat: "Process promise."
+  - id: tap_hold
+    claim: "One button, one LED — tap for status, hold to pair"
+    source: "docs/garden-familiars.md (connected spec)"
+    use: "Simplicity angle"
+    caveat: "Spec, not shipped."
+  - id: sleepy_electronics
+    claim: "Wakes, measures, transmits, sleeps — replaceable batteries"
+    source: "docs/garden-familiars.md (power design, 3xAA proposed subject to testing)"
+    use: "Mechanism angle"
+    caveat: "Proposed architecture, untested."

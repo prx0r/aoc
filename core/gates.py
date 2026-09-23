@@ -29,6 +29,9 @@ BUYER_TERMS = {
     "powthings": {"plant", "plants", "clock", "coffee", "beans", "guitar",
                   "book", "dog", "sourdough", "frog", "dragon", "alarm",
                   "seedling", "mushroom"},
+    "garden_familiars": {"garden", "frog", "mushroom", "ghost", "dragon", "plant",
+                         "soil", "gift", "tomatoes", "herbs", "etsy",
+                         "birthday", "worms", "ecowitt"},
 }
 
 

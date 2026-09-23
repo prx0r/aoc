@@ -111,6 +111,7 @@ offers:
     availability_reason: "No offer fixed yet; prices hypothetical. Launch list only."
     eligible_segments:
       - powthings
+      - garden_familiars
     included_capabilities: []
     excluded_capabilities: []
     support_terms: "None yet."
