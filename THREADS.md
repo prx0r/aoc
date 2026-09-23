@@ -43,6 +43,16 @@ Blocked on product photography + Etsy shop creation (human steps).
 **Status:** deferred (see `docs/PEER_REVIEW_RESPONSE.md`). Needs per-source
 max-age config in claims registry.
 
+## Open — LIVE: puck-launch-01 awaits manual post (2026-09-23)
+
+Campaign `puck-launch-01` (glimlings / muse-quickstart waitlist / £0):
+hero AOC-48C37DFD (Puck workflows, premium) + variants AOC-567AA532
+(done-vs-todo comparison) + AOC-A4BC201B (named-Puck). All reviewed +
+signed, all linked (CRT:07f5eead6b862ebe / CRT:6e9df13d7ee6d198 /
+CRT:d8dde7afbd70e02d). Packet manual-pending; confirm refused without URL;
+funnel zeros. 3 Puck hooks banked. 2 first drafts rejected for length
+(14/13 words) — shortened, passed.
+
 ## Open — LIVE: mosswick-launch-01 awaits manual post (2026-09-23)
 
 Campaign `mosswick-launch-01` (glimlings / muse-quickstart waitlist / £0):

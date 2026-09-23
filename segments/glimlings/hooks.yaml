@@ -25,3 +25,12 @@ hooks:
   - text: "A gift with a name beats a gadget with a manual?"
     angle: gift
     audience: gift_buyer
+  - text: Puck runs your workflows. You just approve — fair?
+    angle: mechanism
+    audience: desk_buyer
+  - text: Puck's done list vs your to-do list — longer?
+    angle: comparison
+    audience: desk_buyer
+  - text: AI on your desk, named Puck — weird or wonderful?
+    angle: character
+    audience: desk_buyer
