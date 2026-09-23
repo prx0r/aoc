@@ -64,10 +64,11 @@ Tracks performance: `audience × hook × angle × slide_count × CTA × visual_s
 
 Prefers mutations of patterns that produced qualified leads, not just views.
 
-## Docs (27 files)
+## Docs (28 files)
 
 Start: `docs/HOW_IT_WORKS.md` → `docs/AUDIT.md` (latest state) → `THREADS.md`
-(open work). Then by need: `PIPELINES` (map of all 7 pipelines),
+(open work). Then by need: `AGENT_CONTROL` (full API/CLI reference for
+driving every layer), `PIPELINES` (map of all 7 pipelines),
 `FLOW` (full campaign flow, every command executable), `PIPELINE` (the £100
 experiment plan), `IDENTITY` (how one creative stays itself), `VALIDATION` + `QUALITY`
 (review it), `TEMPLATES` + `SEGMENTS` + `VERTICALS` (extend it),
@@ -98,7 +99,7 @@ aoc/
 │   ├── powthings/ garden_familiars/ glimlings/  # POW companion lines
 │   └── each: profile,hooks,proofs,templates,manifest.yaml + PAINS/CAMPAIGN.md
 ├── reference/         # Manifest of external clones (see reference/README.md)
-├── docs/              # 27 docs — start with HOW_IT_WORKS.md, then AUDIT.md
+├── docs/              # 28 docs — start with HOW_IT_WORKS.md, then AUDIT.md
 ├── THREADS.md         # Open work
 └── tests/             # Pipeline tests (90 green)
 ```
