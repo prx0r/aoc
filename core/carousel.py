@@ -22,19 +22,23 @@ from slides.generate import generate_slides_deterministic, load_segment, script_
 
 # Bump when render/slide.py changes: same hook+template must mint a new ID
 # rather than collide with pixels rendered by older code.
-RENDER_V = 2
+RENDER_V = 3
 
 
-def _content_id(hook: str, template: str, segment: str = "electrician") -> str:
-    return content_id_for(hook, template, segment, skin_hash(segment), gen_v=RENDER_V)
+def _content_id(hook: str, template: str, segment: str = "electrician",
+                kind: str = "organic") -> str:
+    return content_id_for(hook, template, segment, skin_hash(segment),
+                          gen_v=RENDER_V, kind=kind)
 
 
 def plan(hook: str, template: str = "opportunity", audience: str = "electrician",
-         slide_count: int = 6, cta: str | None = None, segment: str | None = None) -> dict:
+         slide_count: int = 6, cta: str | None = None, segment: str | None = None,
+         kind: str = "organic") -> dict:
     """Stage 1: hook → slide script (JSON contract). No files, no LLM needed.
 
     audience/segment select the skin (default electrician). CTA defaults to
-    the segment close line unless explicitly passed.
+    the segment close line unless explicitly passed. kind="ad" marks paid
+    variants — recorded on the plan so IDs never collide with organic.
     """
     seg = segment or audience
     from slides.generate import segment_close
@@ -43,8 +47,9 @@ def plan(hook: str, template: str = "opportunity", audience: str = "electrician"
     d = script_to_json(script)
     d["cta"] = cta
     d["segment"] = seg
+    d["kind"] = kind
     d["skin_hash"] = skin_hash(seg)
-    d["content_id"] = _content_id(hook, template, seg)
+    d["content_id"] = _content_id(hook, template, seg, kind=kind)
     d["created_at"] = datetime.now(timezone.utc).isoformat()
     return d
 
@@ -91,17 +96,26 @@ def export(manifest: dict, out_dir: Path | str, zip_name: str = "tiktok_carousel
 def run_carousel(hook: str, template: str = "opportunity", base_dir: Path | str = "store",
                  receipts_path: Path | str = "receipts/content.jsonl",
                  segment: str = "electrician", audience: str | None = None,
-                 enforce_gates: bool = True, variant: dict | None = None) -> dict:
+                 enforce_gates: bool = True, variant: dict | None = None,
+                 cta: str | None = None, kind: str = "organic") -> dict:
     """Full local run: plan → proof → gates → render → validate → export → receipt.
 
     Fail-closed like /content: gate failures write a FAIL receipt and raise;
     nothing renders. Pixel validation runs post-render; failures also FAIL.
     variant (optional): per-business spec from core.personalize — adds the
     personalization gate and stamps the receipt. No network. No publish.
+
+    kind="ad": paid variant. Requires explicit cta with qualification
+    (e.g. "UK electricians only"). Recorded on the receipt for spend tracking.
     """
     base = Path(base_dir)
     seg = segment or (audience or "electrician")
-    plan_dict = plan(hook, template, audience=seg, segment=seg)
+    if kind == "ad":
+        if not cta:
+            raise ValueError("ads require an explicit CTA with qualification")
+        plan_dict = plan(hook, template, audience=seg, segment=seg, cta=cta, kind=kind)
+    else:
+        plan_dict = plan(hook, template, audience=seg, segment=seg)
     skin = load_segment(seg)
     # NOTE: plan_dict["content_id"] is the full AOC:<64hex> identity.
     # Filesystem dirs use the short display form (colons break Win/Mac/URLs).
@@ -152,6 +166,7 @@ def run_carousel(hook: str, template: str = "opportunity", base_dir: Path | str 
         "hook": hook,
         "template": template,
         "segment": seg,
+        "kind": kind,
         "slides": len(manifest["slides"]),
         "gates": gates["gates"],
         "proof_id": proof.proof_id,

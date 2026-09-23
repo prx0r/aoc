@@ -73,6 +73,19 @@ def _shorten(text: str, n: int = 15) -> str:
     return " ".join(words[:n]) if len(words) > n else text
 
 
+def _mid_sentence(text: str) -> str:
+    """Lowercase the first letter for mid-sentence use — unless it's an
+    acronym (AI, SMS, GBP, EICR...). Blind lowercasing printed 'al triages'."""
+    import re
+    m = re.match(r"([A-Za-z]+)(.*)$", text, re.DOTALL)
+    if not m:
+        return text
+    first, rest = m.group(1), m.group(2)
+    if first.isupper() and len(first) <= 4:
+        return text
+    return first[:1].lower() + first[1:] + rest
+
+
 def _skin_claims(skin: dict) -> list[str]:
     """Non-offer proof claims (offer close lives on the close slide)."""
     proofs = (skin.get("proofs", {}) or {}).get("proofs", []) or []
@@ -144,7 +157,7 @@ def _generic_deck(skin: dict, hook: str, template: str) -> list[SlideSpec] | Non
         "comparison": [
             ("hook", hook, 0.35),
             ("body", f"{comparator}: you still do the admin.", 0.5),
-            ("body", f"AI Onboard: {workflow[:1].lower() + workflow[1:]}", 0.5),
+            ("body", f"AI Onboard: {_mid_sentence(workflow)}", 0.5),
             ("body", "Question: who does the work — you, or the system?", 0.5),
             ("body", "We don't replace tools. We run them.", 0.5),
             ("close", close, 0.5),

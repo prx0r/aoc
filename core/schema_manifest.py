@@ -16,7 +16,7 @@ SCHEMAS: dict[str, dict[str, str]] = {
     # core/carousel.py:plan
     "Plan": {
         "hook": "str", "template": "str", "audience": "str", "cta": "str",
-        "slides": "list", "segment": "str", "skin_hash": "str",
+        "slides": "list", "segment": "str", "kind": "str", "skin_hash": "str",
         "content_id": "str", "created_at": "str",
     },
     # core/proof.py:Proof.to_dict
