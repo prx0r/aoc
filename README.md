@@ -74,8 +74,11 @@ aoc/
 ├── channels/          # TikTok, Instagram, Facebook profiles
 ├── receipts/          # Hash-chained content log
 ├── store/             # Rendered slides, scripts, ZIPs
-├── assets/            # Images, hooks, proofs, templates
-│   └── electrician/   # Electrician-specific content
+├── segments/          # Per-trade skins (engine never names a trade)
+│   ├── electrician/   # Reference skin: hooks, proofs, profile, templates
+│   ├── beautician/    # No-shows, deposits, win-back
+│   ├── plumber/       # Triage, servicing, bookings
+│   └── sole_trader/   # Findable + bookable + paid
 ├── reference/         # Cloned reference repos
 ├── docs/              # Architecture, protocols
 └── tests/             # Pipeline tests
