@@ -352,3 +352,37 @@ class TestPremiumRenderer:
         _sys.path.insert(0, str(Path(__file__).parent.parent))
         from render.slide import _accent_for
         assert _accent_for("nails") == _accent_for("nails")
+
+
+class TestPhotoBackgrounds:
+    def test_photo_for_local_only(self, tmp_path):
+        import sys as _sys
+        _sys.path.insert(0, str(Path(__file__).parent.parent))
+        from core.images import photo_for, credit_line
+        p = photo_for("electrician", 0)
+        assert p.exists()
+        assert photo_for("plumber", 0) is None  # unmapped → gradient
+        assert "Wikimedia Commons" in credit_line("electrician", 6)
+        assert credit_line("gardeners", 6) == ""  # CC0 only
+
+    def test_photo_deck_validates(self, tmp_path):
+        import sys as _sys
+        _sys.path.insert(0, str(Path(__file__).parent.parent))
+        from core.carousel import run_carousel
+        r = run_carousel("More customers or fewer skips — which grows your round?",
+                         "opportunity", base_dir=tmp_path / "store",
+                         receipts_path=tmp_path / "r.jsonl",
+                         segment="gardeners", photos=True)
+        assert r["manifest"]["validation"]["passed"]
+        assert "photo_credit" in r["manifest"]
+
+    def test_generate_seam_blocked(self):
+        import sys as _sys
+        _sys.path.insert(0, str(Path(__file__).parent.parent))
+        from core.images import generate
+        try:
+            generate("a glimling", "x.jpg")
+        except NotImplementedError as e:
+            assert "CLOUDFLARE_API_TOKEN" in str(e)
+        else:
+            raise AssertionError("generate() should be blocked without a live token")

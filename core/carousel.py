@@ -113,11 +113,19 @@ def _final_slides(plan_dict: dict) -> list[dict]:
     return slides
 
 
-def render(plan_dict: dict, out_dir: Path | str, font_path: str | None = None) -> dict:
+def render(plan_dict: dict, out_dir: Path | str, font_path: str | None = None,
+           photos: bool = False) -> dict:
     """Stage 2: script → 1080x1920 PNGs."""
     out_dir = Path(out_dir)
     slides = _final_slides(plan_dict)
+    backgrounds = None
+    if photos:
+        from core.images import photo_for
+        seg = plan_dict.get("segment", "electrician")
+        backgrounds = [None if s.get("kind") == "close" else photo_for(seg, i)
+                       for i, s in enumerate(slides)]
     paths = render_slideshow(slides, out_dir, font_path=font_path,
+                             backgrounds=backgrounds,
                              segment=plan_dict.get("segment", "electrician"))
     manifest = {
         "content_id": plan_dict["content_id"],
@@ -129,6 +137,10 @@ def render(plan_dict: dict, out_dir: Path | str, font_path: str | None = None) -
         "slides": [p.name for p in paths],
         "sha256": {},
     }
+    if photos:
+        from core.images import credit_line
+        manifest["photo_credit"] = credit_line(
+            plan_dict.get("segment", "electrician"), len(slides))
     import hashlib as _hl
     for p in paths:
         manifest["sha256"][p.name] = _hl.sha256(p.read_bytes()).hexdigest()
@@ -183,7 +195,7 @@ def run_carousel(hook: str, template: str = "opportunity", base_dir: Path | str 
                  segment: str = "electrician", audience: str | None = None,
                  enforce_gates: bool = True, variant: dict | None = None,
                  cta: str | None = None, kind: str = "organic",
-                 channel: str = "tiktok") -> dict:
+                 channel: str = "tiktok", photos: bool = False) -> dict:
     """Full local run: plan → proof → gates → render → validate → export → receipt.
 
     Fail-closed like /content: gate failures write a FAIL receipt and raise;
@@ -243,7 +255,7 @@ def run_carousel(hook: str, template: str = "opportunity", base_dir: Path | str 
     base.mkdir(parents=True, exist_ok=True)
     tmp_dir = Path(tempfile.mkdtemp(prefix=".build-", dir=str(base)))
     try:
-        manifest = render(plan_dict, tmp_dir)
+        manifest = render(plan_dict, tmp_dir, photos=photos)
     except Exception:
         import shutil
         shutil.rmtree(tmp_dir, ignore_errors=True)

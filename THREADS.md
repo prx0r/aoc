@@ -67,6 +67,15 @@ Photo Mode carousel + trending sound, then `aoc_publish_confirm` with the
 real URL, then `aoc_metrics`. Price lines are brand-doc ranges (NOT
 validated offers) — launch-list close only, no purchase implied.
 
+## Open — pruned-rebuild gap (found 2026-09-23, photo pass)
+
+Receipt says built, `store/` dir pruned → no-duplicate gate refuses rebuild
+with a pointer to nothing. Bytes are deterministic (seeded grain, pinned
+photos), so a rebuild would reproduce identical bytes and keep approvals
+valid — but the gate doesn't distinguish missing-dir from existing-dir.
+Fail-closed and safe today; needs a careful gate change, not a quick hack.
+Workaround: fresh hook. Rule: never `rm` a build dir you can't rebuild.
+
 ## Open — identity hardening (from 2026-09-23 e2e run)
 
 - T-prefix: tooling must never match builds by hook prefix (caused a

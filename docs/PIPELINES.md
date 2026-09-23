@@ -29,6 +29,14 @@ Output: `store/AOC-XXXXXXXX/` (manifest.json, script.json, slides, ZIP).
 Fails anywhere → `carousel_rejected` receipt, nothing rendered. Same hook
 rebuilt → no-duplicate gate refuses with the existing receipt id (reuse it).
 
+Photo backgrounds: `run_carousel(..., photos=True)` pulls pinned CC photos
+(`core/images.py`, `assets/photos/` + `sources.json` attribution, local
+files only — never network). Hook/body slides get photos with defocus +
+edge scrim; CTA stays accent-gradient for pop. CC BY credit flows into
+`manifest.photo_credit` → publish packet caption. AI generation seam
+(`images.generate`, Cloudflare Workers AI flux) is stubbed: needs a live
+token with Workers AI permission (current one 401s).
+
 ## 2. PERSONALIZE — per-business variant
 
 Entry: `aoc_personalize` (hook, segment, business, company_number, area).

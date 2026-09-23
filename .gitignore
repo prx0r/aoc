@@ -12,6 +12,9 @@ receipts/*.jsonl
 *.zip
 *.jpg
 *.png
+!assets/photos/*.jpg
+!assets/photos/sources.json
+!render/fonts/*.ttf
 .venv/
 .env
 .env.*

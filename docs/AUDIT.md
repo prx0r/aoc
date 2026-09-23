@@ -5,6 +5,23 @@
 
 ---
 
+## 2026-09-23 — Photo backgrounds via Commons, CF token dead (97 tests green)
+
+Cloudflare: `CLOUDFLARE_API_TOKEN` 401s even on token-verify — no Workers AI
+access. `images.generate()` stubbed with the exact requirement (live token
+with Workers AI perms). Meanwhile: 6 Wikimedia Commons photos pinned in
+`assets/photos/` + `sources.json` (CC0/PD/CC BY 2.0), served local-only by
+`core/images.py` (never network). Treatment: 0.62 darken + defocus blur +
+edge scrim; CTA stays gradient. CC BY credit flows manifest → packet caption.
+
+Verified: electrician + gardeners photo decks, all pixel validation green
+(validator rightly refused the first attempt — vintage engraving pick +
+weak scrim; curated + strengthened). Photo decks need fresh hooks
+(no-duplicate gate is content-based). Known gap logged: receipt-without-dir
+can't rebuild (THREADS).
+
+---
+
 ## 2026-09-23 — Beauty shootout: 10 hooks, nails/lashes/hair (94 tests green)
 
 Same rubric. All 10 passed gates first try (loops built in from the

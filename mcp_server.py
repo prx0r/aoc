@@ -140,8 +140,10 @@ def aoc_publish(content_id: str = "", platform: str = "tiktok"):
         "caption": plan.get("caption", ""),
         "cta": manifest.get("final_cta", ""),
         "hashtags": channel_hashtags(platform, seg_tags),
+        "photo_credit": manifest.get("photo_credit", ""),
         "checklist": channel_checklist(platform) + [
             "caption visible ≤150 chars + 3–5 hashtags with buyer terms",
+            "paste photo_credit into the caption when non-empty (CC BY requirement)",
             "confirm with aoc_publish_confirm + real post URL afterwards",
         ],
         "note": "post the ZIP manually to pick trending audio in-app",
