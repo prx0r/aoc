@@ -50,3 +50,19 @@ hooks:
   - text: "New firm, no customers, no systems. Where would you start?"
     angle: new_firm
     audience: newly_established
+
+  - text: "If your inbox looks like this, you're losing jobs."
+    angle: diagnostic
+    audience: owner_2_10_staff
+
+  - text: "I ran a sparkie's admin on spreadsheets for a month."
+    angle: teardown
+    audience: owner_2_10_staff
+
+  - text: "Tradify vs AI Onboard — what actually changes?"
+    angle: comparison
+    audience: tradify_user
+
+  - text: "5 things to check before you pay for any AI setup."
+    angle: checklist
+    audience: owner_2_10_staff

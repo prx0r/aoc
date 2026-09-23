@@ -33,3 +33,21 @@ templates:
     min_slides: 6
     max_slides: 7
     note: "Show fictional customer data. Mark where human approves."
+
+  diagnostic:
+    scenes: [hook, symptom, symptom, hidden_problem, fix, close]
+    min_slides: 6
+    max_slides: 7
+    note: "Anyone matching the symptom is qualified by slide 3."
+
+  teardown:
+    scenes: [hook, tried, break, break, fix, close]
+    min_slides: 6
+    max_slides: 7
+    note: "Reads as journalism. Keep numbers defensible."
+
+  comparison:
+    scenes: [hook, option_a, option_b, criteria, verdict, close]
+    min_slides: 6
+    max_slides: 7
+    note: "Never insult the alternative. Decision criteria do the selling."

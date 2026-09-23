@@ -108,6 +108,30 @@ def generate_slides_deterministic(
             SlideSpec(text="Customer gets a professional quote by 2:15pm", position=0.5, kind="body"),
             SlideSpec(text="You never touched a keyboard.", position=0.5, kind="close"),
         ],
+        "diagnostic": [
+            SlideSpec(text=hook, position=0.35, kind="hook"),
+            SlideSpec(text="3 unread enquiries from yesterday?", position=0.5, kind="body"),
+            SlideSpec(text="Quotes sent after 10pm?", position=0.5, kind="body"),
+            SlideSpec(text="That's not workload. It's triage.", position=0.5, kind="body"),
+            SlideSpec(text="AI triages, drafts, reminds. You approve.", position=0.5, kind="body"),
+            SlideSpec(text="DM DIAGNOSIS — free setup score.", position=0.5, kind="close"),
+        ],
+        "teardown": [
+            SlideSpec(text=hook, position=0.35, kind="hook"),
+            SlideSpec(text="Day 3: lost a job to a faster quote.", position=0.5, kind="body"),
+            SlideSpec(text="Day 11: double-booked Tuesday.", position=0.5, kind="body"),
+            SlideSpec(text="Day 20: invoices unsent.", position=0.5, kind="body"),
+            SlideSpec(text="The fix isn't trying harder. It's triage + drafts.", position=0.5, kind="body"),
+            SlideSpec(text="Installed in ~1 hour. DM TEARDOWN.", position=0.5, kind="close"),
+        ],
+        "comparison": [
+            SlideSpec(text=hook, position=0.35, kind="hook"),
+            SlideSpec(text="Tradify: great job management. You do the admin.", position=0.5, kind="body"),
+            SlideSpec(text="AI Onboard: connects Tradify + email + calendar.", position=0.5, kind="body"),
+            SlideSpec(text="Question: who does the work — you, or the system?", position=0.5, kind="body"),
+            SlideSpec(text="We don't replace Tradify. We run it.", position=0.5, kind="body"),
+            SlideSpec(text="Already on Tradify? DM CONNECT.", position=0.5, kind="close"),
+        ],
     }
 
     slides = templates.get(template, templates["opportunity"])
