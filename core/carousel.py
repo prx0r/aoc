@@ -7,22 +7,26 @@ so trending audio can be chosen inside TikTok.
 
 from __future__ import annotations
 
-import hashlib
 import json
 from datetime import datetime, timezone
 from pathlib import Path
 
 from core.gates import run_gates
+from core.ids import content_id_for
 from core.proof import proof_from_plan
 from core.receipt import append_receipt
 from core.validate import contact_sheet, validate_carousel
 from render.slide import export_zip, render_slideshow
-from slides.generate import generate_slides_deterministic, load_segment, script_to_json
+from slides.generate import generate_slides_deterministic, load_segment, script_to_json, skin_hash
 
 
-def _content_id(hook: str, template: str) -> str:
-    h = hashlib.sha256(f"{hook}|{template}".encode()).hexdigest()[:12]
-    return f"aoc_{h}"
+# Bump when render/slide.py changes: same hook+template must mint a new ID
+# rather than collide with pixels rendered by older code.
+RENDER_V = 2
+
+
+def _content_id(hook: str, template: str, segment: str = "electrician") -> str:
+    return content_id_for(hook, template, segment, skin_hash(segment), gen_v=RENDER_V)
 
 
 def plan(hook: str, template: str = "opportunity", audience: str = "electrician",
@@ -39,7 +43,8 @@ def plan(hook: str, template: str = "opportunity", audience: str = "electrician"
     d = script_to_json(script)
     d["cta"] = cta
     d["segment"] = seg
-    d["content_id"] = _content_id(hook, template)
+    d["skin_hash"] = skin_hash(seg)
+    d["content_id"] = _content_id(hook, template, seg)
     d["created_at"] = datetime.now(timezone.utc).isoformat()
     return d
 
@@ -95,6 +100,8 @@ def run_carousel(hook: str, template: str = "opportunity", base_dir: Path | str 
     seg = segment or (audience or "electrician")
     plan_dict = plan(hook, template, audience=seg, segment=seg)
     skin = load_segment(seg)
+    # NOTE: plan_dict["content_id"] is the full AOC:<64hex> identity.
+    # Filesystem dirs use the short display form (colons break Win/Mac/URLs).
 
     # proof + gates BEFORE render
     proof = proof_from_plan(plan_dict, skin)
@@ -110,7 +117,11 @@ def run_carousel(hook: str, template: str = "opportunity", base_dir: Path | str 
         })
         raise ValueError(f"gates failed: {failed}")
 
-    out_dir = base / plan_dict["content_id"]
+    from core.ids import record_short
+    out_dir = base / record_short("AOC", {"hook": hook, "template": template,
+                                          "segment": seg,
+                                          "skin_hash": plan_dict.get("skin_hash"),
+                                          "gen_v": RENDER_V})
     manifest = render(plan_dict, out_dir)
 
     # pixel validation AFTER render, before export
@@ -154,7 +165,8 @@ def run_carousel(hook: str, template: str = "opportunity", base_dir: Path | str 
     receipt = append_receipt(receipts_path, "carousel_built", receipt_data)
     return {"plan": plan_dict, "proof": proof.to_dict(),
             "gates": gates, "manifest": manifest,
-            "zip": str(zip_path), "receipt": receipt}
+            "zip": str(zip_path), "receipt": receipt,
+            "out_dir": str(out_dir)}
 
 
 def run_variant(variant: dict, base_dir: Path | str = "store",

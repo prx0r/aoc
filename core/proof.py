@@ -6,10 +6,11 @@ stat claims trace to nothing are refused.
 
 from __future__ import annotations
 
-import hashlib
 import json
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
+
+from core.ids import record_id
 
 
 @dataclass(frozen=True)
@@ -21,12 +22,16 @@ class Proof:
     claims: list = field(default_factory=list)
     evidence_refs: list = field(default_factory=list)
     observed_at: str = ""
+    # Replay invariant (ported from ographuk idempotence law):
+    # same skin + same plan = same lineage_root.
+    lineage_root: str = ""
 
     def to_dict(self) -> dict:
         return {"proof_id": self.proof_id, "kind": self.kind,
                 "source": self.source, "subject": self.subject,
                 "claims": self.claims, "evidence_refs": self.evidence_refs,
-                "observed_at": self.observed_at}
+                "observed_at": self.observed_at,
+                "lineage_root": self.lineage_root}
 
 
 def proof_from_plan(plan: dict, skin: dict) -> Proof:
@@ -60,18 +65,35 @@ def proof_from_plan(plan: dict, skin: dict) -> Proof:
                     raise ValueError(f"stat claim traces to nothing: {text[:60]}")
                 evidence_refs.append(match)
 
-    pid = "proof_" + hashlib.sha1(json.dumps(
-        {"id": plan.get("content_id"), "claims": claims},
-        sort_keys=True).encode()).hexdigest()[:12]
+    seg = plan.get("segment", "?")
+    locators = {_locator_id(seg, proofs, ref) for ref in evidence_refs}
+    locators.discard("")
+    pid = record_id("PROOF", {"id": plan.get("content_id"), "claims": claims})
     return Proof(
         proof_id=pid,
         kind="offer_claim",
-        source=f"segments/{plan.get('segment', '?')}/proofs.yaml",
+        source=f"segments/{seg}/proofs.yaml",
         subject=plan.get("hook", "")[:60],
         claims=[c for c in claims if c],
-        evidence_refs=sorted(set(evidence_refs)),
+        evidence_refs=sorted(locators),
         observed_at=plan.get("created_at") or datetime.now(timezone.utc).isoformat(),
+        lineage_root=record_id("PLAN", {"hook": plan.get("hook"),
+                                        "slides": plan.get("slides"),
+                                        "segment": seg,
+                                        "skin_hash": plan.get("skin_hash")}),
     )
+
+
+def _locator_id(segment: str, proofs: list[dict], ref_id: str) -> str:
+    """Locator form: segments/<id>/proofs.yaml#/proofs/<index>/id.
+
+    Same information as the bare id, plus an auditable path back to the
+    exact claim text (mirrors ographuk record_locator).
+    """
+    for i, p in enumerate(proofs):
+        if p.get("id") == ref_id:
+            return f"segments/{segment}/proofs.yaml#/proofs/{i}/id"
+    return ref_id
 
 
 def _is_stat_claim(text: str) -> bool:

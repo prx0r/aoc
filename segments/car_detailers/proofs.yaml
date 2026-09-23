@@ -1,6 +1,6 @@
 proofs:
 - id: thin_quotes
-  claim: Quote requests miss vehicle, location, condition, timing
+  claim: "4 missing fields kill most quotes: vehicle, location, condition, timing"
   source: verticals/car-detailers/PAINS.md (stub)
   use: Quote-triage angle
 - id: approval_bounds

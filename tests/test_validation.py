@@ -79,7 +79,8 @@ def test_pixel_validation_and_contact_sheet(tmp_path):
     r = run_carousel("UK electricians — still doing quotes at 9pm?", "before_after",
                      base_dir=tmp_path / "store", receipts_path=tmp_path / "r.jsonl",
                      segment="electrician")
-    out = tmp_path / "store" / r["plan"]["content_id"]
+    from pathlib import Path as _P
+    out = _P(r["out_dir"])
     first = out / r["manifest"]["slides"][0]
     v = validate_slide(first)
     assert v["ok"], v

@@ -8,7 +8,7 @@ spend across platforms.
 opportunity, before_after, checklist-save-bait.
 
 ## Lead proof
-£10K no-show cost.
+£19K/yr per-salon no-show cost (8% × 200 bookings × £100, cgraphuk NS-02).
 
 ## Close
 DM BOOKING £499. One CTA per deck. Founding rate for first 3 (feedback + referral +

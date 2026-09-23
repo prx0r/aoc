@@ -23,7 +23,7 @@ def aoc_status():
     total = sum(len(get_hooks(s)) for s in SEGMENT_IDS)
     receipts = ROOT / "receipts/content.jsonl"
     n = sum(1 for _ in open(receipts)) if receipts.exists() else 0
-    return {"templates": ["opportunity", "before_after", "faq", "social_proof", "demo", "diagnostic", "teardown", "comparison"], "segments": SEGMENT_IDS, "hooks": total, "receipts": n, "publish": "manual-only"}
+    return {"templates": ["opportunity", "before_after", "faq", "social_proof", "demo", "diagnostic", "teardown", "comparison", "annuity", "retention"], "segments": SEGMENT_IDS, "hooks": total, "receipts": n, "publish": "manual-only"}
 
 
 def aoc_hooks(audience: str = "electrician", segment: str = ""):

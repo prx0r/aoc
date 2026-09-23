@@ -37,8 +37,20 @@ def record_snapshot(snapshots_path: Path | str, post_url: str, content_id: str =
     return row
 
 
+DERIVE_VERSION = 1
+DERIVE_FORMULA_ID = "aoc.derive"
+
+
 def derive(metrics: dict) -> dict:
-    """Derived rates from raw counts. All safe-divided."""
+    """Derived rates from raw counts. All safe-divided.
+
+    Versioned (formula aoc.derive v1): a tweak must bump DERIVE_VERSION so
+    history isn't silently rewritten (ported from ographuk signal registry).
+    """
+    return derive_v1(metrics)
+
+
+def derive_v1(metrics: dict) -> dict:
     views = max(metrics.get("views", 0), 1)
     likes = metrics.get("likes", 0)
     comments = metrics.get("comments", 0)

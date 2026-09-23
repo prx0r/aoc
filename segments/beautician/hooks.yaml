@@ -1,34 +1,28 @@
-# Beautician hooks — question/indecision beats product pitches.
-
 hooks:
-  - text: "Salon owners — how much did no-shows cost you last month?"
-    angle: pain_callout
-    audience: salon_owner
-
-  - text: "Which gap would you fill first — Tue afternoons or Saturday?"
-    angle: question_choice
-    audience: salon_owner
-
-  - text: "Am I the only one chasing deposits by text?"
-    angle: indecision
-    audience: salon_owner
-
-  - text: "The client who no-showed twice — would you rebook her?"
-    angle: scenario
-    audience: salon_owner
-
-  - text: "One empty chair costs ~£10K a year. Here's the fix."
-    angle: stat_pain
-    audience: salon_owner
-
-  - text: "24h reminder + 2h reminder = no-shows stop. Proof inside."
-    angle: mechanism
-    audience: salon_owner
-
-  - text: "Your regulars haven't booked in 8 weeks. They just forgot."
-    angle: winback
-    audience: salon_owner
-
-  - text: "Deposits feel awkward. Empty chairs feel worse."
-    angle: objection_flip
-    audience: salon_owner
+- text: Salon owners — how much did no-shows cost you last month?
+  angle: pain_callout
+  audience: salon_owner
+- text: Which gap would you fill first — Tue afternoons or Saturday?
+  angle: question_choice
+  audience: salon_owner
+- text: Am I the only one chasing deposits by text?
+  angle: indecision
+  audience: salon_owner
+- text: The client who no-showed twice — would you rebook her?
+  angle: scenario
+  audience: salon_owner
+- text: No-shows cost this salon ~£19K a year. Here's the fix.
+  angle: stat_pain
+  audience: salon_owner
+- text: 24h reminder + 2h reminder = no-shows stop. Proof inside.
+  angle: mechanism
+  audience: salon_owner
+- text: Your regulars haven't booked in 8 weeks. They just forgot.
+  angle: winback
+  audience: salon_owner
+- text: Deposits feel awkward. Empty chairs feel worse.
+  angle: objection_flip
+  audience: salon_owner
+- text: Marketplace takes 20% of your new clients. Whose business is it?
+  angle: marketplace_tax
+  audience: beautician

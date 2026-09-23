@@ -178,12 +178,25 @@ def _get_font(size: int, path: str | None = None) -> ImageFont.FreeTypeFont:
 
 
 def _wrap_text(text: str, font: ImageFont.FreeTypeFont, max_width: int) -> str:
-    """Wrap text to fit within max_width, auto-shrinking if needed."""
+    """Wrap text to fit within max_width, auto-shrinking if needed.
+
+    Long slash/hyphen tokens (Instagram/TikTok/WhatsApp) are split first —
+    an unwrappable token bleeds past its backdrop (caught in human review).
+    """
+    import re
     lines = []
     for paragraph in text.split("\n"):
         words = paragraph.split()
-        current_line = []
+        # pre-split tokens that can never fit on one line
+        split_words: list[str] = []
         for word in words:
+            bbox = font.getbbox(word)
+            if bbox[2] - bbox[0] > max_width and re.search(r"[/\-–—]", word):
+                split_words.extend(re.split(r"(?<=[/\-–—])", word))
+            else:
+                split_words.append(word)
+        current_line = []
+        for word in split_words:
             test_line = " ".join(current_line + [word])
             bbox = font.getbbox(test_line)
             if bbox[2] - bbox[0] <= max_width:

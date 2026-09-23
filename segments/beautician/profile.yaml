@@ -4,7 +4,7 @@
 id: beautician
 label: "UK beauty salons — owner-managed, chairs to fill, no-shows hurt"
 pains:
-  - "No-shows cost ~£10K/year per chair (playbook-stated pain)"
+  - "No-shows cost ~£19K/year per salon: 8% of 200 bookings/mo × £100 (cgraphuk NS-02)"
   - "Lapsed clients never rebooked"
   - "Retail/product recommendations missed at till"
   - " diary gaps midweek while weekends overbooked"

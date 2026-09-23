@@ -1,30 +1,25 @@
-# Sole-trader hooks.
-
 hooks:
-  - text: "Sole trader — can customers find you on Google?"
-    angle: pain_callout
-    audience: sole_trader
-
-  - text: "WhatsApp + notebook + Gmail. Sound familiar?"
-    angle: recognition
-    audience: sole_trader
-
-  - text: "40% use AI. 18% connected it. Which are you?"
-    angle: stat_gap
-    audience: sole_trader
-
-  - text: "No website? You're invisible to AI assistants too."
-    angle: discovery
-    audience: sole_trader
-
-  - text: "One hour. Findable, bookable, paid. Done."
-    angle: ease
-    audience: sole_trader
-
-  - text: "What would you do with your Sundays back?"
-    angle: question_open
-    audience: sole_trader
-
-  - text: "First 3 setups £299. Then it's £499."
-    angle: founding_offer
-    audience: sole_trader
+- text: Sole trader — can customers find you on Google?
+  angle: pain_callout
+  audience: sole_trader
+- text: WhatsApp + notebook + Gmail. Sound familiar?
+  angle: recognition
+  audience: sole_trader
+- text: 40% use AI. 18% connected it. Which are you?
+  angle: stat_gap
+  audience: sole_trader
+- text: No website? You're invisible to AI assistants too.
+  angle: discovery
+  audience: sole_trader
+- text: One hour. Findable, bookable, paid. Done.
+  angle: ease
+  audience: sole_trader
+- text: What would you do with your Sundays back?
+  angle: question_open
+  audience: sole_trader
+- text: First 3 setups £299. Then it's £499.
+  angle: founding_offer
+  audience: sole_trader
+- text: 'Instead of checking spreadsheets: ''Who owes me money?'''
+  angle: chatgpt_native
+  audience: sole_trader

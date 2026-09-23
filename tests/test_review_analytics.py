@@ -14,7 +14,8 @@ def test_review_auto_half_passes_good_build(tmp_path):
     r = run_carousel("UK electricians — still doing quotes at 9pm?", "faq",
                      base_dir=tmp_path / "store", receipts_path=tmp_path / "r.jsonl",
                      segment="electrician")
-    out = tmp_path / "store" / r["plan"]["content_id"]
+    from pathlib import Path as _P
+    out = _P(r["out_dir"])
     review = run_review(out, r["plan"], r["gates"], r["manifest"]["validation"])
     assert review["auto_passed"], review["automated"]
     assert len(review["pending_human"]) == 7  # taste stays human

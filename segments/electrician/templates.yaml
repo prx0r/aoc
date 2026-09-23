@@ -51,3 +51,12 @@ templates:
     min_slides: 6
     max_slides: 7
     note: "Never insult the alternative. Decision criteria do the selling."
+
+  annuity:
+    scenes: [hook, proof, cycle, workflow, close]
+    min_slides: 5
+    max_slides: 6
+  retention:
+    scenes: [hook, proof, leak, winback, close]
+    min_slides: 5
+    max_slides: 6

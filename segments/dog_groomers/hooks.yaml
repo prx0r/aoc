@@ -17,3 +17,6 @@ hooks:
 - text: Behaviour flags live in memory. Risky, no?
   angle: safety
   audience: dog_groomers
+- text: Wag takes 40% of the walk. The dog still needs walking.
+  angle: marketplace_tax
+  audience: dog_groomers

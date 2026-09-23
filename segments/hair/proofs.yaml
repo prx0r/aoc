@@ -15,3 +15,8 @@ proofs:
   claim: £299–£499 pilot test price (hypothesis until validated)
   source: targets.md mobile-hairdresser row
   use: Close slide
+- id: mkt_boost_30
+  claim: Booksy Boost takes 30% on boosted bookings
+  source: cgraphuk MT-04 (barber tax; Booksy 2.3x UK listings vs Fresha)
+  use: Marketplace-tax angle
+  caveat: Verify current terms before publishing.

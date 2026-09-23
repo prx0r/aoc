@@ -20,3 +20,6 @@ hooks:
 - text: Your retention lives in your head. Move it to a list.
   angle: mechanism
   audience: lashes
+- text: Your best client found you on Fresha. Who gets 20%?
+  angle: marketplace_tax
+  audience: lashes

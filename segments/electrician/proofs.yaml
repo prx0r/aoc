@@ -1,44 +1,58 @@
-# Proofs — every claim must trace to a source. No invented metrics.
-# AOC is offer-led, not signal-led. Proof = verified offer + public stats.
-
 proofs:
-  - id: gap_40_18
-    claim: "40% of UK sole traders use AI, only 18% integrated it"
-    source: "DSIT Business Data Survey Oct 2025–Jan 2026 via aionboard/VISION.md"
-    use: "Integration gap = the sale"
-
-  - id: missed_calls_62
-    claim: "62% of calls missed while on tools"
-    source: "aionboard electrician playbook (stated pain point)"
-    use: "Pain opener for voice-agent angle"
-    caveat: "Playbook-stated, not independent survey. Label as reported pain."
-
-  - id: labour_shortage_72
-    claim: "72% of SME construction firms hit by skilled-labour shortages"
-    source: "FMB survey Jul–Dec 2025, n=493"
-    use: "Use staff better angle"
-
-  - id: materials_79
-    claim: "79% say rising materials costs block growth"
-    source: "Checkatrade 2025, n=850"
-    use: "Spend less time sourcing/admin angle"
-
-  - id: social_73_63
-    claim: "73% of trades on Facebook, 63% on Instagram for business"
-    source: "Markel Direct Jul 2026, n=501 socially-active trades"
-    use: "Why Facebook test + organic cross-post"
-
-  - id: tiktok_73_young
-    claim: "73% of 18–24 trades use TikTok for business"
-    source: "Markel Direct Jul 2026 (age-specific, not overall rate)"
-    use: "Younger sparkies angle. Do not misquote as overall."
-
-  - id: offer_499
-    claim: "£499 one-off setup, 14 days fixes, no subscription"
-    source: "aionboard/SERVICE_CATALOG.md"
-    use: "Close slide. Founding offer £299 for first 3."
-
-  - id: install_1hr
-    claim: "Standard install target 4–6 hours, demo in 1 hour"
-    source: "aionboard/AUTOMATION_PLAYBOOK.md"
-    use: "Ease objection handler"
+- id: gap_40_18
+  claim: 40% of UK sole traders use AI, only 18% integrated it
+  source: DSIT Business Data Survey Oct 2025–Jan 2026 via aionboard/VISION.md
+  use: Integration gap = the sale
+- id: missed_calls_62
+  claim: 62% of calls missed while on tools
+  source: aionboard electrician playbook (stated pain point)
+  use: Pain opener for voice-agent angle
+  caveat: Playbook-stated, not independent survey. Label as reported pain.
+- id: labour_shortage_72
+  claim: 72% of SME construction firms hit by skilled-labour shortages
+  source: FMB survey Jul–Dec 2025, n=493
+  use: Use staff better angle
+- id: materials_79
+  claim: 79% say rising materials costs block growth
+  source: Checkatrade 2025, n=850
+  use: Spend less time sourcing/admin angle
+- id: social_73_63
+  claim: 73% of trades on Facebook, 63% on Instagram for business
+  source: Markel Direct Jul 2026, n=501 socially-active trades
+  use: Why Facebook test + organic cross-post
+- id: tiktok_73_young
+  claim: 73% of 18–24 trades use TikTok for business
+  source: Markel Direct Jul 2026 (age-specific, not overall rate)
+  use: Younger sparkies angle. Do not misquote as overall.
+- id: offer_499
+  claim: £499 one-off setup, 14 days fixes, no subscription
+  source: aionboard/SERVICE_CATALOG.md
+  use: Close slide. Founding offer £299 for first 3.
+- id: install_1hr
+  claim: Standard install target 4–6 hours, demo in 1 hour
+  source: aionboard/AUTOMATION_PLAYBOOK.md
+  use: Ease objection handler
+- id: eicr_annuity
+  claim: EICR landlord cycles = repeat revenue annuity base
+  source: cgraphuk CAMP-ELECTRICIAN-GB (letting-agent/landlord contracts, compliance-driven,
+    sticky)
+  use: Annuity angle
+  caveat: Positioning claim, not measured outcome.
+- id: cert_dispatch
+  claim: 'Cert-gated dispatch: right cert per job type, 60-second quote from price
+    book on site'
+  source: cgraphuk CAMP-ELECTRICIAN-GB + VOICE_AGENT_DEPLOYMENT (never invent prices;
+    photos when useful)
+  use: Competence angle
+  caveat: Describe the workflow; never invent prices.
+- id: review_engine
+  claim: 'Review engine post-job: ask at payment, respond to every review'
+  source: cgraphuk campaigns (review engine post-job/post-cut/post-clean)
+  use: Trust angle
+  caveat: Process claim, not outcome claim.
+- id: kill_rule
+  claim: 'Kill rule: if answer rate hasn''t improved 30 days after intake goes live,
+    we reposition — in writing'
+  source: cgraphuk BLUEPRINT kill-rule pattern (answer-rate floor)
+  use: Credibility slide
+  caveat: Process promise; reposition means change of angle, not refund.

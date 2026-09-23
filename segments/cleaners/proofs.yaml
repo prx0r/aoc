@@ -15,3 +15,25 @@ proofs:
   claim: £349–£499 pilot test price (hypothesis until validated)
   source: targets.md domestic-cleaner row
   use: Close slide
+- id: mkt_jobber_gap
+  claim: Jobber ~£310/mo vs ProCleanerUK ~£60–100/mo at 20 staff — ~£3,000/yr gap
+  source: cgraphuk MT-07/TF-02 (cleaning SaaS)
+  use: Stack-cost angle
+  caveat: Pricing as stated in cgraphuk; verify current plans.
+- id: pause_not_cancel
+  claim: Pause (not cancel) preserves lifetime value; 5–10 recoveries/mo = £500–2,000
+    MRR
+  source: cgraphuk CAMP-CLEANING-GB (win-back sequences on pauses)
+  use: Retention angle
+  caveat: cgraphuk typical range, not measured for any aoc customer.
+- id: review_engine
+  claim: 'Review engine post-job: ask at payment, respond to every review'
+  source: cgraphuk campaigns (review engine post-job/post-cut/post-clean)
+  use: Trust angle
+  caveat: Process claim, not outcome claim.
+- id: kill_rule
+  claim: 'Kill rule: if answer rate hasn''t improved 30 days after intake goes live,
+    we reposition — in writing'
+  source: cgraphuk BLUEPRINT kill-rule pattern (answer-rate floor)
+  use: Credibility slide
+  caveat: Process promise; reposition means change of angle, not refund.

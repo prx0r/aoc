@@ -24,11 +24,25 @@ ALLOWED_TOKENS = {"business_name", "area", "service"}
 def load_prospects(csv_path: Path | str) -> list[dict]:
     """Load prospect CSV. Expected columns: company_number, name, postcode,
     region, sic_codes, status, cluster."""
-    rows = []
-    with open(csv_path, newline="") as f:
-        for row in csv.DictReader(f):
-            rows.append({k: (v or "").strip() for k, v in row.items()})
-    return rows
+    return load_prospects_result(csv_path).data or []
+
+
+def load_prospects_result(csv_path: Path | str):
+    """FetchResult-wrapped load: outage is UNKNOWN, empty file is a fact.
+
+    (Ported from ographuk FetchStatus: FAILED ≠ SUCCESS_EMPTY.)
+    """
+    from core.fetch import fetch_failed, fetch_ok
+    try:
+        rows = []
+        with open(csv_path, newline="") as f:
+            for row in csv.DictReader(f):
+                rows.append({k: (v or "").strip() for k, v in row.items()})
+        return fetch_ok(rows)
+    except (FileNotFoundError, PermissionError) as e:
+        return fetch_failed(f"prospect CSV unreadable: {e}")
+    except Exception as e:
+        return fetch_failed(f"prospect CSV parse error: {e}")
 
 
 def score_prospect(row: dict, region_counts: dict[str, int]) -> dict:

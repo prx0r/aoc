@@ -17,3 +17,6 @@ hooks:
 - text: How many out-of-area enquiries this week?
   angle: diagnostic
   audience: hair
+- text: Boosted booking, 30% gone. What did the boost buy?
+  angle: marketplace_tax
+  audience: hair

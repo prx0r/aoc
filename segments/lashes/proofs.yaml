@@ -16,3 +16,8 @@ proofs:
   claim: £249–£349 pilot test price (hypothesis until validated)
   source: targets.md lash-and-brow row
   use: Close slide
+- id: mkt_fresha_20
+  claim: Fresha takes 20% of new-client bookings
+  source: cgraphuk MT-05
+  use: Direct-booking angle
+  caveat: Verify current terms before publishing.

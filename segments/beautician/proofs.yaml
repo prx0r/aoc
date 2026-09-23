@@ -1,23 +1,27 @@
-# Beautician proofs — every claim traces here.
-
 proofs:
-  - id: noshow_10k
-    claim: "No-shows cost ~£10K/year per chair"
-    source: "aionboard/SERVICE_CATALOG.md beauty playbook (stated pain)"
-    use: "Pain opener for deposit angle"
-    caveat: "Playbook-stated, not independent survey."
-
-  - id: reminders_24_2
-    claim: "Deposit + SMS at 24h and 2h cuts no-shows"
-    source: "aionboard beauty playbook (deposit system + reminders)"
-    use: "Mechanism slides"
-
-  - id: winback
-    claim: "Lapsed-client win-back engine included in setup"
-    source: "aionboard/SERVICE_CATALOG.md beauty first-30-days"
-    use: "Close slide proof"
-
-  - id: offer_499
-    claim: "£499 one-off setup, deposit system live day 1"
-    source: "aionboard/SERVICE_CATALOG.md"
-    use: "Close slide"
+- id: noshow_salon_19k
+  claim: No-shows cost ~£19K/year per salon (8% of 200 bookings/mo × £100)
+  source: 'cgraphuk NS-02 (beauty); barber equivalent NS-01: 10 cuts/wk × £20 × 50
+    = £10K/yr per 6-chair shop'
+  use: Pain opener for deposit angle
+  caveat: Show the calculation on-slide; never present as per-chair (old figure overstated
+    ~6x).
+- id: reminders_24_2
+  claim: Deposit + SMS at 24h and 2h cuts no-shows
+  source: aionboard beauty playbook (deposit system + reminders); 57% figure is OpenTable/ResDiary
+    restaurant research applied to barber (cgraphuk NS-01), not beauty-measured
+  use: Mechanism slides
+  caveat: Label the 57% as restaurant→barber/beauty extrapolation if used.
+- id: winback
+  claim: Lapsed-client win-back engine included in setup
+  source: aionboard/SERVICE_CATALOG.md beauty first-30-days
+  use: Close slide proof
+- id: offer_499
+  claim: £499 one-off setup, deposit system live day 1
+  source: aionboard/SERVICE_CATALOG.md
+  use: Close slide
+- id: mkt_fresha_20
+  claim: Fresha takes 20% of new-client bookings
+  source: cgraphuk MT-05 (beauty SaaS)
+  use: Marketplace-tax angle
+  caveat: Rate as stated in cgraphuk; verify current terms before publishing.

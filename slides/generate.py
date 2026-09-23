@@ -148,17 +148,42 @@ def _generic_deck(skin: dict, hook: str, template: str) -> list[SlideSpec] | Non
             ("body", "We don't replace tools. We run them.", 0.5),
             ("close", close, 0.5),
         ],
+        "annuity": [
+            ("hook", hook, 0.35),
+            ("proof", c0, 0.5),
+            ("body", "One job becomes a cycle. Cycles become revenue.", 0.5),
+            ("body", workflow, 0.5),
+            ("body", "Compliance-driven work doesn't churn.", 0.5),
+            ("close", close, 0.5),
+        ],
+        "retention": [
+            ("hook", hook, 0.35),
+            ("proof", c0, 0.5),
+            ("body", "Paused isn't lost. Lapsed isn't gone.", 0.5),
+            ("body", workflow, 0.5),
+            ("body", "Win-back lists, ready for your approval.", 0.5),
+            ("close", close, 0.5),
+        ],
     }
+    def _overlap(a: str, b: str) -> float:
+        import re
+        wa = set(re.findall(r"[a-z0-9]+", a.lower())) - {"the", "a", "an", "to", "of", "and", "or"}
+        wb = set(re.findall(r"[a-z0-9]+", b.lower())) - {"the", "a", "an", "to", "of", "and", "or"}
+        if not wa or not wb:
+            return 0.0
+        return len(wa & wb) / len(wa | wb)
+
     spec = builders.get(template)
     if not spec or not close:
         return None
-    slides, seen = [], set()
+    slides, seen = [], []
     for k, t, pos in spec:
-        # dedupe: skins may state a proof that restates a pain — the gate
-        # would (correctly) refuse duplicate slide text, so drop it here
-        if not t or t in seen:
+        # dedupe: exact or near-duplicate (>60% word overlap) slides read as
+        # repetition on a contact sheet — the human eye catches what word
+        # counts miss, so the builder refuses to emit them
+        if not t or t in seen or any(_overlap(t, s) > 0.6 for s in seen):
             continue
-        seen.add(t)
+        seen.append(t)
         slides.append(SlideSpec(text=t, position=pos, kind=k))
     # keep the close last even if an earlier identical line was dropped
     if slides and slides[-1].kind != "close" and close not in seen:
@@ -204,11 +229,26 @@ def segment_close(segment: str = "electrician") -> str:
         return ""
 
 
+def skin_hash(segment: str = "electrician") -> str:
+    """Hash of the segment skin bundle. Any skin edit changes future IDs.
+
+    Same skin + same plan = same proof (replay invariant).
+    """
+    import hashlib
+    root = _segments_root() / segment
+    h = hashlib.sha256()
+    for name in ("profile", "hooks", "proofs", "templates"):
+        fp = root / f"{name}.yaml"
+        h.update(name.encode())
+        h.update(fp.read_bytes() if fp.exists() else b"")
+    return h.hexdigest()
+
+
 # Explicit per-segment decks for the two highest-use templates.
 # (segment, template) -> list of slide bodies (hook prepended by caller).
 _SEGMENT_DECKS: dict[tuple[str, str], list[str]] = {
     ("beautician", "opportunity"): [
-        "No-shows cost ~£10K a year per chair.",
+        "No-shows cost ~£19K a year per salon.",
         "Deposit + reminder workflows, prepared in your booking platform.",
         "Lapsed-client win-back lists, ready for your approval.",
         "Booking triage set up day one. You approve every send.",

@@ -5,7 +5,7 @@ hooks:
 - text: Photo quote in, approval out. Who runs it?
   angle: mechanism
   audience: car_detailers
-- text: Rain Friday. Three bookings. Who reshuffles?
+- text: "Detailers: rain Friday, three bookings. Who reshuffles?"
   angle: scenario
   audience: car_detailers
 - text: 'Before: DMs. After: structured quotes + repeats.'

@@ -1,68 +1,64 @@
-# Electrician hook bank — question/indecision beats declarative product hooks.
-# Source patterns: Reddit carousel threads Aug-Sep 2026, aionboard SALES_PLAYBOOK opening.
-# Rule: slide 1 must identify buyer immediately. Under 10 words.
-
 hooks:
-  - text: "UK electricians — still doing quotes at 9pm?"
-    angle: pain_callout
-    audience: owner_2_10_staff
-
-  - text: "Electricians: which of these would you automate first?"
-    angle: question_choice
-    audience: owner_2_10_staff
-
-  - text: "Am I doing this wrong?"
-    angle: indecision
-    audience: sole_trader
-
-  - text: "What would you automate first?"
-    angle: question_open
-    audience: owner_2_10_staff
-
-  - text: "The quote you sent at 11pm — AI could've sent it at 2pm"
-    angle: before_after
-    audience: owner_2_10_staff
-
-  - text: "Your phone rang at 3pm. The follow-up was drafted by 3:05."
-    angle: scenario
-    audience: owner_2_10_staff
-
-  - text: "62% of calls missed while on tools. Here's the fix."
-    angle: stat_pain
-    audience: owner_2_10_staff
-
-  - text: "£499 to never miss another enquiry. Worth it?"
-    angle: price_question
-    audience: owner_2_10_staff
-
-  - text: "The electrician who answers first — wins the job."
-    angle: competition
-    audience: owner_2_10_staff
-
-  - text: "Tradify already does that. So why are you still doing admin at night?"
-    angle: objection_flip
-    audience: tradify_user
-
-  - text: "EV + solar quotes take 2 hours. What if they took 20 minutes?"
-    angle: niche_ev_solar
-    audience: ev_solar_installer
-
-  - text: "New firm, no customers, no systems. Where would you start?"
-    angle: new_firm
-    audience: newly_established
-
-  - text: "If your inbox looks like this, you're losing jobs."
-    angle: diagnostic
-    audience: owner_2_10_staff
-
-  - text: "I ran a sparkie's admin on spreadsheets for a month."
-    angle: teardown
-    audience: owner_2_10_staff
-
-  - text: "Tradify vs AI Onboard — what actually changes?"
-    angle: comparison
-    audience: tradify_user
-
-  - text: "5 things to check before you pay for any AI setup."
-    angle: checklist
-    audience: owner_2_10_staff
+- text: UK electricians — still doing quotes at 9pm?
+  angle: pain_callout
+  audience: owner_2_10_staff
+- text: 'Electricians: which of these would you automate first?'
+  angle: question_choice
+  audience: owner_2_10_staff
+- text: Am I doing this wrong?
+  angle: indecision
+  audience: sole_trader
+- text: What would you automate first?
+  angle: question_open
+  audience: owner_2_10_staff
+- text: The quote you sent at 11pm — AI could've sent it at 2pm
+  angle: before_after
+  audience: owner_2_10_staff
+- text: Your phone rang at 3pm. The follow-up was drafted by 3:05.
+  angle: scenario
+  audience: owner_2_10_staff
+- text: 62% of calls missed while on tools. Here's the fix.
+  angle: stat_pain
+  audience: owner_2_10_staff
+- text: £499 to never miss another enquiry. Worth it?
+  angle: price_question
+  audience: owner_2_10_staff
+- text: The electrician who answers first — wins the job.
+  angle: competition
+  audience: owner_2_10_staff
+- text: Tradify already does that. So why are you still doing admin at night?
+  angle: objection_flip
+  audience: tradify_user
+- text: EV + solar quotes take 2 hours. What if they took 20 minutes?
+  angle: niche_ev_solar
+  audience: ev_solar_installer
+- text: New firm, no customers, no systems. Where would you start?
+  angle: new_firm
+  audience: newly_established
+- text: If your inbox looks like this, you're losing jobs.
+  angle: diagnostic
+  audience: owner_2_10_staff
+- text: I ran a sparkie's admin on spreadsheets for a month.
+  angle: teardown
+  audience: owner_2_10_staff
+- text: Tradify vs AI Onboard — what actually changes?
+  angle: comparison
+  audience: tradify_user
+- text: 5 things to check before you pay for any AI setup.
+  angle: checklist
+  audience: owner_2_10_staff
+- text: Landlords need EICRs every 5 years. Who owns that cycle?
+  angle: annuity
+  audience: electrician
+- text: EICR, Gas Safe, Part P — matched per job, quoted in 60 seconds?
+  angle: competence
+  audience: electrician
+- text: 87 reviews at 4.8 beats 12 reviews. Every time.
+  angle: review_engine
+  audience: electrician
+- text: 'Instead of checking voicemail: ''Any missed calls today?'''
+  angle: chatgpt_native
+  audience: electrician
+- text: If this doesn't work in 30 days, we change the plan. In writing.
+  angle: kill_rule
+  audience: electrician
