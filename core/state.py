@@ -66,26 +66,27 @@ def create_content(content_id: str, hook: str, slides: list[dict], template: str
     }
 
 
-def proof_must_haves_review(content: dict) -> bool:
-    """Structural invariant: every path to published passes through in_review.
-
-    Verified by BFS on the transition graph.
-    """
-    start = ContentStatus.IDEA
-    target = ContentStatus.PUBLISHED
-    required = ContentStatus.IN_REVIEW
-
-    visited = set()
-    queue = [start]
-
-    while queue:
-        current = queue.pop(0)
-        if current == target:
-            return True
-        if current in visited:
+def _all_paths(current, target, path, found):
+    """Enumerate every simple path (graph is small and acyclic enough)."""
+    if current == target:
+        found.append(list(path))
+        return
+    for nxt in TRANSITIONS.get(current, []):
+        if nxt in path:
             continue
-        visited.add(current)
-        for next_status in TRANSITIONS.get(current, []):
-            queue.append(next_status)
+        path.append(nxt)
+        _all_paths(nxt, target, path, found)
+        path.pop()
 
-    return False
+
+def proof_must_haves_review(content: dict | None = None) -> bool:
+    """Structural invariant: EVERY path from IDEA to PUBLISHED passes
+    through IN_REVIEW — not just that one such path exists.
+
+    Verified by enumerating all simple paths on the transition graph.
+    """
+    found: list = []
+    _all_paths(ContentStatus.IDEA, ContentStatus.PUBLISHED,
+               [ContentStatus.IDEA], found)
+    return bool(found) and all(
+        ContentStatus.IN_REVIEW in p for p in found)

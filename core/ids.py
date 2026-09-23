@@ -57,13 +57,17 @@ def record_short(prefix: str, obj: Any) -> str:
 
 
 def content_id_for(hook: str, template: str, segment: str, skin_hash: str,
-                   gen_v: int = 1, kind: str = "organic") -> str:
-    """Collision-free content ID: segment + skin hash + kind included.
+                   gen_v: int = 1, kind: str = "organic", cta: str = "",
+                   caption: str = "", offer_id: str = "",
+                   offer_version: int = 0) -> str:
+    """Collision-free content ID: segment + skin hash + kind + CTA included.
 
     Replaces the old sha256(hook|template)[:12] which collided across
-    segments and silently changed meaning on skin edits. Ads never collide
-    with organic builds of the same hook.
+    segments and silently changed meaning on skin edits. Two CTAs always
+    mint two IDs — an ad can never share identity with its organic twin.
     """
     return record_id("AOC", {"hook": hook, "template": template,
                              "segment": segment, "skin_hash": skin_hash,
-                             "gen_v": gen_v, "kind": kind})
+                             "gen_v": gen_v, "kind": kind, "cta": cta,
+                             "caption": caption, "offer_id": offer_id,
+                             "offer_version": offer_version})

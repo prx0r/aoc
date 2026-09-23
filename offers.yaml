@@ -1,0 +1,105 @@
+# Offer registry — snapshot of aionboard OFFER.md + vertical manifests.
+# MACHINE-READABLE CONTRACT. Generation reads this, never prose docs.
+# source_commit pins the upstream revision; a mismatch triggers revalidation.
+
+source:
+  file: "aionboard/OFFER.md"
+  commit: "65ebc889c16b8408b1458523336556492d8e301d"
+  synced_at: "2026-09-23"
+  note: "No completed paying installation recorded upstream yet. Prices and
+    scopes below are the offer as stated, not measured outcomes."
+
+offers:
+  muse-quickstart:
+    version: 1
+    price_gbp: 20
+    availability: waitlist
+    availability_reason: "Muse US-only as of Sep 2026, no confirmed UK date."
+    eligible_segments:
+      - nails
+      - lashes
+      - hair
+      - cleaners
+      - car_detailers
+      - gardeners
+    included_capabilities:
+      - { id: single_workflow, status: verified,
+          text: "One priority workflow only (bookings, enquiries, quotations, or appointment admin)" }
+      - { id: guided_connection, status: verified,
+          text: "Guided connection to existing calendar, email, or booking software" }
+      - { id: personalised_assistant, status: verified,
+          text: "Personalised assistant with services, prices, hours" }
+      - { id: income_expense_basics, status: manual_only,
+          text: "Basic income-and-expense organisation; no bank credentials, no payments, no filing" }
+      - { id: training_session, status: verified,
+          text: "Training session plus personalised manual with ready-to-use prompts" }
+      - { id: seven_day_support, status: verified,
+          text: "Seven days setup support: unlimited AI-assisted questions, one human session" }
+    excluded_capabilities:
+      - { id: live_voice_service, status: blocked }
+      - { id: whatsapp_cloud_api, status: blocked }
+      - { id: website_build, status: blocked }
+      - { id: meta_account_admin, status: blocked }
+      - { id: custom_integrations, status: blocked }
+      - { id: lead_generation, status: blocked }
+      - { id: subscriptions, status: blocked }
+    support_terms: "Unlimited automated-guide questions in window (rate-limited); one scheduled human session; escalation only if install fails; no bespoke dev."
+    required_customer_access:
+      - "customer authorises own calendar/email/booking accounts"
+      - "owner approval before any outbound message"
+    permitted_ctas:
+      - waitlist
+    forbidden_claims:
+      - "live voice receptionist included"
+      - "WhatsApp production integration included"
+      - "website included"
+      - "guaranteed leads or bookings"
+
+  standard-ai-setup:
+    version: 1
+    price_gbp: 499
+    availability: available
+    availability_reason: "Covers existing customer-authorised software; no Muse dependency."
+    eligible_segments:
+      - electrician
+      - beautician
+      - plumber
+      - sole_trader
+      - dog_groomers
+      - driving_instructors
+      - weddings
+    included_capabilities:
+      - { id: email_calendar_workflows, status: verified,
+          text: "Assistant setup for email and calendar workflows the customer owns" }
+      - { id: enquiry_capture, status: verified,
+          text: "Enquiry-capture workflow using customer-approved contact details" }
+      - { id: quote_drafting, status: verified,
+          text: "Quotation drafting from a customer-approved price book" }
+      - { id: owner_approval, status: verified,
+          text: "Owner approval before any outbound quote, booking, payment, or message" }
+      - { id: gbp_assistance, status: manual_only,
+          text: "Google Business Profile assistance through Google's ordinary interface" }
+      - { id: training_handover, status: verified,
+          text: "One live training session plus written handover" }
+      - { id: fourteen_day_fixes, status: verified,
+          text: "Fourteen days of fixes for configured workflows" }
+    excluded_capabilities:
+      - { id: website_build, status: blocked }
+      - { id: live_voice_service, status: experimental }
+      - { id: whatsapp_cloud_api, status: blocked }
+      - { id: meta_account_admin, status: blocked }
+      - { id: custom_integrations, status: blocked }
+      - { id: lead_generation, status: blocked }
+      - { id: subscriptions, status: blocked }
+    support_terms: "14 days of fixes for configured workflows."
+    required_customer_access:
+      - "customer authorises own email/calendar/booking accounts"
+      - "owner approval before any outbound action"
+    permitted_ctas:
+      - enquiry
+      - booking
+    forbidden_claims:
+      - "live voice receptionist included"
+      - "WhatsApp production integration included"
+      - "website included"
+      - "guaranteed leads, rankings, or AI placements"

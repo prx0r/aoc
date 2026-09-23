@@ -16,18 +16,21 @@ SCHEMAS: dict[str, dict[str, str]] = {
     # core/carousel.py:plan
     "Plan": {
         "hook": "str", "template": "str", "audience": "str", "cta": "str",
-        "slides": "list", "segment": "str", "kind": "str", "skin_hash": "str",
+        "caption": "str", "slides": "list", "segment": "str", "kind": "str",
+        "channel": "str", "skin_hash": "str", "offer_id": "str",
+        "offer_version": "int", "experiment_id": "str",
         "content_id": "str", "created_at": "str",
     },
     # core/proof.py:Proof.to_dict
     "Proof": {
         "proof_id": "str", "kind": "str", "source": "str", "subject": "str",
         "claims": "list", "evidence_refs": "list", "observed_at": "str",
-        "lineage_root": "str",
+        "lineage_root": "str", "pending_review": "list",
     },
     # core/carousel.py:render manifest
     "Manifest": {
-        "content_id": "str", "hook": "str", "template": "str",
+        "content_id": "str", "experiment_id": "str", "hook": "str",
+        "template": "str", "kind": "str", "final_cta": "str",
         "slides": "list", "sha256": "dict",
     },
     # core/receipt.py:append_receipt

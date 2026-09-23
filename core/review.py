@@ -69,14 +69,61 @@ def _v(ok: bool, detail: str) -> dict:
 
 
 def sign_off(receipts_path: Path | str, content_id: str, decision: str,
-             reason: str, reviewer: str = "human") -> dict:
-    """Record the human verdict. decision: approved | revise | rejected."""
+             reason: str, reviewer: str = "human",
+             store_dir: Path | str | None = None) -> dict:
+    """Record the human verdict — bound to the EXACT asset revision.
+
+    Approval references the ZIP hash on disk right now; any re-render,
+    CTA change, or edited claim mints a new content_id, so an approval
+    can never authorise a different creative. revise/rejected need reasons;
+    approvals need a human reviewer identity (never "system").
+    """
     if decision not in ("approved", "revise", "rejected"):
         raise ValueError("decision must be approved|revise|rejected")
     if not reason:
-        raise ValueError("rejection/revision without a reason is not a review")
+        raise ValueError("a verdict without a reason is not a review")
+    if decision == "approved":
+        if not reviewer or reviewer == "system":
+            raise ValueError("approval requires a human reviewer identity")
+        asset = _asset_snapshot(content_id, store_dir)
+        if asset is None:
+            raise ValueError(f"cannot approve missing/changed creative {content_id[:24]}…")
+    else:
+        asset = _asset_snapshot(content_id, store_dir)
     from core.receipt import append_receipt
     return append_receipt(receipts_path, "reviewed", {
         "content_id": content_id, "decision": decision,
         "reason": reason, "reviewer": reviewer,
+        "asset": asset or {},
     })
+
+
+def _asset_snapshot(content_id: str, store_dir: Path | str | None) -> dict | None:
+    """Hash snapshot of the built asset, or None if missing/changed."""
+    import hashlib as _hl
+    import json as _json
+    from pathlib import Path as _P
+    root = _P(store_dir) if store_dir else _P(__file__).parent.parent / "store"
+    for manifest_fp in sorted(root.glob("*/manifest.json")):
+        try:
+            m = _json.loads(manifest_fp.read_text())
+        except (json.JSONDecodeError, OSError):
+            continue
+        if m.get("content_id") != content_id:
+            continue
+        out = manifest_fp.parent
+        files = {}
+        for name, expect in (m.get("sha256") or {}).items():
+            fp = out / name
+            if not fp.exists():
+                return None
+            got = _hl.sha256(fp.read_bytes()).hexdigest()
+            if got != expect:
+                return None  # changed since build — approval refused
+            files[name] = got
+        zp = out / "tiktok_carousel.zip"
+        return {"zip_sha256": _hl.sha256(zp.read_bytes()).hexdigest() if zp.exists() else "",
+                "slides": files,
+                "contact_sheet": (out / "contact_sheet.jpg").name
+                if (out / "contact_sheet.jpg").exists() else ""}
+    return None

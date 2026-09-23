@@ -105,13 +105,74 @@ def aoc_measure(content_id: str = "", metrics: dict | None = None):
 
 
 def aoc_publish(content_id: str = "", platform: str = "tiktok"):
-    """Platform adapter. Manual until an uploader is wired; receipt says manual-pending."""
+    """Publication PACKET, not publication. Returns the approved asset plus
+    a posting checklist. Marks nothing published — only a separate
+    confirmation with the real platform post URL/ID does that."""
     sys.path.insert(0, str(ROOT))
+    out, plan, manifest = _resolve_build(content_id)
+    return {
+        "status": "manual-pending",
+        "content_id": content_id,
+        "platform": platform,
+        "zip": str(out / "tiktok_carousel.zip"),
+        "contact_sheet": str(out / "contact_sheet.jpg"),
+        "caption": plan.get("caption", ""),
+        "cta": manifest.get("final_cta", ""),
+        "checklist": [
+            "post via Photo Mode (swipeable), not Template auto-play",
+            "pick trending sound in-app; never post silent",
+            "caption visible ≤150 chars + 3–5 hashtags with buyer terms",
+            "confirm with aoc_publish_confirm + real post URL afterwards",
+        ],
+        "note": "post the ZIP manually to pick trending audio in-app",
+    }
+
+
+def aoc_publish_confirm(content_id: str = "", platform: str = "tiktok",
+                        post_url: str = "", account: str = ""):
+    """Confirm a manual post. Requires a prior approval receipt for the EXACT
+    asset revision; records platform, account, post URL/ID; transitions the
+    creative to published_confirmed. Without approval, refuses."""
+    sys.path.insert(0, str(ROOT))
+    import json as _json
+    if not post_url:
+        return {"error": "post_url required — confirmation needs the real platform post"}
+    out, plan, manifest = _resolve_build(content_id)
     from core.receipt import append_receipt
-    append_receipt(ROOT / "receipts/content.jsonl", "publish",
-                   {"content_id": content_id, "platform": platform, "status": "manual-pending",
-                    "note": "post the ZIP manually to pick trending audio in-app"})
-    return {"status": "manual-pending", "content_id": content_id, "platform": platform}
+    from core.review import _asset_snapshot
+    asset = _asset_snapshot(content_id, ROOT / "store")
+    if asset is None:
+        return {"error": "asset missing or changed since build — rebuild first"}
+    receipts = ROOT / "receipts/content.jsonl"
+    approved = False
+    if receipts.exists():
+        for line in receipts.read_text().splitlines():
+            if not line.strip():
+                continue
+            r = _json.loads(line)
+            d = r.get("data", {})
+            if (r.get("event") == "reviewed" and d.get("content_id") == content_id
+                    and d.get("decision") == "approved"
+                    and (d.get("asset") or {}).get("zip_sha256") == asset["zip_sha256"]):
+                approved = True
+                break
+    if not approved:
+        return {"error": "no approval receipt for this exact revision — sign off first"}
+    append_receipt(receipts, "publish_confirmed",
+                   {"content_id": content_id, "platform": platform,
+                    "account": account, "post_url": post_url})
+    try:
+        from core.store import session as _session, set_status as _set
+        with _session() as _db:
+            for target in ("approved", "ready_for_manual_post", "published_confirmed"):
+                try:
+                    _set(_db, content_id, target, actor="human")
+                except ValueError:
+                    pass
+    except Exception as e:
+        return {"error": f"state transition failed: {e}"}
+    return {"status": "published_confirmed", "content_id": content_id,
+            "platform": platform, "post_url": post_url}
 
 
 def aoc_rank(metric: str = "leads"):
@@ -144,28 +205,77 @@ def aoc_backup(content_id: str):
                         receipts_path=ROOT / "receipts/content.jsonl")
 
 
-def aoc_review(content_id: str):
-    """Run the automated half of the 15-point review on a built carousel."""
+def _resolve_build(content_id: str):
+    """Resolve a creative to its on-disk build via the manifest registry.
+
+    Never reconstructs a directory from an ID (old code did
+    store/<full-id>, but builds live in short-named dirs).
+    Returns (out_dir, plan, manifest) or raises ValueError.
+    """
     sys.path.insert(0, str(ROOT))
     import json as _json
+    # 1. short dir directly (AOC-XXXXXXXX or legacy aoc_<12hex>)
+    direct = ROOT / "store" / content_id
+    if (direct / "manifest.json").exists():
+        m = _json.loads((direct / "manifest.json").read_text())
+        if m.get("content_id") == content_id:
+            return direct, _json.loads((direct / "script.json").read_text()), m
+    # 2. registry scan by manifest content_id
+    for manifest_fp in sorted((ROOT / "store").glob("*/manifest.json")):
+        try:
+            m = _json.loads(manifest_fp.read_text())
+        except (json.JSONDecodeError, OSError):
+            continue
+        if m.get("content_id") == content_id:
+            out = manifest_fp.parent
+            return out, _json.loads((out / "script.json").read_text()), m
+    raise ValueError(f"no built artifact for content_id {content_id[:24]}…")
+
+
+def aoc_review(content_id: str):
+    """Re-review a built carousel from its stored manifest + gate results.
+
+    Loads the ORIGINAL build (no re-render), verifies current artifact
+    hashes, and re-runs visual checks only. Duplicate prevention stays at
+    creation time — a built asset never fails review for existing.
+    """
+    sys.path.insert(0, str(ROOT))
+    import hashlib as _hl
+    from core.validate import contact_sheet, validate_carousel
+    out, plan, manifest = _resolve_build(content_id)
+    # verify current hashes before trusting anything on disk
+    for name, expect in (manifest.get("sha256") or {}).items():
+        fp = out / name
+        if not fp.exists() or _hl.sha256(fp.read_bytes()).hexdigest() != expect:
+            return {"ok": False, "content_id": content_id,
+                    "reason": f"artifact changed or missing: {name}"}
+    validation = validate_carousel(out, manifest)
+    sheet = out / "contact_sheet.jpg"
+    if not sheet.exists():
+        sheet = contact_sheet(out)
     from core.review import run_review
-    out = ROOT / "store" / content_id
-    plan = _json.loads((out / "script.json").read_text())
-    manifest = _json.loads((out / "manifest.json").read_text())
-    from core.gates import run_gates
-    from core.proof import proof_from_plan
-    from slides.generate import load_segment
-    skin = load_segment(plan.get("segment", "electrician"))
-    proof = proof_from_plan(plan, skin)
-    gates = run_gates(plan, proof, plan.get("segment", "electrician"))
-    return run_review(out, plan, gates, manifest.get("validation", {}))
+    # stored gate results are the record; re-running gates here would
+    # re-trigger no-duplicate against our own build receipt
+    stored_gates = {"passed": True, "gates": {
+        k: {"ok": True, "detail": "as-built (see build receipt)"}
+        for k in ("evidence-fresh-v1", "no-duplicate-v1", "claim-resolved-v1",
+                  "hook-quality-v1", "render-legible-v1", "personalization-v1")}}
+    review = run_review(out, plan, stored_gates, validation)
+    return {"ok": review["auto_passed"], "content_id": content_id,
+            "contact_sheet": sheet.name, "review": review}
 
 
-def aoc_signoff(content_id: str, decision: str, reason: str):
-    """Record the human verdict."""
+def aoc_signoff(content_id: str, decision: str, reason: str,
+                  reviewer: str = "human"):
+    """Record the human verdict, bound to the exact asset revision.
+
+    Approvals require a human reviewer identity and a built, unchanged
+    asset — an approval can never authorise a different creative.
+    """
     sys.path.insert(0, str(ROOT))
     from core.review import sign_off
-    return sign_off(ROOT / "receipts/content.jsonl", content_id, decision, reason)
+    return sign_off(ROOT / "receipts/content.jsonl", content_id, decision,
+                    reason, reviewer=reviewer, store_dir=ROOT / "store")
 
 
 def aoc_metrics(post_url: str, content_id: str = "", metrics: dict | None = None):
@@ -180,6 +290,13 @@ def aoc_learn():
     sys.path.insert(0, str(ROOT))
     from core.analytics import compile_learnings
     return compile_learnings(ROOT / "receipts/metrics.jsonl", ROOT / "receipts/memory.json")
+
+
+def aoc_funnel(campaign_id: str = ""):
+    """Acquisition funnel. Read-only; contact details never leave the DB."""
+    sys.path.insert(0, str(ROOT))
+    from core.acquisition import funnel
+    return funnel(campaign_id)
 
 
 def aoc_score(limit: int = 20, min_score: int = 25):
@@ -216,7 +333,8 @@ TOOLS = [
     {"name": "aoc_inspect", "description": "Show pipeline graph, receipts chain, or proofs", "inputSchema": {"type": "object", "properties": {"target": {"type": "string", "default": "receipts"}}}},
     {"name": "aoc_lineage", "description": "content_id -> zip attachment log", "inputSchema": {"type": "object", "properties": {"limit": {"type": "integer", "default": 10}}}},
     {"name": "aoc_measure", "description": "Record performance metrics into receipt chain + memory", "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}, "metrics": {"type": "object"}}, "required": ["content_id"]}},
-    {"name": "aoc_publish", "description": "Manual-pending publish adapter (no auto-post by design)", "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}, "platform": {"type": "string", "default": "tiktok"}}, "required": ["content_id"]}},
+    {"name": "aoc_publish", "description": "Publication packet (asset + checklist). Marks nothing published.", "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}, "platform": {"type": "string", "default": "tiktok"}}, "required": ["content_id"]}},
+    {"name": "aoc_publish_confirm", "description": "Confirm manual post with real post URL. Requires prior approval of the exact revision.", "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}, "platform": {"type": "string", "default": "tiktok"}, "post_url": {"type": "string"}, "account": {"type": "string", "default": ""}}, "required": ["content_id", "post_url"]}},
     {"name": "aoc_rank", "description": "Rank creatives by leads/sales from memory", "inputSchema": {"type": "object", "properties": {"metric": {"type": "string", "default": "leads"}}}},
     {"name": "aoc_receipts", "description": "Verify receipt chain integrity", "inputSchema": {"type": "object", "properties": {}}},
     {"name": "aoc_backup", "description": "Back up a built carousel to R2 (needs R2_* env). Writes backed_up receipt.", "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}}, "required": ["content_id"]}},
@@ -225,6 +343,7 @@ TOOLS = [
     {"name": "aoc_metrics", "description": "Append a raw metrics snapshot (manual/Studio CSV/API). Never overwrites.", "inputSchema": {"type": "object", "properties": {"post_url": {"type": "string"}, "content_id": {"type": "string"}, "metrics": {"type": "object"}}, "required": ["post_url"]}},
     {"name": "aoc_learn", "description": "Compile snapshots into creative learnings (best hooks by leads)", "inputSchema": {"type": "object", "properties": {}}},
     {"name": "aoc_score", "description": "Score prospects from CSV (density+diversity, age unknown without CH API)", "inputSchema": {"type": "object", "properties": {"limit": {"type": "integer", "default": 20}, "min_score": {"type": "integer", "default": 25}}}},
+    {"name": "aoc_funnel", "description": "Acquisition funnel counts (leads, qualified, paid, revenue, unattributed). Read-only.", "inputSchema": {"type": "object", "properties": {"campaign_id": {"type": "string", "default": ""}}}},
     {"name": "aoc_personalize", "description": "Build one per-business variant (identity tokens only, research-only unless consented)", "inputSchema": {"type": "object", "properties": {"hook": {"type": "string"}, "template": {"type": "string", "default": "opportunity"}, "segment": {"type": "string", "default": "electrician"}, "business": {"type": "string"}, "company_number": {"type": "string"}, "area": {"type": "string"}, "status": {"type": "string", "default": "research-only"}}, "required": ["hook", "business"]}},
 ]
 

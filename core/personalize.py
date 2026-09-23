@@ -93,15 +93,47 @@ def check_tokens(text: str) -> tuple[bool, str]:
     return True, "tokens ok"
 
 
+def business_id(row: dict) -> str:
+    """Canonical business identity supporting registered AND unincorporated
+    businesses. A name/handle alone is never identity; one durable,
+    verifiable source key is required.
+
+    Accepted, in order: Companies House number > verified booking-page id >
+    authorised business-profile id. Returns "" when unverifiable.
+    """
+    ch = (row.get("company_number") or "").strip()
+    if ch:
+        return f"CH:{ch}"
+    for key in ("booking_page_id", "business_profile_id", "directory_id"):
+        val = (row.get(key) or "").strip()
+        if val:
+            return f"{key}:{val}"
+    return ""
+
+
 def variant_spec(row: dict, hook: str, template: str, segment: str,
-                 status: str = "research-only") -> dict:
-    """Build a per-business variant spec. Status gates delivery."""
+                 status: str = "research-only",
+                 permission_ref: str = "") -> dict:
+    """Build a per-business variant spec. Status gates delivery.
+
+    consented requires a verifiable permission_ref — an MCP caller cannot
+    mark a prospect consented by merely supplying the string. Research-only
+    records can never flow into a send queue.
+    """
     if status not in ("research-only", "consented"):
         raise ValueError("status must be research-only or consented")
+    if status == "consented" and not permission_ref:
+        raise ValueError("consented status requires permission_ref evidence "
+                         "(call log, form receipt, or opt-in record id)")
+    bid = business_id(row)
+    if not bid:
+        raise ValueError("unverifiable business identity: need company_number "
+                         "or a verified booking/profile/directory id")
     region_counts: dict[str, int] = {}
     scoring = score_prospect(row, region_counts)
     return {
         "business": short_name(row.get("name", "")),
+        "business_id": bid,
         "company_number": row.get("company_number", ""),
         "area": (row.get("region") or "").upper(),
         "segment": segment,
@@ -109,6 +141,7 @@ def variant_spec(row: dict, hook: str, template: str, segment: str,
         "hook": personalize_hook(hook, row),
         "score": scoring,
         "status": status,  # research-only = do NOT send; consented = 1-to-1 follow-up only
+        "permission_ref": permission_ref,
         "source": "prospects CSV (research record, not marketing permission)",
     }
 

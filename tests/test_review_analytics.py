@@ -23,21 +23,45 @@ def test_review_auto_half_passes_good_build(tmp_path):
 
 
 def test_signoff_requires_reason(tmp_path):
+    from core.carousel import run_carousel
+    r = run_carousel("UK electricians — still doing quotes at 9pm?", "faq",
+                     base_dir=tmp_path / "store", receipts_path=tmp_path / "r.jsonl",
+                     segment="electrician")
     rp = tmp_path / "r.jsonl"
-    s = sign_off(rp, "abc", "approved", "hook names buyer, proof before CTA")
+    cid = r["plan"]["content_id"]
+    from core.review import sign_off as _sign_off
+    s = _sign_off(rp, cid, "approved", "hook names buyer, proof before CTA",
+                  reviewer="tester", store_dir=tmp_path / "store")
     assert s["data"]["decision"] == "approved"
+    assert s["data"]["asset"]["zip_sha256"] != ""
     try:
-        sign_off(rp, "abc", "approved", "")
+        _sign_off(rp, cid, "approved", "", reviewer="tester",
+                  store_dir=tmp_path / "store")
     except ValueError:
         pass
     else:
         raise AssertionError("empty reason accepted")
     try:
-        sign_off(rp, "abc", "maybe", "reason")
+        _sign_off(rp, cid, "maybe", "reason", reviewer="tester",
+                  store_dir=tmp_path / "store")
     except ValueError:
         pass
     else:
         raise AssertionError("bad decision accepted")
+    try:
+        _sign_off(rp, cid, "approved", "reason", reviewer="system",
+                  store_dir=tmp_path / "store")
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("system approval accepted")
+    try:
+        _sign_off(rp, "AOC:nonexistent", "approved", "reason", reviewer="tester",
+                  store_dir=tmp_path / "store")
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("approval of missing creative accepted")
 
 
 def test_derive_rates():

@@ -25,7 +25,7 @@ AOC re-implements the minimal pattern in Python, no new infra.
   dry-run-first (`--send` only touches network), receipt fingerprints.
 
 ## clawvisual — agent-compatible service shape
-- `mcp_server.py` ← tools/list + tools/call stdio shape, 5 tools (status/hooks/build/rank/receipts).
+- `mcp_server.py` ← tools/list + tools/call stdio shape, now 19 tools (was 5 at mining time).
 - Lesson: MCP-compatible = powops/agents can query without new infra.
 
 ## steadyfetch/n8n-templates — feedback side only

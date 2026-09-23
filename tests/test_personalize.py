@@ -47,11 +47,37 @@ def test_variant_defaults_research_only():
 
 
 def test_variant_refuses_missing_identity():
-    v = variant_spec({"name": "", "company_number": "", "region": "",
+    # Unverifiable identity fails at construction — no untraceable variant
+    # can ever exist to be marketed to.
+    try:
+        variant_spec({"name": "", "company_number": "", "region": "",
                       "sic_codes": "", "status": "active"},
                      "hook", "opportunity", "electrician")
-    ok, detail = gate_personalization(v)
-    assert not ok and "identity" in detail
+    except ValueError as e:
+        assert "identity" in str(e)
+    else:
+        raise AssertionError("untraceable variant constructed")
+
+
+def test_sole_trader_without_ch_number():
+    # Spec test 6: a legitimate sole trader with a verified booking identity
+    # is representable; a name/handle alone is not.
+    v = variant_spec({"name": "Nail Studio", "company_number": "",
+                      "booking_page_id": "booksy-12345",
+                      "region": "M", "sic_codes": "", "status": "active"},
+                     "hook", "opportunity", "nails")
+    assert v["business_id"] == "booking_page_id:booksy-12345"
+    from core.gates import gate_personalization
+    ok, _ = gate_personalization(v)
+    assert ok
+    try:
+        variant_spec({"name": "Nail Studio", "company_number": "",
+                      "region": "M", "sic_codes": "", "status": "active"},
+                     "hook", "opportunity", "nails")
+    except ValueError as e:
+        assert "identity" in str(e)
+    else:
+        raise AssertionError("handle-only identity accepted")
 
 
 def test_variant_refuses_forbidden_tokens():

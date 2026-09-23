@@ -1,0 +1,1094 @@
+claims:
+  beautician.noshow_salon_19k:
+    claim_id: beautician.noshow_salon_19k
+    type: third_party
+    text: No-shows cost ~£19K/year per salon (8% of 200 bookings/mo × £100)
+    source: 'cgraphuk NS-02 (beauty); barber equivalent NS-01: 10 cuts/wk × £20 ×
+      50 = £10K/yr per 6-chair shop'
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - beautician
+    conditions: []
+    caveat: Show the calculation on-slide; never present as per-chair (old figure
+      overstated ~6x).
+  beautician.reminders_24_2:
+    claim_id: beautician.reminders_24_2
+    type: third_party
+    text: Deposit + SMS at 24h and 2h cuts no-shows
+    source: aionboard beauty playbook (deposit system + reminders); 57% figure is
+      OpenTable/ResDiary restaurant research applied to barber (cgraphuk NS-01), not
+      beauty-measured
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - beautician
+    conditions: []
+    caveat: Label the 57% as restaurant→barber/beauty extrapolation if used.
+  beautician.winback:
+    claim_id: beautician.winback
+    type: third_party
+    text: Lapsed-client win-back engine included in setup
+    source: aionboard/SERVICE_CATALOG.md beauty first-30-days
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - beautician
+    conditions: []
+    caveat: ''
+  beautician.offer_499:
+    claim_id: beautician.offer_499
+    type: third_party
+    text: £499 one-off setup, deposit system live day 1
+    source: aionboard/SERVICE_CATALOG.md
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - beautician
+    conditions: []
+    caveat: ''
+  beautician.mkt_fresha_20:
+    claim_id: beautician.mkt_fresha_20
+    type: third_party
+    text: Fresha takes 20% of new-client bookings
+    source: cgraphuk MT-05 (beauty SaaS)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - beautician
+    conditions: []
+    caveat: Rate as stated in cgraphuk; verify current terms before publishing.
+  car_detailers.thin_quotes:
+    claim_id: car_detailers.thin_quotes
+    type: third_party
+    text: '4 missing fields kill most quotes: vehicle, location, condition, timing'
+    source: verticals/car-detailers/PAINS.md (stub)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - car_detailers
+    conditions: []
+    caveat: ''
+  car_detailers.approval_bounds:
+    claim_id: car_detailers.approval_bounds
+    type: third_party
+    text: Photo-based pricing needs clear approval boundaries
+    source: verticals/car-detailers/PAINS.md (stub)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - car_detailers
+    conditions: []
+    caveat: ''
+  car_detailers.repeat_gap:
+    claim_id: car_detailers.repeat_gap
+    type: third_party
+    text: Repeat services not systematically offered; reviews rarely collected
+    source: verticals/car-detailers/PAINS.md (stub)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - car_detailers
+    conditions: []
+    caveat: ''
+  car_detailers.offer_pilot:
+    claim_id: car_detailers.offer_pilot
+    type: third_party
+    text: £349–£599 pilot test price (hypothesis until validated)
+    source: targets.md mobile-detailer row
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - car_detailers
+    conditions: []
+    caveat: ''
+  car_detailers.trust_no_passwords:
+    claim_id: car_detailers.trust_no_passwords
+    type: third_party
+    text: We never ask for passwords — you log in, you grant, you revoke
+    source: aionboard/TRUST_MODEL.md guarantee 1
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - car_detailers
+    conditions: []
+    caveat: null
+  car_detailers.trust_approval:
+    claim_id: car_detailers.trust_approval
+    type: third_party
+    text: Every outbound message needs your explicit approval first
+    source: aionboard/TRUST_MODEL.md guarantee 3 (approval bound to exact content)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - car_detailers
+    conditions: []
+    caveat: null
+  cleaners.winback_leak:
+    claim_id: cleaners.winback_leak
+    type: third_party
+    text: A paused plan still knows your address. A lost one doesn't.
+    source: verticals/cleaners/PAINS.md §1
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - cleaners
+    conditions: []
+    caveat: ''
+  cleaners.unbilled_extras:
+    claim_id: cleaners.unbilled_extras
+    type: third_party
+    text: Fixed price, variable job. The gap is your margin.
+    source: verticals/cleaners/PAINS.md §2
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - cleaners
+    conditions: []
+    caveat: ''
+  cleaners.chasing_time:
+    claim_id: cleaners.chasing_time
+    type: third_party
+    text: Payment reminders, plan changes and rebooking eat owner time
+    source: verticals/cleaners/PAINS.md §3
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - cleaners
+    conditions: []
+    caveat: ''
+  cleaners.offer_pilot:
+    claim_id: cleaners.offer_pilot
+    type: third_party
+    text: £349–£499 pilot test price (hypothesis until validated)
+    source: targets.md domestic-cleaner row
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - cleaners
+    conditions: []
+    caveat: ''
+  cleaners.mkt_jobber_gap:
+    claim_id: cleaners.mkt_jobber_gap
+    type: third_party
+    text: Jobber ~£310/mo vs ProCleanerUK ~£60–100/mo at 20 staff — ~£3,000/yr gap
+    source: cgraphuk MT-07/TF-02 (cleaning SaaS)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - cleaners
+    conditions: []
+    caveat: Pricing as stated in cgraphuk; verify current plans.
+  cleaners.pause_not_cancel:
+    claim_id: cleaners.pause_not_cancel
+    type: third_party
+    text: Pause (not cancel) preserves lifetime value; 5–10 recoveries/mo = £500–2,000
+      MRR
+    source: cgraphuk CAMP-CLEANING-GB (win-back sequences on pauses)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - cleaners
+    conditions: []
+    caveat: cgraphuk typical range, not measured for any aoc customer.
+  cleaners.review_engine:
+    claim_id: cleaners.review_engine
+    type: third_party
+    text: 'Review engine post-job: ask at payment, respond to every review'
+    source: cgraphuk campaigns (review engine post-job/post-cut/post-clean)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - cleaners
+    conditions: []
+    caveat: Process claim, not outcome claim.
+  cleaners.kill_rule:
+    claim_id: cleaners.kill_rule
+    type: third_party
+    text: 'Kill rule: if answer rate hasn''t improved 30 days after intake goes live,
+      we reposition — in writing'
+    source: cgraphuk BLUEPRINT kill-rule pattern (answer-rate floor)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - cleaners
+    conditions: []
+    caveat: Process promise; reposition means change of angle, not refund.
+  cleaners.trust_no_passwords:
+    claim_id: cleaners.trust_no_passwords
+    type: third_party
+    text: We never ask for passwords — you log in, you grant, you revoke
+    source: aionboard/TRUST_MODEL.md guarantee 1
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - cleaners
+    conditions: []
+    caveat: null
+  cleaners.trust_approval:
+    claim_id: cleaners.trust_approval
+    type: third_party
+    text: Every outbound message needs your explicit approval first
+    source: aionboard/TRUST_MODEL.md guarantee 3 (approval bound to exact content)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - cleaners
+    conditions: []
+    caveat: null
+  dog_groomers.marketplace_fee:
+    claim_id: dog_groomers.marketplace_fee
+    type: third_party
+    text: Rover/Wag commissions on repeat customers; direct repeats worth winning
+    source: verticals/dog-groomers/PAINS.md §1
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - dog_groomers
+    conditions: []
+    caveat: ''
+  dog_groomers.lapse_gap:
+    claim_id: dog_groomers.lapse_gap
+    type: third_party
+    text: Lapsed owners not re-engaged; recurring grooms lapse on scheduling
+    source: verticals/dog-groomers/PAINS.md §2
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - dog_groomers
+    conditions: []
+    caveat: ''
+  dog_groomers.flag_risk:
+    claim_id: dog_groomers.flag_risk
+    type: third_party
+    text: Medical and behaviour flags live in heads — safety and trust risk
+    source: verticals/dog-groomers/PAINS.md §3
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - dog_groomers
+    conditions: []
+    caveat: ''
+  dog_groomers.offer_pilot:
+    claim_id: dog_groomers.offer_pilot
+    type: third_party
+    text: £349–£499 pilot test price (hypothesis until validated)
+    source: targets.md dog-groomer row
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - dog_groomers
+    conditions: []
+    caveat: ''
+  dog_groomers.mkt_rover_wag:
+    claim_id: dog_groomers.mkt_rover_wag
+    type: third_party
+    text: Rover ~20%, Wag ~40% per booking — steepest marketplace tax measured
+    source: cgraphuk MT-03/MM-01 (petcare bleed)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - dog_groomers
+    conditions: []
+    caveat: Steepest in any cgraphuk template; verify current rates.
+  driving_instructors.scattered_enquiries:
+    claim_id: driving_instructors.scattered_enquiries
+    type: third_party
+    text: Five inboxes, one diary. Something gives.
+    source: verticals/driving-instructors/PAINS.md (stub)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - driving_instructors
+    conditions: []
+    caveat: ''
+  driving_instructors.gap_waste:
+    claim_id: driving_instructors.gap_waste
+    type: third_party
+    text: Scheduling fights cancellations; waiting lists unmanaged
+    source: verticals/driving-instructors/PAINS.md (stub)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - driving_instructors
+    conditions: []
+    caveat: ''
+  driving_instructors.memory_records:
+    claim_id: driving_instructors.memory_records
+    type: third_party
+    text: Progress records live in notebooks, messages, memory
+    source: verticals/driving-instructors/PAINS.md (stub)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - driving_instructors
+    conditions: []
+    caveat: ''
+  driving_instructors.offer_pilot:
+    claim_id: driving_instructors.offer_pilot
+    type: third_party
+    text: £299–£499 pilot test price (hypothesis until validated)
+    source: targets.md driving-instructor row
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - driving_instructors
+    conditions: []
+    caveat: ''
+  electrician.gap_40_18:
+    claim_id: electrician.gap_40_18
+    type: third_party
+    text: 40% of UK sole traders use AI, only 18% integrated it
+    source: DSIT Business Data Survey Oct 2025–Jan 2026 via aionboard/VISION.md
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - electrician
+    conditions: []
+    caveat: ''
+  electrician.missed_calls_62:
+    claim_id: electrician.missed_calls_62
+    type: third_party
+    text: 62% of calls missed while on tools
+    source: aionboard electrician playbook (stated pain point)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - electrician
+    conditions: []
+    caveat: Playbook-stated, not independent survey. Label as reported pain.
+  electrician.labour_shortage_72:
+    claim_id: electrician.labour_shortage_72
+    type: third_party
+    text: 72% of SME construction firms hit by skilled-labour shortages
+    source: FMB survey Jul–Dec 2025, n=493
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - electrician
+    conditions: []
+    caveat: ''
+  electrician.materials_79:
+    claim_id: electrician.materials_79
+    type: third_party
+    text: 79% say rising materials costs block growth
+    source: Checkatrade 2025, n=850
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - electrician
+    conditions: []
+    caveat: ''
+  electrician.social_73_63:
+    claim_id: electrician.social_73_63
+    type: third_party
+    text: 73% of trades on Facebook, 63% on Instagram for business
+    source: Markel Direct Jul 2026, n=501 socially-active trades
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - electrician
+    conditions: []
+    caveat: ''
+  electrician.tiktok_73_young:
+    claim_id: electrician.tiktok_73_young
+    type: third_party
+    text: 73% of 18–24 trades use TikTok for business
+    source: Markel Direct Jul 2026 (age-specific, not overall rate)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - electrician
+    conditions: []
+    caveat: ''
+  electrician.offer_499:
+    claim_id: electrician.offer_499
+    type: third_party
+    text: £499 one-off setup, 14 days fixes, no subscription
+    source: aionboard/SERVICE_CATALOG.md
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - electrician
+    conditions: []
+    caveat: ''
+  electrician.install_1hr:
+    claim_id: electrician.install_1hr
+    type: third_party
+    text: Standard install target 4–6 hours, demo in 1 hour
+    source: aionboard/AUTOMATION_PLAYBOOK.md
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - electrician
+    conditions: []
+    caveat: ''
+  electrician.eicr_annuity:
+    claim_id: electrician.eicr_annuity
+    type: third_party
+    text: EICR landlord cycles = repeat revenue annuity base
+    source: cgraphuk CAMP-ELECTRICIAN-GB (letting-agent/landlord contracts, compliance-driven,
+      sticky)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - electrician
+    conditions: []
+    caveat: Positioning claim, not measured outcome.
+  electrician.cert_dispatch:
+    claim_id: electrician.cert_dispatch
+    type: third_party
+    text: 'Cert-gated dispatch: right cert per job type, 60-second quote from price
+      book on site'
+    source: cgraphuk CAMP-ELECTRICIAN-GB + VOICE_AGENT_DEPLOYMENT (never invent prices;
+      photos when useful)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - electrician
+    conditions: []
+    caveat: Describe the workflow; never invent prices.
+  electrician.review_engine:
+    claim_id: electrician.review_engine
+    type: third_party
+    text: 'Review engine post-job: ask at payment, respond to every review'
+    source: cgraphuk campaigns (review engine post-job/post-cut/post-clean)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - electrician
+    conditions: []
+    caveat: Process claim, not outcome claim.
+  electrician.kill_rule:
+    claim_id: electrician.kill_rule
+    type: third_party
+    text: 'Kill rule: if answer rate hasn''t improved 30 days after intake goes live,
+      we reposition — in writing'
+    source: cgraphuk BLUEPRINT kill-rule pattern (answer-rate floor)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - electrician
+    conditions: []
+    caveat: Process promise; reposition means change of angle, not refund.
+  electrician.trust_no_passwords:
+    claim_id: electrician.trust_no_passwords
+    type: third_party
+    text: We never ask for passwords — you log in, you grant, you revoke
+    source: aionboard/TRUST_MODEL.md guarantee 1
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - electrician
+    conditions: []
+    caveat: null
+  electrician.trust_approval:
+    claim_id: electrician.trust_approval
+    type: third_party
+    text: Every outbound message needs your explicit approval first
+    source: aionboard/TRUST_MODEL.md guarantee 3 (approval bound to exact content)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - electrician
+    conditions: []
+    caveat: null
+  gardeners.skip_debt:
+    claim_id: gardeners.skip_debt
+    type: third_party
+    text: Every unlogged skip is an unbilled visit
+    source: verticals/gardeners-window-cleaners/PAINS.md §1
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - gardeners
+    conditions: []
+    caveat: ''
+  gardeners.recanvass_gap:
+    claim_id: gardeners.recanvass_gap
+    type: third_party
+    text: Streets that know your van rebook fastest
+    source: verticals/gardeners-window-cleaners/PAINS.md §2
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - gardeners
+    conditions: []
+    caveat: ''
+  gardeners.paper_risk:
+    claim_id: gardeners.paper_risk
+    type: third_party
+    text: One lost book wipes visits, skips, payments, debt
+    source: verticals/gardeners-window-cleaners/PAINS.md §3
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - gardeners
+    conditions: []
+    caveat: ''
+  gardeners.offer_pilot:
+    claim_id: gardeners.offer_pilot
+    type: third_party
+    text: £349–£599 pilot test price (hypothesis until validated)
+    source: targets.md gardener/window-cleaner row
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - gardeners
+    conditions: []
+    caveat: ''
+  gardeners.trust_no_passwords:
+    claim_id: gardeners.trust_no_passwords
+    type: third_party
+    text: We never ask for passwords — you log in, you grant, you revoke
+    source: aionboard/TRUST_MODEL.md guarantee 1
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - gardeners
+    conditions: []
+    caveat: null
+  gardeners.trust_approval:
+    claim_id: gardeners.trust_approval
+    type: third_party
+    text: Every outbound message needs your explicit approval first
+    source: aionboard/TRUST_MODEL.md guarantee 3 (approval bound to exact content)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - gardeners
+    conditions: []
+    caveat: null
+  hair.zone_waste:
+    claim_id: hair.zone_waste
+    type: third_party
+    text: Every 'where do you travel to?' costs a booking.
+    source: verticals/hair/PAINS.md §1
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - hair
+    conditions: []
+    caveat: ''
+  hair.area_ambiguity:
+    claim_id: hair.area_ambiguity
+    type: third_party
+    text: Customers don't know the travel zone; travel costs handled inconsistently
+    source: verticals/hair/PAINS.md §2
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - hair
+    conditions: []
+    caveat: ''
+  hair.rebook_gap:
+    claim_id: hair.rebook_gap
+    type: third_party
+    text: Colour refreshes and reinstalls have intervals; portfolio scattered
+    source: verticals/hair/PAINS.md §3
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - hair
+    conditions: []
+    caveat: ''
+  hair.offer_pilot:
+    claim_id: hair.offer_pilot
+    type: third_party
+    text: £299–£499 pilot test price (hypothesis until validated)
+    source: targets.md mobile-hairdresser row
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - hair
+    conditions: []
+    caveat: ''
+  hair.mkt_boost_30:
+    claim_id: hair.mkt_boost_30
+    type: third_party
+    text: Booksy Boost takes 30% on boosted bookings
+    source: cgraphuk MT-04 (barber tax; Booksy 2.3x UK listings vs Fresha)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - hair
+    conditions: []
+    caveat: Verify current terms before publishing.
+  hair.trust_no_passwords:
+    claim_id: hair.trust_no_passwords
+    type: third_party
+    text: We never ask for passwords — you log in, you grant, you revoke
+    source: aionboard/TRUST_MODEL.md guarantee 1
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - hair
+    conditions: []
+    caveat: null
+  hair.trust_approval:
+    claim_id: hair.trust_approval
+    type: third_party
+    text: Every outbound message needs your explicit approval first
+    source: aionboard/TRUST_MODEL.md guarantee 3 (approval bound to exact content)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - hair
+    conditions: []
+    caveat: null
+  lashes.safety_gap:
+    claim_id: lashes.safety_gap
+    type: third_party
+    text: Patch tests and allergy records must precede treatments; missing records
+      risk safety + reputation
+    source: verticals/lashes/PAINS.md §1
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - lashes
+    conditions: []
+    caveat: ''
+  lashes.dm_burden:
+    claim_id: lashes.dm_burden
+    type: third_party
+    text: Availability, prep, deposits and confirmations handled manually
+    source: verticals/lashes/PAINS.md §2
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - lashes
+    conditions: []
+    caveat: ''
+  lashes.rebook_gap:
+    claim_id: lashes.rebook_gap
+    type: third_party
+    text: Fills and brow maintenance have intervals; reminders need consent
+    source: verticals/lashes/PAINS.md §3
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - lashes
+    conditions: []
+    caveat: ''
+  lashes.offer_pilot:
+    claim_id: lashes.offer_pilot
+    type: third_party
+    text: £249–£349 pilot test price (hypothesis until validated)
+    source: targets.md lash-and-brow row
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - lashes
+    conditions: []
+    caveat: ''
+  lashes.mkt_fresha_20:
+    claim_id: lashes.mkt_fresha_20
+    type: third_party
+    text: Fresha takes 20% of new-client bookings
+    source: cgraphuk MT-05
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - lashes
+    conditions: []
+    caveat: Verify current terms before publishing.
+  lashes.trust_no_passwords:
+    claim_id: lashes.trust_no_passwords
+    type: third_party
+    text: We never ask for passwords — you log in, you grant, you revoke
+    source: aionboard/TRUST_MODEL.md guarantee 1
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - lashes
+    conditions: []
+    caveat: null
+  lashes.trust_approval:
+    claim_id: lashes.trust_approval
+    type: third_party
+    text: Every outbound message needs your explicit approval first
+    source: aionboard/TRUST_MODEL.md guarantee 3 (approval bound to exact content)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - lashes
+    conditions: []
+    caveat: null
+  nails.dm_burden:
+    claim_id: nails.dm_burden
+    type: third_party
+    text: DMs don't take deposits. Booking links do.
+    source: verticals/nails/PAINS.md §1
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - nails
+    conditions: []
+    caveat: ''
+  nails.noshow_risk:
+    claim_id: nails.noshow_risk
+    type: third_party
+    text: Long appointments carry material + time costs; deposits + reminders are
+      the countermeasure
+    source: verticals/nails/PAINS.md §2
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - nails
+    conditions: []
+    caveat: ''
+  nails.rebook_gap:
+    claim_id: nails.rebook_gap
+    type: third_party
+    text: Infills have natural intervals; lapsed clients rarely re-engaged
+    source: verticals/nails/PAINS.md §3
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - nails
+    conditions: []
+    caveat: ''
+  nails.offer_pilot:
+    claim_id: nails.offer_pilot
+    type: third_party
+    text: £249–£349 pilot test price (hypothesis until validated)
+    source: targets.md nail-technician row
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - nails
+    conditions: []
+    caveat: ''
+  nails.mkt_fresha_20:
+    claim_id: nails.mkt_fresha_20
+    type: third_party
+    text: Fresha takes 20% of new-client bookings
+    source: cgraphuk MT-05
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - nails
+    conditions: []
+    caveat: Verify current terms before publishing.
+  nails.trust_no_passwords:
+    claim_id: nails.trust_no_passwords
+    type: third_party
+    text: We never ask for passwords — you log in, you grant, you revoke
+    source: aionboard/TRUST_MODEL.md guarantee 1
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - nails
+    conditions: []
+    caveat: null
+  nails.trust_approval:
+    claim_id: nails.trust_approval
+    type: third_party
+    text: Every outbound message needs your explicit approval first
+    source: aionboard/TRUST_MODEL.md guarantee 3 (approval bound to exact content)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - nails
+    conditions: []
+    caveat: null
+  plumber.triage:
+    claim_id: plumber.triage
+    type: third_party
+    text: Emergency vs routine triage + booking + reminders included
+    source: aionboard plumber positioning (VISION + SERVICE_CATALOG patterns)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - plumber
+    conditions: []
+    caveat: ''
+  plumber.service_due:
+    claim_id: plumber.service_due
+    type: third_party
+    text: Annual service-due engine chases repeat revenue
+    source: aionboard heating-firm servicing need (VISION)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - plumber
+    conditions: []
+    caveat: ''
+  plumber.quote_evenings:
+    claim_id: plumber.quote_evenings
+    type: third_party
+    text: Quotes drafted while on jobs, approved on phone
+    source: aionboard quote-builder workflow (SALES_PLAYBOOK demo)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - plumber
+    conditions: []
+    caveat: ''
+  plumber.offer_499:
+    claim_id: plumber.offer_499
+    type: third_party
+    text: £499 one-off setup, 14 days fixes, no subscription
+    source: aionboard/SERVICE_CATALOG.md
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - plumber
+    conditions: []
+    caveat: ''
+  plumber.eicr_annuity:
+    claim_id: plumber.eicr_annuity
+    type: third_party
+    text: EICR landlord cycles = repeat revenue annuity base
+    source: cgraphuk CAMP-ELECTRICIAN-GB (letting-agent/landlord contracts, compliance-driven,
+      sticky)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - plumber
+    conditions: []
+    caveat: Positioning claim, not measured outcome.
+  plumber.cert_dispatch:
+    claim_id: plumber.cert_dispatch
+    type: third_party
+    text: 'Cert-gated dispatch: right cert per job type, 60-second quote from price
+      book on site'
+    source: cgraphuk CAMP-ELECTRICIAN-GB + VOICE_AGENT_DEPLOYMENT (never invent prices;
+      photos when useful)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - plumber
+    conditions: []
+    caveat: Describe the workflow; never invent prices.
+  sole_trader.gap_40_18:
+    claim_id: sole_trader.gap_40_18
+    type: third_party
+    text: 40% of sole traders use AI, only 18% integrated it
+    source: DSIT Business Data Survey Oct 2025–Jan 2026 via aionboard/VISION.md
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - sole_trader
+    conditions: []
+    caveat: ''
+  sole_trader.no_website_35:
+    claim_id: sole_trader.no_website_35
+    type: third_party
+    text: 35% of construction businesses have no website
+    source: DSIT survey via aionboard/VISION.md
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - sole_trader
+    conditions: []
+    caveat: ''
+  sole_trader.privacy_73:
+    claim_id: sole_trader.privacy_73
+    type: third_party
+    text: 73% uncomfortable with data training external AI
+    source: DSIT survey via aionboard/VISION.md
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - sole_trader
+    conditions: []
+    caveat: ''
+  sole_trader.offer_499:
+    claim_id: sole_trader.offer_499
+    type: third_party
+    text: £499 one-off complete setup + training + 14 days fixes
+    source: aionboard/SERVICE_CATALOG.md
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - sole_trader
+    conditions: []
+    caveat: ''
+  weddings.thin_briefs:
+    claim_id: weddings.thin_briefs
+    type: third_party
+    text: No date, no venue, no budget — no quote possible.
+    source: verticals/weddings/PAINS.md (stub)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - weddings
+    conditions: []
+    caveat: ''
+  weddings.stale_availability:
+    claim_id: weddings.stale_availability
+    type: third_party
+    text: Availability changes faster than manual calendars and profiles
+    source: verticals/weddings/PAINS.md (stub)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - weddings
+    conditions: []
+    caveat: ''
+  weddings.paperwork_drag:
+    claim_id: weddings.paperwork_drag
+    type: third_party
+    text: Proposals, deposits, contracts and schedules need careful approval
+    source: verticals/weddings/PAINS.md (stub)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - weddings
+    conditions: []
+    caveat: ''
+  weddings.offer_pilot:
+    claim_id: weddings.offer_pilot
+    type: third_party
+    text: £399–£699 pilot test price (hypothesis until validated)
+    source: targets.md wedding-photo/MUA row
+    source_revision: aoc-skin
+    verified_at: ''
+    status: pending
+    permitted_segments:
+    - weddings
+    conditions: []
+    caveat: ''
+  weddings.review_engine:
+    claim_id: weddings.review_engine
+    type: third_party
+    text: 'Review engine post-job: ask at payment, respond to every review'
+    source: cgraphuk campaigns (review engine post-job/post-cut/post-clean)
+    source_revision: aoc-skin
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - weddings
+    conditions: []
+    caveat: Process claim, not outcome claim.
+  offer.quickstart.price:
+    claim_id: offer.quickstart.price
+    type: first_party_offer
+    text: £20 one-off Muse Quickstart
+    source: aionboard/OFFER.md
+    source_revision: 65ebc88
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - nails
+    - lashes
+    - hair
+    - cleaners
+    - car_detailers
+    - gardeners
+    conditions:
+    - customer_has_required_access
+    - offer_is_current
+    caveat: ''
+  offer.standard.price:
+    claim_id: offer.standard.price
+    type: first_party_offer
+    text: £499 standard AI setup
+    source: aionboard/OFFER.md
+    source_revision: 65ebc88
+    verified_at: ''
+    status: approved
+    permitted_segments:
+    - electrician
+    - beautician
+    - plumber
+    - sole_trader
+    - dog_groomers
+    - driving_instructors
+    - weddings
+    conditions:
+    - offer_is_current
+    caveat: ''
+types:
+- first_party_offer
+- verified_stat
+- third_party
+- hypothetical
+- measured_outcome
+note: Generated from segments/*/proofs.yaml + OFFER.md. Unknown claims enter review,
+  never fuzzy-matched.

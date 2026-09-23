@@ -29,6 +29,8 @@ class SlideshowScript:
     template: str = "opportunity"
     audience: str = "electrician"
     cta: str = ""
+    # slide index -> registry claim_id. Explicit references, never fuzzy.
+    claim_refs: dict = field(default_factory=dict)
 
 
 # ── Hook bank (tested patterns) ─────────────────────────────
@@ -86,10 +88,14 @@ def _mid_sentence(text: str) -> str:
     return first[:1].lower() + first[1:] + rest
 
 
-def _skin_claims(skin: dict) -> list[str]:
-    """Non-offer proof claims (offer close lives on the close slide)."""
+def _skin_claims(skin: dict, segment: str = "") -> list[tuple[str, str]]:
+    """Non-offer proof claims as (registry claim_id, text).
+
+    IDs are namespaced {segment}.{proof_id} — matching claims.yaml.
+    """
     proofs = (skin.get("proofs", {}) or {}).get("proofs", []) or []
-    return [p.get("claim", "") for p in proofs
+    seg = segment or skin.get("id", "")
+    return [(f"{seg}.{p.get('id')}", p.get("claim", "")) for p in proofs
             if p.get("id") != "offer_pilot" and p.get("claim")]
 
 
@@ -105,16 +111,27 @@ def _generic_deck(skin: dict, hook: str, template: str) -> list[SlideSpec] | Non
     here so new skins never leak another trade's words.
     """
     profile = skin.get("profile", {}) or {}
+    seg = skin.get("id", "")
     pains = _skin_pains(skin)
-    claims = _skin_claims(skin)
+    claim_pairs = _skin_claims(skin, seg)
     close = profile.get("close", "")
     workflow = profile.get("workflow", "Triaged, drafted, reminded — you approve everything.")
     comparator = profile.get("comparator", "the old way")
     dm_keyword = profile.get("dm_keyword", "SETUP")
-    c0 = _shorten(claims[0]) if len(claims) > 0 else _shorten(pains[0]) if pains else ""
-    c1 = _shorten(claims[1]) if len(claims) > 1 else _shorten(pains[1]) if len(pains) > 1 else ""
+
+    def _claim_text(i: int, fallback: str) -> tuple[str, str]:
+        # returns (text, registry claim_id or "")
+        if i < len(claim_pairs):
+            cid, text = claim_pairs[i]
+            return _shorten(text), cid
+        return fallback, ""
+
+    c0, r0 = _claim_text(0, _shorten(pains[0]) if pains else "")
+    c1, r1 = _claim_text(1, _shorten(pains[1]) if len(pains) > 1 else "")
     p0 = _shorten(pains[0]) if pains else ""
     p1 = _shorten(pains[1]) if len(pains) > 1 else p0
+    # slide index (post-hook) -> registry claim_id for proof-kind slides
+    refs = {1: r0, 2: r1}
 
     builders = {
         "opportunity": [
@@ -206,7 +223,8 @@ def _generic_deck(skin: dict, hook: str, template: str) -> list[SlideSpec] | Non
     spec = builders.get(template)
     if not spec or not close:
         return None
-    slides, seen = [], []
+    proof_texts = {c0: r0, c1: r1} if (c0 or c1) else {}
+    slides, seen, refs = [], [], {}
     for k, t, pos in spec:
         # dedupe: exact or near-duplicate (>60% word overlap) slides read as
         # repetition on a contact sheet — the human eye catches what word
@@ -214,11 +232,15 @@ def _generic_deck(skin: dict, hook: str, template: str) -> list[SlideSpec] | Non
         if not t or t in seen or any(_overlap(t, s) > 0.6 for s in seen):
             continue
         seen.append(t)
+        if k == "proof" and t in proof_texts and proof_texts[t]:
+            refs[len(slides)] = proof_texts[t]
         slides.append(SlideSpec(text=t, position=pos, kind=k))
     # keep the close last even if an earlier identical line was dropped
     if slides and slides[-1].kind != "close" and close not in seen:
         slides.append(SlideSpec(text=close, position=0.5, kind="close"))
-    return slides if len(slides) >= 5 else None
+    if len(slides) < 5:
+        return None
+    return slides, refs
 
 
 def _segments_root() -> Path:
@@ -226,37 +248,34 @@ def _segments_root() -> Path:
 
 
 def load_segment(segment: str) -> dict:
-    """Load a segment skin. Falls back to electrician for unknown ids."""
+    """Load a segment skin. Unknown segments RAISE — a misspelled segment
+    must never silently produce another trade's copy (peer review P1)."""
     if segment in _SEG_CACHE:
         return _SEG_CACHE[segment]
     root = _segments_root()
-    sid = segment if (root / segment).exists() else "electrician"
+    if not (root / segment).exists():
+        known = sorted(p.name for p in root.iterdir() if p.is_dir())
+        raise ValueError(f"unknown segment: {segment!r} (known: {known})")
     import yaml
-    skin = {"id": sid}
+    skin = {"id": segment}
     for name in ("profile", "hooks", "proofs", "templates"):
-        fp = root / sid / f"{name}.yaml"
+        fp = root / segment / f"{name}.yaml"
         skin[name] = yaml.safe_load(fp.read_text()) if fp.exists() else {}
     _SEG_CACHE[segment] = skin
     return skin
 
 
 def get_hooks(segment: str = "electrician") -> list[dict]:
-    """Hook bank for a segment (skin file, fallback to builtin bank)."""
-    try:
-        hooks = load_segment(segment).get("hooks", {}).get("hooks", [])
-        if hooks:
-            return hooks
-    except Exception:
-        pass
+    """Hook bank for a segment. Unknown segments raise (no silent fallback)."""
+    hooks = load_segment(segment).get("hooks", {}).get("hooks", [])
+    if hooks:
+        return hooks
     return [{"text": h, "angle": "bank", "audience": segment}
             for h in HOOK_BANK.get(segment, HOOK_BANK["general"])]
 
 
 def segment_close(segment: str = "electrician") -> str:
-    try:
-        return load_segment(segment).get("profile", {}).get("close", "")
-    except Exception:
-        return ""
+    return load_segment(segment).get("profile", {}).get("close", "")
 
 
 def skin_hash(segment: str = "electrician") -> str:
@@ -278,7 +297,7 @@ def skin_hash(segment: str = "electrician") -> str:
 # (segment, template) -> list of slide bodies (hook prepended by caller).
 _SEGMENT_DECKS: dict[tuple[str, str], list[str]] = {
     ("beautician", "opportunity"): [
-        "No-shows cost ~£19K a year per salon.",
+        "No-shows cost ~£19K/year per salon.",
         "Deposit + reminder workflows, prepared in your booking platform.",
         "Lapsed-client win-back lists, ready for your approval.",
         "Booking triage set up day one. You approve every send.",
@@ -302,7 +321,7 @@ _SEGMENT_DECKS: dict[tuple[str, str], list[str]] = {
         "After: service-due reminders book the work.",
     ],
     ("sole_trader", "opportunity"): [
-        "40% use AI. Only 18% connected it to the business.",
+        "40% of sole traders use AI, only 18% integrated it.",
         "WhatsApp + notebook + inbox is not a system.",
         "Findable on Google. Bookable. Paid. Done.",
         "One setup. Training included. No subscription.",
@@ -413,15 +432,27 @@ def generate_slides_deterministic(
 
     # 2. Generic skin-driven deck (no hardcoded trade copy).
     try:
-        generic = _generic_deck(load_segment(audience), hook, template)
+        generic_out = _generic_deck(load_segment(audience), hook, template)
     except Exception:
-        generic = None
-    if generic:
+        generic_out = None
+    if generic_out:
+        generic, refs = generic_out
+        # claim_refs survive slide_count truncation only for kept slides
+        kept = generic[:slide_count]
+        kept_texts = {s.text for s in kept}
+        # remap refs by surviving index
+        new_refs = {}
+        for i, s in enumerate(kept):
+            for j, t in enumerate(generic):
+                if t.text == s.text and j in refs:
+                    new_refs[i] = refs[j]
+                    break
         return SlideshowScript(
             hook=hook,
-            slides=generic[:slide_count],
+            slides=kept,
             template=template,
             audience=audience,
+            claim_refs=new_refs,
         )
 
     # 3. Legacy electrician decks (electrician segment only — never leaks).
@@ -530,4 +561,5 @@ def script_to_json(script: SlideshowScript) -> dict:
             {"text": s.text, "position": s.position, "kind": s.kind, "tags": s.tags}
             for s in script.slides
         ],
+        "claim_refs": {str(k): v for k, v in script.claim_refs.items()},
     }

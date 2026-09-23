@@ -1,23 +1,26 @@
-# Segment skin: dog_groomers
-# Source: aionboard targets.md + verticals/dog-groomers (PAINS).
-
 id: dog_groomers
-label: "UK dog groomers — repeat grooms, marketplace fees, waiting lists"
+label: UK dog groomers — repeat grooms, marketplace fees, waiting lists
 pains:
-  - "Marketplace commissions on repeat customers who'd book direct"
-  - "Lapsed owners not re-engaged — dogs need recurring grooms"
-  - "Medical and behaviour flags live in people's heads — trust risk"
-  - "Waiting lists unmanaged; no-shows and drive time unhandled"
+- Marketplace commissions on repeat customers who'd book direct
+- Lapsed owners not re-engaged — dogs need recurring grooms
+- Medical and behaviour flags live in people's heads — trust risk
+- Waiting lists unmanaged; no-shows and drive time unhandled
 offer:
-  price: "£349–£499 pilot test price (hypothesis until validated)"
-  founding: "£299 for first 3 (feedback + referral + case study)"
-  setup_time: "~1 hour remote; direct-booking + reminder setup day one"
-  includes: "direct booking setup, repeat-groom reminders, waiting-list workflow, review workflow, training + handover, 14 days fixes"
-  excluded: "website build, live voice service, Meta production integration (separately quoted per OFFER.md)"
-close: "DM GROOM for pilot setup."
+  price: £499 standard AI setup
+  founding: £299 for first 3 (feedback + referral + case study)
+  setup_time: ~1 hour remote; direct-booking + reminder setup day one
+  includes: direct booking setup, repeat-groom reminders, waiting-list workflow, review
+    workflow, training + handover, 14 days fixes
+  excluded: website build, live voice service, Meta production integration (separately
+    quoted per OFFER.md)
+close: DM GROOM for £499 setup.
 dm_keyword: GROOM
-workflow: "Repeat reminders, waiting lists, reviews — you approve everything"
-comparator: "Rover/Wag fees"
-tone: "warm, pet-first; talk direct bookings, never marketplace-bashing"
-competitor_note: "Don't replace marketplaces outright. Win repeats direct."
-hashtags: ["#doggroomer", "#doggroominguk", "#smallbusiness", "#ukbusiness"]
+workflow: Repeat reminders, waiting lists, reviews — you approve everything
+comparator: Rover/Wag fees
+tone: warm, pet-first; talk direct bookings, never marketplace-bashing
+competitor_note: Don't replace marketplaces outright. Win repeats direct.
+hashtags:
+- '#doggroomer'
+- '#doggroominguk'
+- '#smallbusiness'
+- '#ukbusiness'

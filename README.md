@@ -1,53 +1,61 @@
 # aoc — AI Onboard Content
 
-TikTok slideshow factory for AI Onboard. Generates 9:16 image carousels for UK electricians.
+TikTok slideshow factory for AI Onboard. Generates 9:16 image carousels
+for 13 UK trade segments (electrician, beauty, nails, lashes, hair,
+cleaners, dog_groomers, gardeners, car_detailers, driving_instructors,
+weddings, plumber, sole_trader).
 
 **Path:** £0 organic TikTok → £70 Facebook test → £30 reserve
 
 ## Pipeline
 
 ```
-OFFER/HOOK → SLIDE COPY → RENDER PNGs → ZIP → HUMAN APPROVE → TIKTOK POST
+OFFER/HOOK → SLIDE COPY → RENDER JPEGs → ZIP → HUMAN APPROVE → TIKTOK POST
 ```
 
-## Quick Start
+## Quick Start (executable on a clean checkout)
 
 ```bash
-# Generate a slideshow from a hook
-python3 -m slides.generate --hook "UK electricians — still doing quotes at 9pm?" --template opportunity
+pip install pillow pyyaml httpx pytest
+python3 -m pytest tests/ -q -m "not slow"  # unit suite, no network
 
-# Render slides as 1080x1920 PNGs
-python3 -m render.slideshow --input store/latest/script.json
+# Build one carousel (gated, receipted)
+python3 -c "
+from core.carousel import run_carousel
+r = run_carousel('UK electricians — still doing quotes at 9pm?', 'opportunity', segment='electrician')
+print(r['zip'])"
 
-# Export ZIP for TikTok upload
-python3 -m render.export --input store/latest/
+# Validate without rendering
+python3 mcp_server.py aoc_validate '{"hook": "UK electricians — still doing quotes at 9pm?", "segment": "electrician"}'
 
-# Review in browser
-python3 -m core.review
+# Review queue in browser
+python3 -m web.viewer  # http://127.0.0.1:8798/
 ```
 
-## Templates
+Config: `AOC_DB` (SQLite path, default `store/aoc.db`), `R2_*` (backup creds,
+via `.env`, never committed). No hidden dependency on `/root/aionboard` —
+the offer registry (`offers.yaml`) and claims (`claims.yaml`) are snapshotted
+in-repo with upstream revisions recorded.
 
-| Template | Scenes | Use For |
-|----------|--------|---------|
-| `opportunity` | hook → proof → workflow → close | "AI can do X for your business" |
-| `before_after` | hook → before → after → close | "Before vs after AI setup" |
-| `faq` | hook → question → answer → close | Common electrician questions |
-| `social_proof` | hook → stat → testimonial → close | "40% of sole traders use AI" |
-| `demo` | hook → screen_recording → result → close | Actual workflow demonstration |
+## Templates (11)
+
+`opportunity` · `before_after` · `faq` · `social_proof` · `demo` ·
+`diagnostic` · `teardown` · `comparison` · `annuity` · `retention` ·
+`waitlist` (UK Muse waiting list) · `trust` (TRUST_MODEL guarantees).
+See `docs/TEMPLATES.md` for structures and `segments/*/templates.yaml`.
 
 ## Hook Bank (Tested Patterns)
 
 From research: question/indecision hooks outperform declarative product hooks.
 
 ```
-"Which of these would you automate first?"
-"Am I doing this wrong?"
-"What would you automate first?"
+"Electricians: which of these would you automate first?"
 "UK electricians — still doing quotes at 9pm?"
-"Your competitors are using AI. Are you?"
-"The quote you sent at 11pm — AI could've sent it at 2pm"
+"Landlords need EICRs every 5 years. Who owns that cycle?"
+"Marketplace takes 20% of your new clients. Whose business is it?"
+"Just downloaded Muse? We'll set it up for your business for £20."
 ```
+Per-segment banks live in `segments/*/hooks.yaml` (all gate-passing; enforced by test).
 
 ## Creative Memory
 
@@ -63,7 +71,8 @@ Prefers mutations of patterns that produced qualified leads, not just views.
 - `docs/VALIDATION.md` — gates, pixel checks, contact sheets, what humans still do
 - `reference/README.md` — where the clones live (not vendored)
 
-Proven: `store/aoc_66b19fb4c46b/` — 7 slides + ZIP from one command. MCP: 5 tools (`aoc_status/hooks/build/rank/receipts`).
+18 MCP tools (`aoc_status/hooks/build/validate/inspect/lineage/measure/publish(_confirm)/rank/receipts/backup/review/signoff/metrics/learn/score/personalize`).
+See `docs/VIEWING.md` for the local gallery + pi extension.
 
 ## Directory Structure
 

@@ -138,9 +138,62 @@ def gate_personalization(variant: dict | None) -> tuple[bool, str]:
             return False, detail
     if variant.get("status") not in ("research-only", "consented"):
         return False, "missing delivery status"
-    if not variant.get("company_number"):
-        return False, "no company_number (untraceable prospect)"
+    # business_id accepts CH numbers AND verified non-CH identities, so
+    # sole traders without a Companies House record are representable —
+    # but an unverified identity can never be marketed to.
+    if not variant.get("business_id"):
+        return False, "no business_id (untraceable prospect)"
+    if variant.get("status") == "consented" and not variant.get("permission_ref"):
+        return False, "consented without permission evidence refused"
     return True, f"identity-only, status={variant['status']}"
+
+
+def gate_offer_fresh(plan: dict) -> tuple[bool, str]:
+    """The plan's offer version must match the registry.
+
+    An upstream OFFER.md change invalidates pending creatives (revalidate),
+    while history stays reproducible against its recorded version.
+    """
+    from core.offers import check_revalidation
+    return check_revalidation(plan)
+
+
+def gate_offer_cta(plan: dict, segment: str) -> tuple[bool, str]:
+    """The close must carry the segment's current offer price.
+
+    A £20 wedge deck closing at £499 (or vice versa) sells the wrong offer.
+    """
+    from core.offers import offer_for_segment
+    try:
+        _, offer = offer_for_segment(segment)
+    except ValueError as e:
+        return False, str(e)
+    price = str(offer.get("price_gbp", ""))
+    slides = plan.get("slides", []) or []
+    closes = [s.get("text", "") for s in slides if s.get("kind") == "close"]
+    texts = closes + [plan.get("cta", "")]
+    if price and not any(price in t for t in texts):
+        return False, f"close lacks current offer price £{price}"
+    return True, f"close carries £{price}"
+
+
+def gate_suppression(variant: dict | None) -> tuple[bool, str]:
+    """Withdrawn permission blocks every outbound preparation path."""
+    if variant is None:
+        return True, "segment-generic (no prospect involved)"
+    bid = variant.get("business_id", "")
+    if not bid:
+        return True, "no business identity (nothing to suppress)"
+    from core.store import session as _session
+    try:
+        with _session() as db:
+            row = db.execute("SELECT withdrawn_at FROM suppression WHERE business_id = ?",
+                             (bid,)).fetchone()
+    except Exception:
+        return True, "suppression store unavailable (fail-open logged)"
+    if row:
+        return False, f"marketing permission withdrawn {row['withdrawn_at']}"
+    return True, "not suppressed"
 
 
 def run_gates(plan: dict, proof, segment: str,
@@ -153,6 +206,9 @@ def run_gates(plan: dict, proof, segment: str,
         "hook-quality-v1": gate_hook_quality(plan.get("hook", ""), segment),
         "render-legible-v1": gate_render_legible(plan),
         "personalization-v1": gate_personalization(variant),
+        "offer-fresh-v1": gate_offer_fresh(plan),
+        "offer-cta-v1": gate_offer_cta(plan, segment),
+        "suppression-v1": gate_suppression(variant),
     }
     passed = all(ok for ok, _ in results.values())
     return {"passed": passed,

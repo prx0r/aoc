@@ -1,23 +1,26 @@
-# Segment skin: driving_instructors
-# Source: aionboard targets.md + verticals/driving-instructors (PAINS stub).
-
 id: driving_instructors
-label: "UK driving instructors — diaries, cancellations, waiting lists, progress"
+label: UK driving instructors — diaries, cancellations, waiting lists, progress
 pains:
-  - "Enquiries scattered across phone, SMS, social, directories, referrals"
-  - "Lesson scheduling fights cancellations and waiting-list demand"
-  - "Progress records live in notebooks, messages, memory"
-  - "Reviews and referrals rarely collected"
+- Enquiries scattered across phone, SMS, social, directories, referrals
+- Lesson scheduling fights cancellations and waiting-list demand
+- Progress records live in notebooks, messages, memory
+- Reviews and referrals rarely collected
 offer:
-  price: "£299–£499 pilot test price (hypothesis until validated)"
-  founding: "£299 for first 3 (feedback + referral + case study)"
-  setup_time: "~1 hour remote; enquiry + diary-triage setup day one"
-  includes: "enquiry triage across channels, cancellation backfill workflow, waiting-list setup, progress-record basics, review workflow, training + handover, 14 days fixes"
-  excluded: "website build, live voice service, Meta production integration (separately quoted per OFFER.md)"
-close: "DM LESSONS for pilot setup."
+  price: £499 standard AI setup
+  founding: £299 for first 3 (feedback + referral + case study)
+  setup_time: ~1 hour remote; enquiry + diary-triage setup day one
+  includes: enquiry triage across channels, cancellation backfill workflow, waiting-list
+    setup, progress-record basics, review workflow, training + handover, 14 days fixes
+  excluded: website build, live voice service, Meta production integration (separately
+    quoted per OFFER.md)
+close: DM LESSONS for £499 setup.
 dm_keyword: LESSONS
-workflow: "Enquiries triaged, gaps backfilled, lists kept — you approve everything"
-comparator: "notebook + memory"
-tone: "plain, diary-first; talk full diaries, not software"
-competitor_note: "Don't replace anything. Add triage + backfill + lists."
-hashtags: ["#drivinginstructor", "#learntodrive", "#smallbusiness", "#ukbusiness"]
+workflow: Enquiries triaged, gaps backfilled, lists kept — you approve everything
+comparator: notebook + memory
+tone: plain, diary-first; talk full diaries, not software
+competitor_note: Don't replace anything. Add triage + backfill + lists.
+hashtags:
+- '#drivinginstructor'
+- '#learntodrive'
+- '#smallbusiness'
+- '#ukbusiness'
