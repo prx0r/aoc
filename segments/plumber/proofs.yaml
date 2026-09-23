@@ -1,0 +1,22 @@
+# Plumber proofs.
+
+proofs:
+  - id: triage
+    claim: "Emergency vs routine triage + booking + reminders included"
+    source: "aionboard plumber positioning (VISION + SERVICE_CATALOG patterns)"
+    use: "Mechanism slides"
+
+  - id: service_due
+    claim: "Annual service-due engine chases repeat revenue"
+    source: "aionboard heating-firm servicing need (VISION)"
+    use: "Repeat-revenue angle"
+
+  - id: quote_evenings
+    claim: "Quotes drafted while on jobs, approved on phone"
+    source: "aionboard quote-builder workflow (SALES_PLAYBOOK demo)"
+    use: "Before/after slides"
+
+  - id: offer_499
+    claim: "£499 one-off setup, 14 days fixes, no subscription"
+    source: "aionboard/SERVICE_CATALOG.md"
+    use: "Close slide"

@@ -1,0 +1,34 @@
+# Plumber hooks.
+
+hooks:
+  - text: "Plumbers — who triages while you're under a boiler?"
+    angle: pain_callout
+    audience: owner_2_10_staff
+
+  - text: "Emergency or routine — which call would you take first?"
+    angle: question_choice
+    audience: owner_2_10_staff
+
+  - text: "How many services are overdue right now?"
+    angle: diagnostic
+    audience: owner_2_10_staff
+
+  - text: "The boiler quote you wrote at 10pm — AI drafts it at 3pm."
+    angle: before_after
+    audience: owner_2_10_staff
+
+  - text: "No-access mornings. Who reminds the customer?"
+    angle: scenario
+    audience: owner_2_10_staff
+
+  - text: "Repeat servicing is repeat revenue. Who chases it?"
+    angle: mechanism
+    audience: owner_2_10_staff
+
+  - text: "Already on ServiceM8? Who does the admin around it?"
+    angle: objection_flip
+    audience: job_tool_user
+
+  - text: "Bathroom quotes take evenings. What if they took minutes?"
+    angle: niche_quote
+    audience: owner_2_10_staff

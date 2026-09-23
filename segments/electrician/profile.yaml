@@ -1,0 +1,19 @@
+# Segment skin: electrician (reference implementation — all other skins copy this shape)
+
+id: electrician
+label: "UK electrical contractors, 2–10 staff, owner still does enquiries/quotes"
+pains:
+  - "62% of calls missed while on tools (playbook-stated pain)"
+  - "Quotes sent late at night, jobs lost to faster responders"
+  - "EICR compliance tracking slips"
+  - "Sundays lost to admin/invoicing"
+offer:
+  price: "£499 one-off"
+  founding: "£299 for first 3 (feedback + referral + case study)"
+  setup_time: "~1 hour remote, 4–6 hr standard package"
+  includes: "email + calendar + WhatsApp, voice agent for missed calls, quote builder, GBP optimisation, training + handover, 14 days fixes"
+close: "DM QUOTE for £499 setup."
+dm_keyword: QUOTE
+tone: "direct, slightly provocative, no corporate speak; never insult Tradify — connect it"
+competitor_note: "Don't replace Tradify/Checkatrade. Connect email+calendar+quotes together."
+hashtags: ["#electrician", "#electricianlife", "#tradesman", "#smallbusiness", "#ukbusiness", "#electricianuk"]

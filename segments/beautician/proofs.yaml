@@ -1,0 +1,23 @@
+# Beautician proofs — every claim traces here.
+
+proofs:
+  - id: noshow_10k
+    claim: "No-shows cost ~£10K/year per chair"
+    source: "aionboard/SERVICE_CATALOG.md beauty playbook (stated pain)"
+    use: "Pain opener for deposit angle"
+    caveat: "Playbook-stated, not independent survey."
+
+  - id: reminders_24_2
+    claim: "Deposit + SMS at 24h and 2h cuts no-shows"
+    source: "aionboard beauty playbook (deposit system + reminders)"
+    use: "Mechanism slides"
+
+  - id: winback
+    claim: "Lapsed-client win-back engine included in setup"
+    source: "aionboard/SERVICE_CATALOG.md beauty first-30-days"
+    use: "Close slide proof"
+
+  - id: offer_499
+    claim: "£499 one-off setup, deposit system live day 1"
+    source: "aionboard/SERVICE_CATALOG.md"
+    use: "Close slide"

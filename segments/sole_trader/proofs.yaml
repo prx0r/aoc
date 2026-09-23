@@ -1,0 +1,22 @@
+# Sole-trader proofs.
+
+proofs:
+  - id: gap_40_18
+    claim: "40% of sole traders use AI, only 18% integrated it"
+    source: "DSIT Business Data Survey Oct 2025–Jan 2026 via aionboard/VISION.md"
+    use: "Core gap stat"
+
+  - id: no_website_35
+    claim: "35% of construction businesses have no website"
+    source: "DSIT survey via aionboard/VISION.md"
+    use: "Findability angle"
+
+  - id: privacy_73
+    claim: "73% uncomfortable with data training external AI"
+    source: "DSIT survey via aionboard/VISION.md"
+    use: "Control/approval selling point"
+
+  - id: offer_499
+    claim: "£499 one-off complete setup + training + 14 days fixes"
+    source: "aionboard/SERVICE_CATALOG.md"
+    use: "Close slide"

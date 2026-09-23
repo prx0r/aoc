@@ -1,0 +1,20 @@
+# Segment skin: sole_trader (any trade, 1 person, WhatsApp + notebook today)
+# Source: aionboard VISION (40% use AI, 18% integrated; 35% of construction no website).
+
+id: sole_trader
+label: "UK sole traders — one person, phone does everything, admin at night"
+pains:
+  - "Everything through WhatsApp, a notebook and an overflowing inbox"
+  - "No website or Google profile — invisible when customers (or their AI) search"
+  - "Quotes and invoices whenever there's a spare hour"
+  - "No follow-up system — one-and-done customers"
+offer:
+  price: "£499 one-off"
+  founding: "£299 for first 3 (feedback + referral + case study)"
+  setup_time: "~1 hour remote; complete business setup + AI training"
+  includes: "Google Business Profile, simple website with AI chat, enquiry triage, quote/invoice basics, training + handover, 14 days fixes"
+close: "DM SETUP for £499 setup."
+dm_keyword: SETUP
+tone: "plain, encouraging; first setup not optimisation — completeness over cleverness"
+competitor_note: "Don't pitch advanced integrations. Pitch: findable + bookable + paid."
+hashtags: ["#soletrader", "#tradesman", "#smallbusiness", "#ukbusiness", "#selfemployed"]

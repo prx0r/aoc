@@ -1,0 +1,20 @@
+# Segment skin: plumber (plumbing & heating firms, 2–10 staff)
+# Source: aionboard VISION (plumbing/heating callouts, repeat servicing) + SERVICE_CATALOG patterns.
+
+id: plumber
+label: "UK plumbing & heating firms, 2–10 staff — callouts, servicing, appointments"
+pains:
+  - "Emergency callouts interrupt scheduled jobs; triage is chaos"
+  - "Annual service reminders slip — repeat revenue lost"
+  - "Quotes for bathrooms/boilers take evenings"
+  - "No-shows and access problems waste mornings"
+offer:
+  price: "£499 one-off"
+  founding: "£299 for first 3 (feedback + referral + case study)"
+  setup_time: "~1 hour remote, 4–6 hr standard package"
+  includes: "enquiry triage (emergency vs routine), booking + reminders, service-due engine, quote builder, training + handover, 14 days fixes"
+close: "DM JOBS for £499 setup."
+dm_keyword: JOBS
+tone: "direct, practical; talk triage and booked diaries, not software features"
+competitor_note: "Work with existing job tools (ServiceM8/Powered Now). Add triage + reminders + follow-up."
+hashtags: ["#plumber", "#plumberlife", "#heatingengineer", "#tradesman", "#smallbusiness", "#ukbusiness"]

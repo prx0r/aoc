@@ -55,6 +55,94 @@ HOOK_BANK = {
 }
 
 
+# ── Segment skins (core engine, per-trade copy) ─────────────
+# Shape stolen from /content gardens: engine is generic, skins supply copy.
+# segments/<id>/{profile,hooks,proofs,templates}.yaml
+
+SEGMENT_IDS = ["electrician", "beautician", "plumber", "sole_trader"]
+_SEG_CACHE: dict = {}
+
+
+def _segments_root() -> Path:
+    return Path(__file__).parent.parent / "segments"
+
+
+def load_segment(segment: str) -> dict:
+    """Load a segment skin. Falls back to electrician for unknown ids."""
+    if segment in _SEG_CACHE:
+        return _SEG_CACHE[segment]
+    root = _segments_root()
+    sid = segment if (root / segment).exists() else "electrician"
+    import yaml
+    skin = {"id": sid}
+    for name in ("profile", "hooks", "proofs", "templates"):
+        fp = root / sid / f"{name}.yaml"
+        skin[name] = yaml.safe_load(fp.read_text()) if fp.exists() else {}
+    _SEG_CACHE[segment] = skin
+    return skin
+
+
+def get_hooks(segment: str = "electrician") -> list[dict]:
+    """Hook bank for a segment (skin file, fallback to builtin bank)."""
+    try:
+        hooks = load_segment(segment).get("hooks", {}).get("hooks", [])
+        if hooks:
+            return hooks
+    except Exception:
+        pass
+    return [{"text": h, "angle": "bank", "audience": segment}
+            for h in HOOK_BANK.get(segment, HOOK_BANK["general"])]
+
+
+def segment_close(segment: str = "electrician") -> str:
+    try:
+        return load_segment(segment).get("profile", {}).get("close", "")
+    except Exception:
+        return ""
+
+
+# Explicit per-segment decks for the two highest-use templates.
+# (segment, template) -> list of slide bodies (hook prepended by caller).
+_SEGMENT_DECKS: dict[tuple[str, str], list[str]] = {
+    ("beautician", "opportunity"): [
+        "No-shows cost ~£10K a year per chair.",
+        "Deposits + SMS at 24h and 2h. No-shows stop.",
+        "Lapsed clients get win-back texts. Chairs fill.",
+        "Booking, deposits, reminders — live day one.",
+    ],
+    ("beautician", "before_after"): [
+        "Before: gaps Tue afternoons, chasing deposits by text.",
+        "After: deposits taken at booking, reminders automatic.",
+        "Before: regulars drift off, never rebooked.",
+        "After: win-back engine fills the gaps.",
+    ],
+    ("plumber", "opportunity"): [
+        "Emergency or routine — triage decides the day.",
+        "AI triages enquiries, books jobs, sends reminders.",
+        "Service-due engine chases repeat revenue.",
+        "Quotes drafted on jobs, approved on phone.",
+    ],
+    ("plumber", "before_after"): [
+        "Before: callouts chaos, quotes at 10pm.",
+        "After: triaged diary, quotes drafted by 3pm.",
+        "Before: services overdue, revenue lost.",
+        "After: service-due reminders book the work.",
+    ],
+    ("sole_trader", "opportunity"): [
+        "40% use AI. Only 18% connected it to the business.",
+        "WhatsApp + notebook + inbox is not a system.",
+        "Findable on Google. Bookable. Paid. Done.",
+        "One setup. Training included. No subscription.",
+    ],
+    ("sole_trader", "before_after"): [
+        "Before: invisible on Google, quotes at midnight.",
+        "After: profile + site + chat. Enquiries triaged.",
+        "Before: one-and-done customers.",
+        "After: follow-ups and reviews automatic.",
+    ],
+}
+
+
 # ── Deterministic generator (no LLM needed) ─────────────────
 
 def generate_slides_deterministic(
@@ -65,7 +153,8 @@ def generate_slides_deterministic(
 ) -> SlideshowScript:
     """Generate slides without any LLM call.
 
-    Returns a structured script with placeholder content based on template.
+    Segment-aware: explicit per-segment decks win; otherwise the generic
+    electrician deck with the segment's close line substituted.
     """
     templates = {
         "opportunity": [
@@ -134,7 +223,27 @@ def generate_slides_deterministic(
         ],
     }
 
+    # Segment override: explicit deck wins (hook + bodies + segment close).
+    key = (audience, template)
+    if key in _SEGMENT_DECKS:
+        bodies = _SEGMENT_DECKS[key]
+        slides = [SlideSpec(text=hook, position=0.35, kind="hook")]
+        for b in bodies:
+            slides.append(SlideSpec(text=b, position=0.5, kind="body"))
+        close = segment_close(audience)
+        if close:
+            slides.append(SlideSpec(text=close, position=0.5, kind="close"))
+        return SlideshowScript(
+            hook=hook, slides=slides[:slide_count],
+            template=template, audience=audience,
+        )
+
     slides = templates.get(template, templates["opportunity"])
+    # Substitute segment close line so generic decks don't leak electrician CTA.
+    slides = list(slides)
+    close = segment_close(audience)
+    if close and slides and slides[-1].kind == "close":
+        slides[-1] = SlideSpec(text=close, position=0.5, kind="close")
     return SlideshowScript(
         hook=hook,
         slides=slides[:slide_count],
@@ -214,9 +323,11 @@ Output JSON: {{"slides": [{{"text": "...", "kind": "hook|body|proof|close"}}]}}"
 # ── Utility ──────────────────────────────────────────────────
 
 def get_random_hook(audience: str = "electrician") -> str:
-    """Get a random hook from the bank."""
+    """Get a random hook from the segment skin."""
     import random
-    hooks = HOOK_BANK.get(audience, HOOK_BANK["general"])
+    hooks = [h["text"] for h in get_hooks(audience) if h.get("text")]
+    if not hooks:
+        hooks = HOOK_BANK.get(audience, HOOK_BANK["general"])
     return random.choice(hooks)
 
 

@@ -23,11 +23,19 @@ def _content_id(hook: str, template: str) -> str:
 
 
 def plan(hook: str, template: str = "opportunity", audience: str = "electrician",
-         slide_count: int = 6, cta: str = "DM QUOTE for £499 setup") -> dict:
-    """Stage 1: hook → slide script (JSON contract). No files, no LLM needed."""
-    script = generate_slides_deterministic(hook, audience, template, slide_count)
+         slide_count: int = 6, cta: str | None = None, segment: str | None = None) -> dict:
+    """Stage 1: hook → slide script (JSON contract). No files, no LLM needed.
+
+    audience/segment select the skin (default electrician). CTA defaults to
+    the segment close line unless explicitly passed.
+    """
+    seg = segment or audience
+    from slides.generate import segment_close
+    cta = cta or segment_close(seg)
+    script = generate_slides_deterministic(hook, seg, template, slide_count)
     d = script_to_json(script)
     d["cta"] = cta
+    d["segment"] = seg
     d["content_id"] = _content_id(hook, template)
     d["created_at"] = datetime.now(timezone.utc).isoformat()
     return d
@@ -70,10 +78,12 @@ def export(manifest: dict, out_dir: Path | str, zip_name: str = "tiktok_carousel
 
 
 def run_carousel(hook: str, template: str = "opportunity", base_dir: Path | str = "store",
-                 receipts_path: Path | str = "receipts/content.jsonl") -> dict:
+                 receipts_path: Path | str = "receipts/content.jsonl",
+                 segment: str = "electrician", audience: str | None = None) -> dict:
     """Full local run: plan → render → export → receipt. No network. No publish."""
     base = Path(base_dir)
-    plan_dict = plan(hook, template)
+    seg = segment or (audience or "electrician")
+    plan_dict = plan(hook, template, audience=seg, segment=seg)
     out_dir = base / plan_dict["content_id"]
     manifest = render(plan_dict, out_dir)
     zip_path = export(manifest, out_dir)
@@ -81,6 +91,7 @@ def run_carousel(hook: str, template: str = "opportunity", base_dir: Path | str 
         "content_id": plan_dict["content_id"],
         "hook": hook,
         "template": template,
+        "segment": seg,
         "slides": len(manifest["slides"]),
         "zip": str(zip_path),
     })

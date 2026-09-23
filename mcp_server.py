@@ -14,8 +14,8 @@ ROOT = Path(__file__).parent
 
 TOOLS = [
     {"name": "aoc_status", "description": "What the factory can do: templates, hooks, receipts count", "inputSchema": {"type": "object", "properties": {}}},
-    {"name": "aoc_hooks", "description": "List hook bank for an audience", "inputSchema": {"type": "object", "properties": {"audience": {"type": "string", "default": "electrician"}}}},
-    {"name": "aoc_build", "description": "Build a carousel locally (PNGs+ZIP, no publish)", "inputSchema": {"type": "object", "properties": {"hook": {"type": "string"}, "template": {"type": "string", "default": "opportunity"}}, "required": ["hook"]}},
+    {"name": "aoc_hooks", "description": "List hook bank for a segment (electrician|beautician|plumber|sole_trader)", "inputSchema": {"type": "object", "properties": {"audience": {"type": "string", "default": "electrician"}, "segment": {"type": "string", "default": ""}}}},
+    {"name": "aoc_build", "description": "Build a carousel locally (PNGs+ZIP, no publish)", "inputSchema": {"type": "object", "properties": {"hook": {"type": "string"}, "template": {"type": "string", "default": "opportunity"}, "segment": {"type": "string", "default": "electrician"}}, "required": ["hook"]}},
     {"name": "aoc_rank", "description": "Rank creatives by leads/sales from memory", "inputSchema": {"type": "object", "properties": {"metric": {"type": "string", "default": "leads"}}}},
     {"name": "aoc_receipts", "description": "Verify receipt chain integrity", "inputSchema": {"type": "object", "properties": {}}},
 ]
@@ -30,13 +30,13 @@ def _handle(name: str, args: dict):
         n = sum(1 for _ in open(receipts)) if receipts.exists() else 0
         return {"templates": ["opportunity", "before_after", "faq", "social_proof", "demo"], "hooks": len(hooks), "receipts": n, "publish": "manual-only"}
     if name == "aoc_hooks":
-        import yaml
-        aud = args.get("audience", "electrician")
-        hooks = yaml.safe_load((ROOT / "assets/electrician/hooks.yaml").read_text())["hooks"]
-        return [h for h in hooks if h.get("audience", "owner_2_10_staff") in (aud, "owner_2_10_staff") or aud == "electrician"]
+        from slides.generate import get_hooks
+        seg = args.get("segment") or args.get("audience", "electrician")
+        return get_hooks(seg)
     if name == "aoc_build":
         from core.carousel import run_carousel
-        return run_carousel(args["hook"], args.get("template", "opportunity"), base_dir=ROOT / "store", receipts_path=ROOT / "receipts/content.jsonl")
+        seg = args.get("segment", "electrician")
+        return run_carousel(args["hook"], args.get("template", "opportunity"), base_dir=ROOT / "store", receipts_path=ROOT / "receipts/content.jsonl", segment=seg)
     if name == "aoc_rank":
         from core.memory import rank
         return [{"key": k, "runs": v.get("runs"), "totals": v.get("totals"), "cpqc": v.get("cpqc"), "cpsc": v.get("cpsc")} for k, v in rank(ROOT / "receipts/memory.json", args.get("metric", "leads"))]
