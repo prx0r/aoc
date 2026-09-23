@@ -76,8 +76,13 @@ def gate_hook_quality(hook: str, segment: str) -> tuple[bool, str]:
     asks = hook.rstrip().endswith("?")
     if not (names_buyer or has_number):
         return False, "hook names neither buyer nor number"
-    if not (asks or has_number or "vs" in hl.lower()):
-        return False, "hook has no question, number, or comparison"
+    # Open loops: question, number, comparison — plus conditionals ("if…")
+    # and explicit contrasts, both proven swipe-earners.
+    contrast = ("vs" in hl or " if " in f" {hl} "
+                or any(w in hl for w in ("worse", "better", "different", "before",
+                                         "after", "instead", "mistake", "wrong")))
+    if not (asks or has_number or contrast):
+        return False, "hook has no question, number, comparison, or conditional"
     return True, "hook earns swipe 1"
 
 

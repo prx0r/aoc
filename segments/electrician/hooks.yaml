@@ -7,7 +7,7 @@ hooks:
     angle: pain_callout
     audience: owner_2_10_staff
 
-  - text: "Which of these would you automate first?"
+  - text: "Electricians: which of these would you automate first?"
     angle: question_choice
     audience: owner_2_10_staff
 
