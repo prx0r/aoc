@@ -110,6 +110,11 @@ def _final_slides(plan_dict: dict) -> list[dict]:
     has_cta = (cta and cta in last) or "DM " in last
     if cta and not has_cta:
         slides.append({"text": cta, "position": 0.5, "kind": "close", "tags": []})
+    # Append save prompt to close slide (TikTok algorithm weights saves heavily)
+    if slides and slides[-1].get("kind") == "close":
+        existing = slides[-1]["text"]
+        if "save" not in existing.lower():
+            slides[-1]["text"] = existing + " — Save this for later"
     return slides
 
 

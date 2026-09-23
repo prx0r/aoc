@@ -123,30 +123,38 @@ def aoc_publish(content_id: str = "", platform: str = "tiktok"):
     a posting checklist. Marks nothing published — only a separate
     confirmation with the real platform post URL/ID does that."""
     sys.path.insert(0, str(ROOT))
-    from core.channels import channel_checklist, channel_hashtags
+    from core.channels import channel_checklist, channel_hashtags, channel_sound, channel_caption
     from slides.generate import load_segment
     out, plan, manifest = _resolve_build(content_id)
+    segment = plan.get("segment", "")
     try:
-        seg_tags = (load_segment(plan.get("segment", "")).get("profile", {})
-                    .get("hashtags", []))
+        seg_profile = load_segment(segment).get("profile", {})
+        seg_tags = seg_profile.get("hashtags", [])
+        seg_close = seg_profile.get("close", "")
     except ValueError:
-        seg_tags = []
+        seg_tags, seg_close = [], ""
+    hook = plan.get("hook", "")
+    seo_caption = channel_caption(platform, hook, segment, seg_close)
     return {
         "status": "manual-pending",
         "content_id": content_id,
         "platform": platform,
         "zip": str(out / "tiktok_carousel.zip"),
         "contact_sheet": str(out / "contact_sheet.jpg"),
-        "caption": plan.get("caption", ""),
+        "caption": seo_caption,
         "cta": manifest.get("final_cta", ""),
         "hashtags": channel_hashtags(platform, seg_tags),
+        "sound": channel_sound(platform, plan.get("template", "opportunity")),
         "photo_credit": manifest.get("photo_credit", ""),
+        "save_prompt": "Save this for later — tap the bookmark icon",
         "checklist": channel_checklist(platform) + [
-            "caption visible ≤150 chars + 3–5 hashtags with buyer terms",
+            "caption is 200+ chars with keywords for TikTok search",
+            "3-5 hashtags with buyer terms (segment leads, channel follows)",
+            "select trending audio matching the sound recommendation above",
             "paste photo_credit into the caption when non-empty (CC BY requirement)",
             "confirm with aoc_publish_confirm + real post URL afterwards",
         ],
-        "note": "post the ZIP manually to pick trending audio in-app",
+        "note": "post the ZIP manually as Photo Mode (swipeable), pick trending audio in-app",
     }
 
 

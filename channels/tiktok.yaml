@@ -33,14 +33,49 @@ suggested_hashtags:
   - "#ukbusiness"
   - "#electricianuk"
 
+# TikTok algorithm optimisation (added 2026-09-23)
+
+# Music: REQUIRED for carousel ads. Pick from TikTok Creative Center trending.
+# Ambient/lo-fi for educational, upbeat for before/after, mysterious for trust.
+# Never post silent. Match energy to format:
+sound_by_format:
+  before_after: "upbeat trending — energy matches transformation"
+  trust: "ambient lo-fi — calm, reassuring, no lyrics"
+  opportunity: "mysterious/atmospheric — curiosity tone"
+  faq: "lo-fi beat — educational, calm"
+  comparison: "upbeat trending — showdown energy"
+  story: "emotional ambient — narrative tone"
+  retention: "lo-fi beat — win-back energy"
+
+# Caption: 200+ chars, keyword-rich for TikTok search indexing.
+# Structure: [hook restatement] + [value promise] + [question for comments] + [hashtags]
+caption_template: "{hook} {value_line} {comment_prompt} {hashtags}"
+
+# Posting times (UK audience, general benchmarks)
+# Check TikTok Analytics → Followers → Activity for your specific audience.
+posting_times:
+  best: ["07:00-09:00", "19:00-23:00"]
+  avoid: ["02:00-06:00"]
+  note: "weekday mornings + evenings. Slideshows build over 2-4 days — don't judge day 1."
+
 # Performance tracking
 track:
   - views
   - swipes
+  - swipe_through_rate
+  - completion_rate
+  - saves
+  - shares
+  - comments
   - profile_visits
   - clicks
   - leads
   - sales
 
-# Creative memory: audience x hook x angle x slide_count x CTA x visual_style -> metrics
-# Prefer mutations of patterns that produced qualified leads, not just views
+# Algorithm signals ranked by weight for carousels:
+# 1. Swipe-through completion rate (did they reach the last slide?)
+# 2. Saves (weighted more than likes for carousels)
+# 3. Comments (2.9x higher than video — encourage with a question)
+# 4. Shares via DM
+# 5. Reverse swipes (re-reading = strong interest signal)
+# 6. Dwell time per slide (3-5 seconds is the sweet spot)
