@@ -26,3 +26,6 @@ hooks:
 - text: 'Detailers: every quote needs your approval — OK?'
   angle: trust
   audience: car_detailers
+- text: 'Detailers: rain cancels Friday. Who fills Saturday?'
+  angle: scheduling
+  audience: detailer

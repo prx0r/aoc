@@ -4,7 +4,7 @@
 
 ## What aoc is
 
-TikTok slideshow factory for AI Onboard's 13 UK trade segments. Deterministic
+TikTok slideshow factory for AI Onboard's 16 UK trade and POW segments. Deterministic
 pipeline: hook → gated slides → 1080×1920 JPEGs → ZIP → human review →
 manual TikTok post → measured learnings. No auto-posting, ever.
 
@@ -17,7 +17,7 @@ proof_from_plan()   every stat claim resolves to claims.yaml or REFUSED
   ↓
 run_gates()         9 gates; failure → FAIL receipt + raise, nothing renders
   ↓
-render()            slides → PNGs, atomic rename; replay detection on duplicates
+render()            slides → 1080×1920 JPEGs, atomic rename; replay detection on duplicates
   ↓
 validate_carousel() pixel checks (dims, backdrop, text, margins) + contact sheet
   ↓
@@ -58,7 +58,7 @@ version current) · `offer-cta` (close carries current price) ·
 ## Skins (engine never names a trade)
 
 `segments/<id>/{profile,hooks,proofs,templates,manifest}.yaml` + `PAINS.md` +
-`CAMPAIGN.md`. 13 segments. Deck resolution: explicit hand-tuned →
+`CAMPAIGN.md`. 16 segments. Deck resolution: explicit hand-tuned →
 generic skin-driven → refuse (never another trade's copy).
 New segment = copy electrician's 4 YAMLs, ~30 min (`docs/SEGMENTS.md`).
 
@@ -68,9 +68,11 @@ New segment = copy electrician's 4 YAMLs, ~30 min (`docs/SEGMENTS.md`).
   (first_party_offer / third_party / hypothetical / measured_outcome),
   source, permitted segments, status. Number-overlap matching is DELETED;
   unknown stats raise, pending ones queue for review.
-- `offers.yaml`: versioned £20 quickstart (waitlist) + £499 standard,
-  snapped from aionboard OFFER.md with commit pinned. A registry bump
-  invalidates pending creatives; history replays against its version.
+- `offers.yaml`: versioned registry including the local experimental
+  `free-demo` entry, £20 quickstart (waitlist), and £499 standard. The
+  `free-demo` entry is not yet present in upstream `aionboard/OFFER.md`; a
+  registry bump invalidates pending creatives and history replays against its
+  version.
 
 ## Review (15-point checklist, 8 auto + 7 human)
 
@@ -126,7 +128,7 @@ conversions reported apart, never guessed. Contact details never leave the DB.
 | `claims.yaml` / `offers.yaml` | registries |
 | `store/` | builds (gitignored) + `campaigns.json` index + `aoc.db` |
 | `receipts/` | hash-chained logs (gitignored) |
-| `tests/` | 75 tests incl. 12 peer-review regressions + 3 E2E scenarios |
+| `tests/` | 99 tests incl. peer-review regressions and E2E scenarios |
 
 ## Invariants (break these and the tests fail)
 

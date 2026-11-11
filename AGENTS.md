@@ -2,7 +2,7 @@
 
 TikTok slideshow factory for AI Onboard (+ POW companion lines). Deterministic
 pipeline, fail-closed gates, human review, measured learning loop. 16 segments ·
-20 MCP tools · 94 tests green · 27 docs. State: `docs/AUDIT.md` (newest first),
+20 MCP tools · 99 tests green · 32 docs. State: `docs/AUDIT.md` (newest first),
 open work: `THREADS.md`, pipeline map: `docs/PIPELINES.md`.
 
 ## How it all works
@@ -57,7 +57,7 @@ Legacy `aoc_<12hex>` IDs map via `python3 -m core.legacy store` (read-only).
 
 ## Commands
 
-- `python3 -m pytest tests/ -q` — full suite (94, no network)
+- `python3 -m pytest tests/ -q` — full suite (99, no network)
 - `python3 mcp_server.py aoc_validate '{"hook":"...","segment":"nails"}'` — cheap gate check
 - `python3 mcp_server.py aoc_build '{"hook":"...","template":"opportunity","segment":"nails"}'` — build
 - `python3 -m web.viewer` — gallery + review queue (:8798)

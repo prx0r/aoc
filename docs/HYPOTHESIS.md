@@ -36,7 +36,7 @@ Organic still works but check audience geography in analytics before promoting.
 4. Direct calls stay as the £0 control: objections heard live refine the message before spend.
 
 ## What AOC does / does not do
-- DOES: hook → 5–7 PNGs (1080×1920) → ZIP → human approve → manual TikTok post.
+- DOES: hook → 5–7 JPEGs (1080×1920) → ZIP → human approve → manual TikTok post.
 - DOES: track `audience × hook × angle × slides × CTA × style → views/swipes/profile/clicks/leads/sales`,
   mutate winners by **leads**, not views.
 - DOES NOT: auto-post, pick trending audio (human does in-app), run paid campaigns.

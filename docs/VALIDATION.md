@@ -21,7 +21,7 @@ different wording → same proof id recorded).
 
 ## What machines check (post-render, pre-export)
 
-`core/validate.py` — opens the actual PNGs:
+`core/validate.py` — opens the actual JPEGs:
 - dims exactly 1080×1920, valid JPEG
 - dark text band present (band luminance < 150)
 - text actually drawn (luminance spread > 40)

@@ -17,3 +17,15 @@ hooks:
 - text: Reviews after passes — or silence?
   angle: recognition
   audience: driving_instructors
+- text: 'Instructors: test progress in a notebook — which pupil can you check?'
+  angle: progress_records
+  audience: driving_instructor
+- text: Lessons cancelled at 8am. Who fills your 10am slot?
+  angle: cancellation
+  audience: driving_instructor
+- text: 'Instructor progress notes: phone, paper or memory — pick one?'
+  angle: progress_records
+  audience: driving_instructor
+- text: One pupil, five lesson notes. Which one is current?
+  angle: progress_records
+  audience: driving_instructor

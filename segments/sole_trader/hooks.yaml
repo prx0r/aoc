@@ -23,3 +23,9 @@ hooks:
 - text: 'Instead of checking spreadsheets: ''Who owes me money?'''
   angle: chatgpt_native
   audience: sole_trader
+- text: 'Sole trader: chasing invoices or doing the actual work?'
+  angle: admin_pain
+  audience: sole_trader
+- text: More hours online, or more hours invoicing — which?
+  angle: tradeoff
+  audience: sole_trader

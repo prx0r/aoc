@@ -38,7 +38,7 @@ via `.env`, never committed). No hidden dependency on `/root/aionboard` —
 the offer registry (`offers.yaml`) and claims (`claims.yaml`) are snapshotted
 in-repo with upstream revisions recorded.
 
-## Templates (11)
+## Templates (12)
 
 `opportunity` · `before_after` · `faq` · `social_proof` · `demo` ·
 `diagnostic` · `teardown` · `comparison` · `annuity` · `retention` ·
@@ -64,9 +64,9 @@ Tracks performance: `audience × hook × angle × slide_count × CTA × visual_s
 
 Prefers mutations of patterns that produced qualified leads, not just views.
 
-## Docs (29 files)
+## Docs (32 files)
 
-Start: `docs/HOW_IT_WORKS.md` → `docs/AUDIT.md` (latest state) → `THREADS.md`
+Start: `docs/README.md` → `docs/HOW_IT_WORKS.md` → `docs/AUDIT.md` (latest state) → `THREADS.md`
 (open work). Then by need: `AGENT_CONTROL` (full API/CLI reference for
 driving every layer), `PIPELINES` (map of all 7 pipelines),
 `FLOW` (full campaign flow, every command executable), `PIPELINE` (the £100
@@ -99,9 +99,9 @@ aoc/
 │   ├── powthings/ garden_familiars/ glimlings/  # POW companion lines
 │   └── each: profile,hooks,proofs,templates,manifest.yaml + PAINS/CAMPAIGN.md
 ├── reference/         # Manifest of external clones (see reference/README.md)
-├── docs/              # 29 docs — start with HOW_IT_WORKS.md, then AUDIT.md
+├── docs/              # 32 docs — start with docs/README.md, then AUDIT.md
 ├── THREADS.md         # Open work
-└── tests/             # Pipeline tests (90 green)
+└── tests/             # Pipeline tests (99 green)
 ```
 
 ## What We Stole

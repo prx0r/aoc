@@ -1,4 +1,8 @@
-# FREE_DEMO — the "before they know it they're setup" funnel
+# FREE_DEMO — experimental “before they know it they're setup” funnel
+
+> This is a locally defined acquisition hypothesis, not an approved upstream
+> aionboard offer. Validate the offer, capacity, and booking path before using
+> it publicly.
 
 ## The insight
 

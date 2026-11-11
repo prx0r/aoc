@@ -25,3 +25,9 @@ hooks:
   - text: "Design it Sunday. Plant it Saturday. Name it always."
     angle: customisation
     audience: maker
+  - text: "Gardeners: wilted leaves or a quiet sensor — which finds trouble first?"
+    angle: diagnostics
+    audience: grower
+  - text: "One frog, one mushroom, or a garden full — pick your guardian?"
+    angle: question_choice
+    audience: garden_buyer

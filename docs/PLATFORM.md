@@ -102,10 +102,10 @@ Gates/validate/review/measure learn nothing new — they consume Manifests.
 ## 4. Pipelines (all five, end to end)
 
 ### P1. Segment carousel (LIVE — unchanged)
-hook → slides → PNGs → ZIP → review → manual post → measure → learn.
+hook → slides → JPEGs → ZIP → review → manual post → measure → learn.
 
 ### P2. Signal carousel (PHASE 1)
-garden JSONL → adapter signal → `from_signal` → gates → PNGs → ZIP →
+garden JSONL → adapter signal → `from_signal` → gates → JPEGs → ZIP →
 review → manual post → measure → learn. First proof: ukgraph planning →
 electrician opportunity. If the JSONL is absent, the adapter says so and
 the run stops with a `no-data` receipt (not an empty carousel).

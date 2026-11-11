@@ -17,7 +17,7 @@ review-refine-render loop. 46 stars, 5 commits — very new.
 
 Why it's interesting:
 - Same loop shape as ours (brief → editable project → preview → revise → render).
-- Editable project model beats our burn-in-PNGs approach for video: change
+- Editable project model beats our burn-in slide-image approach for video: change
   a title or keyframe without re-rendering everything.
 - Motion graphics (animated typography) would lift slideshow-to-video output.
 - Free local engine aligns with our £0 doctrine.

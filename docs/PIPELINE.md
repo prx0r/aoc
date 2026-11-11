@@ -14,7 +14,7 @@ python3 -c "
 from core.carousel import run_carousel
 r = run_carousel('UK electricians — still doing quotes at 9pm?', 'opportunity')
 print(r['zip'])"                    # store/AOC-XXXXXXXX/tiktok_carousel.zip
-python3 -m pytest tests/ -q         # 90 passed
+python3 -m pytest tests/ -q         # 99 passed
 ```
 Make 10–15 across templates: opportunity ×4, before_after ×3, faq ×2, demo ×2, social_proof ×2.
 Each with 2 hook variants (see segments/electrician/hooks.yaml).
@@ -25,7 +25,7 @@ Each with 2 hook variants (see segments/electrician/hooks.yaml).
 - Move `draft → in_review → approved|rejected` in `core/state.py` terms. Rejected → back to draft with reason.
 
 ## 3. Post (manual)
-- TikTok: upload PNGs as photo carousel, pick trending sound in-app, add hashtags from
+- TikTok: upload JPEGs as photo carousel, pick trending sound in-app, add hashtags from
   channels/tiktok.yaml manually. Check audience geography after 48h.
 - Cross-post winners to Instagram + Facebook organic (reuse same ZIP).
 

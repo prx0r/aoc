@@ -16,7 +16,7 @@ R2_BUCKET=aoc-assets
 ## What gets backed up
 
 `store/<short-id>/` → `s3://aoc-assets/aoc/<content_id>/`:
-PNGs + ZIP + `script.json` + `manifest.json` + `contact_sheet.jpg`.
+JPEGs + ZIP + `script.json` + `manifest.json` + `contact_sheet.jpg`.
 Verify-after-write via a single bucket listing (R2 rejects HEAD) —
 every key must exist at the exact byte count or the run fails.
 A `backed_up` receipt records bucket, prefix, per-file sha256, total bytes.
